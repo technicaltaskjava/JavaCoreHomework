@@ -1,6 +1,7 @@
 import taxistation.garage.taxi.Taxi;
 import taxistation.TaxiStation;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -10,41 +11,51 @@ import java.util.Scanner;
 public class MainMenu {
     private final static String TABLE_FORMAT = "%1$-";
 
+    public static int getUserChoose(Scanner scanner) {
+        return scanner.nextInt();
+    }
+
     public static void main(String[] args) {
         TaxiStation taxiStation = new TaxiStation();
         Scanner scanner = new Scanner(System.in);
         int userChoose = -1;
 
-        printMenu();
-        while (userChoose != 0) {
-            System.out.print("Сделайте свой выбор > ");
-            userChoose = scanner.nextInt();
-            switch (userChoose) {
-                case 1:
-                    printCarTable(taxiStation.getCarAll());
-                    break;
-                case 2:
-                    System.out.println("Стоимость автопарка: " + taxiStation.getCarParkCost());
-                    break;
-                case 3:
-                    taxiStation.sortByFuelConsumption();
-                    System.out.println("Отсортировано");
-                    printCarTable(taxiStation.getCarAll());
-                    break;
-                case 4:
-                    Taxi[] searchResult = taxiStation.searchTaxiByPrice(getPriceToSearch());
-                    if (searchResult.length == 0) {
-                        System.out.println("Такого автомобиля не найдено");
-                    } else {
-                        printCarTable(searchResult);
-                    }
-                    break;
-                default:
-                    if (userChoose != 0) {
-                        System.err.println("Пункт меню " + userChoose + " не обнаружен");
-                    }
-            }
+        try {
             printMenu();
+            while (userChoose != 0) {
+
+                System.out.print("Сделайте свой выбор > ");
+                userChoose = scanner.nextInt();
+
+                switch (userChoose) {
+                    case 1:
+                        printCarTable(taxiStation.getCarAll());
+                        break;
+                    case 2:
+                        System.out.println("Стоимость автопарка: " + taxiStation.getCarParkCost());
+                        break;
+                    case 3:
+                        taxiStation.sortByFuelConsumption();
+                        System.out.println("Отсортировано");
+                        printCarTable(taxiStation.getCarAll());
+                        break;
+                    case 4:
+                        Taxi[] searchResult = taxiStation.searchTaxiByPrice(getPriceToSearch());
+                        if (searchResult.length == 0) {
+                            System.out.println("Такого автомобиля не найдено");
+                        } else {
+                            printCarTable(searchResult);
+                        }
+                        break;
+                    default:
+                        if (userChoose != 0) {
+                            System.err.println("Пункт меню " + userChoose + " не обнаружен");
+                        }
+                }
+                printMenu();
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Введенное значение не может быть обработано. Закрытие программы");
         }
     }
 
@@ -85,9 +96,14 @@ public class MainMenu {
     }
 
     private static int getPriceToSearch() {
-        System.out.print("Введите цену искомого автомобиля > ");
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
+        try {
+            System.out.print("Введите цену искомого автомобиля > ");
+            Scanner scanner = new Scanner(System.in);
+            return scanner.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Строка не может быть обработана");
+        }
+        return -1;
     }
 
 }
