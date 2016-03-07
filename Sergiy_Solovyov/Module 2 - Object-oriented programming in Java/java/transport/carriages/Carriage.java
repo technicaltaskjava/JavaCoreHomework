@@ -21,7 +21,7 @@ public abstract class Carriage{
         stringBuilder.append(", passengerCapacity=");
         stringBuilder.append(passengerCapacity);
         stringBuilder.append(", luggageWeight=");
-        stringBuilder.append(luggageWeightCarriage);
+        stringBuilder.append(String.format("%.3f",luggageWeightCarriage)+" tons");
         stringBuilder.append(", colour=");
         stringBuilder.append(colour);
         stringBuilder.append(",");
