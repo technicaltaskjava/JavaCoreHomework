@@ -1,4 +1,4 @@
-package transport.train.traingeneration;
+package transport.train.traingeneration.randomgeneration;
 
 import transport.carriages.Carriage;
 import transport.carriages.DiningCar;
@@ -9,7 +9,9 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * Created by Lammi on 07.03.2016.
+ * @author Sergey Solovyov
+ * @version 1.0
+ * @since 07.03.2016
  */
 public class CarriageFactory {
 
@@ -40,6 +42,4 @@ public class CarriageFactory {
         return carriage;
 
     }
-
-
 }

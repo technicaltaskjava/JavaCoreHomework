@@ -5,7 +5,9 @@ import transport.comporators.AgeComparator;
 import java.util.Arrays;
 
 /**
- * Created by Lammi on 02.03.2016.
+ * @author Sergey Solovyov
+ * @version 1.0
+ * @since 07.03.2016
  */
 public class Train {
 
@@ -40,7 +42,7 @@ public class Train {
         double totalWeight = 0;
         for (Carriage carriage: train){
             if (carriage != null)
-                totalWeight += carriage.getLuggageWeightCarriage();
+                totalWeight += carriage.getLuggageWeight();
         }
         System.out.print("Train may transport ");
         System.out.printf("%.3f", totalWeight);

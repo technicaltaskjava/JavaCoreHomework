@@ -5,7 +5,9 @@ import transport.carriages.Carriage;
 import java.util.Comparator;
 
 /**
- * Created by Lammi on 07.03.2016.
+ * @author Sergey Solovyov
+ * @version 1.0
+ * @since 07.03.2016
  */
 public class AgeComparator implements Comparator<Carriage> {
     @Override

@@ -1,6 +1,8 @@
 package transport.carriages;
 /**
- * Created by Lammi on 02.03.2016.
+ * @author Sergey Solovyov
+ * @version 1.0
+ * @since 07.03.2016
  */
 public class SleepingCar extends Carriage {
 

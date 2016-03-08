@@ -1,20 +1,25 @@
 package concole;
 
 import transport.train.Train;
-import transport.train.traingeneration.TrainGenerator;
+import transport.train.traingeneration.randomgeneration.TrainGenerator;
+import transport.train.traingeneration.trainfromfile.ReadFromFile;
 
 import java.io.*;
 
 /**
- * Created by Lammi on 07.03.2016.
+ * @author Sergey Solovyov
+ * @version 1.0
+ * @since 07.03.2016
  */
 public class ConsoleApplication {
 
     private Train train;
-
+    private ReadFromFile readFromFile = new ReadFromFile();
 
     public ConsoleApplication(){
-        this.train = TrainGenerator.generateTrain(3, 3, 3);
+        train = TrainGenerator.generateTrain(3, 3, 3);    //you may also generate train with reading from file
+
+
     }
     public void run(){
         System.out.println("Welcome to transport company \"SuperTrains\"" +

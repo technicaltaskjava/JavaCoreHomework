@@ -1,12 +1,11 @@
-package transport.train.traingeneration;
+package transport.train.traingeneration.randomgeneration;
 
-import transport.carriages.DiningCar;
-import transport.carriages.LuggageVan;
-import transport.carriages.SleepingCar;
 import transport.train.Train;
 
 /**
- * Created by Lammi on 07.03.2016.
+ * @author Sergey Solovyov
+ * @version 1.0
+ * @since 07.03.2016
  */
 public class TrainGenerator {
 

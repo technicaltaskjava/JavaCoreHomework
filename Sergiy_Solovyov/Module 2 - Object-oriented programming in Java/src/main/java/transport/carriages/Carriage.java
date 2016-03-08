@@ -1,18 +1,25 @@
 package transport.carriages;
 
+/**
+ * @author Sergey Solovyov
+ * @version 1.0
+ * @since 07.03.2016
+ */
+
 public abstract class Carriage{
 
     private int passengerCapacity;
-    private double luggageWeightCarriage;
+    private double luggageWeight;
     private int age;
     private String colour;
 
-    public Carriage(int age, double luggageWeightCarriage, int passengerCapacity, String colour) {
+    public Carriage(int age, double luggageWeight, int passengerCapacity, String colour) {
         this.age = age;
-        this.luggageWeightCarriage = luggageWeightCarriage;
+        this.luggageWeight = luggageWeight;
         this.passengerCapacity = passengerCapacity;
         this.colour = colour;
     }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
@@ -21,7 +28,7 @@ public abstract class Carriage{
         stringBuilder.append(", passengerCapacity=");
         stringBuilder.append(passengerCapacity);
         stringBuilder.append(", luggageWeight=");
-        stringBuilder.append(String.format("%.3f",luggageWeightCarriage)+" tons");
+        stringBuilder.append(String.format("%.3f",luggageWeight)+" tons");
         stringBuilder.append(", colour=");
         stringBuilder.append(colour);
         stringBuilder.append(",");
@@ -32,12 +39,13 @@ public abstract class Carriage{
     public String getColour() {
         return colour;
     }
+
     public int getPassengerCapacity() {
         return passengerCapacity;
     }
 
-    public double getLuggageWeightCarriage() {
-        return luggageWeightCarriage;
+    public double getLuggageWeight() {
+        return luggageWeight;
     }
 
     public int getAge() {
@@ -48,8 +56,8 @@ public abstract class Carriage{
         this.age = age;
     }
 
-    public void luggageWeightCarriage(double luggageTotalWeight) {
-        this.luggageWeightCarriage = luggageWeightCarriage;
+    public void luggageWeight(double luggageWeight) {
+        this.luggageWeight = luggageWeight;
     }
 
 
