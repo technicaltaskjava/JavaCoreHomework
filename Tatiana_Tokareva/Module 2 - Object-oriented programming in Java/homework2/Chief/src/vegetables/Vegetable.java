@@ -1,10 +1,12 @@
 package vegetables;
 
-public class Vegetable {
 
-private String name;
-private int weight;
-private int calories;
+
+public abstract class Vegetable implements Comparable  {
+
+public String name;
+public int weight;
+public int calories;
 
 	
   public double getCalorificValue() 
@@ -34,7 +36,22 @@ private int calories;
  this.weight=weight;
 	        
  }
-	  
+ public int compareTo(Object obj)
+ {
+   Vegetable tmp = (Vegetable)obj;
+   if(this.getCalorificValue() < tmp.getCalorificValue())
+   {
+    
+     return -1;
+   }   
+   else if(this.getCalorificValue() > tmp.getCalorificValue())
+   {
+     
+     return 1;
+   }
+  
+   return 0;  
+ } 	  
  public void displayInfo()
  {         
 	 System.out.println(  name +" "+ weight+" gram");

@@ -6,7 +6,7 @@ import vegetables.Vegetable;
 		
 	public Cucumber() {
 		    	
-     super("Cucumbers",14, 400);
+     super("Cucumber",14, 400);
 	}
 }	
 	  
