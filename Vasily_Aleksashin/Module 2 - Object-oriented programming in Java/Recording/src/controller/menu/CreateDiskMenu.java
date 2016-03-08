@@ -101,15 +101,14 @@ public class CreateDiskMenu {
 
 	private void burnDisk() {
 		if (diskController.isDiskFinalized()) {
-			view.print("\tThe disk is not writable");
-		}
-		if (diskController.getRecordsForBurning().length == 0) {
+			view.print("\tThe disc has already been recorded");
+		} else if (diskController.getRecordsForBurning().length == 0) {
 			view.print("\tDo not select a songs for recording");
-		}
-		if (diskController.getDiskAvailableDuration() < 0) {
+		} else if (diskController.getDiskAvailableDuration() < 0) {
 			view.print("\tSelected songs more than the allowable duration");
+		} else {
+			diskController.burnSongsToDisk();
+			view.print("Disk successfully burned");
 		}
-		diskController.burnSongsToDisk();
-		view.print("Disk successfully burned");
 	}
 }
