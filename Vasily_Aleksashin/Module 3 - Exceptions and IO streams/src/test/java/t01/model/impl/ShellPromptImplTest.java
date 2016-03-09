@@ -3,7 +3,7 @@ package t01.model.impl;
 import org.junit.Test;
 import t01.model.ShellPrompt;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class ShellPromptImplTest {
 	
