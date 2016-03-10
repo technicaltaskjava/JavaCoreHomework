@@ -1,6 +1,7 @@
 package t01.view.impl;
 
 import t01.model.ShellPrompt;
+import t01.model.impl.ShellPromptImpl;
 import t01.view.View;
 
 import java.util.Scanner;
