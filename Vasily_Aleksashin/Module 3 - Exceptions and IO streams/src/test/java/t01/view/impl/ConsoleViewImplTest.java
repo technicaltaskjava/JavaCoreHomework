@@ -6,9 +6,14 @@ import t01.model.ShellPrompt;
 import t01.model.impl.ShellPromptImpl;
 import t01.view.View;
 
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class ConsoleViewImplTest {
+	private ConsoleMock console = new ConsoleMock();
 	private ShellPrompt prompt;
 	private View view;
 
@@ -19,19 +24,28 @@ public class ConsoleViewImplTest {
 	}
 
 	@Test
-	public void testPrint() throws Exception {
+	public void testPrint() {
 		when(prompt.getPrompt()).thenReturn("> ");
 		view.print("TEST");
-		verify(prompt).getPrompt();
+		String expected = "TEST\r\n> ";
+		assertEquals(expected, console.getOut());
 	}
 
 	@Test
-	public void testRead() throws Exception {
-
+	public void testRead() {
+		console.addIn("TEST");
+		assertEquals("TEST", view.read());
 	}
 
 	@Test
-	public void testClose() throws Exception {
+	public void testCloseTrue() {
+		console.addIn("TEST");
+		view.read();
+		assertTrue(view.close());
+	}
 
+	@Test
+	public void testCloseFalse() {
+		assertFalse(view.close());
 	}
 }

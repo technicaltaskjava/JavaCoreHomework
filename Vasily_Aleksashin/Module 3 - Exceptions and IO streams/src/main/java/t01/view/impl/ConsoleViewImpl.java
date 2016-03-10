@@ -6,7 +6,7 @@ import t01.view.View;
 import java.util.Scanner;
 
 public class ConsoleViewImpl implements View {
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = null;
     private final ShellPrompt prompt;
 
 	public ConsoleViewImpl(final ShellPrompt prompt) {
@@ -23,14 +23,17 @@ public class ConsoleViewImpl implements View {
 
     @Override
     public String read() {
-        return scanner.nextLine();
+        scanner = new Scanner(System.in);
+	    return scanner.nextLine();
     }
 
     @Override
-    public void close() {
+    public boolean close() {
         if (scanner != null) {
             scanner.close();
+	        return true;
         }
+	    return false;
     }
 
     private void printPrompt() {

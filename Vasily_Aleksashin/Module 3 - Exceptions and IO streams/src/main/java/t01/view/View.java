@@ -5,5 +5,5 @@ public interface View {
 
     String read();
 
-    void close();
+    boolean close();
 }
