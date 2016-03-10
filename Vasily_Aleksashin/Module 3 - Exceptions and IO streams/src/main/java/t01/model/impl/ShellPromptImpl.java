@@ -1,35 +1,29 @@
 package t01.model.impl;
 
+import t01.exception.ModelException;
+import t01.model.Environment;
 import t01.model.ShellPrompt;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
-import java.util.Calendar;
 
 public class ShellPromptImpl implements ShellPrompt {
-	private final String user;
-	private final String host;
-	private final String home;
+	public static ShellPrompt instance = null;
 
 	private String currentDir;
-
 	private String prompt;
 
-	public ShellPromptImpl() {
-		String hostName;
-		this.user = System.getProperty("user.name");
-		try {
-			hostName = InetAddress.getLocalHost().getHostName();
-		} catch (UnknownHostException e) {
-			hostName = "UNKNOWN";
+	private ShellPromptImpl() {
+		currentDir = Environment.getHomeDir();
+		setPrompt(Environment.getUserName(), "@", Environment.getHostName(), " ", currentDir, "\n", ">");
+	}
+
+	public static ShellPrompt getInstance() {
+		if (instance == null) {
+			instance = new ShellPromptImpl();
 		}
-		this.host = hostName;
-		this.home = System.getProperty("user.home");
-		this.currentDir = this.home;
-		setPrompt(this.user, "@", this.host, " ", this.currentDir, "\n", ">");
+		return instance;
 	}
 
 	@Override
@@ -37,17 +31,17 @@ public class ShellPromptImpl implements ShellPrompt {
 		return currentDir;
 	}
 
-	public void setCurrentDir(String currentDir) throws IllegalArgumentException {
-		if (currentDir == null) {
-			throw new IllegalArgumentException("Path can not be NULL");
+	public void setCurrentDir(String path) throws ModelException {
+		if (path == null) {
+			throw new ModelException("Path can not be NULL");
 		}
 
 		try {
-			if (Files.exists(Paths.get(currentDir))) {
-                this.currentDir = currentDir;
-            }
+			if (Files.exists(Paths.get(path))) {
+				this.currentDir = path;
+			}
 		} catch (InvalidPathException e) {
-			throw new IllegalArgumentException("Path not found");
+			throw new ModelException(String.format("Path: '%s' not found", path));
 		}
 	}
 

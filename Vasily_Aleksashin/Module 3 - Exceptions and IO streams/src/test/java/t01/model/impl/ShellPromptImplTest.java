@@ -9,7 +9,7 @@ public class ShellPromptImplTest {
 	
 	@Test
 	public void testGetPrompt() throws Exception {
-		ShellPrompt prompt = new ShellPromptImpl();
+		ShellPrompt prompt = ShellPromptImpl.getInstance();
 		String expected = "aleksashin@ALEKSASHIN_PC C:\\Users\\aleksashin\n> ";
 		String actual = prompt.getPrompt();
 		assertEquals(expected, actual);
