@@ -6,14 +6,10 @@ import t01.model.ShellPrompt;
 import t01.model.impl.ShellPromptImpl;
 import t01.view.View;
 
-import java.util.Scanner;
-
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class ConsoleViewImplTest {
 	private ShellPrompt prompt;
-	private Scanner scanner;
 	private View view;
 
 	@Before
@@ -21,6 +17,7 @@ public class ConsoleViewImplTest {
 		prompt = mock(ShellPromptImpl.class);
 		view = new ConsoleViewImpl(prompt);
 	}
+
 	@Test
 	public void testPrint() throws Exception {
 		when(prompt.getPrompt()).thenReturn("> ");
@@ -30,8 +27,7 @@ public class ConsoleViewImplTest {
 
 	@Test
 	public void testRead() throws Exception {
-		String input = view.read();
-		assertEquals("TEST", input);
+
 	}
 
 	@Test
