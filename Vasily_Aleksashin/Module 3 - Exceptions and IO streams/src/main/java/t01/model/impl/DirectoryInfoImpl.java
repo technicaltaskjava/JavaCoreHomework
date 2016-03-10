@@ -1,6 +1,6 @@
 package t01.model.impl;
 
-import t01.model.DirectorySearch;
+import t01.model.DirectoryInfo;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,14 +8,14 @@ import java.nio.file.*;
 import java.nio.file.attribute.FileTime;
 import java.text.SimpleDateFormat;
 
-public class DirectorySearchImpl implements DirectorySearch {
+public class DirectoryInfoImpl implements DirectoryInfo {
     private DirectoryStream<Path> dirStream;
     private int countFile = 0;
     private int countDir = 0;
     private long sizeFile = 0;
 
     @Override
-    public String getFullTable(final String path) throws IllegalArgumentException {
+    public String getDirInfo(final String path) throws IllegalArgumentException {
         if (path == null) {
             throw new IllegalArgumentException("Path can not be NULL");
         }
@@ -25,12 +25,12 @@ public class DirectorySearchImpl implements DirectorySearch {
             dirStream = Files.newDirectoryStream(Paths.get(path));
             for (Path dir : dirStream) {
                 File file = new File(dir.toString());
-                builder.append(getFormatterTime(dir)).append("\t");
+                builder.append(formatterTime(dir)).append("\t");
                 if (file.isDirectory()) {
                     builder.append("<DIR>").append("\t\t");
                     countDir++;
                 } else {
-                    builder.append(alignFileSize(dir)).append(String.format("%,8d", Files.size(dir)));
+                    builder.append(alignFileSize(dir));
                     countFile++;
                     sizeFile += Files.size(dir);
                 }
@@ -42,17 +42,11 @@ public class DirectorySearchImpl implements DirectorySearch {
             throw new IllegalArgumentException("Path not found");
         } catch (IOException e) {
             throw new IllegalArgumentException("Can not access to path: " + path);
-        } finally {
-            try {
-                dirStream.close();
-            } catch (IOException e) {
-                throw new IllegalArgumentException(e.getMessage());
-            }
         }
         return builder.toString();
     }
 
-    private String getFormatterTime(Path dir) throws IOException {
+    private String formatterTime(Path dir) throws IOException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.mm.yyyy  HH.mm.ss");
         FileTime fileTime = Files.getLastModifiedTime(dir);
         return dateFormat.format(fileTime.toMillis());
@@ -64,6 +58,7 @@ public class DirectorySearchImpl implements DirectorySearch {
         for (int index = 0; index < 15 - length; index++) {
             builder.append(" ");
         }
+        builder.append(String.format("%,8d", Files.size(dir)));
         return builder.toString();
     }
 }
