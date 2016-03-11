@@ -1,7 +1,6 @@
 package t01.view.impl;
 
 import t01.model.ShellPrompt;
-import t01.model.impl.ShellPromptImpl;
 import t01.view.View;
 
 import java.util.Scanner;
@@ -10,11 +9,11 @@ public class ConsoleViewImpl implements View {
     private Scanner scanner = null;
     private final ShellPrompt prompt;
 
-	public ConsoleViewImpl(final ShellPrompt prompt) {
-		this.prompt = prompt;
-	}
+    public ConsoleViewImpl(final ShellPrompt prompt) {
+        this.prompt = prompt;
+    }
 
-	@Override
+    @Override
     public void print(String output) {
         if (output != null) {
             System.out.println(output);
@@ -25,16 +24,16 @@ public class ConsoleViewImpl implements View {
     @Override
     public String read() {
         scanner = new Scanner(System.in);
-	    return scanner.nextLine();
+        return scanner.nextLine();
     }
 
     @Override
     public boolean close() {
         if (scanner != null) {
             scanner.close();
-	        return true;
+            return true;
         }
-	    return false;
+        return false;
     }
 
     private void printPrompt() {
