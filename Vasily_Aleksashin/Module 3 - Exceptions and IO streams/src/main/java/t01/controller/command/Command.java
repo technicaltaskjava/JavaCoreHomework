@@ -1,7 +1,10 @@
 package t01.controller.command;
 
 import t01.exception.ExitException;
+import t01.exception.ModelException;
 
 public interface Command {
-	void execute(String input) throws ExitException;
+    boolean canExecute(String input);
+
+    void execute(String input) throws ExitException;
 }
