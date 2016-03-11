@@ -6,10 +6,13 @@ import t01.exception.ExitException;
 public class Exit implements Command {
 	private static final String cmdName = "exit";
 
-	@Override
+    @Override
+    public boolean canExecute(String input){
+        return input != null && input.equals(cmdName);
+    }
+
+    @Override
 	public void execute(final String input) throws ExitException {
-		if (input.startsWith(cmdName)) {
-			throw new ExitException();
-		}
+        throw new ExitException();
 	}
 }
