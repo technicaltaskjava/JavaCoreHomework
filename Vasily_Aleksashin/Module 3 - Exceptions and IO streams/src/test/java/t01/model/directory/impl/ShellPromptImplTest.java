@@ -1,9 +1,9 @@
-package t01.model.impl;
+package t01.model.directory.impl;
 
 import org.junit.Test;
-import t01.exception.ModelException;
 import t01.model.Environment;
-import t01.model.ShellPrompt;
+import t01.model.directory.ShellPrompt;
+import t01.model.directory.impl.ShellPromptImpl;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;

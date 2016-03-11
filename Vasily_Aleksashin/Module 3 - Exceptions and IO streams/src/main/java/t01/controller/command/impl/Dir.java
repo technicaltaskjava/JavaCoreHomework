@@ -3,9 +3,9 @@ package t01.controller.command.impl;
 import t01.controller.MainController;
 import t01.controller.command.Command;
 import t01.exception.ModelException;
-import t01.model.DirectoryInfo;
+import t01.model.directory.DirectoryInfo;
 import t01.model.Environment;
-import t01.model.impl.DirectoryInfoImpl;
+import t01.model.directory.impl.DirectoryInfoImpl;
 
 import java.nio.file.Path;
 

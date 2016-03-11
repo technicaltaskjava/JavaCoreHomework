@@ -2,8 +2,8 @@ package t01.view.impl;
 
 import org.junit.Before;
 import org.junit.Test;
-import t01.model.ShellPrompt;
-import t01.model.impl.ShellPromptImpl;
+import t01.model.directory.ShellPrompt;
+import t01.model.directory.impl.ShellPromptImpl;
 import t01.view.View;
 
 import static org.junit.Assert.assertEquals;

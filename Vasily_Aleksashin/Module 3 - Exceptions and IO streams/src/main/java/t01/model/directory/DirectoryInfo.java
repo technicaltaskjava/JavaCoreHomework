@@ -1,4 +1,4 @@
-package t01.model;
+package t01.model.directory;
 
 import t01.exception.ModelException;
 

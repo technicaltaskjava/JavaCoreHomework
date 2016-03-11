@@ -6,8 +6,8 @@ import t01.controller.command.impl.Dir;
 import t01.controller.command.impl.Exit;
 import t01.controller.command.impl.Help;
 import t01.exception.ExitException;
-import t01.model.ShellPrompt;
-import t01.model.impl.ShellPromptImpl;
+import t01.model.directory.ShellPrompt;
+import t01.model.directory.impl.ShellPromptImpl;
 import t01.view.View;
 import t01.view.impl.ConsoleViewImpl;
 

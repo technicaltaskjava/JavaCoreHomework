@@ -1,9 +1,10 @@
-package t01.model.impl;
+package t01.model.directory.impl;
 
 import org.junit.Before;
 import org.junit.Test;
 import t01.exception.ModelException;
-import t01.model.DirectoryInfo;
+import t01.model.directory.DirectoryInfo;
+import t01.model.directory.impl.DirectoryInfoImpl;
 
 import java.nio.file.Path;
 

@@ -1,7 +1,7 @@
-package t01.model.impl;
+package t01.model.directory.impl;
 
 import t01.exception.ModelException;
-import t01.model.DirectoryInfo;
+import t01.model.directory.DirectoryInfo;
 import t01.model.Environment;
 
 import java.io.File;
@@ -47,16 +47,18 @@ public class DirectoryInfoImpl implements DirectoryInfo {
         try {
             for (Path dir : paths) {
                 File file = new File(dir.toString());
-                builder.append(formatterTime(dir)).append("\t");
-                if (file.isDirectory()) {
-                    builder.append("<DIR>").append("\t\t");
-                    countDir++;
-                } else {
-                    builder.append(alignFileSize(dir));
-                    countFile++;
-                    sizeFile += Files.size(dir);
-                }
-                builder.append("\t").append(file.getName()).append("\n");
+	            if (!file.isHidden()) {
+		            builder.append(formatterTime(dir)).append("\t");
+		            if (file.isDirectory()) { //TODO check LINK
+		                builder.append("<DIR>").append("\t\t");
+		                countDir++;
+		            } else {
+		                builder.append(alignFileSize(dir));
+		                countFile++;
+		                sizeFile += Files.size(dir);
+		            }
+		            builder.append("\t").append(file.getName()).append("\n");
+	            }
             }
             builder.append("\t\t\t\t").append(countDir).append(" directories");
             builder.append("\n\t\t\t\t").append(countFile).append(" files ").append(String.format("%,8d", sizeFile)).append(" byte");

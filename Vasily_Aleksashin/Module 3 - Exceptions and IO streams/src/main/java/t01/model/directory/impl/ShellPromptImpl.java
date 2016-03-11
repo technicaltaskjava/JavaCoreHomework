@@ -1,7 +1,7 @@
-package t01.model.impl;
+package t01.model.directory.impl;
 
 import t01.model.Environment;
-import t01.model.ShellPrompt;
+import t01.model.directory.ShellPrompt;
 
 public class ShellPromptImpl implements ShellPrompt {
     public static ShellPrompt instance = null;
