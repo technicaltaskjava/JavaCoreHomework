@@ -31,11 +31,14 @@ public class ShellPromptImpl implements ShellPrompt {
 		return currentDir;
 	}
 
+    @Override
 	public void setCurrentDir(String path) throws ModelException {
 		if (path == null) {
 			throw new ModelException("Path can not be NULL");
 		}
-
+        if (path.equals("")) {
+            throw new ModelException("Path can not be EMPTY");
+        }
 		try {
 			if (Files.exists(Paths.get(path))) {
 				this.currentDir = path;
