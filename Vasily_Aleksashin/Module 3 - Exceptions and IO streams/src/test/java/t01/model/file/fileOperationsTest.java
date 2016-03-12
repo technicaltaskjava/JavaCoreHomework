@@ -110,7 +110,7 @@ public class FileOperationsTest {
 
 	@Test
 	public void testReadFileWithCorrectFileName() throws ModelException {
-		String expected = "Hello Java. You can read me.";
+		String expected = "Hello Java. You can read me.\n";
 		String actual = fileOperations.read(FILE_NAME_READ);
 		assertEquals(expected, actual);
 	}
