@@ -1,19 +1,17 @@
 package t01.controller;
 
-import org.junit.Before;
 import org.junit.Test;
 import t01.Main;
-import t01.model.directory.ShellPrompt;
-import t01.model.directory.impl.ShellPromptImpl;
-import t01.view.View;
+import t01.model.Environment;
 import t01.view.impl.ConsoleMock;
-import t01.view.impl.ConsoleViewImpl;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
+import static org.junit.Assert.assertEquals;
 
 public class MainControllerTest {
 	private ConsoleMock console = new ConsoleMock();
+	private String user = Environment.getUserName();
+	private String host = Environment.getHostName();
+	private String dir = Environment.getCurrentDir();
 
 	@Test
 	public void testExit() {
@@ -21,7 +19,7 @@ public class MainControllerTest {
 		Main.main(new String[0]);
 		String expected = "The application does not recognize Cyrillic\n" +
 				"Enter command or help\r\n" +
-				"aleksashin@TL-009-221 C:\\Users\\aleksashin > ";
+				user + "@" + host + " " + dir + " > ";
 		assertEquals(expected, console.getOut());
 	}
 
@@ -32,7 +30,7 @@ public class MainControllerTest {
 		Main.main(new String[0]);
 		String expected = "The application does not recognize Cyrillic\n" +
 				"Enter command or help\r\n" +
-				"aleksashin@TL-009-221 C:\\Users\\aleksashin > Available Commands:\n" +
+				user + "@" + host + " " + dir + " > Available Commands:\n" +
 				"dir\n" +
 				"\tOutput the contents from the current directory to the screen\n" +
 				"cd\n" +
@@ -57,7 +55,7 @@ public class MainControllerTest {
 				"\tWrite file in current directory\n" +
 				"exit\n" +
 				"\tExit from application\r\n" +
-				"aleksashin@TL-009-221 C:\\Users\\aleksashin > ";
+				user + "@" + host + " " + dir + " > ";
 		assertEquals(expected, console.getOut());
 	}
 
@@ -68,9 +66,9 @@ public class MainControllerTest {
 		Main.main(new String[0]);
 		String expected = "The application does not recognize Cyrillic\n" +
 				"Enter command or help\r\n" +
-				"aleksashin@TL-009-221 C:\\Users\\aleksashin > " +
+				user + "@" + host + " " + dir + " > " +
 				"\tEnter wrong command\r\n" +
-				"aleksashin@TL-009-221 C:\\Users\\aleksashin > ";
+				user + "@" + host + " " + dir + " > ";
 		assertEquals(expected, console.getOut());
 	}
 }
