@@ -1,10 +1,7 @@
 package t01.controller;
 
 import t01.controller.command.Command;
-import t01.controller.command.impl.Cd;
-import t01.controller.command.impl.Dir;
-import t01.controller.command.impl.Exit;
-import t01.controller.command.impl.Help;
+import t01.controller.command.impl.*;
 import t01.exception.ExitException;
 import t01.model.directory.ShellPrompt;
 import t01.model.directory.impl.ShellPromptImpl;
@@ -40,6 +37,6 @@ public class MainController {
     private void init() {
         ShellPrompt prompt = ShellPromptImpl.getInstance();
         view = new ConsoleViewImpl(prompt);
-        commands = new Command[]{new Exit(), new Dir(this), new Cd(this), new Help(this)};
+        commands = new Command[]{new Exit(), new Dir(this), new Cd(this), new Help(this), new NewFile(this)};
     }
 }
