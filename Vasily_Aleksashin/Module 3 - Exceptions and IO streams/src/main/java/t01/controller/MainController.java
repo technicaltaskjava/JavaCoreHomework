@@ -37,6 +37,6 @@ public class MainController {
     private void init() {
         ShellPrompt prompt = ShellPromptImpl.getInstance();
         view = new ConsoleViewImpl(prompt);
-        commands = new Command[]{new Exit(), new Dir(this), new Cd(this), new Help(this), new NewFile(this)};
+        commands = new Command[]{new Exit(), new Dir(this), new Cd(this), new Help(this), new NewFile(this), new ReadFile(this)};
     }
 }
