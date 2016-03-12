@@ -25,7 +25,6 @@ public class Dir implements Command {
     }
     @Override
     public void execute(final String input) {
-
         String path = Environment.getCurrentDir();
         try {
             Path[] stream = dirInfo.getDirStream(path);
