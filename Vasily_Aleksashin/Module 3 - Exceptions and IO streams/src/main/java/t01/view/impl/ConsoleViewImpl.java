@@ -9,13 +9,16 @@ import java.util.Scanner;
 
 public class ConsoleViewImpl implements View {
     private Scanner scanner = null;
-    private final ShellPrompt prompt;
+    private ShellPrompt prompt;
 
     public ConsoleViewImpl(final ShellPrompt prompt) {
         this.prompt = prompt;
     }
 
-    @Override
+	public ConsoleViewImpl() {
+	}
+
+	@Override
     public void print(String output) {
         if (output != null) {
             System.out.println(output);
@@ -46,6 +49,8 @@ public class ConsoleViewImpl implements View {
     }
 
     private void printPrompt() {
-        System.out.print(prompt.getPrompt());
+	    if (prompt != null) {
+		    System.out.print(prompt.getPrompt());
+	    }
     }
 }
