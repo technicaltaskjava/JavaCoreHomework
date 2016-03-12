@@ -13,14 +13,14 @@ import java.io.IOException;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-public class FileOperationsTest {
+public class FileOperationsTest { //TODO WTF change absolute file path to relative
     private static final String FILE_NAME_READ = "C:\\Users\\aleksashin\\IdeaProjects\\JavaCoreHomework\\Vasily_Aleksashin\\" +
             "Module 3 - Exceptions and IO streams\\src\\test\\resources\\test_read.txt";
     private static final String TEMP_FILE_NAME = "C:\\Users\\aleksashin\\IdeaProjects\\JavaCoreHomework\\Vasily_Aleksashin\\" +
             "Module 3 - Exceptions and IO streams\\src\\test\\resources\\test_temp.txt";
 	private static final String FILE_NAME_WRITE = "C:\\Users\\aleksashin\\IdeaProjects\\JavaCoreHomework\\Vasily_Aleksashin\\" +
 			"Module 3 - Exceptions and IO streams\\src\\test\\resources\\test_write.txt";
-	private static final String MESSAGE_WRITE = "Hello Java! You can write me.\n";
+	private static final String MESSAGE_WRITE = "Hello Java! You can write me.";
 
 	private FileOperations fileOperations;
 
@@ -134,7 +134,7 @@ public class FileOperationsTest {
 	public void testWriteFileWithCorrectFileNameAndAppend() throws ModelException {
 		String expected = oldFileState(FILE_NAME_WRITE) + MESSAGE_WRITE;
 		fileOperations.write(FILE_NAME_WRITE, MESSAGE_WRITE, true);
-		String actual = oldFileState(FILE_NAME_WRITE) + "\n";
+		String actual = oldFileState(FILE_NAME_WRITE);
 		assertEquals(expected, actual);
 	}
 
@@ -142,7 +142,7 @@ public class FileOperationsTest {
 	public void testWriteFileWithCorrectFileNameAndNotAppend() throws ModelException {
 		String expected = MESSAGE_WRITE;
 		fileOperations.write(FILE_NAME_WRITE, MESSAGE_WRITE, false);
-		String actual = oldFileState(FILE_NAME_WRITE) + "\n";
+		String actual = oldFileState(FILE_NAME_WRITE);
 		assertEquals(expected, actual);
 	}
 
