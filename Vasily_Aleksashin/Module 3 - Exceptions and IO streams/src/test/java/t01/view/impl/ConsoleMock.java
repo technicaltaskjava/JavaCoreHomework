@@ -39,6 +39,7 @@ public class ConsoleMock {
 				return -1;
 			}
 			if (endLine) {
+				endLine = false;
 				return -1;
 			}
 			char ch = line.charAt(0);
