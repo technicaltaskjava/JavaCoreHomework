@@ -44,7 +44,7 @@ public class FileOperationsImpl implements FileOperations {
 		try (FileReader in = new FileReader(file);
 		     BufferedReader reader = new BufferedReader(in)) {
 			while ((cache = reader.readLine()) != null) {
-				builder.append(cache);
+				builder.append(cache).append("\n");
 			}
 		} catch (IOException e) {
 			throw new ModelException(e.getMessage());
