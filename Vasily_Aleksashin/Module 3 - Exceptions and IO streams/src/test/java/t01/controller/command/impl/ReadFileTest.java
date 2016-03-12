@@ -7,6 +7,7 @@ import t01.controller.command.Command;
 import t01.exception.ExitException;
 
 import static org.junit.Assert.*;
+import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -40,5 +41,11 @@ public class ReadFileTest {
 		readFile.execute("read ");
 		String output = "\tEnter file name";
 		verify(controller).print(output);
+	}
+
+	@Test
+	public void testExecute() throws ExitException {
+		readFile.execute("read file");
+		verify(controller).print(anyString());
 	}
 }
