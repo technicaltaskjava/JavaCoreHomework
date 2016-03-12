@@ -6,7 +6,7 @@ import t01.exception.ModelException;
 import t01.model.Environment;
 
 public class Cd implements Command {
-    private static final String cmdName = "cd ";
+    private static final String CMD_NAME = "cd ";
 
     private final MainController controller;
 
@@ -17,12 +17,12 @@ public class Cd implements Command {
 
     @Override
     public boolean canExecute(String input) {
-        return input != null && input.startsWith(cmdName);
+        return input != null && input.startsWith(CMD_NAME);
     }
 
     @Override
     public void execute(String input) {
-        String path = input.substring(cmdName.length());
+        String path = input.substring(CMD_NAME.length());
         try {
             Environment.setCurrentDir(path);
             controller.print("");

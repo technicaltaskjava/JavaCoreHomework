@@ -4,11 +4,11 @@ import t01.controller.command.Command;
 import t01.exception.ExitException;
 
 public class Exit implements Command {
-	private static final String cmdName = "exit";
+	private static final String CMD_NAME = "exit";
 
     @Override
     public boolean canExecute(String input){
-        return input != null && input.equals(cmdName);
+        return input != null && input.equals(CMD_NAME);
     }
 
     @Override

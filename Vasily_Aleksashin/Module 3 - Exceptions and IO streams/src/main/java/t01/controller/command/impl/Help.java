@@ -5,7 +5,7 @@ import t01.controller.command.Command;
 import t01.exception.ExitException;
 
 public class Help implements Command {
-    private static final String cmdName = "help";
+    private static final String CMD_NAME = "help";
 
     private final MainController controller;
 
@@ -15,7 +15,7 @@ public class Help implements Command {
 
     @Override
     public boolean canExecute(String input) {
-        return input != null && input.equals(cmdName);
+        return input != null && input.equals(CMD_NAME);
     }
 
     @Override

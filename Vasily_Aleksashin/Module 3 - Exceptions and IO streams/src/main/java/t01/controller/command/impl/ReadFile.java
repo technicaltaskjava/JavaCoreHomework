@@ -11,7 +11,7 @@ import t01.model.file.impl.FileOperationsImpl;
 import java.io.File;
 
 public class ReadFile implements Command {
-	private static final String cmdName = "read ";
+	private static final String CMD_NAME = "read ";
 
 	private final MainController controller;
 	private final FileOperations operations;
@@ -23,12 +23,12 @@ public class ReadFile implements Command {
 
 	@Override
 	public boolean canExecute(final String input) {
-		return input != null && input.startsWith(cmdName);
+		return input != null && input.startsWith(CMD_NAME);
 	}
 
 	@Override
 	public void execute(final String input) {
-		String tempFileName = input.substring(cmdName.length());
+		String tempFileName = input.substring(CMD_NAME.length());
 		try {
 			if (tempFileName.length() == 0) {
 				throw new ControllerException("Enter file name");

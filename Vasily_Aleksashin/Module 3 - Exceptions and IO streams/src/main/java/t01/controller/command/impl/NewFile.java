@@ -10,7 +10,7 @@ import t01.model.file.impl.FileOperationsImpl;
 import java.io.File;
 
 public class NewFile implements Command {
-	private static final String cmdName = "newFile ";
+	private static final String CMD_NAME = "newFile ";
 
 	private final MainController controller;
 	private final FileOperations operations;
@@ -22,12 +22,12 @@ public class NewFile implements Command {
 
 	@Override
 	public boolean canExecute(final String input) {
-		return input != null && input.startsWith(cmdName);
+		return input != null && input.startsWith(CMD_NAME);
 	}
 
 	@Override
 	public void execute(final String input) {
-		String tempFileName = input.substring(cmdName.length());
+		String tempFileName = input.substring(CMD_NAME.length());
 		File file = new File(tempFileName);
 		String fileName;
 		if (!file.isAbsolute()) {

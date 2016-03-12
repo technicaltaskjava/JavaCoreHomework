@@ -10,7 +10,7 @@ import t01.model.directory.impl.DirectoryInfoImpl;
 import java.nio.file.Path;
 
 public class Dir implements Command {
-    private static final String cmdName = "dir";
+    private static final String CMD_NAME = "dir";
 
     private final DirectoryInfo dirInfo = new DirectoryInfoImpl();
     private final MainController controller;
@@ -21,7 +21,7 @@ public class Dir implements Command {
 
     @Override
     public boolean canExecute(final String input) {
-        return input != null && input.equals(cmdName);
+        return input != null && input.equals(CMD_NAME);
     }
     @Override
     public void execute(final String input) {
