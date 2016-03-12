@@ -32,13 +32,14 @@ public class MainController {
 	public void load(final String fileName) throws ModelException {
 		String loadFile = fileOperations.read(fileName);
 		getProperties(loadFile);
-		properties.toString();
+		System.out.println(properties.toString());
 	}
 
 	private void getProperties(final String loadFile) {
 		try (Scanner scanner = new Scanner(loadFile)){
 			String line;
-			while ((line = scanner.nextLine()) != null) {
+			while (scanner.hasNextLine()) {
+				line = scanner.nextLine();
 				String key;
 				String value;
 				if (line.contains(separator)) {
@@ -51,7 +52,6 @@ public class MainController {
 					}
 				}
 			}
-
 		}
 	}
 
