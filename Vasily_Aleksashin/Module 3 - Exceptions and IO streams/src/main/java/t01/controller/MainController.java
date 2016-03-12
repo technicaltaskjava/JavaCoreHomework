@@ -21,7 +21,13 @@ public class MainController {
             for (Command cmd : commands) {
                 if (cmd.canExecute(input)) {
                     flag = true;
-                    cmd.execute(input);
+	                try {
+		                cmd.execute(input);
+		                break;
+	                } catch (ExitException e) {
+		                view.close();
+		                throw e;
+	                }
                 }
             }
             if (!flag) {
