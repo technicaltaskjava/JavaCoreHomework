@@ -6,11 +6,13 @@ import t01.model.file.FileOperations;
 import java.io.*;
 
 public class FileOperationsImpl implements FileOperations {
+	private File file;
+
 	@Override
 	public void create(final String fileName) throws ModelException {
 		validateParameter(fileName);
 
-		File file = new File(fileName);
+		file =  new File(fileName);
 		try {
 			if (!file.createNewFile()) {
 				throw new ModelException(String.format("Can not create file %s, the file already exists", fileName));
@@ -24,7 +26,7 @@ public class FileOperationsImpl implements FileOperations {
 	public void delete(final String fileName) throws ModelException {
 		validateParameter(fileName);
 
-		File file = new File(fileName);
+		file = new File(fileName);
 		if (!validateFile(file) || !file.delete()) {
 			throw new ModelException(String.format("Can not delete file %s", fileName));
 		}
@@ -33,7 +35,7 @@ public class FileOperationsImpl implements FileOperations {
 	@Override
 	public String read(final String fileName) throws ModelException {
 		validateParameter(fileName);
-		File file = new File(fileName);
+		file = new File(fileName);
 		if (!file.isFile() || !file.canRead()) {
 			throw new ModelException(String.format("Can not read file %s", fileName));
 		}
@@ -55,7 +57,7 @@ public class FileOperationsImpl implements FileOperations {
 	public void write(final String fileName, final String message, final boolean append) throws ModelException {
 		validateParameter(fileName);
 		validateParameter(message);
-		File file = new File(fileName);
+		file = new File(fileName);
 		if (!validateFile(file)) {
 			throw new ModelException(String.format("Can not write file %s", fileName));
 		}
