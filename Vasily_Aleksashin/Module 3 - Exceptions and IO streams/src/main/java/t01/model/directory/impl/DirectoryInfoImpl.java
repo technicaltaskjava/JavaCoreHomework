@@ -71,7 +71,7 @@ public class DirectoryInfoImpl implements DirectoryInfo {
     }
 
     private String formatterTime(Path dir) throws IOException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.mm.yyyy  HH.mm.ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy - HH.mm.ss");
         FileTime fileTime = Files.getLastModifiedTime(dir);
         return dateFormat.format(fileTime.toMillis());
     }
