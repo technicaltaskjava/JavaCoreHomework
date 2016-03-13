@@ -1,19 +1,19 @@
 package t02.model.entity;
 
-import t02.exception.ParameterNullException;
+import t02.exception.PropertyException;
 
 public class Property {
 	private final String key;
 	private String value;
 
-	public Property(final String key) throws ParameterNullException {
+	public Property(final String key) throws PropertyException {
 		if (key == null || key.equals("")) {
-			throw new ParameterNullException("Key can not be NULL or EMPTY");
+			throw new PropertyException("Key can not be NULL or EMPTY");
 		}
 		this.key = key;
 	}
 
-	public Property(final String key, final String value) throws ParameterNullException {
+	public Property(final String key, final String value) throws PropertyException {
 		this(key);
 		this.value = value;
 	}
@@ -26,10 +26,7 @@ public class Property {
 		return value;
 	}
 
-	public void setValue(final String value) throws ParameterNullException {
-		if (value == null) {
-			throw new ParameterNullException("Value can not be NULL");
-		}
+	public void setValue(final String value) {
 		this.value = value;
 	}
 
