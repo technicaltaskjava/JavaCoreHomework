@@ -63,7 +63,7 @@ public class MainController {
 	}
 
 	private void removeKey() {
-		view.print("Enter new key:");
+		view.print("Enter key:");
 		String inputKey = view.read();
 		try {
 			service.remove(inputKey);
