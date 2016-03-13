@@ -36,9 +36,9 @@ public class FileOperationsImpl implements FileOperations {
 	public String read(final String fileName) throws ModelException {
 		validateParameter(fileName);
 		file = new File(fileName);
-		if (!file.isFile() || !file.canRead()) {
+		/*if (!file.isFile() || !file.canRead()) {
 			throw new ModelException(String.format("Can not read file %s", fileName));
-		}
+		}*/
 		StringBuilder builder = new StringBuilder();
 		String cache;
 		try (FileReader in = new FileReader(file);
@@ -46,8 +46,10 @@ public class FileOperationsImpl implements FileOperations {
 			while ((cache = reader.readLine()) != null) {
 				builder.append(cache).append("\n");
 			}
+		} catch (FileNotFoundException e) {
+			throw new ModelException(String.format("File not found: %s", fileName), e);
 		} catch (IOException e) {
-			throw new ModelException(e.getMessage());
+			throw new ModelException(String.format("Can not read file %s", fileName), e);
 		}
 
 		return builder.toString();
