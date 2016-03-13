@@ -22,7 +22,7 @@ public interface PropertiesService {
 
 	String getValueByKey(String key) throws PropertyException;
 
-	Property[] getProperties();
+	Property[] getProperties() throws PropertyException;
 
 	String getSeparator();
 }

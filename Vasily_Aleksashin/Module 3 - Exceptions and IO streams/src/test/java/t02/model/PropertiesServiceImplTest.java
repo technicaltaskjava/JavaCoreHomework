@@ -151,9 +151,9 @@ public class PropertiesServiceImplTest {
 		assertEquals("=", service.getSeparator());
 	}
 
-	@Test
+	@Test(expected = PropertyException.class)
 	public void testGetPropertiesIsNull() throws Exception {
-		assertNull(service.getProperties());
+		service.getProperties();
 	}
 
 	@Test

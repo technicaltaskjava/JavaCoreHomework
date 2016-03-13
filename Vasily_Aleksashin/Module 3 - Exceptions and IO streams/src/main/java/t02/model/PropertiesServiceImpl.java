@@ -45,6 +45,7 @@ public class PropertiesServiceImpl implements PropertiesService {
 	@Override
 	public String getValueByKey(final String key) throws PropertyException {
 		validate(key);
+		isProperties();
 		for (Property property : properties) {
 			if (property != null && property.getKey().equals(key)) {
 				return property.getValue();
@@ -101,9 +102,7 @@ public class PropertiesServiceImpl implements PropertiesService {
 	@Override
 	public void update(final Property property) throws PropertyException {
 		validate(property);
-		if (properties == null) {
-			throw new PropertyException("Property not found");
-		}
+		isProperties();
 		boolean success = false;
 		for (int index = 0; index < properties.length; index++) {
 			if (property.equals(properties[index])) {
@@ -118,6 +117,7 @@ public class PropertiesServiceImpl implements PropertiesService {
 	@Override
 	public void remove(final Property property) throws PropertyException {
 		validate(property);
+		isProperties();
 		remove(property.getKey());
 
 	}
@@ -125,6 +125,7 @@ public class PropertiesServiceImpl implements PropertiesService {
 	@Override
 	public void remove(final String key) throws PropertyException {
 		validate(key);
+		isProperties();
 		boolean success = false;
 		for (int index = 0; index < properties.length; index++) {
 			if (key.equals(properties[index].getKey())) {
@@ -142,20 +143,28 @@ public class PropertiesServiceImpl implements PropertiesService {
 	}
 
 	@Override
-	public Property[] getProperties() {
-		return properties != null ? Arrays.copyOf(properties, properties.length) : null;
+	public Property[] getProperties() throws PropertyException {
+		isProperties();
+		return Arrays.copyOf(properties, properties.length);
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		if (properties != null) {
+			int count = 0;
 			for (Property prop : properties) {
-				builder.append("\n").append(prop.toString());
+				if (prop != null) {
+					builder.append("\n").append(prop.toString());
+				} else {
+					count++;
+				}
 			}
-			return "Properties{" +
-					builder.toString() +
-					"\n}";
+			if (count != properties.length) {
+				return "Properties{" +
+						builder.toString() +
+						"\n}";
+			}
 		}
 		return "Properties{ EMPTY }";
 	}
@@ -189,6 +198,12 @@ public class PropertiesServiceImpl implements PropertiesService {
 	private void successOperation(final boolean success) throws PropertyException {
 		if (!success) {
 			throw new PropertyException("Property not found");
+		}
+	}
+
+	private void isProperties() throws PropertyException {
+		if (properties == null) {
+			throw new PropertyException("Properties is empty");
 		}
 	}
 }
