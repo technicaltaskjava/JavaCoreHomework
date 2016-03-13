@@ -55,6 +55,10 @@ public class Environment {
         return System.getProperty("user.home");
     }
 
+	public static String getWorkDir() {
+		return System.getProperty("user.dir");
+	}
+
     public static Path preparedPath(final String path) throws ModelException {
         if (path == null) {
             throw new ModelException("Path can not be NULL");
