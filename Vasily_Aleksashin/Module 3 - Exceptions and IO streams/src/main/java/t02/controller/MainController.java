@@ -21,7 +21,9 @@ public class MainController {
 	public void run(final String[] args) throws ExitException {
 		loadFromArgs(args);
 		while (true) {
+			view.print(SEPARATOR);
 			view.print("Menu:");
+			view.print(SEPARATOR);
 			view.print("[1] Load from file " +
 					"[2] Print all key/value " +
 					"[3] Print value by key " +
@@ -29,6 +31,7 @@ public class MainController {
 					"[5] Update value by key " +
 					"[6] Remove key/value " +
 					"[7] Exit");
+			view.print(SEPARATOR);
 			view.print("Enter menu number:");
 			String menuNumber = view.read();
 			switch (menuNumber) {
