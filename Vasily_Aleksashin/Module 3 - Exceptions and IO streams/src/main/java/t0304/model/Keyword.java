@@ -11,7 +11,7 @@ public class Keyword {
 
 	private String[] keywordArray = new String[50];
 	private int[] keywordCount = new int[keywordArray.length];
-	private char[] separators = new char[]{' ', ';', '(', ')', '[', ']', '{', '}', '.', ':', '/', '\\', '*'};
+	private char[] separators = new char[]{' ', ';', '(', ')', '[', ']', '{', '}', '.', ':', '/', '*'};
 
 	public Keyword(final String fileName) throws FileNotFoundException, ModelException {
 		validate(fileName);
@@ -59,6 +59,16 @@ public class Keyword {
 
 	public int[] getKeywordCount() {
 		return Arrays.copyOf(keywordCount, keywordCount.length);
+	}
+
+	public String getFoundKeywords() {
+		StringBuilder builder = new StringBuilder();
+		for (int index = 0; index < keywordArray.length; index++) {
+			if (keywordCount[index] != 0) {
+				builder.append(keywordArray[index]).append(" = ").append(keywordCount[index]).append("\n");
+			}
+		}
+		return builder.toString();
 	}
 
 	@Override
