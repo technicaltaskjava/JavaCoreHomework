@@ -143,7 +143,7 @@ public class KeywordTest {
 	}
 
 	@Test
-	public void testGetKeywordArray() {
+	public void testGetKeywordArray() throws ModelException {
 		assertNotNull(keywords.getKeywordArray());
 
 	}
@@ -204,11 +204,5 @@ public class KeywordTest {
 				"}";
 		String actual = keywords.toString();
 		assertEquals(expected, actual);
-	}
-
-	@Test(expected = FileNotFoundException.class)
-	public void testInitWithWrongFile() throws FileNotFoundException, ModelException {
-		new Keyword("");
-
 	}
 }
