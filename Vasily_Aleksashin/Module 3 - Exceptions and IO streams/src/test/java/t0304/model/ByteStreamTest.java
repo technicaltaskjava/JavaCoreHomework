@@ -4,10 +4,11 @@ import org.junit.Before;
 import org.junit.Test;
 import t01.exception.ModelException;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class ByteStreamTest {
 	private UserStream stream;
+
 	@Before
 	public void setUp() {
 		stream = new ByteStream();
