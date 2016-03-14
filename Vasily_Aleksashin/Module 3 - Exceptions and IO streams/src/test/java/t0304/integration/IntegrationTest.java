@@ -97,7 +97,7 @@ public class IntegrationTest {
 				"while = 1\n" +
 				"\r\n" +
 				"Result of search successful write to file:\n" +
-				"\t'C:\\Users\\aleksashin\\IdeaProjects\\JavaCoreHomework\\Vasily_Aleksashin\\Module 3 - Exceptions and IO streams\\src\\test\\resources\\result.txt'\r\n" +
+				"\t'C:\\Users\\aleksashin\\Documents\\GitHub\\JavaCoreHomework\\Vasily_Aleksashin\\Module 3 - Exceptions and IO streams\\src\\test\\resources\\result.txt'\r\n" +
 				"=======================================================\r\n" +
 				"Menu:\r\n" +
 				"=======================================================\r\n" +
@@ -137,7 +137,7 @@ public class IntegrationTest {
 				"while = 1\n" +
 				"\r\n" +
 				"Result of search successful write to file:\n" +
-				"\t'C:\\Users\\aleksashin\\IdeaProjects\\JavaCoreHomework\\Vasily_Aleksashin\\Module 3 - Exceptions and IO streams\\src\\test\\resources\\result.txt'\r\n" +
+				"\t'C:\\Users\\aleksashin\\Documents\\GitHub\\JavaCoreHomework\\Vasily_Aleksashin\\Module 3 - Exceptions and IO streams\\src\\test\\resources\\result.txt'\r\n" +
 				"=======================================================\r\n" +
 				"Menu:\r\n" +
 				"=======================================================\r\n" +
