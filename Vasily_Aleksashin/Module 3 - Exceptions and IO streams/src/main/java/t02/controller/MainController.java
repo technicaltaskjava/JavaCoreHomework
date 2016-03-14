@@ -13,7 +13,7 @@ import t02.model.PropertiesServiceImpl;
 import java.io.File;
 
 public class MainController {
-	public static final String SEPARATOR = "=======================================================";
+	private static final String SEPARATOR = "=======================================================";
 	private View view = new ConsoleViewImpl();
 	private FileOperations fileOperations = new FileOperationsImpl();
 	private PropertiesService service = new PropertiesServiceImpl(fileOperations);
