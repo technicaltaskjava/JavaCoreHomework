@@ -30,7 +30,7 @@ public class MainController {
 		} catch (ModelException e) {
 			view.print(SEPARATOR);
 			view.print(String.format("App can not load keywords from file %s", readFile));
-			view.print("\t" + e.getMessage());
+			view.print("\tFile not found");
 			view.print(SEPARATOR);
 		}
 		while (true) {

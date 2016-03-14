@@ -31,7 +31,7 @@ public class IntegrationTest {
 		Main.main(args);
 		String expected = "=======================================================\r\n" +
 				"App can not load keywords from file wrong\r\n" +
-				"\twrong (Не удается найти указанный файл)\r\n" +
+				"\tFile not found\r\n" +
 				"=======================================================\r\n" +
 				"=======================================================\r\n" +
 				"Menu:\r\n" +
