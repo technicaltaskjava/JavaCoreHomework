@@ -8,6 +8,6 @@ package task4;
 public class Main {
     public static void main(String[] args) {
         ReadJavaCode readJavaCode = new ReadJavaCode();
-        readJavaCode.createAndWriteFile(readJavaCode.mapToString(readJavaCode.readFile("testcode.txt")), "Keywords2.txt");
+        readJavaCode.createAndWriteFile(readJavaCode.mapToString(readJavaCode.readFile("javacode.txt")), "Keywords2.txt");
     }
 }

@@ -17,7 +17,7 @@ public class ReadJavaCode {
     private Message m = new Message();
 
     public Map<String, Integer> readFile(String fileName){
-
+        System.out.println(JavaKeywords.keywords.length);
 
         Map<String, Integer> theKeywordCount = new HashMap<String, Integer>();
         for (String str : JavaKeywords.keywords) {
