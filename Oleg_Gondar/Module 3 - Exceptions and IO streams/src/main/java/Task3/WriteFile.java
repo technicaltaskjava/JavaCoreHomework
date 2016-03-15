@@ -16,7 +16,7 @@ public class WriteFile {
         try {
             os = new FileOutputStream(path);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         PrintStream printStream = new PrintStream(os);
         printStream.print(textToWrite);

@@ -75,12 +75,12 @@ public class UniversalPropertiesReader {
         try {
             properties.load(fileInputStream);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Property file not loaded " + e.getMessage() );
         }
         try {
             fileInputStream.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println( e.getMessage() );
         }
 
     }

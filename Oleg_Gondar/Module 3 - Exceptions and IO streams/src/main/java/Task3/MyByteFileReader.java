@@ -72,13 +72,13 @@ public class MyByteFileReader {
         try {
             s = ReadFile.readStringFromFile(WorkWithConsoleInput.enterPath());
         } catch (IOException e1) {
-            e1.printStackTrace();
+            System.out.println(e1.getMessage());
         }
         OutputStream os = null;
         try {
             os = new FileOutputStream(WorkWithConsoleInput.enterPath());
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         PrintStream printStream = null;
         if (os != null) {

@@ -30,7 +30,7 @@ public class FileManipulator {
 
             Files.delete(path);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("File not deleted");
         }
     }
 

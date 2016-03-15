@@ -47,7 +47,7 @@ public class FilmCollectionOperation {
             oo.close();
             fo.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -59,7 +59,7 @@ public class FilmCollectionOperation {
             coll = (FilmCollection) oi.readObject();
 
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return coll;
     }
