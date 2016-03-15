@@ -16,7 +16,7 @@ public class JavaKeywords {
         Collections.addAll(keywords,
                 ("abstract continue for new switch assert default goto package synchronized " +
                         "boolean tdo if private this break double implements protected throw " +
-                        "byte else import public throws " +
+                        "FilmsCollection else import public throws " +
                         "case enum instanceof return transient " +
                         "catch extends int short try " +
                         "char final interface static void " +

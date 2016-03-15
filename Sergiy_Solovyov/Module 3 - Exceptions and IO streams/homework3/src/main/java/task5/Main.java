@@ -17,7 +17,7 @@ public class Main {
 
     public static void main(String[] args) {
         FilmsApplication filmsApplication = new FilmsApplication();
-        ArrayList<Film> films =  filmsApplication.readFile("byte");
+        ArrayList<Film> films =  filmsApplication.readFile("FilmsCollection");
         filmsApplication.listFilmsMenu(films);
 
         m.message("Save the collection of films and exit the program - \"exit\"\n" +

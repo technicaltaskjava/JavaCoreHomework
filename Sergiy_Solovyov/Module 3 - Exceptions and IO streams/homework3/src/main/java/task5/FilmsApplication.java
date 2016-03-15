@@ -21,7 +21,7 @@ public class FilmsApplication {
         String string = console.stringInput();
         int filmMenu = 0;
         if (string.equalsIgnoreCase("exit"))
-        {   writeFile(films, "byte");
+        {   writeFile(films, "FilmsCollection");
             System.out.println("Bye-bye");
             System.exit(0);}
         if (string.equalsIgnoreCase("create"))

@@ -1,5 +1,7 @@
 package task4;
 
+import messages.Message;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,6 +16,8 @@ import java.util.regex.Pattern;
  */
 public class ReadJavaCode {
 
+    private Message m = new Message();
+
     public Map<String, Integer> readFile(String fileName){
 
 
@@ -25,7 +29,7 @@ public class ReadJavaCode {
 
         File file = new File(fileName);
         if (!file.exists()){
-            System.out.println("File not found");
+            m.warn("File not found");
             return null;
         }
 
@@ -42,12 +46,12 @@ public class ReadJavaCode {
                     arrayList.add(matcher.group());
                 }
             }
-            System.out.println("Reading file: " + file.getAbsolutePath());
+            m.info("Reading file: " + file.getAbsolutePath());
 
         } catch (IOException e) {
          e.printStackTrace();
         }
-        System.out.println("File: " + file.getName() + " has been read");
+        m.info("File: " + file.getName() + " has been read");
         for (Map.Entry<String, Integer> entry : theKeywordCount.entrySet())
         {
             int value = entry.getValue();
@@ -65,13 +69,13 @@ public class ReadJavaCode {
         try {
             if (keywords.createNewFile())
 
-                System.out.println("File "+keywords.getName() + " created");
+                m.info("File "+keywords.getName() + " created");
             else
-                System.out.println("File "+keywords.getName() + " already exists");
+                m.info("File "+keywords.getName() + " already exists");
 
         } catch (IOException e) {
 
-            System.out.println("Error during creation file: " + keywords.getAbsolutePath());
+            m.warn("Error during creation file: " + keywords.getAbsolutePath());
         }
 
         try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(keywords)));){
@@ -80,7 +84,7 @@ public class ReadJavaCode {
 
         } catch (IOException ex) {
 
-            System.out.println("Error during writing to file: " + keywords.getAbsolutePath());
+            m.warn("Error during writing to file: " + keywords.getAbsolutePath());
     }
     }
 
