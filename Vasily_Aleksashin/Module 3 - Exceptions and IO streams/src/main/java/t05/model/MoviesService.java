@@ -137,6 +137,27 @@ public class MoviesService implements Serializable {
 	}
 
 	@Override
+	public boolean equals(final Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		MoviesService service = (MoviesService) o;
+
+		// Probably incorrect - comparing Object[] arrays with Arrays.equals
+		if (!Arrays.equals(movies, service.movies)) return false;
+		// Probably incorrect - comparing Object[] arrays with Arrays.equals
+		return Arrays.equals(actors, service.actors);
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result = Arrays.hashCode(movies);
+		result = 31 * result + Arrays.hashCode(actors);
+		return result;
+	}
+
+	@Override
 	public String toString() {
 		if (movies == null) {
 			return "Movies { EMPTY }";
