@@ -78,6 +78,16 @@
                             <includePluginDependencies>false</includePluginDependencies>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>task5</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>t05.Main</mainClass>
+                            <includePluginDependencies>false</includePluginDependencies>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
