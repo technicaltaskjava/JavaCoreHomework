@@ -12,18 +12,19 @@ import java.util.Properties;
 public class UniversalPropertiesReader {
 
     public static void main(String[] args) {
-        String path = WorkWithConsoleInput.enterPath();
+        // String path = WorkWithConsoleInput.enterPath();
         UniversalPropertiesReader universalPropertiesReader = new UniversalPropertiesReader();
-        universalPropertiesReader.createProperties(path);
+        universalPropertiesReader.setProperty("1", "test1");
+        universalPropertiesReader.createProperties("test.txt");
 
         try {
-            universalPropertiesReader.loadProperties(path);
+            universalPropertiesReader.loadProperties("test.txt");
         } catch (PropertyFileNotFound propertyFileNotFound) {
             propertyFileNotFound.printStackTrace();
         }
 
-        universalPropertiesReader.getPropertyValue("1");
-        universalPropertiesReader.getPropertyValue("5");
+        System.out.println(universalPropertiesReader.getPropertyValue("1"));
+        System.out.println(universalPropertiesReader.getPropertyValue("5"));
 
         try {
             universalPropertiesReader.loadProperties("c:/wrongPath!!!!");
@@ -40,17 +41,18 @@ public class UniversalPropertiesReader {
         properties = new Properties();
     }
 
+    public void setProperty(String key, String vaalue) {
+        properties.setProperty(key, vaalue);
+    }
+
     public void createProperties(String path) {
 
         FileOutputStream fileOutputStream = null;
         try {
             fileOutputStream = new FileOutputStream(path);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("Properties file not created");
         }
-        properties.setProperty("1", "test1");
-        properties.setProperty("2", "test2");
-        properties.setProperty("3", "test3");
         try {
             if (fileOutputStream != null) {
                 properties.store(fileOutputStream, "test");
@@ -75,24 +77,24 @@ public class UniversalPropertiesReader {
         try {
             properties.load(fileInputStream);
         } catch (IOException e) {
-            System.out.println("Property file not loaded " + e.getMessage() );
+            System.out.println("Property file not loaded " + e.getMessage());
         }
         try {
             fileInputStream.close();
         } catch (IOException e) {
-            System.out.println( e.getMessage() );
+            System.out.println(e.getMessage());
         }
 
     }
 
-    public void getPropertyValue(String key) {
+    public String getPropertyValue(String key) {
         try {
-            System.out.println(throwExceptionWithoutKeyFound(key));
+            return throwExceptionWithoutKeyFound(key);
 
         } catch (KeyNotFoundInPropertyFileException e) {
             System.out.println("Key " + e.notFindedKey + " not found");
         }
-
+        return null;
     }
 
     private String throwExceptionWithoutKeyFound(String key) throws KeyNotFoundInPropertyFileException {

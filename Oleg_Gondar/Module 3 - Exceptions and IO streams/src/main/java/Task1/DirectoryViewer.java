@@ -49,7 +49,7 @@ public class DirectoryViewer {
 
     }
 
-    private static File[] getDirectoryElements(String path) {
+    public static File[] getDirectoryElements(String path) {
 
         File f1 = new File(path);
         return f1.listFiles();

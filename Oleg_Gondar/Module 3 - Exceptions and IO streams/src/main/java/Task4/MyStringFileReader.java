@@ -1,18 +1,19 @@
-package Task3;
+package Task4;
 
 import java.io.*;
 import java.util.*;
 
 /**
- * Created by Oleg on 13.03.2016.
+ * Created by Oleg on 14.03.2016.
  */
-public class MyByteFileReader {
+public class MyStringFileReader {
 
+
+    private Set<String> reservedWords = new HashSet<String>();
 
     public static void main(String[] args) {
 
-
-        Set<String> wordsToFind = new HashSet<>();
+        Set<String> wordsToFind = new HashSet<String>();
         wordsToFind.add("abstract");
         wordsToFind.add("continue");
         wordsToFind.add("for");
@@ -68,51 +69,44 @@ public class MyByteFileReader {
         wordsToFind.add("goto");
 
 
-        String s = null;
-        try {
-            //    s = ReadFile.readStringFromFile(WorkWithConsoleInput.enterPath());
-            s = ReadFile.readStringFromFile("src" + File.separator + "test"
-                    + File.separator + "resources" + File.separator + "test.java");
-        } catch (IOException e1) {
-            System.out.println(e1.getMessage());
-        }
-        OutputStream os = null;
-        try {
-            //os = new FileOutputStream(WorkWithConsoleInput.enterPath());
-            os = new FileOutputStream("test.txt");
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
-        PrintStream printStream = null;
-        if (os != null) {
-            printStream = new PrintStream(os);
-        }
-
-        int i;
-
-
-        for (String string :
-                wordsToFind) {
-            i = FindInLine.find(s, string);
-            if (i > 0) {
-                writeStringToFile(printStream, string + " find " + i + " times\n");
-            }
-        }
-        if (printStream != null) {
-            printStream.close();
-        }
+        checkFileForReservedWords(wordsToFind);
     }
 
 
-    public static void writeStringToFile(PrintStream printStream, String textToWrite) {
+    public static void checkFileForReservedWords(Set<String> wordsToFind) {
 
-        printStream.print(textToWrite);
 
+        try {
+
+            //FileWriter fileWriter = new FileWriter(WorkWithConsoleInput.enterPath());
+            FileWriter fileWriter = new FileWriter("test.txt");
+            for (String string :
+                    wordsToFind) {
+                FileReader fileReader1 = new FileReader("src" + File.separator + "test"
+                        + File.separator + "resources" + File.separator + "test.java");
+                Scanner scanner = new Scanner(fileReader1);
+
+                int count = 0;
+                while (scanner.hasNext()) {
+                    if (scanner.findInLine(string) != null) {
+                        count++;
+                    }
+                    scanner.nextLine();
+                }
+
+
+                if (count > 0) {
+                    fileWriter.write(string + " find " + count + " times\n");
+                    fileWriter.flush();
+                }
+                fileReader1.close();
+
+            }
+            fileWriter.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+
+        }
     }
 
 }
-
-
-
-
-

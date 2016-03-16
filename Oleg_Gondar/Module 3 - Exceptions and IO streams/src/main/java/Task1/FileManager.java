@@ -11,7 +11,7 @@ public class FileManager {
     public static void main(String[] args) {
 
         try {
-            DirectoryViewer.showAllSubdirectories(WorkWithConsoleInput.enterPath());
+            DirectoryViewer.showAllSubdirectories(System.getProperty("user.dir"));
           //  DirectoryViewer.showOnlyFiles(WorkWithConsoleInput.enterPath());
           //  DirectoryViewer.showOnlySelectedDirectory(WorkWithConsoleInput.enterPath());
         } catch (NullPointerException e){
@@ -19,7 +19,7 @@ public class FileManager {
         }
 
         try {
-            FileManipulator fileManipulator = new FileManipulator(WorkWithConsoleInput.enterPath()+" to file");
+            FileManipulator fileManipulator = new FileManipulator("test.txt");
 
 
         try {
@@ -34,7 +34,7 @@ public class FileManager {
 
         }
         try {
-            fileManipulator.showFile();
+            System.out.println(fileManipulator.showFile());
         } catch (IOException e) {
             System.out.println("File not found");
         }

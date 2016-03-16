@@ -13,9 +13,8 @@ public class PropertyFileNotFound extends Exception {
     }
 
     @Override
-    public String toString() {
-        return "PropertyFileNotFound{" +
-                "notFoundedFile='" + notFoundedFile + '\'' +
-                '}';
+    public String getMessage() {
+        return "Not found " + notFoundedFile;
     }
+
 }

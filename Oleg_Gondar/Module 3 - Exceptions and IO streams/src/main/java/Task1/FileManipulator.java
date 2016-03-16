@@ -16,12 +16,13 @@ public class FileManipulator {
         file = new File(fileName);
     }
 
-    public void showFile() throws IOException {
+    public String showFile() throws IOException {
         FileReader fileReader = new FileReader(file);
         char[] buffer = new char[(int) file.length()];
         fileReader.read(buffer);
-        System.out.println(buffer);
+        //System.out.println(buffer);
         fileReader.close();
+        return new String(buffer);
     }
 
     public void deleteFile() {

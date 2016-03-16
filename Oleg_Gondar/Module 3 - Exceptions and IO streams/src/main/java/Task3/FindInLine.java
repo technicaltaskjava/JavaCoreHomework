@@ -18,8 +18,6 @@ public class FindInLine {
         int count = 0;
         for (int i = 0; i < words.length; i++) {
             Scanner sc = new Scanner(words[i]);
-            System.out.println(words[i]);
-            System.out.println(wordToFind);
             if (sc.findInLine(wordToFind) != null) {
                 count++;
             }
