@@ -5,10 +5,6 @@ import t01.exception.ModelException;
 public class SerializeMenu {
 	private MainMenu mainMenu;
 
-//	public SerializeMenu(final MainMenu mainMenu) {
-//		this.mainMenu = mainMenu;
-//	}
-
 	public void show(final MainMenu mainMenu) {
 		this.mainMenu = mainMenu;
 		boolean flag = true;

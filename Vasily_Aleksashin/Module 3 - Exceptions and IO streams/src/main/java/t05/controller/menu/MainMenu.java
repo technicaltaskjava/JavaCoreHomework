@@ -14,13 +14,6 @@ public class MainMenu {
 	private MoviesMenu moviesMenu = new MoviesMenu();
 	private SerializeMenu serializeMenu = new SerializeMenu();
 
-//	public MainMenu(final MainController controller) {
-//		this.controller = controller;
-//		separator = MainController.SEPARATOR;
-//		moviesService = controller.getMoviesService();
-//		serializeService = controller.getSerializeService();
-//	}
-
 	public void show(final MainController controller) throws ExitException {
 		this.controller = controller;
 		separator = MainController.SEPARATOR;

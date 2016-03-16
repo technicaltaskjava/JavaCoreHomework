@@ -6,10 +6,6 @@ import t05.model.entity.Movie;
 public class MoviesMenu {
 	private MainMenu mainMenu;
 
-//	public MoviesMenu(final MainMenu mainMenu) {
-//		this.mainMenu = mainMenu;
-//	}
-
 	public void show(final MainMenu mainMenu) {
 		this.mainMenu = mainMenu;
 		boolean flag = true;
