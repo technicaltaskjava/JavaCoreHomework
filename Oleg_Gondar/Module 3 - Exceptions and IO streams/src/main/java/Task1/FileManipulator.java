@@ -11,6 +11,15 @@ import java.nio.file.Paths;
 public class FileManipulator {
 
     private File file;
+    private FileWriter fileWriter;
+
+    public void setFileWriter(File file, boolean append) {
+        try {
+            this.fileWriter = new FileWriter(file, append);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public FileManipulator(String fileName) {
         file = new File(fileName);
@@ -36,15 +45,16 @@ public class FileManipulator {
     }
 
     public void writeFile(String wrstr) throws IOException {
-        FileWriter fileWriter = new FileWriter(file, false);
+        setFileWriter(file, false);
         filePerformWrite(fileWriter, wrstr);
     }
 
     public void appendFile(String appstr) throws IOException {
-        FileWriter fileWriter = new FileWriter(file, true);
+        setFileWriter(file, true);
         filePerformWrite(fileWriter, appstr);
 
     }
+
 
     private void filePerformWrite(FileWriter fileWriter, String stringToWrite) throws IOException {
         fileWriter.write(stringToWrite);
