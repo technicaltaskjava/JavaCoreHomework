@@ -1,0 +1,254 @@
+package task1.fileview;
+
+import task1.concole.Console;
+
+import javax.swing.filechooser.FileSystemView;
+import java.io.*;
+
+/**
+ * @author Sergey Solovyov
+ * @version 1.0
+ * @since 09.03.2016
+ */
+public class FileViewer
+
+    {public String showDrives(){
+        File[] paths;
+        FileSystemView fsv = FileSystemView.getFileSystemView();
+        paths = File.listRoots();
+        System.out.println("Next drives found on your computer: \n");
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < paths.length; i++)
+        {
+            sb.append("Description: ");
+            sb.append(fsv.getSystemTypeDescription(paths[i]));
+            sb.append("; Drive: ");
+            sb.append(paths[i]);
+            sb.append(" - ");
+            sb.append(i);
+            sb.append("\n");
+        }
+        System.out.println(sb.toString());
+        System.out.println("Press number in front of the drive to see its contains");
+        String drivePath = null;
+        int menu = consoleMenuInputDrives(paths);
+        System.out.println(menu);
+        if (menu >= 0)
+             drivePath =  paths[menu].getAbsolutePath();
+
+        return drivePath;
+    }
+
+    public String showDirectory(String path){
+        if (path == null){
+            showDrives();
+            return null;}
+        File dir = new File(path);
+        if (path.endsWith(".txt")) {
+            readTXTFile(path);
+
+            return dir.getParent();}
+
+        File [] files = dir.listFiles();
+        if (files == null) {
+            System.out.println("********Enter only available numbers from menu******");
+            return dir.getParent();}
+
+        System.out.println("\n");
+
+        StringBuilder sb = new StringBuilder();
+        int []arr = new int[files.length];
+        for (int i = 0; i < files.length; i++) {
+            if (files[i].isDirectory()) {
+                sb.append("Directory: ");
+                sb.append(files[i]);
+                sb.append(" - ");
+                sb.append(i);
+                sb.append("\n");
+                arr [i] = i;
+            }}
+        for (int i = 0; i < files.length; i++) {
+
+            if (files[i].isFile()){
+                sb.append("File:      ");
+                sb.append(files[i]);
+                sb.append(" - ");
+                if (!files[i].getName().endsWith("txt"))
+                    sb.append("not available to see");
+                else  sb.append(i);
+                sb.append("\n");
+                arr [i] = i;}
+
+        }
+        System.out.println(sb.toString());
+        int folder = consoleMenuInput(files,arr);
+        String drivePath = null;
+        if (folder == -1000) {
+             drivePath =  dir.getParent();
+        }
+       else if (folder == -2000){
+            drivePath = path;
+            System.out.println("                *********Please re-enter number from menu*********");}
+        else if (folder == -3000){
+            drivePath = path;
+            System.out.println("                *********Enter a name of a text file*********");
+        fileCreation(path);}
+        else if (folder == -4000){
+            drivePath = path;
+            System.out.println("                *********Enter a name of directory*********");
+            dirCreation(path);}
+
+        else drivePath = files[folder].getAbsolutePath();
+
+        return drivePath;
+    }
+    public    int consoleMenuInput(File[] paths, int[]arr){
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        int menu = 0;
+        String str = null;
+
+        do {
+            try {
+                str = bufferedReader.readLine();
+                if (str.equalsIgnoreCase("back"))return -1000;
+                if (str.equalsIgnoreCase("dir"))return -4000;
+                if (str.equalsIgnoreCase("cr"))return -3000;
+                if (!isInMenu(arr, menu)) return  -2000;
+                menu = Integer.parseInt(str.trim());
+                if (menu < 0 || menu > paths.length-1){
+                    System.out.println("***********Please, enter the number in front of the folder or the file***********");
+                    menu = consoleMenuInput(paths,arr);}
+
+            } catch (Exception e) {
+                System.out.println("***********Please, enter only numbers in front of the folder or the file**********");
+            }
+        } while (str.isEmpty());
+
+
+        return menu;
+    }
+    private     int consoleMenuInputDrives(File[] paths){
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        int menu = 0;
+        String str = null;
+
+        do {
+            try {
+                str = bufferedReader.readLine();
+                if (str.equalsIgnoreCase("back"))return -1;
+                menu = Integer.parseInt(str.trim());
+                if (menu < 0 || menu > paths.length-1){
+                    System.out.println("***********Please, enter the number in front of the drive***********");
+                    menu = consoleMenuInputDrives(paths);}
+
+            } catch (Exception e) {
+                System.out.println("***********Please, enter only numbers in front of the drive**********");
+                return -2;
+            }
+        } while (str.isEmpty());
+
+
+        return menu;
+    }
+    public  boolean isInMenu(int[] arr, int number) {
+        for (int i = 0; i < arr.length;i++) {
+            if (arr[i]==number)return true;
+        }
+        System.out.println("***********Please, enter only numbers in front of the folder or the file**********");
+        return false;
+    }
+
+    public File fileCreation(String path){
+        String fileName = Console.consoleFileInput();
+        File file = null;
+        String absoluteFilePath = path +File.separator+ fileName+".txt";
+        try{
+
+            file = new File(absoluteFilePath);
+
+            try{
+                if(file.createNewFile()){
+                System.out.println(file.getName() + " created!");
+                System.out.println("Path to file: " + file.getAbsolutePath());
+            }else{
+                System.out.println("Creation operation is failed: "+file.getName()+" .Try to use unique name for file");
+            }
+            }catch(IOException e){
+                System.out.println("You have no permission to create files in this folder");
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        if (file != null) {
+            return file;
+        }
+        return file;
+    }
+
+    public void fileDelete(String path){
+        File file = new File(path);
+        try{
+            if(file.delete()){
+                System.out.println(file.getName() + " is deleted!");
+            }else{
+                System.out.println("Delete operation is failed.");
+            }
+
+        }catch(Throwable t){
+            System.out.println("Fail to delete the file: " + file + "txt");
+        }
+    }
+    public File dirCreation(String path){
+        String dirName = Console.consoleFileInput();
+        System.out.println(dirName);
+        File dir = null;
+        String absoluteFilePath = path + File.separator + dirName;
+        try{
+            dir = new File(absoluteFilePath);
+            dir.setWritable(true);
+            System.out.println(absoluteFilePath);
+
+            if(dir.mkdir()){
+                System.out.println(dir.getName() + " created!");
+                System.out.println(dir.getAbsolutePath());
+            }else{
+                System.out.println("Creation operation is failed.");
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        if (dir != null) {
+            return dir;
+        }
+        return dir;
+    }
+    private void readTXTFile(String path){
+
+        File file = new File(path);
+
+        BufferedReader br = null;
+
+        try {
+
+            String currentLine;
+
+            br = new BufferedReader(new FileReader(file));
+
+            while ((currentLine = br.readLine()) != null) {
+
+                System.out.println(currentLine);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (br != null)br.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+}
