@@ -1,0 +1,12 @@
+for = 1
+new = 1
+if = 2
+else = 1
+import = 1
+public = 2
+return = 1
+int = 10
+static = 2
+void = 1
+class = 1
+while = 1
