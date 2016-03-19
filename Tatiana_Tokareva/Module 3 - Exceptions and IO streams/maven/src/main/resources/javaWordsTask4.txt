@@ -1,0 +1,2 @@
+package import import public private final static throw public throws static void new new new for int int new try for int for int for new int for int 
+amount of words=29
