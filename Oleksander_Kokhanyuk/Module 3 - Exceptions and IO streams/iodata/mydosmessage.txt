@@ -1,0 +1,10 @@
+
+cd -change the current working directory (absolute path, be attention in Linux:-);
+dir -displays the contents of a directory;
+make -make file in current working directory;
+rem -remove file;
+read -read data from file;
+write - write data to file;
+exit -exit.
+
+Enter command end press Enter.
