@@ -1,0 +1,4 @@
+test\java\com\epam\TestAddFilm.class
+test\java\com\epam\TestFileCreateAndDelete.class
+test\java\com\epam\TestCreateObjectFilm.class
+test\java\com\epam\TestDeleteFilm.class
