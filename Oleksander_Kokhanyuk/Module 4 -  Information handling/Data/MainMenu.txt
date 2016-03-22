@@ -1,0 +1,19 @@
+	     
+		 Java SE 04. Homework Kokhanyuk Olexander
+  ------------------------------------------------------
+         Task 1. String classes                     
+        Working with the file: \Data\4  Information Handling Homework.txt 
+1: A - Change the order of words in a sentence.
+2: B - Sort ascending words share vowels.
+3: C - Remove all words of a given length, beginning with a consonant letter.
+4: D - Convert each word in the text (as a rule).
+
+         Task 2. String classes
+        Working with the file: \Date\CrazyLogger.log and \Date\LoggerSearch_.log
+5: - Show menu CrazyLogger.
+
+         Task 3. Regular Expressions
+		Working with the file: \Data\4. Information handling_task_attachment.html
+6: - Find suggestions in the text using regular expressions.
+7: - Show main menu		  
+8: - Exit
