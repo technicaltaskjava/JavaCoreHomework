@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 public class CrazyLoggerTest {
 
     @Test(expected = WrongDateException.class)
-    public void testParseHTML() throws WrongDateException {
+    public void testLogsByDate() throws WrongDateException {
         CrazyLogger crazyLogger = new CrazyLogger();
         crazyLogger.logsByDate(232, 56, 565);
     }
