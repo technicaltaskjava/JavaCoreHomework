@@ -15,8 +15,10 @@ import static org.junit.Assert.assertEquals;
  * @since 21.03.2016
  */
 public class CrazyLoggerTest {
-    @Test
-    public void testParseHTML()   {
 
+    @Test(expected = WrongDateException.class)
+    public void testParseHTML() throws WrongDateException {
+        CrazyLogger crazyLogger = new CrazyLogger();
+        crazyLogger.logsByDate(232, 56, 565);
     }
 }
