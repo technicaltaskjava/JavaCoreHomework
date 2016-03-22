@@ -1,0 +1,6 @@
+### Maven template
+target/
+### JetBrains template
+*.iml
+## Directory-based project format:
+.idea/
