@@ -1,0 +1,7 @@
+             CrazyLogger
+----------------------------------------------
+1. Search notes ERROR and show on the screen;
+2. Search notes for the keyword and show on the screen;
+3. Search notes for the keyword and write to OutputStream;
+4. Show all logger;
+5. Exit.
