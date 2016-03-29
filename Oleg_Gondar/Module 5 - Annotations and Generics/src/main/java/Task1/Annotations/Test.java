@@ -14,10 +14,18 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 
+
 public @interface Test {
 
-    boolean ignore() default false;
-    Class<?> expected() default Exception.class;
+    static class None extends Throwable {
+        private static final long serialVersionUID = 1L;
 
+        private None() {
+        }
+    }
+
+    boolean ignore() default false;
+    Class<?> expected() default None.class;
 
 }
+

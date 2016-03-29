@@ -3,6 +3,7 @@ package Task1;
 
 import Task1.Annotations.Test;
 import Task1.MyClassesForTesting.Actor;
+import junit.framework.Assert;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -31,12 +32,27 @@ public class Run {
                 if (!method.isAccessible()) {
                     method.setAccessible(true);
                 }
-                if(method.getAnnotation(Test.class).expected().equals(MyException.class))
-                {
-                    method.invoke(actor, new MyException("Throwed"));
-                }else{
-                    method.invoke(actor);
+
+                if (method.isAnnotationPresent(Test.class) && method.getAnnotation(Test.class).expected().equals("")) {
+
+                        method.invoke(actor);
+
+                }else {
+
+                    try {
+
+                        method.invoke(actor);
+
+                    } catch (Throwable e) {
+
+                        org.junit.Assert.assertTrue(e.getCause().getClass().getSimpleName().equals("MyException"));
+                        System.out.println("Exception throwing tested good!" );
+
+                    }
+
                 }
+
+
             } else if (method.isAnnotationPresent(Test.class) && method.getAnnotation(Test.class).ignore()) {
                 System.out.println("Method: " + method.getName() + " not tested");
             }

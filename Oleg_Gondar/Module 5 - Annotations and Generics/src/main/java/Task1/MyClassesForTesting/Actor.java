@@ -35,7 +35,7 @@ public class Actor {
 
     public void throwException() throws MyException {
 
-        throw new MyException("Throwed");
+        throw new MyException("!!!!!!!!!!!!!!!!");
 
     }
 
@@ -59,13 +59,10 @@ public class Actor {
     }
 
     @Test(expected = MyException.class)
-    public void testException(MyException myEx) {
-        try {
-            throwException();
-        } catch (MyException e) {
-            Assert.assertEquals(e.getClass(), myEx.getClass());
-            System.out.println("Actor exception test passed");
-        }
+    public void testException() throws MyException {
+
+        throwException();
+
     }
 
     @Test(ignore = true)
