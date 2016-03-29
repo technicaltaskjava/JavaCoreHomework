@@ -31,55 +31,26 @@ public class Run {
                 if (!method.isAccessible()) {
                     method.setAccessible(true);
                 }
-                testMethod(method, actor);
-            } else if (method.isAnnotationPresent(Test.class) && method.getAnnotation(Test.class).ignore()) {
-                System.out.println("Method " + method.getName() + " ignored");
-            }
-        }
-    }
-
-    public static void testMethod(Method method, Actor actor) throws InvocationTargetException, IllegalAccessException {
-
-        switch (method.getAnnotation(Test.class).description().toString()) {
-            case "Actor first name": {
-                method.invoke(actor, "First");
-                assertTrue(actor.getActorFirstName().equals("First"));
-                System.out.println("Actor first name test passed");
-            }
-            break;
-            case "Actor last name": {
-                method.invoke(actor, "Last");
-                assertTrue(actor.getActorLastName().equals("Last"));
-                System.out.println("Actor last name test passed");
-            }
-            break;
-            case "work with exception": {
-                try {
+                if(method.getAnnotation(Test.class).expected().equals(MyException.class))
+                {
+                    method.invoke(actor, new MyException("Throwed"));
+                }else{
                     method.invoke(actor);
-                } catch (Exception e) {
-                    if (e.getCause().getClass().toString().contains(method.getAnnotation(Test.class).expected()))
-                        System.out.println("Actor exception test passed");
                 }
+            } else if (method.isAnnotationPresent(Test.class) && method.getAnnotation(Test.class).ignore()) {
+                System.out.println("Method: " + method.getName() + " not tested");
             }
-            break;
-
         }
-
     }
-
-
 
     public static Object createClass(String className) throws NoSuchMethodException, InvocationTargetException {
 
-
         Class<?> c = null;
-
         try {
             c = Class.forName(className);
             Constructor<?> constructor = c.getConstructor();
             Object actor = constructor.newInstance();
             return actor;
-
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {

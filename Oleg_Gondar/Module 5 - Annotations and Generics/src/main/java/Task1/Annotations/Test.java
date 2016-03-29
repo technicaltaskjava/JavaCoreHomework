@@ -1,5 +1,7 @@
 package Task1.Annotations;
 
+import Task1.MyException;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -15,8 +17,7 @@ import java.lang.annotation.Target;
 public @interface Test {
 
     boolean ignore() default false;
-    String description();
-    String expected() default "";
+    Class<?> expected() default Exception.class;
 
 
 }

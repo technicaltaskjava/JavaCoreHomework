@@ -2,6 +2,10 @@ package Task1.MyClassesForTesting;
 
 import Task1.MyException;
 import Task1.Annotations.Test;
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
+import org.junit.Assert;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Oleg on 14.03.2016.
@@ -20,29 +24,58 @@ public class Actor {
         this.actorLastName = actorLastName;
     }
 
-    @Test(description = "Actor first name")
+
     public void setActorFirstName(String actorFirstName) {
         this.actorFirstName = actorFirstName;
     }
 
-    @Test(description = "Actor last name")
     public void setActorLastName(String actorLastName) {
         this.actorLastName = actorLastName;
     }
 
-    @Test(description = "work with exception", expected = "MyException")
-    private void testException() throws MyException {
+    public void throwException() throws MyException {
 
-        throw new MyException("My exception is throwed!!!");
+        throw new MyException("Throwed");
 
     }
 
-    @Test(description = "Getter ignored", ignore = true)
+
+    @Test()
+    public void testSetActorFirstName() {
+        Actor a = new Actor();
+        a.setActorFirstName("First");
+        Assert.assertTrue(a.getActorFirstName().equals("First"));
+        System.out.println("Actor first name test passed");
+
+    }
+
+    @Test()
+    private void testSetActorLastName() {
+        Actor a = new Actor();
+        a.setActorLastName("Last");
+        Assert.assertTrue(a.getActorLastName().equals("Last"));
+        System.out.println("Actor last name test passed");
+
+    }
+
+    @Test(expected = MyException.class)
+    public void testException(MyException myEx) {
+        try {
+            throwException();
+        } catch (MyException e) {
+            Assert.assertEquals(e.getClass(), myEx.getClass());
+            System.out.println("Actor exception test passed");
+        }
+    }
+
+    @Test(ignore = true)
+    public void ignoredTest() {
+    }
+
     public String getActorFirstName() {
         return actorFirstName;
     }
 
-    @Test(description = "Getter ignored", ignore = true)
     public String getActorLastName() {
         return actorLastName;
     }
