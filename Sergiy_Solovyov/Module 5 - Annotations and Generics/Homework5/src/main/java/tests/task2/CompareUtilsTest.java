@@ -16,71 +16,71 @@ public class CompareUtilsTest {
     private Apple[] apples = new Apple[]{apple1, apple2, apple3};
 
     @Test
-    public void testMin(){
+    public void testMin() throws WrongArgumentException {
 
         Apple apple = CompareUtils.min(apples);
         Assert.assertEquals("Object do not equals", apple.equals(apple3), true);
     }
     @Test
-    public void testMinFail(){
+    public void testMinFail() throws WrongArgumentException {
 
       Apple apple = CompareUtils.min(apples);
         Assert.assertNotEquals("Object do not equals", apple.equals(apple3), false);
     }
 
     @Test
-    public void testMinComparator(){
+    public void testMinComparator() throws WrongArgumentException {
         Apple apple = CompareUtils.min(apples, new Apple());
         Assert.assertEquals("Object do not equals",apple.equals(apple3), true);
     }
 
     @Test
-    public void testMinComparatorFail(){
+    public void testMinComparatorFail() throws WrongArgumentException {
         Apple apple = CompareUtils.min(apples, new Apple());
         Assert.assertNotEquals("Object do not equals",apple.equals(apple3), false);
     }
 
     @Test
-    public void testMax(){
+    public void testMax() throws WrongArgumentException {
         Apple apple = CompareUtils.max(apples, new Apple());
         Assert.assertEquals("Object do not equals", apple.equals(apple2), true);
     }
     @Test
-    public void testMaxFail(){
+    public void testMaxFail() throws WrongArgumentException {
         Apple apple = CompareUtils.max(apples, new Apple());
         Assert.assertNotEquals("Object do not equals", apple.equals(apple2), false);
     }
 
     @Test
-    public void testMaxComparator(){
+    public void testMaxComparator() throws WrongArgumentException {
         Apple apple = CompareUtils.max(apples, new Apple());
         Assert.assertEquals("Object do not equals", apple.equals(apple2), true);
     }
     @Test
-    public void testMaxComparatorFail(){
+    public void testMaxComparatorFail() throws WrongArgumentException {
         Apple apple = CompareUtils.max(apples, new Apple());
         Assert.assertNotEquals("Object do not equals", apple.equals(apple2), false);
     }
 
     @Test
-    public void testMedian(){
+    public void testMedian() throws WrongArgumentException {
         Apple apple = CompareUtils.median(apples);
         Assert.assertEquals("Object do not equals", apple.equals(apple), true);
     }
     @Test
-    public void testMedianFail(){
+    public void testMedianFail() throws WrongArgumentException {
         Apple apple = CompareUtils.median(apples);
         Assert.assertNotEquals("Object do not equals", apple.equals(apple), false);
     }
 
     @Test
-    public void testMedianComparator(){
+    public void testMedianComparator() throws WrongArgumentException {
         Apple apple = CompareUtils.median(apples, new Apple());
         Assert.assertEquals("Object do not equals", apple.equals(apple), true);
     }
 
     @Test
-    public void testMedianComparatorFail(){
+    public void testMedianComparatorFail() throws WrongArgumentException {
         Apple apple = CompareUtils.median(apples, new Apple());
         Assert.assertNotEquals("Object do not equals", apple.equals(apple), false);
 

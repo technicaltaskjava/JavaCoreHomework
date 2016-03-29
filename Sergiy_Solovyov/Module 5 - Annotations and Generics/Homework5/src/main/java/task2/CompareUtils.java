@@ -10,49 +10,49 @@ import java.util.Comparator;
  */
 public class CompareUtils {
 
-    public static  <T extends Comparable>T  min( T[] array){
+    public static  <T extends Comparable>T  min( T[] array) throws WrongArgumentException {
         if (array != null && array.length != 0){
             Arrays.sort(array);}
-        else return null;
+        else throw new WrongArgumentException("Array does not contant objects");
 
         return array[0];
     }
-    public  static <T>T  min( T[] array, Comparator comparator){
+    public  static <T>T  min( T[] array, Comparator comparator) throws WrongArgumentException {
         if (array != null && array.length != 0){
             Arrays.sort(array, comparator);}
-        else return null;
+        else throw new WrongArgumentException("Array does not contant objects");
 
         return array[0];
     }
 
-    public  static <T extends Comparable>T  max( T[] array){
+    public  static <T extends Comparable>T  max( T[] array) throws WrongArgumentException {
         if (array != null && array.length != 0){
             Arrays.sort(array);}
-        else return null;
+        else throw new WrongArgumentException("Array does not contant objects");
 
         return array[array.length - 1];
     }
 
-    public static  <T>T  max( T[] array, Comparator comparator){
+    public static  <T>T  max( T[] array, Comparator comparator) throws WrongArgumentException {
         if (array != null && array.length != 0){
             Arrays.sort(array, comparator);}
-        else return null;
+        else throw new WrongArgumentException("Array does not contant objects");
 
         return array[array.length - 1];
     }
 
-    public static  <T extends Comparable>T  median( T[] array){
+    public static  <T extends Comparable>T  median( T[] array) throws WrongArgumentException {
         if (array != null && array.length != 0){
             Arrays.sort(array);}
-        else return null;
+        else throw new WrongArgumentException("Array does not contant objects");
 
         return array[array.length/2];
     }
 
-    public static  <T extends Comparable>T  median( T[] array, Comparator comparator){
+    public static  <T extends Comparable>T  median( T[] array, Comparator comparator) throws WrongArgumentException {
         if (array != null && array.length != 0){
             Arrays.sort(array, comparator);}
-        else return null;
+        else throw new WrongArgumentException("Array does not contant objects");
 
         return array[array.length/2];
     }
