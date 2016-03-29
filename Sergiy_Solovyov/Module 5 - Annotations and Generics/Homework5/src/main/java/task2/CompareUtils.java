@@ -11,14 +11,14 @@ import java.util.Comparator;
 public class CompareUtils {
 
     public static  <T extends Comparable>T  min( T[] array){
-        if (array != null){
+        if (array != null && array.length != 0){
             Arrays.sort(array);}
         else throw new NullPointerException();
 
         return array[0];
     }
     public  static <T>T  min( T[] array, Comparator comparator){
-        if (array != null){
+        if (array != null && array.length != 0){
             Arrays.sort(array, comparator);}
         else throw new NullPointerException();
 
@@ -26,7 +26,7 @@ public class CompareUtils {
     }
 
     public  static <T extends Comparable>T  max( T[] array){
-        if (array != null){
+        if (array != null && array.length != 0){
             Arrays.sort(array);}
         else throw new NullPointerException();
 
@@ -34,7 +34,7 @@ public class CompareUtils {
     }
 
     public static  <T>T  max( T[] array, Comparator comparator){
-        if (array != null){
+        if (array != null && array.length != 0){
             Arrays.sort(array, comparator);}
         else throw new NullPointerException();
 
@@ -42,7 +42,7 @@ public class CompareUtils {
     }
 
     public static  <T extends Comparable>T  median( T[] array){
-        if (array != null){
+        if (array != null && array.length != 0){
             Arrays.sort(array);}
         else throw new NullPointerException();
 
@@ -50,7 +50,7 @@ public class CompareUtils {
     }
 
     public static  <T extends Comparable>T  median( T[] array, Comparator comparator){
-        if (array != null){
+        if (array != null && array.length != 0){
             Arrays.sort(array, comparator);}
         else throw new NullPointerException();
 
