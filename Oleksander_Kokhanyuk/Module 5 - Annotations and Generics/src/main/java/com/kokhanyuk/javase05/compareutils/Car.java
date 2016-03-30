@@ -36,15 +36,14 @@ public class Car implements Comparable {
         }
         result = price - entry.price;
         if (result != 0) {
-            return (int) result / Math.abs(result);
+            return result / Math.abs(result);
         }
         return 0;
     }
 
     @Override
     public String toString() {
-        String st = "Model: " + this.model + ": Prise: " + this.price + " $.";
-        return st;
+        return "Model: " + this.model + ": Prise: " + this.price + " $.";
     }
 
     @Override
@@ -64,7 +63,7 @@ public class Car implements Comparable {
             return false;
         }
         if (null == model) {
-            return (model == car.model);
+            return model == car.model;
         } else {
             if (!model.equals(car.model)) {
                 return false;

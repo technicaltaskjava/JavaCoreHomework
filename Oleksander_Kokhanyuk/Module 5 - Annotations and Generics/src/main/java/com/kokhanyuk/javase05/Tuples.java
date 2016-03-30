@@ -2,7 +2,7 @@ package com.kokhanyuk.javase05;
 
 /**
  * Tuples
- *
+ * <p/>
  * This class implements the generic data structure for storing multiple items of different types.
  *
  * @author Olexandr Kokhanyuk
@@ -10,18 +10,21 @@ package com.kokhanyuk.javase05;
  */
 public class Tuples {
 
+    private Tuples() {
+    }
+
     public static <A> Unit<A> unit(A a) {
-        return new Unit<A>(a);
+        return new Unit(a);
 
     }
 
     public static <A, B> Pair<A, B> pair(A a, B b) {
-        return new Pair<A, B>(a, b);
+        return new Pair(a, b);
 
     }
 
     public static <A, B, C> Triplet<A, B, C> triplet(A a, B b, C c) {
-        return new Triplet<A, B, C>(a, b, c);
+        return new Triplet(a, b, c);
     }
 
     public static class Unit<A> {

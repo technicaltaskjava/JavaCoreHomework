@@ -5,7 +5,7 @@ import com.kokhanyuk.javase05.CompareUtils;
 
 /**
  * CarShowRoom
- *
+ * <p/>
  * This class uses CompareUtils from sort cars
  * It is necessary to test the operation of other parts of the homework.
  *
@@ -13,7 +13,8 @@ import com.kokhanyuk.javase05.CompareUtils;
  * @version 1.0
  */
 public class CarShowRoom {
-
+    private CarShowRoom() {
+    }
     public static void main(String[] args) {
 
         Car[] showCase = new Car[6];
@@ -26,25 +27,7 @@ public class CarShowRoom {
         for (Car car : showCase) {
             System.out.println(car);
         }
-        CompareUtils<Car> sort = new CompareUtils<Car>();
-        System.out.println();
-        System.out.println(sort.max(showCase));
-        System.out.println(sort.mid(showCase));
-        System.out.println(sort.min(showCase));
-        System.out.println();
-//        for (Car car : showCase) {
-//            System.out.println(car);
-//        }
-        System.out.println(sort.mid(showCase, new SortedByName()));
-//        System.out.println();
-//        for (Car car : showCase) {
-//            System.out.println(car);
-//        }
-//        System.out.println();
-        System.out.println(sort.min(showCase, new SortedByPrice()));
-//        System.out.println();
-//        for (Car car : showCase) {
-//            System.out.println(car);
-//        }
+        CompareUtils<Car> sort = new CompareUtils();
+        System.out.println("\n" + sort.max(showCase, new SortedByName()));
     }
 }

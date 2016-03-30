@@ -28,13 +28,13 @@ public class CompareUtils<T extends Comparable> {
 
     public T mid(T[] arg) {
         Arrays.sort(arg);
-        rez = arg[(int) ((arg.length - 1) / 2)];
+        rez = arg[(arg.length - 1) / 2];
         return rez;
     }
 
     public T mid(T[] arg, Comparator<T> comp) {
         Arrays.sort(arg, comp);
-        rez = arg[(int) ((arg.length - 1) / 2)];
+        rez = arg[(arg.length - 1) / 2];
         return rez;
     }
 
