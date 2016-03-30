@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @version 1.0
  * @since 23.03.2016
  */
-public class Pair <A, B> {
+public class Pair <A, B>  {
 
     private final A first;
     private final B second;

@@ -9,7 +9,7 @@ import java.util.Comparator;
  */
 public class Apple implements Comparable<Apple>, Comparator<Apple>{
 
-    public int anInt;
+    private int anInt;
 
     public Apple() {
     }

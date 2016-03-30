@@ -3,6 +3,7 @@ package task1;
 import java.io.File;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class TestRunner {
         } catch (ClassNotFoundException e) {
             System.out.println(e.getMessage());
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -45,11 +46,11 @@ public class TestRunner {
                 if (!annTest.ignore()) {
 
                     try {
+                            System.out.printf("Test '%s', result: ", method.getName());
+                            method.invoke(test.newInstance());
 
-                        System.out.printf("Test '%s', result: ", method.getName());
-                        method.invoke(test.newInstance());
-
-                    } catch (Exception ex) {
+                    }
+                    catch (IllegalAccessException|InvocationTargetException|InstantiationException ex) {
 
                         if(ex.getCause().getClass() == expected){
 

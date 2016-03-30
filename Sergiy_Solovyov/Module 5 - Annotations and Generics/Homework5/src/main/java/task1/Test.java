@@ -11,9 +11,9 @@ public @interface Test {
 
     boolean ignore() default false;
 
-    Class<? extends Exception> expected() default Test.Default.class;
+    Class<? extends Throwable> expected() default Test.Default.class;
 
-    public class Default extends Exception {
+    public class Default extends Throwable {
         private Default() {
         }
     }
