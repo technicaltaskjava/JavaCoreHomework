@@ -1,4 +1,4 @@
-package javase05.t02.compare;
+package javase.t02.compare;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -8,6 +8,9 @@ import java.util.Comparator;
  * Created by Yury Vislobodsky on 25.03.2016.
  */
 public class CompareUtils {
+    private CompareUtils() {
+    }
+
     public static <T> T min(T[] array) {
         return copyAndSortArray(array)[0];
     }

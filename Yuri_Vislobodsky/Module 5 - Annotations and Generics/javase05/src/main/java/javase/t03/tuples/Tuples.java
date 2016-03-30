@@ -1,10 +1,13 @@
-package javase05.t03.tuples;
+package javase.t03.tuples;
 
 /**
  * Class Tuples for handling with Unit, Pair and Triplet elements
  * Created by Yury Vislobodsky on 27.03.2016.
  */
 public class Tuples {
+    private Tuples() {
+    }
+
     public static <A> Unit<A> create(A a) {
         return new Unit<A>(a);
     }

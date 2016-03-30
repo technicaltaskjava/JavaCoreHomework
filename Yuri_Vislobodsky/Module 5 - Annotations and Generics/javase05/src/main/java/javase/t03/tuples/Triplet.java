@@ -1,16 +1,18 @@
-package javase05.t03.tuples;
+package javase.t03.tuples;
 
 /**
- * Class Pair with two generic elements
+ * Class Triplet with three generic elements
  * Created by Yury Vislobodsky on 27.03.2016.
  */
-public class Pair<A,B> {
+public class Triplet<A,B,C> {
     private A a;
     private B b;
+    private C c;
 
-    Pair(A a, B b) {
+    Triplet(A a, B b, C c) {
         this.a = a;
         this.b = b;
+        this.c = c;
     }
 
     public A getA() {
@@ -21,9 +23,13 @@ public class Pair<A,B> {
         return b;
     }
 
+    public C getC() {
+        return c;
+    }
+
     @Override
     public String toString() {
-        return new StringBuilder().append("(").append(a).append(",").
-                append(b).append(")").toString();
+        return "(" + a + "," + b + "," + c + ")";
     }
 }
+

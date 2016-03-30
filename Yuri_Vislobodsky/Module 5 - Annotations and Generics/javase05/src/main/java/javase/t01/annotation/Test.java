@@ -1,4 +1,4 @@
-package javase05.t01.annotation;
+package javase.t01.annotation;
 
 import java.lang.annotation.*;
 

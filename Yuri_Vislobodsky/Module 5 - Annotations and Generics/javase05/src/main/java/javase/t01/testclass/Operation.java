@@ -1,4 +1,4 @@
-package javase05.t01.testclass;
+package javase.t01.testclass;
 
 /**
  * Additional test class with enum
@@ -6,37 +6,45 @@ package javase05.t01.testclass;
  */
 public enum Operation {
     PLUS {
+        @Override
         public double calculate(double numberA, double numberB) {
             return numberA + numberB;
         }
 
+        @Override
         public String toString() {
             return "+";
         }
     },
     MINUS {
+        @Override
         public double calculate(double numberA, double numberB) {
             return numberA - numberB;
         }
 
+        @Override
         public String toString() {
             return "-";
         }
     },
     MULTIPLY {
+        @Override
         public double calculate(double numberA, double numberB) {
             return numberA * numberB;
         }
 
+        @Override
         public String toString() {
             return "*";
         }
     },
     DIVIDE {
+        @Override
         public double calculate(double numberA, double numberB) {
             return numberA / numberB;
         }
 
+        @Override
         public String toString() {
             return "/";
         }

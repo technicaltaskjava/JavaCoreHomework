@@ -1,6 +1,6 @@
-package javase05.t01.testclass;
+package javase.t01.testclass;
 
-import javase05.t01.annotation.Test;
+import javase.t01.annotation.Test;
 
 /**
  * Test class with annotation using

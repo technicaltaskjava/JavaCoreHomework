@@ -1,6 +1,6 @@
-package javase05.t01.tester;
+package javase.t01.tester;
 
-import javase05.t01.annotation.Test;
+import javase.t01.annotation.Test;
 import java.lang.reflect.Method;
 
 /**
@@ -18,7 +18,7 @@ public class Tester {
         }
     }
 
-    public void Analyze(Object object) {
+    public void analyze(Object object) {
         Class someClass = object.getClass();
         for (Method method : someClass.getDeclaredMethods()) {
             if (method.isAnnotationPresent(Test.class)) {

@@ -1,4 +1,4 @@
-package javase05.t03.tuples;
+package javase.t03.tuples;
 
 /**
  * Class Unit with one generic element

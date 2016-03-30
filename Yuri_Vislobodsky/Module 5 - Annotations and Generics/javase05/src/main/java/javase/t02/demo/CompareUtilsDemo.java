@@ -1,6 +1,6 @@
-package javase05.t02.demo;
+package javase.t02.demo;
 
-import javase05.t02.compare.CompareUtils;
+import javase.t02.compare.CompareUtils;
 import java.util.Arrays;
 import java.util.Comparator;
 
