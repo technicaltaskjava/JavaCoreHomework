@@ -27,9 +27,9 @@ public class TestRunner {
             }
 
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -49,7 +49,7 @@ public class TestRunner {
                         System.out.printf("Test '%s', result: ", method.getName());
                         method.invoke(test.newInstance());
 
-                    } catch (Throwable ex) {
+                    } catch (Exception ex) {
 
                         if(ex.getCause().getClass() == expected){
 

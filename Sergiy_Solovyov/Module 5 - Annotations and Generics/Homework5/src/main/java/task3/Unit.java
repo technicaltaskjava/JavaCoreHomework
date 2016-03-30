@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @version 1.0
  * @since 23.03.2016
  */
-public class Unit <A> implements Serializable {
+public class Unit <A>  {
 
     private final A first;
 

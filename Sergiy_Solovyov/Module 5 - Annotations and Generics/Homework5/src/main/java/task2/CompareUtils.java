@@ -56,4 +56,5 @@ public class CompareUtils {
 
         return array[array.length/2];
     }
+
 }

@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @version 1.0
  * @since 23.03.2016
  */
-public class Triplet <A, B, C> implements Serializable{
+public class Triplet <A, B, C> {
 
     private final A first;
     private final B second;

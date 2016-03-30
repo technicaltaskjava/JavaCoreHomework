@@ -40,4 +40,9 @@ public class Apple implements Comparable<Apple>, Comparator<Apple>{
 
         if (apple.anInt == this.anInt)return true;
         return false;}
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }

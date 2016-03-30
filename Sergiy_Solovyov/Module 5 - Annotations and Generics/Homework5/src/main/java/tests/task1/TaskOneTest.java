@@ -25,8 +25,8 @@ public class TaskOneTest {
     }
 
     @Test(ignore = true)
-    public void testNeverRun() throws Throwable {
-      throw new Throwable();
+    public void testNeverRun(){
+
     }
 
     @Test(expected = FileNotFoundException.class)
