@@ -1,9 +1,12 @@
-import tester.Test;
+package tester;
+
 import tester.assertion.Assert;
 
 /**
  * @author Alexey Ushakov
  */
+
+@SuppressWarnings("unused")
 public class TestedClass {
 
     @Test
@@ -33,7 +36,7 @@ public class TestedClass {
 
     @Test
     public static void testThrowCustomException() {
-        throw new RuntimeException();
+        throw new IndexOutOfBoundsException();
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -47,11 +50,11 @@ public class TestedClass {
     }
 
     @Test(ignore = true)
-    public static void ignoredTest() {
-        System.out.println("If you see this message it means there was some error somewhere");
+    public void ignoredTest() {
+        //NOP
     }
 
-    public static void notTest() {
-        System.out.println("If you see this message it means there was some error somewhere");
+    public void notTest() {
+        //NOP
     }
 }

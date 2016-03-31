@@ -1,4 +1,4 @@
-import compareutils.CompareUtils;
+package compareutils;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -11,6 +11,9 @@ public class MainMenu {
     private static final int ARRAY_SIZE = 20;
     private static final int RANDOM_UPPER_BOUNDARY = 50;
     private static Integer[] testArray = new Integer[ARRAY_SIZE];
+
+    private MainMenu() {
+    }
 
     static class ComparatorInteger implements Comparator<Integer> {
         @Override

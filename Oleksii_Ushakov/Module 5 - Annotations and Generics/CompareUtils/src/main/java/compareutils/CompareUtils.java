@@ -7,25 +7,27 @@ import java.util.Comparator;
  * @author Alexey Ushakov
  */
 public class CompareUtils {
+    private CompareUtils() {
+    }
 
-    private static <Comparable> Comparable getElementByIndex(Comparable[] array, int index) {
+    private static <T extends Comparable> T getElementByIndex(T[] array, int index) {
         if (array != null && array.length > 0) {
-            Comparable[] newArray = Arrays.copyOf(array, array.length);
+            T[] newArray = Arrays.copyOf(array, array.length);
             Arrays.sort(newArray);
             return newArray[index];
         }
         return null;
     }
 
-    public static <Comparable> Comparable min(Comparable[] array) {
+    public static <T extends Comparable> T min(T[] array) {
         return getElementByIndex(array, 0);
     }
 
-    public static <Comparable> Comparable max(Comparable[] array) {
+    public static <T extends Comparable> T max(T[] array) {
         return getElementByIndex(array, array.length - 1);
     }
 
-    public static <Comparable> Comparable median(Comparable[] array) {
+    public static <T extends Comparable> T median(T[] array) {
         return getElementByIndex(array, (array.length - 1) / 2);
     }
 

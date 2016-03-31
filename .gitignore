@@ -1,6 +1,9 @@
+# My files
 *.class
 *.log
 *.task
+sonar-project.properties
+.sonar/
 
 # Package Files #
 *.jar

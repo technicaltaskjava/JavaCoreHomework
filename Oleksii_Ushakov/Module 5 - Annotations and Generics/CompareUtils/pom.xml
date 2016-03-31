@@ -19,14 +19,14 @@
     </parent>
 
     <artifactId>CompareUtils</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <packaging>jar</packaging>
     <name>CompareUtils</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <folder.library>lib</folder.library>
-        <main.class>MainMenu</main.class>
+        <main.class>compareutils.MainMenu</main.class>
         <java.version>1.7</java.version>
     </properties>
 

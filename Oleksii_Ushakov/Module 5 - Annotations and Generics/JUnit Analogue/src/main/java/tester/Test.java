@@ -12,11 +12,11 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Test {
-    class NotException extends Throwable {
+    class NotThrow extends Throwable {
 
     }
 
     boolean ignore() default false;
 
-    Class<? extends Throwable> expected() default NotException.class;
+    Class<? extends Throwable> expected() default NotThrow.class;
 }
