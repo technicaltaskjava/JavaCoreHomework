@@ -1,0 +1,2 @@
+import import import import public public static void if try new catch int catch int public static int return public static for int return public static new return public static void do int if new try new catch int int if else new new int if else try new int int int int for int catch int else int 
+amount of words = 59
