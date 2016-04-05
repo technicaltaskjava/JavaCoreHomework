@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 public class MyTaxiStationTest {
 
     @Test
-    public void testAddCar() throws Exception {
+    public void testAddCar() {
         MyTaxiStation taxi = new MyTaxiStation();
         taxi.addCar(new Car("Opel", 1500, 10));
         taxi.addCar(new Car("Opel", 1500, 10));
@@ -23,7 +23,7 @@ public class MyTaxiStationTest {
     }
 
     @Test
-    public void testGetCar() throws Exception {
+    public void testGetCar() {
         MyTaxiStation taxi = new MyTaxiStation();
         taxi.addCar(new Car("Opel", 1500, 10));
         taxi.addCar(new Car("Opel", 1500, 10));
@@ -33,7 +33,7 @@ public class MyTaxiStationTest {
     }
 
     @Test
-    public void testGetTotalCar() throws Exception {
+    public void testGetTotalCar() {
         MyTaxiStation taxi = new MyTaxiStation();
         taxi.addCar(new Car("Opel", 1500, 10));
         taxi.addCar(new Car("Opel", 1500, 10));

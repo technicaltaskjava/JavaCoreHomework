@@ -11,14 +11,14 @@ import static org.junit.Assert.*;
 public class NumbersStorageTest {
 
     @Test
-    public void testAddNumber() throws Exception {
+    public void testAddNumber() {
         NumbersStorage nu = new NumbersStorage();
         nu.addNumber(2);
         assertEquals(nu.getNumber((int) 0), 2);
     }
 
     @Test
-    public void testAddNumber1() throws Exception {
+    public void testAddNumber1() {
         NumbersStorage nu = new NumbersStorage();
         nu.addNumber(0, 1);
         nu.addNumber(1, 3);
@@ -27,7 +27,7 @@ public class NumbersStorageTest {
     }
 
     @Test
-    public void testGetNumber() throws Exception {
+    public void testGetNumber() {
         NumbersStorage nu = new NumbersStorage();
         nu.addNumber(0, 1);
         nu.addNumber(1, 8);
@@ -36,7 +36,7 @@ public class NumbersStorageTest {
     }
 
     @Test
-    public void testRemNumber() throws Exception {
+    public void testRemNumber() {
         NumbersStorage nu = new NumbersStorage();
         nu.addNumber(0, 1);
         nu.addNumber(1, 8);
@@ -46,7 +46,7 @@ public class NumbersStorageTest {
     }
 
     @Test
-    public void testRemNumber1() throws Exception {
+    public void testRemNumber1() {
         NumbersStorage nu = new NumbersStorage();
         nu.addNumber(0, 1);
         nu.addNumber(1, 8);
@@ -56,7 +56,7 @@ public class NumbersStorageTest {
     }
 
     @Test
-    public void testGetSize() throws Exception {
+    public void testGetSize()  {
         NumbersStorage nu = new NumbersStorage();
         nu.addNumber(0, 1);
         nu.addNumber(1, 8);

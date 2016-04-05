@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 public class FastParkingTest {
 
     @Test
-    public void testAddCar() throws Exception {
+    public void testAddCar() {
         FastParking park = new FastParking(50);
         for (int i = 0; i < 50; i++) {
             park.addCar(i, new Car());
@@ -21,7 +21,7 @@ public class FastParkingTest {
     }
 
     @Test
-    public void testRemCar() throws Exception {
+    public void testRemCar() {
         FastParking park = new FastParking(50);
         for (int i = 0; i < 50; i++) {
             park.addCar(i, new Car());
@@ -33,7 +33,7 @@ public class FastParkingTest {
     }
 
     @Test
-    public void testGetFreePlace() throws Exception {
+    public void testGetFreePlace() {
         FastParking park = new FastParking(50);
         for (int i = 0; i < 50; i++) {
             park.addCar(i, new Car());
@@ -45,7 +45,7 @@ public class FastParkingTest {
     }
 
     @Test
-    public void testGetCarsOnParking() throws Exception {
+    public void testGetCarsOnParking(){
         FastParking park = new FastParking(50);
         for (int i = 0; i < 50; i++) {
             park.addCar(i, new Car());

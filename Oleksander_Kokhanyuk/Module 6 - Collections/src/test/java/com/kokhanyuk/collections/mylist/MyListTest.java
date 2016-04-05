@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
  */
 public class MyListTest {
     @Test
-    public void testAdd() throws Exception {
+    public void testAdd() {
         MyList<Integer> list = new MyList();
         for (int i = 0; i < 100; i++) {
             list.add(i);
@@ -20,7 +20,7 @@ public class MyListTest {
     }
 
     @Test
-    public void testAdd1() throws Exception {
+    public void testAdd1() {
         MyList<Integer> list = new MyList();
         for (int i = 0; i < 100; i++) {
             list.add(i);
@@ -31,13 +31,13 @@ public class MyListTest {
     }
 
     @Test
-    public void testIsEmpty() throws Exception {
+    public void testIsEmpty() {
         MyList<Integer> list = new MyList();
         assertEquals(list.isEmpty(), true);
     }
 
     @Test
-    public void testContains() throws Exception {
+    public void testContains() {
         MyList<Character> list = new MyList();
         char ch = 'A';
         for (int i = 0; i < 10; i++) {
@@ -48,7 +48,7 @@ public class MyListTest {
 
 
     @Test
-    public void testRemove() throws Exception {
+    public void testRemove() {
         MyList<Character> list = new MyList();
         char ch = 'A';
         for (int i = 0; i < 10; i++) {
@@ -59,18 +59,18 @@ public class MyListTest {
     }
 
     @Test
-    public void testClear() throws Exception {
+    public void testClear() {
         MyList<Character> list = new MyList<>(15);
         char ch = 'A';
         for (int i = 0; i < 15; i++) {
             list.add(ch++);
         }
         list.clear();
-        assertEquals(list.isEmpty(),true);
+        assertEquals(list.isEmpty(), true);
     }
 
     @Test
-    public void testRemove1() throws Exception {
+    public void testRemove1() {
         MyList<Character> list = new MyList();
         char ch = 'A';
         for (int i = 0; i < 10; i++) {
@@ -81,24 +81,24 @@ public class MyListTest {
     }
 
     @Test
-    public void testIndexOf() throws Exception {
+    public void testIndexOf() {
         MyList<Character> list = new MyList();
         char ch = 'A';
         for (int i = 0; i < 10; i++) {
             list.add(ch++);
             list.add('C');
         }
-        assertEquals(list.indexOf('C'),1);
+        assertEquals(list.indexOf('C'), 1);
     }
 
     @Test
-    public void testLastIndexOf() throws Exception {
+    public void testLastIndexOf() {
         MyList<Character> list = new MyList();
         char ch = 'A';
         for (int i = 0; i < 10; i++) {
             list.add(ch++);
             list.add('C');
         }
-        assertEquals(list.lastIndexOf('C'),19);
+        assertEquals(list.lastIndexOf('C'), 19);
     }
 }
