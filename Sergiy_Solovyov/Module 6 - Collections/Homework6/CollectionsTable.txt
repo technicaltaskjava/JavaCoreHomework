@@ -1,0 +1,23 @@
++-------------+------------------------------------------------------------------+-------------------------------------------------------------------+
+| Collection  |                           Functionality                          |                            Typical uses                           |
+|     type    |                                                                  |                                                                   |
++-------------+------------------------------------------------------------------+-------------------------------------------------------------------+
+| Set         | Set allows to hold unique objects.                               | Remembering "which elements you've already processed".            |
+|             | Set has not order(you cannot find element by index).             | Making other yes-no decisions about an item,                      |
+|             |                                                                  | e.g. "is the object,a word of English",                           |
+|             |                                                                  | "is the,element in the database?"                                 |
+|             |                                                                  | "is the element in this category?" etc.                           |
++-------------+------------------------------------------------------------------+-------------------------------------------------------------------+
+| List        | List is used to keep objects (may contain duplicate elements).   | Most cases where you just need                                    |
+|             | Elements can be placed and can access by their integer index .   | to store or iterate through a "bunch of things"                   |
+|             |                                                                  | and later iterate through them.                                   |
++-------------+------------------------------------------------------------------+-------------------------------------------------------------------+
+| Queue       | Like a list, but where you only ever access the ends of the list | Often used in managing tasks performed                            |
+|             | (typically, but do not necessarily, order elements in a FIFO     | by different threads in an                                        |
+|             | (first-in-first-out) manner).                                    | application (e.g. one thread receives incoming                    |
+|             |                                                                  | connections and puts them on a queue.                             |
++-------------+------------------------------------------------------------------+-------------------------------------------------------------------+
+| Map         | Map maps unique keys to values;                                  | Maps are used when you need to associate a key with a value.      |
+|             | each key can map to at most one value.                           | For example to develop "shopping basket of the online store" or   |
+|             | Map has not order(you cannot find element by index).             | to create dictionary you should use Maps.                         |
++-------------+------------------------------------------------------------------+-------------------------------------------------------------------+
