@@ -1,7 +1,6 @@
 package controller.menu;
 
 import controller.MainController;
-import exception.ExitException;
 import exception.GetInstanceException;
 import exception.ParameterValidateException;
 import model.task4.Parking;
@@ -17,9 +16,15 @@ class ParkingMenuController {
 	private final List<Car> cars = new ArrayList<>();
 	private Parking parking = null;
 
-	void show(final MainController mainController) throws ExitException {
-		initParking(mainController);
-		while (true) {
+	void show(final MainController mainController) {
+		boolean flag = true;
+		try {
+			initParking(mainController);
+		} catch (GetInstanceException e) {
+			logger.error(e.getMessage(), e);
+			flag = false;
+		}
+		while (flag) {
 			StringBuilder builder = new StringBuilder(MainMenuController.SEPARATOR);
 			builder.append("\n\tPARKING MENU")
 					.append(MainMenuController.SEPARATOR)
@@ -54,7 +59,8 @@ class ParkingMenuController {
 					changePlace(mainController);
 					break;
 				case "6":
-					throw new ExitException();
+					flag = false;
+					break;
 				default:
 					mainController.print(String.format("%nEntered menu item '%s' incorrect, expected 0 - 6", input));
 			}
@@ -121,7 +127,7 @@ class ParkingMenuController {
 		}
 	}
 
-	private void initParking(final MainController mainController) throws ExitException {
+	private void initParking(final MainController mainController) throws GetInstanceException {
 		mainController.print("How many parking spaces you need?");
 		int count;
 		while (true) {
@@ -133,11 +139,7 @@ class ParkingMenuController {
 				mainController.print(String.format("Expected a positive number, but entered '%s'%nTry again", e.getMessage()));
 			}
 		}
-		try {
-			parking = Parking.getInstance(count);
-		} catch (GetInstanceException e) {
-			throw new ExitException(e.getMessage(), e);
-		}
+		parking = Parking.getInstance(count);
 	}
 
 	private Car getCar(final MainController mainController) {

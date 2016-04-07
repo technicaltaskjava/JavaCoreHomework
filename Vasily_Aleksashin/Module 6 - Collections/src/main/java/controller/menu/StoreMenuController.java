@@ -1,7 +1,6 @@
 package controller.menu;
 
 import controller.MainController;
-import exception.ExitException;
 import exception.ParameterValidateException;
 import model.task3.StoreNumber;
 import org.slf4j.Logger;
@@ -12,9 +11,10 @@ class StoreMenuController {
 
 	private StoreNumber storeNumber;
 
-	void show(final MainController mainController) throws ExitException {
+	void show(final MainController mainController) {
 		storeNumber = new StoreNumber();
-		while (true) {
+		boolean flag = true;
+		while (flag) {
 			StringBuilder builder = new StringBuilder(MainMenuController.SEPARATOR);
 			builder.append("\n\tSTORE NUMBERS MENU")
 					.append(MainMenuController.SEPARATOR)
@@ -41,7 +41,8 @@ class StoreMenuController {
 					mainController.print(String.format("%nStore number%n%s", storeNumber.getStore().toString()));
 					break;
 				case "4":
-					throw new ExitException();
+					flag = false;
+					break;
 				default:
 					mainController.print(String.format("%nEntered menu item '%s' incorrect, expected 0 - 4", input));
 			}

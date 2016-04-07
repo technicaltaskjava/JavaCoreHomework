@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 public class MainMenuController {
 	static final String SEPARATOR = "\n============================================";
 	static final String SOMETHING_HAPPENED = "Something happened that should not have happened";
-	private static final String EXIT_TO_MAIN_MENU = "Exit to Main menu";
 	private static final Logger logger = LoggerFactory.getLogger(MainMenuController.class);
 
 	public void show(final MainController controller) throws ExitException {
@@ -51,34 +50,19 @@ public class MainMenuController {
 		}
 	}
 
-	private void startAirCarrier(final MainController controller) throws ExitException {
+	private void startAirCarrier(final MainController controller) {
 		AirCarrierMenuController airCarrierMenuController = new AirCarrierMenuController();
-		try {
-			airCarrierMenuController.show(controller);
-		} catch (ExitException e) {
-			logger.info(EXIT_TO_MAIN_MENU);
-			throw e;
-		}
+		airCarrierMenuController.show(controller);
 	}
 	
-	private void startStore(final MainController controller) throws ExitException {
+	private void startStore(final MainController controller) {
 		StoreMenuController storeMenuController = new StoreMenuController();
-		try {
-			storeMenuController.show(controller);
-		} catch (ExitException e) {
-			logger.info(EXIT_TO_MAIN_MENU);
-			throw e;
-		}
+		storeMenuController.show(controller);
 	}
 	
-	private void startParking(final MainController controller) throws ExitException {
+	private void startParking(final MainController controller) {
 		ParkingMenuController parkingMenuController = new ParkingMenuController();
-		try {
-			parkingMenuController.show(controller);
-		} catch (ExitException e) {
-			logger.info(EXIT_TO_MAIN_MENU);
-			throw e;
-		}
+		parkingMenuController.show(controller);
 	}
 
 	private void showDescription(final MainController controller) {

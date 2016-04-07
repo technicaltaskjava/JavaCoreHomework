@@ -1,7 +1,6 @@
 package controller.menu;
 
 import controller.MainController;
-import exception.ExitException;
 import exception.FileIOException;
 import exception.ParameterValidateException;
 import model.task1.AirCarrier;
@@ -24,8 +23,9 @@ class AirCarrierMenuController {
 
 	private final AirCarrier carrier = new AirCarrier();
 
-	void show(final MainController mainController) throws ExitException {
-		while (true) {
+	void show(final MainController mainController) {
+		boolean flag = true;
+		while (flag) {
 			StringBuilder builder = new StringBuilder(MainMenuController.SEPARATOR);
 			builder.append("\n\tAIRCARRIER MENU")
 					.append(MainMenuController.SEPARATOR)
@@ -60,7 +60,8 @@ class AirCarrierMenuController {
 					mainController.print("\n" + carrier.toString());
 					break;
 				case "6":
-					throw new ExitException();
+					flag = false;
+					break;
 				default:
 					mainController.print(String.format("%nEntered menu item '%s' incorrect, expected 0 - 6", input));
 			}
