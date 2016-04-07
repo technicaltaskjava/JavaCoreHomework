@@ -21,7 +21,10 @@
     </build>
 
     <dependencies>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8f21219207a4ecbc75780a98e8398da2efaed1d5
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
