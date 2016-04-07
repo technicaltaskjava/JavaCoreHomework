@@ -4,8 +4,6 @@ import knightgear.equipment.Equipment;
 
 public class Sword extends Equipment {
 
-    public Sword(){}
-
     public Sword(String material, String weight){
         super(material, weight);
         generateName();

@@ -7,6 +7,8 @@ public class Knight {
     private static Armor body;
     private static Shield offHand;
 
+    private Knight(){}
+
     public static void setMainHand(String material, String weight){
         mainHand = new Sword(material, weight);
     }
@@ -41,7 +43,7 @@ public class Knight {
 
     public static void printEquipment() {
         if (mainHand != null) {
-            System.out.println("Main hand: " + mainHand.getName());
+            System.out.println("main.Main hand: " + mainHand.getName());
         } else {
             System.out.println("No sword equipped.");
         }

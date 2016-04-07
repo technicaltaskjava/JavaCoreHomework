@@ -37,14 +37,12 @@ public class Parking {
     }
 
     public boolean placeCar(Car car, int position){
-        if(!car.isParked()) {
-            if (position >= 0 && position < buffer.length) {
-                for (int i = position; i < buffer.length; i++) {
-                    if (buffer[i] == null) {
-                        buffer[i] = car;
-                        car.setParked(true);
-                        break;
-                    }
+        if(!car.isParked() && position >= 0 && position < buffer.length) {
+            for (int i = position; i < buffer.length; i++) {
+                if (buffer[i] == null) {
+                    buffer[i] = car;
+                    car.setParked(true);
+                    break;
                 }
             }
         }

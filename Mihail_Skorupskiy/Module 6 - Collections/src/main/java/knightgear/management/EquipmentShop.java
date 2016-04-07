@@ -12,7 +12,7 @@ import java.util.Comparator;
 public class EquipmentShop {
 
     private static int shopSize = (Materials.values().length) * (Weights.values().length) * 3;
-    private static ArrayList<Equipment> shop = new ArrayList<Equipment>(shopSize);
+    private static ArrayList<Equipment> shop = new ArrayList<>(shopSize);
 
     private EquipmentShop(){}
 
@@ -59,18 +59,20 @@ public class EquipmentShop {
     public static void searchByValueRange(float inputMin, float inputMax) {
         int searchResults = 0;
         if (inputMin >= 0 && inputMax >= 0){
+            float min;
+            float max;
             if (inputMin > inputMax) {
-                float temp = inputMin;
-                inputMin = inputMax;
-                inputMax = temp;
+                min = inputMax;
+                max = inputMin;
+            } else {
+                min = inputMin;
+                max = inputMax;
             }
             for (int i = 0; i < shop.size(); i++) {
-                if (Float.compare(shop.get(i).getValue(), inputMin) >= 0) {
-                    if (Float.compare(shop.get(i).getValue(), inputMax) <= 0) {
-                        searchResults++;
-                        System.out.print(searchResults + ". ");
-                        shop.get(i).print();
-                    }
+                if (Float.compare(shop.get(i).getValue(), min) >= 0 && Float.compare(shop.get(i).getValue(), max) <= 0) {
+                    searchResults++;
+                    System.out.print(searchResults + ". ");
+                    shop.get(i).print();
                 }
             }
             if (searchResults == 0) {
@@ -82,6 +84,7 @@ public class EquipmentShop {
 
 class ValueComparator implements Comparator<Equipment>{
 
+    @Override
     public int compare(Equipment current, Equipment next){
         return Double.compare(current.getValue(), next.getValue());
     }
@@ -89,6 +92,7 @@ class ValueComparator implements Comparator<Equipment>{
 
 class NameComparator implements Comparator<Equipment>{
 
+    @Override
     public int compare(Equipment current, Equipment next){
         return current.toString().compareTo(next.toString());
     }

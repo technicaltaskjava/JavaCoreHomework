@@ -58,16 +58,20 @@ public class NumberList <T extends Number & Comparable> {
     public void compress(){
         for (int i = 0; i < buffer.length; i++){
             if (buffer[i] == null){
-                for (int j = i; j < buffer.length; j++){
-                    if (buffer[j] != null){
-                        buffer[i] = buffer[j];
-                        buffer[j] = null;
-                        break;
-                    }
-                }
+                compressIteration(i);
             }
         }
         trim();
+    }
+
+    private void compressIteration(int index){
+        for (int i = index; i < buffer.length; i++){
+            if (buffer[i] != null){
+                buffer[index] = buffer[i];
+                buffer[i] = null;
+                break;
+            }
+        }
     }
 
     private void trim(){

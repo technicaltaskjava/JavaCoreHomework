@@ -1,3 +1,5 @@
+package main;
+
 import knightgear.extras.Materials;
 import knightgear.extras.Weights;
 import knightgear.management.EquipmentShop;
@@ -9,13 +11,17 @@ import structures.NumberList;
 
 import java.io.*;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main {
+
+    private Main(){}
+
     public static void main(String[] args) {
         //Careful, a lot of System.out.println() is inbound!
         //If you don't want to read dozens of lines from console - don't launch it, just look at the code :)
-        //Task five is in Resources. I've been trying to make a Sonar-compliant method to print that file, but...
-        //Sonar shows 77 warnings, almost all of them are System.out.println usages or "ignored" exceptions.
+
         taskOne();
         taskTwo();
         taskThree();
@@ -26,15 +32,14 @@ public class Main {
         System.out.println("\nTask 1.");
         System.out.println("Welcome to the shop!");
         EquipmentShop.initialize();
-        int input = -1;
-        TaskOne.mainMenu(input);
+        TaskOne.mainMenu();
     }
 
     static void taskTwo(){
         System.out.println("\nTask 2.");
         Integer[] source = {1, 2, 3, 4, 5};
         System.out.println("Source array: \n" + Arrays.toString(source));
-        MyArrayList<Integer> arrayList = new MyArrayList<Integer>(source);
+        MyArrayList<Integer> arrayList = new MyArrayList<>(source);
         System.out.println("Initial list contents: \n" + arrayList);
         arrayList.add(7, 7);
         System.out.println("List contents after adding an element out of bounds: \n" + arrayList);
@@ -54,7 +59,7 @@ public class Main {
     static void taskThree(){
         System.out.println("\nTask 3.");
         Double[] source2 = {0.5, 0.5, 0.5, 0.5, 0.25, 0.5, 0.75, 0.5, 0.25, 0.5, 0.75, 0.5};
-        NumberList<Double> numbers = new NumberList<Double>(source2);
+        NumberList<Double> numbers = new NumberList<>(source2);
         System.out.println("List contents: " + numbers);
         numbers.removeByPosition(5);
         System.out.println("After deleting 5th element: " + numbers);
@@ -100,9 +105,12 @@ public class Main {
 class TaskOne {
     static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
+    static Logger logger = Logger.getLogger("main.TaskOne");
+
     private TaskOne(){}
 
-    static void mainMenu(int input){
+    static void mainMenu(){
+        int input;
         do {
             System.out.println("What would you like to do?");
             System.out.println("1 - Shop options.");
@@ -113,11 +121,11 @@ class TaskOne {
                 case 0:
                     break;
                 case 1:
-                    shopOptions(input);
+                    shopOptions();
                     input = -1;
                     break;
                 case 2:
-                    knightOptions(input);
+                    knightOptions();
                     input = -1;
                     break;
                 default:
@@ -126,7 +134,8 @@ class TaskOne {
         } while (input != 0);
     }
 
-    static void shopOptions(int input){
+    static void shopOptions(){
+        int input;
         do {
             System.out.println("Shop options:");
             System.out.println("1 - Show all inventory.");
@@ -162,7 +171,8 @@ class TaskOne {
         } while (input != 0);
     }
 
-    static void knightOptions(int input){
+    static void knightOptions(){
+        int input;
         do {
             System.out.println("Knight options:");
             System.out.println("1 - Show current equipment.");
@@ -182,9 +192,7 @@ class TaskOne {
                 case 2: // Show total value.
                     if (Double.compare(Knight.getTotalValue(), 0) == 0) {
                         System.out.println("Equip your knight first.");
-                    } else {
-                        System.out.println("Total value of equipment is " + Knight.getTotalValue());
-                    }
+                    } else System.out.println("Total value of equipment is " + Knight.getTotalValue());
                     break;
                 case 3: // Equip a sword.
                     createEquipmentPiece(input);
@@ -230,8 +238,7 @@ class TaskOne {
         try {
             buffer = reader.readLine();
         } catch (IOException e) {
-            System.out.println("Input error.");
-            buffer = null;
+            logger.log(Level.WARNING, "Input error", e);
         }
         return buffer;
     }
