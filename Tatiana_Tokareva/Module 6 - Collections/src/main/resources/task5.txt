@@ -1,0 +1,28 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+|Interface |Basic functionality                                               |Examples                                                                  |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------
+|Set       |A Set is a Collection that cannot contain duplicate elements.     | Use Set when you need each item is stored in only one x                  |
+|          |It models the mathematical set abstraction. The Set interface     | values - Employee objects.                                               |
+|          |contains only methods inherited from Collection and adds the      |                                                                          |
+|          |restriction that duplicate elements are prohibited. Set also      |                                                                          |
+|          |adds a stronger contract on the behavior of the equals and        |                                                                          |
+|          |hashCode operations, allowing Set instances to be compared        |                                                                          |
+|          |meaningfully even if their implementation types differ.           |                                                                          |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------
+|List      |The user of this interface has precise control over where in      | An ArrayList is a dynamic data structure so it can be used               |
+|          | the list each element is inserted. The user can access elements  | when there is no upper bound on the number of elements.                  |
+|          | by their integer index (position in the list), and search for    |                                                                          |
+|          | elements in the list.Lists typically allow duplicate elements.   |                                                                          |
+|          |The List interface provides four methods for positional (indexed) |                                                                          |
+|          |access to list elements.                                          |                                                                          |
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+|Queue     |Designed for holding elements prior to processing. A queue is     | Queues typically, but not necessarily, order elements in a               |
+|          | designed to have elements inserted at the end of the queue, and  | first-in-first-out manner.In a first-in-first-out queue,                 |
+|          | elements removed from the beginning of the queue. Just like a    | all new elements are inserted at the tail of the queue.                  |
+|          | queue in a supermarket. Queues provide additional insertion,     | The operating system of your computer (and the Internet) is              |
+|          | removal, and inspection operations. The Queue interface follows. | constantly different queues are working quietly performing their duties. |                                              |
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+|Map       | A Map is an interface that maps keys to values. The keys are     | The table may contain records with information about employees,          |
+|          | unique, no duplicate keys are allowed                            | where the keys are the identification numbers of employees, and          |
+|          |                                                                  | values - Employee objects.                                               |
+----------------------------------------------------------------------------------------------------------------------------------------------------------
