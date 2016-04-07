@@ -10,7 +10,7 @@ import org.junit.Test;
  */
 public class TestNumbersHolder {
 
-    private NumbersHolder<Integer> testHolder = new NumbersHolder<Integer>();
+    private NumbersHolder<Integer> testHolder = new NumbersHolder<>();
 
     @Before
     public void init() {
