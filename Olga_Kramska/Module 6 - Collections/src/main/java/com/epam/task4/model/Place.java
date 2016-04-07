@@ -6,13 +6,6 @@ package com.epam.task4.model;
 public class Place {
     private Car car;
 
-    public Place(Car car) {
-        this.car = car;
-    }
-
-    public Place(){
-    }
-
     public Car getCar() {
         return car;
     }

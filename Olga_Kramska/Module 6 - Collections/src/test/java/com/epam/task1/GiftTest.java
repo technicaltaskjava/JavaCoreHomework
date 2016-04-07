@@ -21,17 +21,12 @@ import static org.junit.Assert.assertEquals;
  * Created by Olga Kramska on 03-Apr-16.
  */
 public class GiftTest {
-    private IGift gift;
-
-    @Before
-    public void init() {
-        final List<Candy> candies = new ArrayList() {{
-            add(new Chocolate(100));
-            add(new Lollipop(200));
-            add(new Jelly(150));
-        }};
-        gift = new Gift(candies);
-    }
+    private final List<Candy> candies = new ArrayList() {{
+        add(new Chocolate(100));
+        add(new Lollipop(200));
+        add(new Jelly(150));
+    }};
+    private IGift gift = new Gift(candies);
 
     @Test
     public void testGetTotalWeight() {
