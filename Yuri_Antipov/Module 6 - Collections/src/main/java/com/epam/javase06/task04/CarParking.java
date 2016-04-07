@@ -23,15 +23,15 @@ public class CarParking {
                 freePlaceCounter++;
             }
         }
-        return freePlaceCounter + " is (are) free.";
+        return freePlaceCounter + " place(s) is(are) free.";
     }
 
     public String releasePlace(int placeNumber) {
         if (placeNumber < places.length && placeNumber > 0 && places[placeNumber] == 1) {
             places[placeNumber] = 0;
-            return "The place #" + (places[placeNumber] + 1) + " has already released.";
+            return "The place #" + placeNumber + " has already released.";
         } else {
-            return "The place #" + (places[placeNumber] + 1) + " is still free.";
+            return "The place #" + placeNumber + " is still free.";
         }
     }
 

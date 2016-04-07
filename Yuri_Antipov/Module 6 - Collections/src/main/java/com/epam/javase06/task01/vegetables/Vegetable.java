@@ -1,10 +1,11 @@
 package com.epam.javase06.task01.vegetables;
 
+import java.util.Objects;
+
 public class Vegetable implements Comparable<Vegetable> {
     private String name;
     private double weight; // in gram
     private int calorificValue; //calories per 100 grams of particular vegetable
-    private double caloriesOfWeight;
     private String vegetableType;
 
     public Vegetable(String name, int weight, int calorificValue, String vegetableType) {
@@ -37,6 +38,17 @@ public class Vegetable implements Comparable<Vegetable> {
     @Override
     public int compareTo(Vegetable vegetable) {
         return (int) (vegetable.getWeight() - weight);
+    }
+    @Override
+    public boolean equals(Object otherObject) {
+        if (!super.equals(otherObject)) return false;
+        Vegetable other = (Vegetable) otherObject;
+        return name.equalsIgnoreCase(other.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, weight, calorificValue, vegetableType);
     }
 
     @Override

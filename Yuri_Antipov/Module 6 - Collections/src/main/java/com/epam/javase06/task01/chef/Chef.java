@@ -21,7 +21,7 @@ public class Chef {
 
     public void sortByCaloriesOfWeight() {
         Collections.sort(salad);
-        System.out.println("Sorted by ingredients by calories:");
+        System.out.println("Sorted ingredients by calories:");
         for(Vegetable v : salad) {
             System.out.println(v.getCaloriesOfWeight() + " calories of " + v.getName());
         }
@@ -37,7 +37,7 @@ public class Chef {
     public void searchByVegetable(String vegetable) {
         boolean hasVegetables = false;
         for(Vegetable v : salad) {
-            if (vegetable.toLowerCase().equals(v.getName().toLowerCase())) {
+            if (vegetable.equalsIgnoreCase(v.getName())) {
                 hasVegetables = true;
             }
         }

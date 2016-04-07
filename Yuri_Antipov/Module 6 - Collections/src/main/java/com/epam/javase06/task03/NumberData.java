@@ -11,7 +11,7 @@ public class NumberData<T extends Number> {
     }
 
     public void addNumber(T number) {
-       numbersList.add(number);
+        numbersList.add(number);
     }
 
     public void addNumberByIndex(int index, T number) {
@@ -48,6 +48,9 @@ public class NumberData<T extends Number> {
 
     @Override
     public String toString() {
+        for (Number n : numbersList) {
+            System.out.println(n);
+        }
         return numbersList.toString();
     }
 }
