@@ -11,16 +11,18 @@ public class MyList implements List
         private int size;
         Object[] array = new Object[DEFAULT_CAPACITY];
 
+        @Override
         public int size()
             {
                 return this.size;
             }
 
+        @Override
         public boolean isEmpty()
             {
                 return size == 0;
             }
-
+        @Override
         public boolean contains(Object o)
             {
                 return indexOf(o) >= 0;
@@ -56,11 +58,13 @@ public class MyList implements List
             }
 
 
+        @Override
         public Object[] toArray()
             {
                 return Arrays.copyOf(array, size);
             }
 
+        @Override
         public Object[] toArray(Object[] arr)
             {
                 Object[] temp = new Object[size()];
@@ -71,6 +75,7 @@ public class MyList implements List
                 return temp;
             }
 
+        @Override
         public boolean add(Object obj)
             {
                 Object[] tmp = new Object[size() + 1];
@@ -84,7 +89,7 @@ public class MyList implements List
                 return true;
             }
 
-
+        @Override
         public boolean remove(Object o)
             {
                 int pos = 0;
@@ -114,7 +119,7 @@ public class MyList implements List
 
                 return false;
             }
-
+        @Override
         public boolean addAll(Collection c)
             {
                 Object[] newCol = c.toArray();
@@ -133,7 +138,7 @@ public class MyList implements List
 
                 return size != 0;
             }
-
+        @Override
         public boolean addAll(int index, Collection c)
             {
                 rangeCheckForAdd(index);
@@ -157,7 +162,7 @@ public class MyList implements List
 
                 return size != 0;
             }
-
+        @Override
         public void clear()
             {
                 for (int stap = 0; stap < size; stap++)
@@ -165,13 +170,13 @@ public class MyList implements List
                 size = 0;
 
             }
-
+        @Override
         public Object get(int index)
             {
                 rangeCheck(index);
                 return array[index];
             }
-
+        @Override
         public Object set(int index, Object element)
             {
                 rangeCheck(index);
@@ -179,7 +184,7 @@ public class MyList implements List
                 array[index] = element;
                 return oldValue;
             }
-
+        @Override
         public void add(int index, Object element)
             {
                 rangeCheckForAdd(index);
@@ -197,7 +202,7 @@ public class MyList implements List
                 size++;
 
             }
-
+        @Override
         public Object remove(int index)
             {
                 rangeCheck(index);
@@ -215,7 +220,7 @@ public class MyList implements List
 
                 return res;
             }
-
+        @Override
         public int indexOf(Object o)
             {
                 if (o == null)
@@ -236,7 +241,7 @@ public class MyList implements List
                     }
                 return -1;
             }
-
+        @Override
         public int lastIndexOf(Object o)
             {
                 if (o == null)
@@ -257,7 +262,7 @@ public class MyList implements List
                     }
                 return -1;
             }
-
+        @Override
         public Iterator iterator()
             {
                 return new Itr();
@@ -268,13 +273,13 @@ public class MyList implements List
                 int cursor;
                 int lastRet = -1;
 
-
+                @Override
                 public boolean hasNext()
                     {
                         return cursor != size;
                     }
 
-                @SuppressWarnings("unchecked")
+                @Override
                 public Object next()
                     {
 
@@ -293,6 +298,7 @@ public class MyList implements List
                     }
             }
 
+        @Override
         public boolean removeAll(Collection c)
             {
                 Objects.requireNonNull(c);
@@ -315,7 +321,7 @@ public class MyList implements List
 
                 return true;
             }
-
+        @Override
         public boolean containsAll(Collection c)
             {
                 Objects.requireNonNull(c);
@@ -364,23 +370,23 @@ public class MyList implements List
             {
                 return "Index: " + index + ", Size: " + size;
             }
-
+        @Override
         public ListIterator listIterator(int index)
             {
                 return null;
             }
-
+        @Override
         public List subList(int fromIndex, int toIndex)
             {
                 return new MyList();
             }
-
+        @Override
         public ListIterator listIterator()
             {
                 return null;
             }
 
-
+        @Override
         public boolean retainAll(Collection c)
             {
                 return false;

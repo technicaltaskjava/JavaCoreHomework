@@ -13,16 +13,22 @@ public class Cucumber implements Vegetables
                 this.weight = weight;
             }
 
+
+        @Override
         public String getVegetables()
             {
                 return "Cucuber";
             }
 
+
+        @Override
         public int getCalories()
             {
                 return calories;
             }
 
+
+        @Override
         public int getWeight()
             {
                 return weight;

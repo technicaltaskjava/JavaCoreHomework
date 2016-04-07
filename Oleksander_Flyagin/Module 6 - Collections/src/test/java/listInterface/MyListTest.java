@@ -47,8 +47,6 @@ public class MyListTest
                 int exp = 23;
                 int testSize = 1;
                 int resSize  = myList.size();
-
-
                 Assert.assertEquals(myList.add(exp), true);
                 Assert.assertEquals(testSize, resSize);
 
@@ -81,7 +79,7 @@ public class MyListTest
             }
 
         @Test
-        public void testGet() throws Exception
+        public void testGet()
             {
                 myList = new MyList();
                 Object a = new Object();
@@ -91,7 +89,7 @@ public class MyListTest
             }
 
         @Test
-        public void testSet() throws Exception
+        public void testSet()
             {
                 myList = new MyList();
                 Object a = new Object();
@@ -104,7 +102,7 @@ public class MyListTest
 
 
         @Test
-        public void testIndexOf() throws Exception
+        public void testIndexOf()
             {
                 myList = new MyList();
                 Object a = new Object();
@@ -113,6 +111,5 @@ public class MyListTest
                 myList.add(b);
                 int res = 1;
                 Assert.assertEquals(res, myList.indexOf(b));
-
             }
     }

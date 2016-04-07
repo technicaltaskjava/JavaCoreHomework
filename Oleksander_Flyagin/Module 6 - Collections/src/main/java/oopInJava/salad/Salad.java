@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Salad
     {
 
-       private ArrayList<Vegetables> sald = new ArrayList();
+        private ArrayList<Vegetables> sald = new ArrayList<Vegetables>();
 
         public void creatSald(Vegetables vegetables)
             {
@@ -82,12 +82,18 @@ public class Salad
 
         {
 
+
+            @Override
             public int compare (Vegetables o1, Vegetables o2)
             {
                 if (o1.getCalories() < o2.getCalories())
-                    return -1;
+                    {
+                        return -1;
+                    }
                 if (o1.getCalories() > o2.getCalories())
-                    return 1;
+                    {
+                        return 1;
+                    }
                 return 0;
             }
 

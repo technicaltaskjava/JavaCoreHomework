@@ -1,6 +1,7 @@
 package colletcionParking;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class Parking implements Iterable<Car>
     {
@@ -21,7 +22,9 @@ public class Parking implements Iterable<Car>
                 for (Car places : place)
                     {
                         if (places.getModel().equals(model) && places.getDriverName().equals(name))
-                            break;
+                            {
+                                break;
+                            }
                             placaeNuber++;
                     }
                 System.out.println("Car " + place[placaeNuber] + " go out");
@@ -55,10 +58,12 @@ public class Parking implements Iterable<Car>
 
 
                 if (sumEmptyPlace()== 0)
+                    {
                         System.out.println("Park don't have empty place");
+                    }
 
                 System.out.println("Car  " + car + " serch place");
-                for (int placaeNuber = 0; placaeNuber<size(); )
+                for (int placaeNuber = 0; placaeNuber<size(); placaeNuber++)
                     {
 
                         if(place[placaeNuber]==null)
@@ -69,7 +74,7 @@ public class Parking implements Iterable<Car>
                                 break;
                             }
                         car.goToRight();
-                        placaeNuber++;
+
 
                     }
             }
@@ -111,6 +116,7 @@ public class Parking implements Iterable<Car>
             }
 
 
+        @Override
         public Iterator<Car> iterator()
             {
                 return (Iterator<Car>) new CarItecrator(place);
@@ -129,13 +135,18 @@ public class Parking implements Iterable<Car>
                         this.array = place;
                     }
 
+                @Override
                 public boolean hasNext()
                     {
                         return stap < size();
                     }
 
+                @Override
                 public Car next()
                     {
+                        if(!hasNext()){
+                            throw new NoSuchElementException();
+                        }
 
                         return place[stap++];
                     }
