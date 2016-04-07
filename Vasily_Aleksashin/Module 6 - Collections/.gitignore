@@ -6,3 +6,7 @@
 
 ### Maven template
 target/
+
+### SonarQube
+.sonar/
+sonar-project.properties
