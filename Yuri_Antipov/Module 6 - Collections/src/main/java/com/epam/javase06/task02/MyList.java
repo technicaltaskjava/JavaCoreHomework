@@ -5,7 +5,6 @@ public class MyList<E> {
     private static final int DEFAULT_SIZE = 16;
     private int maxSize;
     private int listSize;
-    //private int size = 0;
 
     MyList(int size) {
         maxSize = size;
@@ -56,7 +55,8 @@ public class MyList<E> {
         listSize--;
         return del;
     }
-
+	
+	@Override
     public String toString() {
 
         for(E s : listArray) {
@@ -64,6 +64,6 @@ public class MyList<E> {
                 System.out.println(s.toString());
             }
         }
-        return listArray.toString();
+        return Arrays.toString(listArray);
     }
 }

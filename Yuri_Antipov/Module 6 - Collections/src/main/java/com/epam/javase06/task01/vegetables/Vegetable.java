@@ -41,7 +41,9 @@ public class Vegetable implements Comparable<Vegetable> {
     }
     @Override
     public boolean equals(Object otherObject) {
-        if (!super.equals(otherObject)) return false;
+        if (!super.equals(otherObject)) {
+			return false;
+		}
         Vegetable other = (Vegetable) otherObject;
         return name.equalsIgnoreCase(other.name);
     }
