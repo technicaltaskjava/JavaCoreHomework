@@ -1,0 +1,16 @@
+### JetBrains template
+*.iml
+
+## Directory-based project format:
+.idea/
+
+### Maven template
+target/
+
+### SonarQube
+.sonar/
+sonar-project.properties
+
+### Project template
+/xml/
+/src/main/resources/custom_pom.xml
