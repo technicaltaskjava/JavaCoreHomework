@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+
+<PLAY>
+    <TITLE>The Tragedy of Antony and Cleopatra</TITLE>
+
+    <FM>
+        <P>Text placed in the public domain by Moby Lexical Tools, 1992.</P>
+        <P>SGML markup by Jon Bosak, 1992-1994.</P>
+        <P>XML version by Jon Bosak, 1996-1998.</P>
+        <P>This work may be freely copied and distributed worldwide.</P>
+    </FM>
+<SPEECH>
+    <SPEAKER>CLEOPATRA</SPEAKER>
+    <LINE>If it be love indeed, tell me how much.</LINE>
+</SPEECH>
+
+<SPEECH>
+<SPEAKER>MARK ANTONY</SPEAKER>
+<LINE>There's beggary in the love that can be reckon'd.</LINE>
+</SPEECH>
+    </PLAY>
