@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<!DOCTYPE PLAY SYSTEM "play.dtd">
+
+<PLAY>
+<TITLE>The Tragedy of Hamlet, Prince of Denmark</TITLE>
+
+<PERSONAE>
+<TITLE>Dramatis Personae</TITLE>
+
+<PERSONA>CLAUDIUS, king of Denmark. </PERSONA>
+<PERSONA>HAMLET, son to the late, and nephew to the present king.</PERSONA>
+<PERSONA>POLONIUS, lord chamberlain. </PERSONA>
+<PERSONA>HORATIO, friend to Hamlet.</PERSONA>
+<PERSONA>LAERTES, son to Polonius.</PERSONA>
+<PERSONA>LUCIANUS, nephew to the king.</PERSONA>
+
+<PGROUP>
+<PERSONA>VOLTIMAND</PERSONA>
+<PERSONA>CORNELIUS</PERSONA>
+<PERSONA>ROSENCRANTZ</PERSONA>
+<PERSONA>GUILDENSTERN</PERSONA>
+<PERSONA>OSRIC</PERSONA>
+<GRPDESCR>courtiers.</GRPDESCR>
+</PGROUP>
+
+<PERSONA>A Gentleman</PERSONA>
+<PERSONA>A Priest. </PERSONA>
+
+<PGROUP>
+<PERSONA>MARCELLUS</PERSONA>
+<PERSONA>BERNARDO</PERSONA>
+<GRPDESCR>officers.</GRPDESCR>
+</PGROUP>
+
+<PERSONA>FRANCISCO, a soldier.</PERSONA>
+<PERSONA>REYNALDO, servant to Polonius.</PERSONA>
+<PERSONA>Players.</PERSONA>
+<PERSONA>Two Clowns, grave-diggers.</PERSONA>
+<PERSONA>FORTINBRAS, prince of Norway. </PERSONA>
+<PERSONA>A Captain.</PERSONA>
+<PERSONA>English Ambassadors. </PERSONA>
+<PERSONA>GERTRUDE, queen of Denmark, and mother to Hamlet. </PERSONA>
+<PERSONA>OPHELIA, daughter to Polonius.</PERSONA>
+<PERSONA>Lords, Ladies, Officers, Soldiers, Sailors, Messengers, and other Attendants.</PERSONA>
+<PERSONA>Ghost of Hamlet's Father. </PERSONA>
+</PERSONAE>
+
+<SCNDESCR>SCENE  Denmark.</SCNDESCR>
+
+<PLAYSUBT>HAMLET</PLAYSUBT>
+
+<ACT><TITLE>ACT I</TITLE>
+
+<SCENE><TITLE>SCENE I.  Elsinore. A platform before the castle.</TITLE>
+<STAGEDIR>FRANCISCO at his post. Enter to him BERNARDO</STAGEDIR>
+
+<SPEECH>
+<SPEAKER>BERNARDO</SPEAKER>
+<LINE>Who's there?</LINE>
+</SPEECH>
+
+<SPEECH>
+<SPEAKER>FRANCISCO</SPEAKER>
+<LINE>Nay, answer me: stand, and unfold yourself.</LINE>
+</SPEECH>
+
+<SPEECH>
+<SPEAKER>BERNARDO</SPEAKER>
+<LINE>Long live the king!</LINE>
+</SPEECH>
+
+<SPEECH>
+<SPEAKER>FRANCISCO</SPEAKER>
+<LINE>Bernardo?</LINE>
+</SPEECH>
+
+<SPEECH>
+<SPEAKER>BERNARDO</SPEAKER>
+<LINE>He.</LINE>
+</SPEECH>
+
+<SPEECH>
+<SPEAKER>FRANCISCO</SPEAKER>
+<LINE>You come most carefully upon your hour.</LINE>
+</SPEECH>
+
+<SPEECH>
+<SPEAKER>BERNARDO</SPEAKER>
+<LINE>'Tis now struck twelve; get thee to bed, Francisco.</LINE>
+</SPEECH>
+
+<SPEECH>
+<SPEAKER>FRANCISCO</SPEAKER>
+<LINE>For this relief much thanks: 'tis bitter cold,</LINE>
+<LINE>And I am sick at heart.</LINE>
+</SPEECH>
+
+<SPEECH>
+<SPEAKER>BERNARDO</SPEAKER>
+<LINE>Have you had quiet guard?</LINE>
+</SPEECH>
+
+<SPEECH>
+<SPEAKER>FRANCISCO</SPEAKER>
+<LINE>Not a mouse stirring.</LINE>
+</SPEECH>
+
+<SPEECH>
+<SPEAKER>BERNARDO</SPEAKER>
+<LINE>Well, good night.</LINE>
+<LINE>If you do meet Horatio and Marcellus,</LINE>
+<LINE>The rivals of my watch, bid them make haste.</LINE>
+</SPEECH>
+
+<SPEECH>
+<SPEAKER>FRANCISCO</SPEAKER>
+<LINE>I think I hear them. Stand, ho! Who's there?</LINE>
+</SPEECH>
+
+</SCENE>
+</ACT>
+</PLAY>
