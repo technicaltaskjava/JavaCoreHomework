@@ -1,14 +1,11 @@
 package com.epam.task1;
 
-import com.epam.task1.dom.MyJavaDOMParser;
-import com.epam.task1.dom.MySunDOMParser;
+import com.epam.task1.dom.MyDOMParser;
 import com.epam.task1.otherclasses.Pair;
 import com.epam.task1.otherclasses.Speech;
 import com.epam.task1.sax.MySAXParser;
 import com.epam.task1.stax.MyStAXParser;
-import org.apache.log4j.Logger;
 
-import java.io.IOException;
 import java.util.*;
 
 /**
@@ -16,29 +13,19 @@ import java.util.*;
  */
 public class Controller {
 
-    private static final Logger logger = Logger.getLogger(View.class);
-
     private Controller() {
     }
 
     public static List<Speech> performParse(String parser, String url) {
 
         switch (parser) {
-            case "JavaDOM":
-                return MyJavaDOMParser.performParse(url);
-            case "SunDOM":
-                return MySunDOMParser.performParse(url);
+            case "DOM":
+                return MyDOMParser.performParse(url);
             case "SAX":
                 return MySAXParser.performParse(url);
             default:
-                try {
-                    return MyStAXParser.performParse(url);
-                } catch (IOException e) {
-                    org.apache.log4j.BasicConfigurator.configure();
-                    logger.error(e);
-                }
+                return MyStAXParser.performParse(url);
         }
-        return Collections.emptyList();
     }
 
     public static Map<String, Pair> countStatistics(List<Speech> list) {

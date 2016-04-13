@@ -1,7 +1,6 @@
 package com.epam.task1;
 
-import com.epam.task1.dom.MyJavaDOMParser;
-import com.epam.task1.dom.MySunDOMParser;
+import com.epam.task1.dom.MyDOMParser;
 import com.epam.task1.otherclasses.Speech;
 import com.epam.task1.sax.MySAXParser;
 import com.epam.task1.stax.MyStAXParser;
@@ -9,14 +8,12 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.IOException;
 import java.util.List;
 
 /**
  * Created by O.Gondar on 12.04.2016.
- *
- *  <b>Note:</b> You need Internet connection for successfully perform tests!
- *
+ * <p>
+ * <b>Note:</b> You need Internet connection for successfully perform tests!
  */
 public class TestsForParsers {
 
@@ -30,14 +27,8 @@ public class TestsForParsers {
     List<Speech> speechList;
 
     @Test
-    public void testSunDOMParser() {
-        speechList = MySunDOMParser.performParse(TEST_PIECE_URL);
-        testParserOnSampleSpeaker(speechList);
-    }
-
-    @Test
-    public void testJavaDOMParser() {
-        speechList = MyJavaDOMParser.performParse(TEST_PIECE_URL);
+    public void testDOMParser() {
+        speechList = MyDOMParser.performParse(TEST_PIECE_URL);
         testParserOnSampleSpeaker(speechList);
     }
 
@@ -49,13 +40,8 @@ public class TestsForParsers {
 
     @Test
     public void testStAXParser() {
-        try {
-            speechList = MyStAXParser.performParse(TEST_PIECE_URL);
-            testParserOnSampleSpeaker(speechList);
-        } catch (IOException e) {
-            org.apache.log4j.BasicConfigurator.configure();
-            logger.error(e);
-        }
+        speechList = MyStAXParser.performParse(TEST_PIECE_URL);
+        testParserOnSampleSpeaker(speechList);
     }
 
     private void testParserOnSampleSpeaker(List<Speech> speechList) {

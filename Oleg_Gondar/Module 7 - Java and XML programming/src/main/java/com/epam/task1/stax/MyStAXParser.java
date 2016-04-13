@@ -27,14 +27,14 @@ public class MyStAXParser {
     private MyStAXParser() {
     }
 
-    public static List<Speech> performParse(String url) throws IOException {
+    public static List<Speech> performParse(String url) {
         XMLInputFactory inputFactory = XMLInputFactory.newInstance();
         inputFactory.setProperty(IGNORE_EXTERNAL_DTD_URL, Boolean.TRUE);
         try {
             InputStream input = new URL(url).openStream();
             XMLStreamReader reader = inputFactory.createXMLStreamReader(input);
             return process(reader);
-        } catch (XMLStreamException e) {
+        } catch (IOException | XMLStreamException e) {
             org.apache.log4j.BasicConfigurator.configure();
             logger.error(e);
         }
@@ -62,7 +62,7 @@ public class MyStAXParser {
                 case XMLStreamConstants.END_ELEMENT:
                     elementName = reader.getLocalName();
                     if (SPEECH_TAG_ID.equals(elementName)) {
-                            menu.add(speech);
+                        menu.add(speech);
                     }
                     break;
                 default:
@@ -72,7 +72,7 @@ public class MyStAXParser {
         return menu;
     }
 
-    private static void processCharacters(String elementName, Speech speech, String text){
+    private static void processCharacters(String elementName, Speech speech, String text) {
         if (!text.isEmpty() && elementName != null && speech != null) {
 
             switch (elementName) {

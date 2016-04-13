@@ -18,11 +18,11 @@ import java.util.List;
 /**
  * Created by O.Gondar on 13.04.2016.
  */
-public class MyJavaDOMParser {
+public class MyDOMParser {
 
-    private static final Logger logger = Logger.getLogger(MySunDOMParser.class);
+    private static final Logger logger = Logger.getLogger(MyDOMParser.class);
 
-    private MyJavaDOMParser() {
+    private MyDOMParser() {
     }
 
     public static List<Speech> performParse(String url) {

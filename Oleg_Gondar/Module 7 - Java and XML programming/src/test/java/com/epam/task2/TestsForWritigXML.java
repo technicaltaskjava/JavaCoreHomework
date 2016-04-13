@@ -2,6 +2,7 @@ package com.epam.task2;
 
 import org.apache.log4j.Logger;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.FileWriter;
@@ -16,7 +17,8 @@ public class TestsForWritigXML {
     private static final Logger logger = Logger.getLogger(TestsForWritigXML.class);
 
     @Test
-    public void testValidationXML() {
+    public void testValidationXML() throws IOException {
+
         try {
             FileWriter fileWriter = new FileWriter(FILE_NAME_FOR_TESTS);
             fileWriter.write("test");
@@ -24,8 +26,8 @@ public class TestsForWritigXML {
             Assert.assertFalse(ValidatePOM.isValid(FILE_NAME_FOR_TESTS));
             Assert.assertTrue(ValidatePOM.isValid("pom.xml"));
         } catch (IOException e) {
-            org.apache.log4j.BasicConfigurator.configure();
             logger.error(e);
+            throw new IOException();
         }
     }
 
