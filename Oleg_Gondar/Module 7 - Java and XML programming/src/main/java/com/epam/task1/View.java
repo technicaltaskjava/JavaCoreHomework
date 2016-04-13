@@ -24,7 +24,7 @@ public class View {
     private static final String PIECES_URL_FOR_PARSE = "http://www.ibiblio.org/xml/examples/shakespeare/";
     private static final String DEFAULT_PIECE_URL_FOR_PARSE = "http://www.ibiblio.org/xml/examples/shakespeare/all_well.xml";
     private static final String ASK_FOR_PIECE_SELECTION = "Enter number to select piece for parse from list above (by default \"Alls Well That Ends Well\"):";
-    private static final String ASK_FOR_PARSER_SELECTION = "Enter parsing method (DOM, SAX or StAX (by default)):";
+    private static final String ASK_FOR_PARSER_SELECTION = "Enter parsing method (JavaDOM, SunDOM, SAX or StAX (by default)):";
 
     private static final Logger logger = Logger.getLogger(View.class);
 

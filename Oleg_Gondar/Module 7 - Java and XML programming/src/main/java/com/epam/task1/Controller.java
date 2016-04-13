@@ -1,6 +1,7 @@
 package com.epam.task1;
 
-import com.epam.task1.dom.MyDOMParser;
+import com.epam.task1.dom.MyJavaDOMParser;
+import com.epam.task1.dom.MySunDOMParser;
 import com.epam.task1.otherclasses.Pair;
 import com.epam.task1.otherclasses.Speech;
 import com.epam.task1.sax.MySAXParser;
@@ -23,8 +24,10 @@ public class Controller {
     public static List<Speech> performParse(String parser, String url) {
 
         switch (parser) {
-            case "DOM":
-                return MyDOMParser.performParse(url);
+            case "JavaDOM":
+                return MyJavaDOMParser.performParse(url);
+            case "SunDOM":
+                return MySunDOMParser.performParse(url);
             case "SAX":
                 return MySAXParser.performParse(url);
             default:

@@ -18,12 +18,12 @@ import java.util.List;
 /**
  * Created by Oleg on 09.04.2016.
  */
-public class MyDOMParser {
+public class MySunDOMParser {
 
     private static final String LOAD_EXTERNAL_DTD_URL = "http://apache.org/xml/features/nonvalidating/load-external-dtd";
-    private static final Logger logger = Logger.getLogger(MyDOMParser.class);
+    private static final Logger logger = Logger.getLogger(MySunDOMParser.class);
 
-    private MyDOMParser() {
+    private MySunDOMParser() {
     }
 
     public static List<Speech> performParse(String url) {

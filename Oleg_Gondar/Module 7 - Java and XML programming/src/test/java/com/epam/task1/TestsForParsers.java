@@ -1,6 +1,7 @@
 package com.epam.task1;
 
-import com.epam.task1.dom.MyDOMParser;
+import com.epam.task1.dom.MyJavaDOMParser;
+import com.epam.task1.dom.MySunDOMParser;
 import com.epam.task1.otherclasses.Speech;
 import com.epam.task1.sax.MySAXParser;
 import com.epam.task1.stax.MyStAXParser;
@@ -27,8 +28,14 @@ public class TestsForParsers {
     List<Speech> speechList;
 
     @Test
-    public void testDOMParser() {
-        speechList = MyDOMParser.performParse(TEST_PIECE_URL);
+    public void testSunDOMParser() {
+        speechList = MySunDOMParser.performParse(TEST_PIECE_URL);
+        testParserOnSampleSpeaker(speechList);
+    }
+
+    @Test
+    public void testJavaDOMParser() {
+        speechList = MyJavaDOMParser.performParse(TEST_PIECE_URL);
         testParserOnSampleSpeaker(speechList);
     }
 
