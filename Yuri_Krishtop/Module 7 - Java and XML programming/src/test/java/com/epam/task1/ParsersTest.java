@@ -15,20 +15,32 @@ public class ParsersTest {
     String[] nameFile = {"src/main/resources/test.xml", " "};
 
     @Test
-    public void testSAXParser() throws IOException, SAXException, ParserConfigurationException {
+    public void testSAXParser() {
         System.out.println("SAX parser:");
-        SAXParser.main(nameFile);
+        try {
+            SAXParser.main(nameFile);
+        } catch (ParserConfigurationException | SAXException | IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
-    public void testDOMParser() throws IOException, SAXException, ParserConfigurationException {
+    public void testDOMParser() {
         System.out.println("DOM parser:");
-        DOMParser.main(nameFile);
+        try {
+            DOMParser.main(nameFile);
+        } catch (ParserConfigurationException | SAXException | IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
-    public void testStAXParser() throws IOException, SAXException, ParserConfigurationException, XMLStreamException {
+    public void testStAXParser() {
         System.out.println("StAX parser:");
-        StAXParser.main(nameFile);
+        try {
+            StAXParser.main(nameFile);
+        } catch (XMLStreamException | IOException e) {
+            e.printStackTrace();
+        }
     }
 }
