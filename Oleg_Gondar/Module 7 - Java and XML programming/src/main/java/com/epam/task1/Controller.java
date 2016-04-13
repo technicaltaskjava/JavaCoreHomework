@@ -34,6 +34,7 @@ public class Controller {
                 try {
                     return MyStAXParser.performParse(url);
                 } catch (IOException e) {
+                    org.apache.log4j.BasicConfigurator.configure();
                     logger.error(e);
                 }
         }

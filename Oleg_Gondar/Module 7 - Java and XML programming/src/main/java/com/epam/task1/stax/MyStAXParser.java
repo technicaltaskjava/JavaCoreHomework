@@ -35,6 +35,7 @@ public class MyStAXParser {
             XMLStreamReader reader = inputFactory.createXMLStreamReader(input);
             return process(reader);
         } catch (XMLStreamException e) {
+            org.apache.log4j.BasicConfigurator.configure();
             logger.error(e);
         }
         return Collections.emptyList();

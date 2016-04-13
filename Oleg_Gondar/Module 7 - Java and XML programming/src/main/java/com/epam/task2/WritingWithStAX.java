@@ -106,6 +106,7 @@ public class WritingWithStAX {
             writer.flush();
             writer.close();
         } catch (XMLStreamException | IOException e) {
+            org.apache.log4j.BasicConfigurator.configure();
             logger.error(e);
         }
     }

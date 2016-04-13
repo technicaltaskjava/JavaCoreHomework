@@ -33,8 +33,6 @@ public class View {
 
     public static void main(String[] args) {
 
-        org.apache.log4j.BasicConfigurator.configure();
-
         String url = getPieceChoose();
         String parser = getParserChoose();
         List<Speech> speechList = Controller.performParse(parser, url);
@@ -57,7 +55,7 @@ public class View {
                 return links.get(userChoise).absUrl("href");
             }
         } catch (InputMismatchException | IOException e) {
-
+            org.apache.log4j.BasicConfigurator.configure();
             logger.error("Error in input " + e + " continue with default value - " + DEFAULT_PIECE_URL_FOR_PARSE);
         }
         return DEFAULT_PIECE_URL_FOR_PARSE;

@@ -130,6 +130,7 @@ public class WritingWithDOM {
             transformer.transform(source, result);
 
         } catch (TransformerException | IOException | ParserConfigurationException e) {
+            org.apache.log4j.BasicConfigurator.configure();
             logger.error(e);
         }
 

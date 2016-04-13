@@ -36,6 +36,7 @@ public class MyJavaDOMParser {
             return parse(nList);
 
         } catch (ParserConfigurationException | SAXException | IOException e) {
+            org.apache.log4j.BasicConfigurator.configure();
             logger.error(e);
         }
         return Collections.emptyList();

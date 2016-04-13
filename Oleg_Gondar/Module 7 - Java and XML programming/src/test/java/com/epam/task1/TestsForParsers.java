@@ -5,6 +5,7 @@ import com.epam.task1.dom.MySunDOMParser;
 import com.epam.task1.otherclasses.Speech;
 import com.epam.task1.sax.MySAXParser;
 import com.epam.task1.stax.MyStAXParser;
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -19,11 +20,12 @@ import java.util.List;
  */
 public class TestsForParsers {
 
-    public static final int SPEAKER_NUMBER_FOR_TEST = 0;
-    public static final int SPEAKER_WORDS_COUNT_TEST_RESULT = 11;
-    public static final String TEST_PIECE_URL = "http://www.ibiblio.org/xml/examples/shakespeare/all_well.xml";
-    public static final String SPEAKER_NAME_TEST_RESULT = "COUNTESS";
-    public static final String SPEAKER_SPEECH_TEST_RESULT = "[In delivering my son from me, I bury a second husband.]";
+    private static final int SPEAKER_NUMBER_FOR_TEST = 0;
+    private static final int SPEAKER_WORDS_COUNT_TEST_RESULT = 11;
+    private static final String TEST_PIECE_URL = "http://www.ibiblio.org/xml/examples/shakespeare/all_well.xml";
+    private static final String SPEAKER_NAME_TEST_RESULT = "COUNTESS";
+    private static final String SPEAKER_SPEECH_TEST_RESULT = "[In delivering my son from me, I bury a second husband.]";
+    private static final Logger logger = Logger.getLogger(TestsForParsers.class);
 
     List<Speech> speechList;
 
@@ -51,7 +53,8 @@ public class TestsForParsers {
             speechList = MyStAXParser.performParse(TEST_PIECE_URL);
             testParserOnSampleSpeaker(speechList);
         } catch (IOException e) {
-            e.printStackTrace();
+            org.apache.log4j.BasicConfigurator.configure();
+            logger.error(e);
         }
     }
 
