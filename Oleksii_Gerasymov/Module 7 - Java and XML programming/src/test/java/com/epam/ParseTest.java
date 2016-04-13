@@ -14,19 +14,20 @@ import static junit.framework.Assert.assertEquals;
 public class ParseTest {
     @Test
     public void listTest() {
-
-        PlayList domSpeakerList = ParsingByDom.parseRun("src/main/resources/com_err.xml");
-        PlayList saxSpeakerList = ParsingBySax.parseRun("src/main/resources/com_err.xml");
-        PlayList staxSpeakerList = ParsingByStax.parseRun("src/main/resources/com_err.xml");
+        String play = "src/main/resources/com_err.xml";
+        PlayList domSpeakerList = ParsingByDom.parseRun(play);
+        PlayList saxSpeakerList = ParsingBySax.parseRun(play);
+        PlayList staxSpeakerList = ParsingByStax.parseRun(play);
         Speaker[] domSortedList = domSpeakerList.sortSpeaker();
-        Speaker[] saxSortedList = domSpeakerList.sortSpeaker();
-        Speaker[] staxSortedList = domSpeakerList.sortSpeaker();
+        Speaker[] saxSortedList = saxSpeakerList.sortSpeaker();
+        Speaker[] staxSortedList = staxSpeakerList.sortSpeaker();
 
-        assertEquals("ADRIANA", domSortedList[0].getName());
+        String firstSpeaker = "ADRIANA";
+        assertEquals(firstSpeaker, domSortedList[0].getName());
         assertEquals(79, domSortedList[0].getNumberOfSpeech());
-        assertEquals("ADRIANA", saxSortedList[0].getName());
+        assertEquals(firstSpeaker, saxSortedList[0].getName());
         assertEquals(79, saxSortedList[0].getNumberOfSpeech());
-        assertEquals("ADRIANA", staxSortedList[0].getName());
+        assertEquals(firstSpeaker, staxSortedList[0].getName());
         assertEquals(79, staxSortedList[0].getNumberOfSpeech());
         Random random = new Random();
         int randomSpeaker = random.nextInt(domSortedList.length);

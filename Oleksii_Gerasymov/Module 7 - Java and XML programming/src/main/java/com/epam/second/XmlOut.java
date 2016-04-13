@@ -40,6 +40,8 @@ public class XmlOut {
 
     private static Document createDocument(Document document) {
 
+        String groupIdElement = "groupId";
+        String artifactIdElement = "artifactId";
         Element project = document.createElement("project");
         project.setAttribute("xmlns", "http://maven.apache.org/POM/4.0.0");
         project.setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
@@ -49,11 +51,11 @@ public class XmlOut {
         modelVersion.setTextContent("4.0.0");
         project.appendChild(modelVersion);
 
-        Element groupId = document.createElement("groupId");
+        Element groupId = document.createElement(groupIdElement);
         groupId.setTextContent("com.epam");
         project.appendChild(groupId);
 
-        Element artifactId = document.createElement("artifactId");
+        Element artifactId = document.createElement(artifactIdElement);
         artifactId.setTextContent("seven-homework");
         project.appendChild(artifactId);
 
@@ -74,11 +76,11 @@ public class XmlOut {
 
         Element plugin1 = document.createElement("plugin");
         plugins.appendChild(plugin1);
-        Element groupId1 = document.createElement("groupId");
+        Element groupId1 = document.createElement(groupIdElement);
         groupId1.setTextContent("org.apache.maven.plugins");
         plugin1.appendChild(groupId1);
 
-        Element artifactId1 = document.createElement("artifactId");
+        Element artifactId1 = document.createElement(artifactIdElement);
         artifactId1.setTextContent("maven-compiler-plugin");
         plugin1.appendChild(artifactId1);
         Element configuration1 = document.createElement("configuration");
@@ -92,11 +94,11 @@ public class XmlOut {
 
         Element plugin2 = document.createElement("plugin");
         plugins.appendChild(plugin2);
-        Element groupId2 = document.createElement("groupId");
+        Element groupId2 = document.createElement(groupIdElement);
         groupId2.setTextContent("org.apache.maven.plugins");
         plugin2.appendChild(groupId2);
 
-        Element artifactId2 = document.createElement("artifactId");
+        Element artifactId2 = document.createElement(artifactIdElement);
         artifactId2.setTextContent("maven-jar-plugin");
         plugin2.appendChild(artifactId2);
         Element configuration2 = document.createElement("configuration");
@@ -120,10 +122,10 @@ public class XmlOut {
         for(int index = 0; index <= 2; index++) {
             Element dependency = document.createElement("dependency");
             dependencies.appendChild(dependency);
-            Element groupIdd = document.createElement("groupId");
+            Element groupIdd = document.createElement(groupIdElement);
             groupIdd.setTextContent(depArray[index][0]);
             dependency.appendChild(groupIdd);
-            Element artifactIdd = document.createElement("artifactId");
+            Element artifactIdd = document.createElement(artifactIdElement);
             artifactIdd.setTextContent(depArray[index][1]);
             dependency.appendChild(artifactIdd);
             Element versiond = document.createElement("version");
