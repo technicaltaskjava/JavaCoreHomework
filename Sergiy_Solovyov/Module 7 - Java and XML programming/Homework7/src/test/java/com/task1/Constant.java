@@ -1,6 +1,7 @@
-
+package com.task1;
 
 public class Constant {
+    private Constant(){}
 
     public static final String RESULT = "---------------------------------\n" +
             "CLEOPATRA\n" +

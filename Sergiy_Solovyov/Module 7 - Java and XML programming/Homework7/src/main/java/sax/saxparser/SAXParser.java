@@ -21,7 +21,7 @@ public class SAXParser {
             reader.setContentHandler(handler);
             reader.parse(new InputSource(path));
             System.out.println(handler.toString());
-        } catch (SAXException|IOException e) { //NOSONAR
+        } catch (IOException|SAXException e) {
             throw new MySAXException(e.getMessage());
         }
 

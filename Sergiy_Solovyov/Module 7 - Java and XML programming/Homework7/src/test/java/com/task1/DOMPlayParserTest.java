@@ -1,3 +1,5 @@
+package com.task1;
+
 import dom.DOMPlayParser;
 import exceptions.MyDOMException;
 import org.junit.Test;

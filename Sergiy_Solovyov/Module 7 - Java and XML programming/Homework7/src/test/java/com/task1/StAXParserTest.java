@@ -1,3 +1,5 @@
+package com.task1;
+
 import org.junit.Test;
 import stax.StAXParser;
 import javax.xml.stream.XMLStreamException;
