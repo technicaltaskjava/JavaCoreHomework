@@ -1,6 +1,7 @@
 package com.epam.task1;
 
 import org.junit.Test;
+import org.apache.log4j.Logger;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -11,6 +12,7 @@ import java.io.IOException;
  * Created by Yuriy Krishtop on 10.04.2016.
  */
 public class ParsersTest {
+    private static final Logger log = Logger.getLogger(ParsersTest.class);
 
     String[] nameFile = {"src/main/resources/test.xml", " "};
 
@@ -20,7 +22,7 @@ public class ParsersTest {
         try {
             SAXParser.main(nameFile);
         } catch (ParserConfigurationException | SAXException | IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 
@@ -30,7 +32,7 @@ public class ParsersTest {
         try {
             DOMParser.main(nameFile);
         } catch (ParserConfigurationException | SAXException | IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 
@@ -40,7 +42,7 @@ public class ParsersTest {
         try {
             StAXParser.main(nameFile);
         } catch (XMLStreamException | IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 }
