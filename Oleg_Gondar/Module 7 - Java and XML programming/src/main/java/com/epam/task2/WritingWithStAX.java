@@ -13,6 +13,12 @@ import java.io.IOException;
  */
 public class WritingWithStAX {
 
+    private static final String ARTIFACT_ID = "artifactId";
+    private static final String GROUP_ID = "groupId";
+    private static final String VERSION = "version";
+    private static final String XMLNS = "http://maven.apache.org/POM/4.0.0";
+    private static final String XMLNS_XSI = "http://www.w3.org/2001/XMLSchema-instance";
+    private static final String XSI_SCHEMA_LOCATION = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd";
     private static final Logger logger = Logger.getLogger(WritingWithStAX.class);
 
     private WritingWithStAX() {
@@ -20,33 +26,29 @@ public class WritingWithStAX {
 
     public static void performWrite(String pomFileName) {
 
-        String artifactId = "artifactId";
-        String groupId = "groupId";
-        String version = "version";
-
         XMLOutputFactory factory = XMLOutputFactory.newInstance();
         try {
             XMLStreamWriter writer = factory.createXMLStreamWriter(new FileWriter(pomFileName));
 
             writer.writeStartDocument();
             writer.writeStartElement("project");
-            writer.writeAttribute("xmlns", "http://maven.apache.org/POM/4.0.0");
-            writer.writeAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
-            writer.writeAttribute("xsi:schemaLocation", "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd");
+            writer.writeAttribute("xmlns", XMLNS);
+            writer.writeAttribute("xmlns:xsi", XMLNS_XSI);
+            writer.writeAttribute("xsi:schemaLocation", XSI_SCHEMA_LOCATION);
 
             writer.writeStartElement("modelVersion");
             writer.writeCharacters("4.0.0");
             writer.writeEndElement();
 
-            writer.writeStartElement(artifactId);
-            writer.writeCharacters(artifactId);
+            writer.writeStartElement(ARTIFACT_ID);
+            writer.writeCharacters(ARTIFACT_ID);
             writer.writeEndElement();
 
-            writer.writeStartElement(groupId);
-            writer.writeCharacters(groupId);
+            writer.writeStartElement(GROUP_ID);
+            writer.writeCharacters(GROUP_ID);
             writer.writeEndElement();
 
-            writer.writeStartElement(version);
+            writer.writeStartElement(VERSION);
             writer.writeCharacters("1.0-SNAPSHOT");
             writer.writeEndElement();
 
@@ -54,10 +56,10 @@ public class WritingWithStAX {
             writer.writeStartElement("plugins");
             writer.writeStartElement("plugin");
 
-            writer.writeStartElement(groupId);
+            writer.writeStartElement(GROUP_ID);
             writer.writeCharacters("org.apache.maven.plugins");
             writer.writeEndElement();
-            writer.writeStartElement(artifactId);
+            writer.writeStartElement(ARTIFACT_ID);
             writer.writeCharacters("maven-compiler-plugin");
             writer.writeEndElement();
             writer.writeStartElement("configuration");
@@ -76,25 +78,25 @@ public class WritingWithStAX {
             writer.writeStartElement("dependencies");
 
             writer.writeStartElement("dependency");
-            writer.writeStartElement(groupId);
+            writer.writeStartElement(GROUP_ID);
             writer.writeCharacters("org.jsoup");
             writer.writeEndElement();
-            writer.writeStartElement(artifactId);
+            writer.writeStartElement(ARTIFACT_ID);
             writer.writeCharacters("jsoup");
             writer.writeEndElement();
-            writer.writeStartElement(version);
+            writer.writeStartElement(VERSION);
             writer.writeCharacters("1.8.3");
             writer.writeEndElement();
             writer.writeEndElement();
 
             writer.writeStartElement("dependency");
-            writer.writeStartElement(groupId);
+            writer.writeStartElement(GROUP_ID);
             writer.writeCharacters("junit");
             writer.writeEndElement();
-            writer.writeStartElement("artifactId");
+            writer.writeStartElement(ARTIFACT_ID);
             writer.writeCharacters("junit");
             writer.writeEndElement();
-            writer.writeStartElement(version);
+            writer.writeStartElement(VERSION);
             writer.writeCharacters("4.12");
             writer.writeEndElement();
             writer.writeEndElement();

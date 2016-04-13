@@ -25,11 +25,6 @@ public class MyJavaDOMParser {
     private MyJavaDOMParser() {
     }
 
-
-    public static void main(String[] args) {
-        MyJavaDOMParser.performParse("http://www.ibiblio.org/xml/examples/shakespeare/all_well.xml");
-    }
-
     public static List<Speech> performParse(String url) {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();

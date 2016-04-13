@@ -7,6 +7,7 @@ import org.w3c.dom.Element;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -19,16 +20,18 @@ import java.io.IOException;
  */
 public class WritingWithDOM {
 
+    private static final String ARTIFACT_ID = "artifactId";
+    private static final String GROUP_ID = "groupId";
+    private static final String VERSION = "version";
+    private static final String XMLNS = "http://maven.apache.org/POM/4.0.0";
+    private static final String XMLNS_XSI = "http://www.w3.org/2001/XMLSchema-instance";
+    private static final String XSI_SCHEMA_LOCATION = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd";
     private static final Logger logger = Logger.getLogger(WritingWithDOM.class);
 
     private WritingWithDOM() {
     }
 
     public static void performWrite(String pomFileName) {
-
-        String artifactId = "artifactId";
-        String groupId = "groupId";
-        String version = "version";
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
@@ -37,23 +40,23 @@ public class WritingWithDOM {
             Document document = builder.newDocument();
 
             Element project = document.createElement("project");
-            project.setAttribute("xmlns", "http://maven.apache.org/POM/4.0.0");
-            project.setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
-            project.setAttribute("xsi:schemaLocation", "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd");
+            project.setAttribute("xmlns", XMLNS);
+            project.setAttribute("xmlns:xsi", XMLNS_XSI);
+            project.setAttribute("xsi:schemaLocation", XSI_SCHEMA_LOCATION);
 
             Element modelVersion = document.createElement("modelVersion");
             modelVersion.appendChild(document.createTextNode("4.0.0"));
             project.appendChild(modelVersion);
 
-            Element artifactIdMaven = document.createElement(artifactId);
-            artifactIdMaven.appendChild(document.createTextNode(artifactId));
+            Element artifactIdMaven = document.createElement(ARTIFACT_ID);
+            artifactIdMaven.appendChild(document.createTextNode(ARTIFACT_ID));
             project.appendChild(artifactIdMaven);
 
-            Element groupIdMaven = document.createElement(groupId);
-            groupIdMaven.appendChild(document.createTextNode(groupId));
+            Element groupIdMaven = document.createElement(GROUP_ID);
+            groupIdMaven.appendChild(document.createTextNode(GROUP_ID));
             project.appendChild(groupIdMaven);
 
-            Element versionMaven = document.createElement(version);
+            Element versionMaven = document.createElement(VERSION);
             versionMaven.appendChild(document.createTextNode("1.0-SNAPSHOT"));
             project.appendChild(versionMaven);
 
@@ -61,11 +64,11 @@ public class WritingWithDOM {
             Element plugins = document.createElement("plugins");
             Element plugin = document.createElement("plugin");
 
-            Element groupIdMavenPlugin = document.createElement(groupId);
+            Element groupIdMavenPlugin = document.createElement(GROUP_ID);
             groupIdMavenPlugin.appendChild(document.createTextNode("org.apache.maven.plugins"));
             plugin.appendChild(groupIdMavenPlugin);
 
-            Element artifactIdMavenPlugin = document.createElement(artifactId);
+            Element artifactIdMavenPlugin = document.createElement(ARTIFACT_ID);
             artifactIdMavenPlugin.appendChild(document.createTextNode("maven-compiler-plugin"));
             plugin.appendChild(artifactIdMavenPlugin);
 
@@ -88,15 +91,15 @@ public class WritingWithDOM {
 
             Element dependencyJsoup = document.createElement("dependency");
 
-            Element groupIdJsoup = document.createElement(groupId);
+            Element groupIdJsoup = document.createElement(GROUP_ID);
             groupIdJsoup.appendChild(document.createTextNode("org.jsoup"));
             dependencyJsoup.appendChild(groupIdJsoup);
 
-            Element artifactIdJsoup = document.createElement(artifactId);
+            Element artifactIdJsoup = document.createElement(ARTIFACT_ID);
             artifactIdJsoup.appendChild(document.createTextNode("jsoup"));
             dependencyJsoup.appendChild(artifactIdJsoup);
 
-            Element versionJsoup = document.createElement(version);
+            Element versionJsoup = document.createElement(VERSION);
             versionJsoup.appendChild(document.createTextNode("1.8.3"));
             dependencyJsoup.appendChild(versionJsoup);
 
@@ -104,15 +107,15 @@ public class WritingWithDOM {
 
             Element dependencyJunit = document.createElement("dependency");
 
-            Element groupIdJunit = document.createElement(groupId);
+            Element groupIdJunit = document.createElement(GROUP_ID);
             groupIdJunit.appendChild(document.createTextNode("junit"));
             dependencyJunit.appendChild(groupIdJunit);
 
-            Element artifactIdJunit = document.createElement(artifactId);
+            Element artifactIdJunit = document.createElement(ARTIFACT_ID);
             artifactIdJunit.appendChild(document.createTextNode("junit"));
             dependencyJunit.appendChild(artifactIdJunit);
 
-            Element versionJunit = document.createElement(version);
+            Element versionJunit = document.createElement(VERSION);
             versionJunit.appendChild(document.createTextNode("4.12"));
             dependencyJunit.appendChild(versionJunit);
 
@@ -120,7 +123,7 @@ public class WritingWithDOM {
             project.appendChild(dependencies);
 
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            javax.xml.transform.Transformer transformer = transformerFactory.newTransformer();
+            Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(project);
 
             StreamResult result = new StreamResult(new FileWriter(pomFileName));
