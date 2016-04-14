@@ -1,5 +1,6 @@
 package com.epam.task1.stax;
 
+import com.epam.task1.type.TagName;
 import com.epam.task1.model.Speech;
 
 import javax.xml.stream.XMLInputFactory;
@@ -21,45 +22,24 @@ public class StAXPlayStreamReader {
         List<Speech> speechList = new ArrayList<>();
         XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
         XMLStreamReader reader = xmlInputFactory.createXMLStreamReader(inputStream);
-        Speech speech = null;
-        StringBuilder cueBuilder = null;
+        Speech speech = new Speech();
+        StringBuilder cueBuilder = new StringBuilder();
         String text = "";
         while (reader.hasNext()) {
             int type = reader.next();
-            switch (type) {
-                case XMLStreamConstants.START_ELEMENT:
-                    if (("SPEECH").equals(reader.getLocalName())) {
-                        speech = new Speech();
-                        cueBuilder = new StringBuilder();
-                    }
-                    break;
-
-                case XMLStreamConstants.CHARACTERS:
-                    text = reader.getText().trim();
-                    break;
-
-                case XMLStreamConstants.END_ELEMENT:
-                    switch (reader.getLocalName()) {
-                        case "SPEAKER":
-                            if (speech != null) {
-                                speech.setSpeaker(text);
-                            }
-                            break;
-                        case "LINE":
-                            if (cueBuilder != null) {
-                                cueBuilder.append(text).append('\n');
-                            }
-                            break;
-                        case "SPEECH":
-                            if (speech != null) {
-                                speech.setCue(cueBuilder.toString());
-                            }
-                            speechList.add(speech);
-                        default:
-                            break;
-                    }
-                default:
-                    break;
+            if (type == XMLStreamConstants.CHARACTERS) {
+                text = reader.getText().trim();
+            } else if (type == XMLStreamConstants.END_ELEMENT) {
+                if (TagName.SPEAKER.name().equals(reader.getLocalName())) {
+                    speech.setSpeaker(text);
+                } else if (TagName.LINE.name().equals(reader.getLocalName())) {
+                    cueBuilder.append(text).append('\n');
+                } else if (TagName.SPEECH.name().equals(reader.getLocalName())) {
+                    speech.setCue(cueBuilder.toString());
+                    speechList.add(speech);
+                    speech = new Speech();
+                    cueBuilder = new StringBuilder();
+                }
             }
         }
         return speechList;
