@@ -22,7 +22,7 @@ public class ParsersTest {
         try {
             SAXParser.main(nameFile);
         } catch (ParserConfigurationException | SAXException | IOException e) {
-            log.error(e.getMessage());
+            log.error(e);
         }
     }
 
@@ -32,7 +32,7 @@ public class ParsersTest {
         try {
             DOMParser.main(nameFile);
         } catch (ParserConfigurationException | SAXException | IOException e) {
-            log.error(e.getMessage());
+            log.error(e);
         }
     }
 
@@ -42,7 +42,7 @@ public class ParsersTest {
         try {
             StAXParser.main(nameFile);
         } catch (XMLStreamException | IOException e) {
-            log.error(e.getMessage());
+            log.error(e);
         }
     }
 }
