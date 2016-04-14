@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!DOCTYPE PLAY>
+
+<PLAY>
+<TITLE>The Tragedy of King Richard the Second</TITLE>
+
+<FM>
+<P>Text placed in the public domain by Moby Lexical Tools, 1992.</P>
+<P>SGML markup by Jon Bosak, 1992-1994.</P>
+<P>XML version by Jon Bosak, 1996-1998.</P>
+<P>This work may be freely copied and distributed worldwide.</P>
+</FM>
+
+
+<PERSONAE>
+<TITLE>Dramatis Personae</TITLE>
+
+<PERSONA>KING RICHARD, the Second. </PERSONA>
+
+<PGROUP>
+<PERSONA>JOHN OF GAUNT, Duke of Lancaster	</PERSONA>
+<PERSONA>EDMUND OF LANGLEY, Duke of York  </PERSONA>
+<GRPDESCR>uncles to the King.</GRPDESCR>
+</PGROUP>
+
+<PERSONA>HENRY, surnamed BOLINGBROKE, Duke of Hereford</PERSONA>
+<PERSONA>son to John of Gaunt; afterwards King Henry IV.</PERSONA>
+<PERSONA>DUKE OF AUMERLE, son to the Duke of York.</PERSONA>
+<PERSONA>THOMAS MOWBRAY, Duke of Norfolk.</PERSONA>
+<PERSONA>DUKE OF SURREY</PERSONA>
+<PERSONA>EARL OF SALISBURY</PERSONA>
+<PERSONA>LORD BERKELEY</PERSONA>
+
+<PGROUP>
+<PERSONA>BUSHY</PERSONA>
+<PERSONA>BAGOT</PERSONA>
+<PERSONA>GREEN</PERSONA>
+<GRPDESCR>servants to King Richard.</GRPDESCR>
+</PGROUP>
+
+<PERSONA>EARL OF NORTHUMBERLAND</PERSONA>
+<PERSONA>HENRY PERCY, surnamed HOTSPUR, his son. </PERSONA>
+<PERSONA>LORD ROSS</PERSONA>
+<PERSONA>LORD WILLOUGHBY</PERSONA>
+<PERSONA>LORD FITZWATER</PERSONA>
+<PERSONA>BISHOP OF CARLISLE</PERSONA>
+<PERSONA>Abbot Of Westminster</PERSONA>
+<PERSONA>LORD MARSHAL</PERSONA>
+<PERSONA>SIR STEPHEN SCROOP</PERSONA>
+<PERSONA>SIR PIERCE OF EXTON</PERSONA>
+<PERSONA>Captain of a band of Welshmen. </PERSONA>
+<PERSONA>QUEEN to King Richard</PERSONA>
+<PERSONA>DUCHESS OF YORK</PERSONA>
+<PERSONA>DUCHESS OF GLOUCESTER</PERSONA>
+<PERSONA>Lady attending on the Queen. </PERSONA>
+<PERSONA>Lords, Heralds, Officers, Soldiers, two Gardeners, Keeper, Messenger, Groom, and other Attendants. </PERSONA>
+</PERSONAE>
+
+<SCNDESCR>SCENE  England and Wales.</SCNDESCR>
+
+<PLAYSUBT>KING RICHARD II</PLAYSUBT>
+
+<ACT><TITLE>ACT I</TITLE>
+
+<SCENE><TITLE>SCENE I.  London. KING RICHARD II's palace.</TITLE>
+<STAGEDIR>Enter KING RICHARD II, JOHN OF GAUNT, with other
+Nobles and Attendants</STAGEDIR>
+
+<SPEECH>
+<SPEAKER>KING RICHARD II</SPEAKER>
+<LINE>Old John of Gaunt, time-honour'd Lancaster,</LINE>
+<LINE>Hast thou, according to thy oath and band,</LINE>
+<LINE>Brought hither Henry Hereford thy bold son,</LINE>
+<LINE>Here to make good the boisterous late appeal,</LINE>
+<LINE>Which then our leisure would not let us hear,</LINE>
+<LINE>Against the Duke of Norfolk, Thomas Mowbray?</LINE>
+</SPEECH>
+
+<SPEECH>
+<SPEAKER>JOHN OF GAUNT</SPEAKER>
+<LINE>I have, my liege.</LINE>
+</SPEECH>
+
+<SPEECH>
+<SPEAKER>KING RICHARD II</SPEAKER>
+<LINE>Tell me, moreover, hast thou sounded him,</LINE>
+<LINE>If he appeal the duke on ancient malice;</LINE>
+<LINE>Or worthily, as a good subject should,</LINE>
+<LINE>On some known ground of treachery in him?</LINE>
+</SPEECH>
+
+<SPEECH>
+<SPEAKER>JOHN OF GAUNT</SPEAKER>
+<LINE>As near as I could sift him on that argument,</LINE>
+<LINE>On some apparent danger seen in him</LINE>
+<LINE>Aim'd at your highness, no inveterate malice.</LINE>
+</SPEECH>
+
+<SPEECH>
+<SPEAKER>KING RICHARD II</SPEAKER>
+<LINE>Then call them to our presence; face to face,</LINE>
+<LINE>And frowning brow to brow, ourselves will hear</LINE>
+<LINE>The accuser and the accused freely speak:</LINE>
+<LINE>High-stomach'd are they both, and full of ire,</LINE>
+<LINE>In rage deaf as the sea, hasty as fire.</LINE>
+</SPEECH>
+
+<STAGEDIR>Exeunt</STAGEDIR>
+</SCENE>
+</ACT>
+</PLAY>
