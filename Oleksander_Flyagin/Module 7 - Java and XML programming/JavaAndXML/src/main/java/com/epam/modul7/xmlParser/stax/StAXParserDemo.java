@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
@@ -19,6 +20,7 @@ import javax.xml.stream.events.XMLEvent;
 
 public class StAXParserDemo
     {
+        private Logger myLog =  Logger.getLogger("Loger");
         Person  person = new Person();
         private List<Person> persons = new ArrayList<>();
         private boolean bName = false;
@@ -62,7 +64,8 @@ private List<Person> ListPerson(String fileName)
             }
         catch (FileNotFoundException | XMLStreamException e)
             {
-                e.printStackTrace();
+
+                myLog.info("can't get document" + e);
             }
         return persons;
     }

@@ -12,11 +12,17 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
+import java.util.logging.Logger;
 
 public class DomPars
     {
+
+      private   Logger myLog =  Logger.getLogger("Loger");
         private Document parsFile(File file)
             {
+
+
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                 Document document = null;
                 try
@@ -25,9 +31,13 @@ public class DomPars
 
                         document = db.parse(file);
                     }
+
                 catch (ParserConfigurationException | SAXException | IOException e)
                     {
-                        e.getMessage();
+
+                        myLog.info("can't get document" + e);
+                        document = null;
+
                     }
 
 

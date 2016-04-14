@@ -14,7 +14,6 @@ public enum PersonTegName
                         case "SPEAKER":
                             return SPEAKER;
 
-
                         case "LINE":
                             return LINE;
 
