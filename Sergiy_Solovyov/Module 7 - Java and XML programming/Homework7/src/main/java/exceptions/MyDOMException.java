@@ -9,4 +9,8 @@ public class MyDOMException extends Exception{
         super(message);
     }
 
+    public MyDOMException(String message, Throwable cause) {
+        		super(message, cause);
+    }
+
 }

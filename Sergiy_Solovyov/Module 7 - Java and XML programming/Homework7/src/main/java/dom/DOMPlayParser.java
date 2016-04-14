@@ -32,7 +32,7 @@ public class DOMPlayParser {
             Element root = document.getDocumentElement();
             process(root);
         } catch (ParserConfigurationException|SAXException|IOException e) {//NOSONAR
-            throw new MyDOMException(e.getMessage());
+            throw new MyDOMException(e.getMessage(), e);
         }
 
     }

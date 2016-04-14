@@ -22,7 +22,7 @@ public class SAXParser {
             reader.parse(new InputSource(path));
             System.out.println(handler.toString());
         } catch (IOException|SAXException e) {
-            throw new MySAXException(e.getMessage());
+            throw new MySAXException(e.getMessage(), e);
         }
 
     }
