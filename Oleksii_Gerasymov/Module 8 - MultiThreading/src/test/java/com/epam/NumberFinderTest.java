@@ -26,6 +26,7 @@ public class NumberFinderTest {
         }
         catch (InterruptedException userException) {
             log.info(String.valueOf(userException));
+            Thread.currentThread().interrupt();
         }
         assertEquals(9, simpleNumbersSet.size());
         assertEquals(2, simpleNumbersSet.first().intValue());
