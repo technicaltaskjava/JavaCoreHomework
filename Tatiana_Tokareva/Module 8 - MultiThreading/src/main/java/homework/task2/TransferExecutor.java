@@ -31,7 +31,8 @@ public class TransferExecutor implements Runnable {
 	}
 
 	private void cashFlowFromAccounts(final Account sender, final Account recipient, final int amount) {
-		sender.withdrawal(amount);
-		recipient.deposit(amount);
+		if (sender.withdrawal(amount) != -1) {
+			recipient.deposit(amount);
+		}
 	}
 }
