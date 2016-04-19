@@ -46,6 +46,7 @@ public class AccountTest {
 
 	@Test
 	public void testEqualsReflexive() {
+		//noinspection EqualsWithItself
 		assertTrue(account.equals(account));
 	}
 
@@ -61,6 +62,7 @@ public class AccountTest {
 
 	@Test
 	public void testEqualsNull() {
+		//noinspection ObjectEqualsNull
 		assertFalse(account.equals(null));
 	}
 

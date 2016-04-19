@@ -61,18 +61,13 @@ class TransactionMenuController {
 			controller.print("Statement is empty.");
 		}
 		for (int index = 0; index < Constant.AVAILABLE_PROCESSORS; index++) {
-			Thread thread = null;
+			Thread thread;
 			try {
 				thread = new Thread(new Transfer(service));
 				thread.start();
 				thread.join();
-			} catch (ParameterIncorrectException e) {
+			} catch (ParameterIncorrectException | InterruptedException e) {
 				logger.error(e.getMessage(), e);
-			} catch (InterruptedException e) {
-				logger.error(e.getMessage(), e);
-				if (thread != null) {
-					thread.interrupt();
-				}
 			}
 		}
 	}

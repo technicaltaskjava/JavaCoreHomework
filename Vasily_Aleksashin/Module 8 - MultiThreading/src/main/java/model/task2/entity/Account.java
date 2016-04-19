@@ -16,6 +16,7 @@ public class Account {
 		return amount;
 	}
 
+	@SuppressWarnings("SameReturnValue")
 	public boolean increase(final int sum) {
 		amount += sum;
 		return true;

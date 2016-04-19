@@ -51,6 +51,7 @@ public class TransactionService {
 		return null;
 	}
 
+	@SuppressWarnings("SameParameterValue")
 	int getBalance(final int id) throws ParameterIncorrectException {
 		Validator.isPositive(id);
 		final Account account = getAccount(id);
