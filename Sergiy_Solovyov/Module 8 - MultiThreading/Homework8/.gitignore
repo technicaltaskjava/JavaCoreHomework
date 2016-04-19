@@ -1,0 +1,27 @@
+*.class
+*.log
+*.task
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*/out/
+*.iml
+*.iws
+
+# Maven
+log/
+target/
+
+# SonarQube
+ .sonar/
+ sonar-project.properties
