@@ -6,11 +6,9 @@ import interval.Interval;
  * @author Alexey Ushakov
  */
 public interface NumberSearchEngine {
-    void start();
+    void start() throws InterruptedException;
 
     Interval getInterval();
-
-    int getThreadCount();
 
     int getSearchPrimesCount();
 

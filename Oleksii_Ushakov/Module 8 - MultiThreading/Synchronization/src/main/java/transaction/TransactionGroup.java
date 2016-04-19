@@ -14,10 +14,6 @@ public class TransactionGroup extends ThreadGroup {
         super(name);
     }
 
-    public TransactionGroup(ThreadGroup parent, String name) {
-        super(parent, name);
-    }
-
     @Override
     public void uncaughtException(Thread t, Throwable e) {
         error = true;

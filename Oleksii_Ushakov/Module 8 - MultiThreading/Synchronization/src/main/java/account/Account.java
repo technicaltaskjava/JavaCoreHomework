@@ -35,14 +35,10 @@ public class Account {
 
     public void takeCash(int cash) {
         if ((this.balance - cash) < 0) {
-            throw new AccountNotEnoughMoney(this, cash);
+            throw new AccountNotEnoughMoney(this);
         }
 
         this.balance -= cash;
-    }
-
-    public int getBalance() {
-        return balance;
     }
 
     @Override

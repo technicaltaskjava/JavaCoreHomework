@@ -27,10 +27,6 @@ public class BufferedFlow extends AbstractFlow {
     public List<Integer> getBuffer() {
         return buffer;
     }
-
-    public int getPrimesCount() {
-        return buffer.size();
-    }
 }
 
 

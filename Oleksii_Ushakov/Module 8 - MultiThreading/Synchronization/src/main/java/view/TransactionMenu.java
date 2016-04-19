@@ -8,19 +8,23 @@ import transaction.TransactionPool;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.Scanner;
 
 /**
  * @author Alexey Ushakov
  */
 public class TransactionMenu {
-
+    private static PrintStream out = System.out;//NOSONAR
     private static final Logger logger = Logger.getLogger(TransactionMenu.class);
+
+    private TransactionMenu() {
+    }
 
     public static File getActionXML() throws FileNotFoundException {
         File xml;
 
-        System.out.println("Input path to XML");
+        out.println("Input path to XML");
         Scanner scanner = new Scanner(System.in);
         String path = scanner.next().replaceAll("['\"]", "");
 
@@ -42,15 +46,15 @@ public class TransactionMenu {
 
         try {
             pool.runActionXML(getActionXML());
-            System.out.println("Transactions done");
+            out.println("Transactions done");
 
             if (pool.isError()) {
-                System.out.println("During operation, there were errors, see details in the " + Log4jConfig.getLogFile().getAbsolutePath());
+                out.println("During operation, there were errors, see details in the " + Log4jConfig.getLogFile().getAbsolutePath());
             }
 
         } catch (SAXException | FileNotFoundException e) {
-            System.out.println(e.getMessage());
-
+            logger.error(e);
+            out.println(e.getMessage());
         }
     }
 }

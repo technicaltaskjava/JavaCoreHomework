@@ -9,6 +9,9 @@ import java.util.Properties;
 public class Log4jConfig {
     private static File logFile = new File("transaction.log");
 
+    private Log4jConfig() {
+    }
+
     public static Properties configProperties() {
         Properties properties = new Properties();
         properties.setProperty("log4j.rootLogger", "INFO, file");

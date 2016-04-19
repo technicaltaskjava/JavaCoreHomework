@@ -1,13 +1,9 @@
 package interval;
 
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-
 /**
  * @author Alexey Ushakov
  */
-public class Interval{
+public class Interval {
     private int leftBorder;
     private int rightBorder;
 
@@ -55,10 +51,6 @@ public class Interval{
 
     public void increaseTo(int value) {
         rightBorder += value;
-    }
-
-    public boolean belong(int value) {
-        return value >= leftBorder && value <= rightBorder;
     }
 
     public Interval[] getEqualIntervals(int count) {

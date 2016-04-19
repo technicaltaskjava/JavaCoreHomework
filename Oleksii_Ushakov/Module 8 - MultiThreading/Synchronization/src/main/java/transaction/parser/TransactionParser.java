@@ -1,6 +1,5 @@
 package transaction.parser;
 
-import account.Account;
 import org.xml.sax.SAXException;
 import transaction.Transaction;
 
@@ -17,19 +16,13 @@ import java.util.List;
  */
 public class TransactionParser {
     private List<Transaction> transactionList;
-    private List<Account> accountList;
 
     public TransactionParser() {
         this.transactionList = new LinkedList<>();
-        this.accountList = new LinkedList<>();
     }
 
     public List<Transaction> getTransactionList() {
         return transactionList;
-    }
-
-    public List<Account> getAccountList() {
-        return accountList;
     }
 
     public List<Transaction> parseTransaction(File xmlFile) throws SAXException {
@@ -40,7 +33,6 @@ public class TransactionParser {
             parser.parse(xmlFile, transactionParseHandler);
 
             transactionList = transactionParseHandler.getTransactionList();
-            accountList = transactionParseHandler.getAccountList();
 
             return transactionList;
 

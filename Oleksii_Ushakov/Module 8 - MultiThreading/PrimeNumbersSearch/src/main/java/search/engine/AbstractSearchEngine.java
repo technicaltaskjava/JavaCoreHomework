@@ -19,9 +19,4 @@ public abstract class AbstractSearchEngine implements NumberSearchEngine {
     public Interval getInterval() {
         return interval;
     }
-
-    @Override
-    public int getThreadCount() {
-        return threadCount;
-    }
 }

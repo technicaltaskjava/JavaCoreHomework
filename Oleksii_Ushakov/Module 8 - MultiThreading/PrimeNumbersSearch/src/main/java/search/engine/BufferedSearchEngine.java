@@ -31,7 +31,7 @@ public class BufferedSearchEngine extends AbstractSearchEngine {
 
     }
 
-    public void start() {
+    public void start() throws InterruptedException {
         BufferedFlow currentFlow = null;
         try {
 
@@ -45,7 +45,8 @@ public class BufferedSearchEngine extends AbstractSearchEngine {
             service.shutdown();
             service.awaitTermination(1, TimeUnit.HOURS);
         } catch (InterruptedException e) {
-            logger.info(currentFlow, e.getCause());
+            logger.info(currentFlow, e);
+            throw e;
         } finally {
             for (BufferedFlow flow : flows) {
                 buffer.addAll(flow.getBuffer());
@@ -61,9 +62,5 @@ public class BufferedSearchEngine extends AbstractSearchEngine {
     @Override
     public int getSearchPrimesCount() {
         return buffer.size();
-    }
-
-    public List<Integer> getBuffer() {
-        return buffer;
     }
 }

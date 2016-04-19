@@ -3,15 +3,15 @@ package search.engine.flow;
 import interval.Interval;
 import number.PrimeNumber;
 
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.Collection;
 
 /**
  * @author Alexey Ushakov
  */
 public class Flow extends AbstractFlow {
-    private ConcurrentLinkedQueue<Integer> buffer;
+    private Collection<Integer> buffer;
 
-    public Flow(Interval interval, ConcurrentLinkedQueue<Integer> buffer) {
+    public Flow(Interval interval, Collection<Integer> buffer) {
         super(interval);
         this.buffer = buffer;
     }

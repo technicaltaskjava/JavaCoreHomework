@@ -32,15 +32,4 @@ class EqualIntervals {
 
         return resultIntervals;
     }
-
-//    public static void main(String[] args) {
-//        Interval interval = new Interval(1, 5);
-//        System.out.println("Common interval: " + interval);
-//
-//        Interval[] subIntervals = getEqualIntervals(interval, 10);
-//
-//        for (Interval i : subIntervals) {
-//            System.out.println("Interval: " + i + " with size " + i.size());
-//        }
-//    }
 }

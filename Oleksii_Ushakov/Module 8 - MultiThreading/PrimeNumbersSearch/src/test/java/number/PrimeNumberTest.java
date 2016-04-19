@@ -12,18 +12,18 @@ import static org.junit.Assert.*;
 public class PrimeNumberTest {
 
     @Test
-    public void testIsPrimeNumberTrue() throws Exception {
+    public void testIsPrimeNumberTrue() {
         assertTrue(PrimeNumber.isPrimeNumber(2));
     }
 
     @Test
-    public void testIsPrimeNumberFalse() throws Exception {
+    public void testIsPrimeNumberFalse()  {
         assertFalse(PrimeNumber.isPrimeNumber(4));
     }
 
     @Test
     @Ignore("Intel® Core™ i5-3230M CPU @ 2.60GHz × 4   => 5h 26m 35s 325ms => 1 Thread")
-    public void testIsPrimeNumbers() throws Exception {
+    public void testIsPrimeNumbers()  {
         Interval interval = new Interval(2, Integer.MAX_VALUE);
         int count = 0;
 
@@ -37,7 +37,7 @@ public class PrimeNumberTest {
     }
 
     @Test
-    public void testIsPrimeNumbersOnTenThousand() throws Exception {
+    public void testIsPrimeNumbersOnTenThousand()  {
         Interval interval = new Interval(2, 10000);
         int count = 0;
 
@@ -50,10 +50,9 @@ public class PrimeNumberTest {
         assertEquals(count, 1229);
     }
 
-
     @Test
     @Ignore
-    public void testIsPrimeNumbersOnOneHundredThousand() throws Exception {
+    public void testIsPrimeNumbersOnOneHundredThousand()  {
         Interval interval = new Interval(2, 100000000);
         int count = 0;
 
