@@ -17,11 +17,11 @@ public class CheckerTest {
 
 	@Test
 	public void testSimpleNumbers() {
-		Checker checker = new Checker(0, 5);
+		Checker checker = new Checker(0, 10);
 		List<Integer> numbers;
 		checker.run();
 		numbers = checker.getNumbers();
-		final String expected = "[2, 3, 5]";
+		final String expected = "[2, 3, 5, 7]";
 		assertEquals(expected, numbers.toString());
 	}
 

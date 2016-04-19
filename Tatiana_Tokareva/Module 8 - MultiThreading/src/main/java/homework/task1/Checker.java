@@ -36,13 +36,15 @@ class Checker implements Runnable {
 	}
 
 	private boolean isSimpleNumber(int number) {
-		int count = 0;
-		for (int index = 2; index <= number; index++) {
+		if (number < 2) {
+			return false;
+		}
+		for (int index = 2; index <= number / 2; index++) {
 			if (number % index == 0) {
-				count++;
+				return false;
 			}
 		}
-		return count == 1;
+		return true;
 	}
 
 	boolean isFlag() {
