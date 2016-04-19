@@ -35,13 +35,13 @@ public class Primes {
 
         if (checkData(start, end, threads)) {
             PrimesManager one = new PrimesManager(start, end, threads, true);
-            PrimesManager two = new PrimesManager(start, end, threads, false);
             try {
                 one.join();
             } catch (InterruptedException e) {
                 log.warn(e.getMessage(),e);
                 one.interrupt();
             }
+            PrimesManager two = new PrimesManager(start, end, threads, false);
             try {
                 two.join();
             } catch (InterruptedException e) {
