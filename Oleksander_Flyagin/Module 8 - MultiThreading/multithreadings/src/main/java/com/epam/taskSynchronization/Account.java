@@ -28,7 +28,7 @@ public class Account {
     private static Lock lock = new ReentrantLock();
     private static Condition newDeposit = lock.newCondition();
     private int balance;
-    public volatile  boolean balanceStatus = true;
+    volatile  boolean balanceStatus = true;
 
 
     public int getBalance() {
@@ -39,9 +39,12 @@ public class Account {
         lock.lock();
         try {
             if (balance < amount) {
-                System.out.println("не хватает суммы в " + amount + ", нет возможности провести операцию ");
                 balanceStatus = false;
-                newDeposit.await();
+                while (true) {
+                    System.out.println("не хватает суммы в " + amount + ", нет возможности провести операцию ");
+                    newDeposit.await();
+                    break;
+                }
             } else {
                 balance -= amount;
                 System.out.println(name + " передал  сумму " + amount + "  остаток " + getBalance());
@@ -60,6 +63,7 @@ public class Account {
             balance += amount;
             System.out.println(name + " получил перевод на сумму  " + amount + " баксов");
             newDeposit.signalAll();
+            balanceStatus =true;
         } finally {
             lock.unlock();
         }
@@ -68,7 +72,7 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account name " + getName() + " Остаток " + getBalance();
+        return "Account nuber " + getName() + " Остаток " + getBalance();
     }
 }
 

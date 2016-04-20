@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.logging.Logger;
 
 import static org.junit.Assert.*;
 
@@ -13,6 +14,7 @@ import static org.junit.Assert.*;
 
 public class NuberSerchTreadTest
     {
+        private Logger myLog = Logger.getLogger("Loger");
         List  exp = new ArrayList();
         private void setCollextion()
             {
@@ -39,7 +41,8 @@ public class NuberSerchTreadTest
                     }
                 catch (InterruptedException e)
                     {
-                        e.printStackTrace();
+                        myLog.warning("WORNING" + e);
+                        Thread.currentThread().interrupt();
                     }
 
 
