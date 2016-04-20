@@ -16,7 +16,7 @@ public class Primes {
     static final Set<Integer> resultOne = new TreeSet();
     static final Set<Integer> resultTwo = new TreeSet();
 
-    public void calculate() {
+    public void calculate() throws InterruptedException {
 
         int start = 0;
         int end = 0;
@@ -36,19 +36,12 @@ public class Primes {
         if (checkData(start, end, threads)) {
             PrimesManager one = new PrimesManager(start, end, threads, true);
             PrimesManager two = new PrimesManager(start, end, threads, false);
-            try {
+           try {
                 one.join();
-            } catch (InterruptedException e) {
-                log.warn(e.getMessage(),e);
-                one.interrupt();
-                Thread.currentThread().interrupt();
-            }
-            try {
                 two.join();
             } catch (InterruptedException e) {
                 log.warn(e.getMessage(),e);
-                two.interrupt();
-                Thread.currentThread().interrupt();
+             throw e;
             }
         }
         in.close();
