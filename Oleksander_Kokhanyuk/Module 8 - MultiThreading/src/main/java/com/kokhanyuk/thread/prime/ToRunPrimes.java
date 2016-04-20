@@ -13,6 +13,11 @@ public class ToRunPrimes {
 
     public static void main(String[] args) {
         Primes prime = new Primes();
-        prime.calculate();
+         try {
+            prime.calculate();
+        } catch (InterruptedException e) {
+            log.warn(e.getMessage(), e);
+            Thread.currentThread().interrupt();
+        }
     }
 }
