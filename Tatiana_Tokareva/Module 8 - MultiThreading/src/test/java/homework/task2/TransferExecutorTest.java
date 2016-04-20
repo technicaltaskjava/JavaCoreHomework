@@ -12,7 +12,7 @@ public class TransferExecutorTest {
 	private TransactionOperation operation;
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		operation = new TransactionOperation();
 		operation.parsFile(Constant.TEST_FILE_TXT);
 		TransferExecutor executor = new TransferExecutor(operation);

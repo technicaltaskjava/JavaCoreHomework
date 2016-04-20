@@ -9,7 +9,7 @@ public class TransactionControllerTest {
 	TransactionController controller;
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		controller = new TransactionController();
 	}
 

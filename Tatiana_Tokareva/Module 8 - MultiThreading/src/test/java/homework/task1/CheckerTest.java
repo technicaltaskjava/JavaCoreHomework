@@ -17,7 +17,7 @@ public class CheckerTest {
 
 	@Test
 	public void testSimpleNumbers() {
-		Checker checker = new Checker(0, 10);
+		checker = new Checker(0, 10);
 		List<Integer> numbers;
 		checker.run();
 		numbers = checker.getNumbers();
