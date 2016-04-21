@@ -2,6 +2,7 @@ package search.engine;
 
 import interval.Interval;
 import org.apache.log4j.Logger;
+import search.NumberSearchEngine;
 import search.engine.flow.BufferedFlow;
 
 import java.util.LinkedList;
@@ -13,14 +14,17 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author Alexey Ushakov
  */
-public class BufferedSearchEngine extends AbstractSearchEngine {
-    private final Logger logger = Logger.getLogger("console");
+public class BufferedSearchEngine implements NumberSearchEngine {
+    private static final Logger logger = Logger.getLogger("console");
+    private final Interval interval;
+    private final int threadCount;
 
     private List<Integer> buffer = new LinkedList<>();
     private BufferedFlow[] flows;
 
     public BufferedSearchEngine(Interval interval, int threadCount) {
-        super(interval, threadCount);
+        this.interval = interval;
+        this.threadCount = threadCount;
 
         flows = new BufferedFlow[threadCount];
         Interval[] intervals = interval.getEqualIntervals(threadCount);
@@ -31,6 +35,7 @@ public class BufferedSearchEngine extends AbstractSearchEngine {
 
     }
 
+    @Override
     public void start() throws InterruptedException {
         BufferedFlow currentFlow = null;
         try {
@@ -62,5 +67,10 @@ public class BufferedSearchEngine extends AbstractSearchEngine {
     @Override
     public int getSearchPrimesCount() {
         return buffer.size();
+    }
+
+    @Override
+    public Interval getInterval() {
+        return interval;
     }
 }

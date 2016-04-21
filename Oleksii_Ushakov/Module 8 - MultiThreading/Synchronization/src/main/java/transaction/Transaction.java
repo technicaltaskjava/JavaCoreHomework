@@ -25,14 +25,26 @@ public class Transaction implements Runnable {
         logger.info(String.format(" Run transaction: %s ==[%d]=> %s", sender, value, recipient));
         if (sender.equals(recipient)) {
             throw new LoopTransactionException(sender);
+        }
+
+        Account accFirst;
+        Account accSecond;
+
+        if (sender.hashCode() < recipient.hashCode()) {
+            accFirst = sender;
+            accSecond = recipient;
         } else {
-            synchronized (sender) {
-                synchronized (recipient) {
-                    sender.takeCash(value);
-                    recipient.addCash(value);
-                }
+            accFirst = recipient;
+            accSecond = sender;
+        }
+
+        synchronized (accFirst) {
+            synchronized (accSecond) {
+                sender.takeCash(value);
+                recipient.addCash(value);
             }
         }
+
         logger.info(String.format("Done transaction: %s ==[%d]=> %s", sender, value, recipient));
     }
 

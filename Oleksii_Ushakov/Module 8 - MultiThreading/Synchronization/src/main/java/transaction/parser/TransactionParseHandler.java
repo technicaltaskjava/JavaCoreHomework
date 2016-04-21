@@ -79,7 +79,7 @@ public class TransactionParseHandler extends DefaultHandler {
 
     private Account getAccount(String id) {
         if (!accountMap.containsKey(id)) {
-            accountMap.put(id, new Account(id));
+            accountMap.put(id, new Account(5000, id));
         }
         return accountMap.get(id);
     }

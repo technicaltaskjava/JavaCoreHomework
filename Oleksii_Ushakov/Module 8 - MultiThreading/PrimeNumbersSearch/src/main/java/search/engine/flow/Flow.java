@@ -8,11 +8,12 @@ import java.util.Collection;
 /**
  * @author Alexey Ushakov
  */
-public class Flow extends AbstractFlow {
+public class Flow implements Runnable {
+    protected Interval interval;
     private Collection<Integer> buffer;
 
     public Flow(Interval interval, Collection<Integer> buffer) {
-        super(interval);
+        this.interval = interval;
         this.buffer = buffer;
     }
 
@@ -23,5 +24,14 @@ public class Flow extends AbstractFlow {
                 buffer.add(i);
             }
         }
+    }
+
+    public Interval getInterval() {
+        return interval;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Flow %s;", interval);
     }
 }
