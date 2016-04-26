@@ -1,0 +1,20 @@
+Singleton
+PatternSingleton uses when only one object can be created to the class.Singleton pattern is used for logging,
+drivers objects, caching and thread pool. Singleton design pattern is also used in other design patterns like
+Abstract Factory, Builder, Prototype, Facade etc. Singleton design pattern is used in core java classes also,
+for example java.lang.Runtime, java.awt.Desktop.
+
+Abstract factory
+In Abstract Factory pattern, get rid of if-else block and have a factory class for each sub-class and then
+an Abstract Factory class that will return the sub-class based on the input factory class. Abstract Factory
+pattern provides approach to code for interface rather than implementation.Abstract Factory pattern is
+factory of factories and can be easily extended to accommodate more products.
+
+Builder
+This pattern solve some of the problem when the Object contains a lot of attributes, the type of arguments
+are same and from client side its hard to maintain the order of the argument  by providing a way to build
+the object step-by-step and provide a method that will actually return the final Object.
+
+Strategy
+ Strategy is used when we have multiple algorithm for a specific task and client decides the actual implementation
+ to be used at runtime and we want our application to be flexible to chose any of the algorithm at runtime for specific task.
