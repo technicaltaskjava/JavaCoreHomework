@@ -29,7 +29,7 @@ public class Logger implements Serializable {
 	}
 
 	@Override
-	protected Object clone() throws CloneNotSupportedException {
+	protected Object clone() throws CloneNotSupportedException {   //NOSONAR  it is protection from cloning
 		throw new IllegalStateException("Logger can not be cloned");
 
 	}

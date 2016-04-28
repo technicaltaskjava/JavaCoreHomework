@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class CalculatorSimulation {
 
+	public static final String RESULT = "result=%s";
+
 	private static String getMenu() {
 		StringBuilder builder = new StringBuilder("Menu items:").append("\n")
 				.append("1 - sum").append("\n")
@@ -39,15 +41,15 @@ public class CalculatorSimulation {
 			switch (input) {
 				case "1":
 					counter.setCalculator(new Sum());
-					System.out.println(String.format("result=%s", counter.result(number1, number2)));
+					System.out.println(String.format(RESULT, counter.result(number1, number2)));
 					break;
 				case "2":
 					counter.setCalculator(new Subtraction());
-					System.out.println(String.format("result=%s", counter.result(number1, number2)));
+					System.out.println(String.format(RESULT, counter.result(number1, number2)));
 					break;
 				case "3":
 					counter.setCalculator(new Multiplication());
-					System.out.println(String.format("result=%s", counter.result(number1, number2)));
+					System.out.println(String.format(RESULT, counter.result(number1, number2)));
 					break;
 				case "4":
 					start = false;
