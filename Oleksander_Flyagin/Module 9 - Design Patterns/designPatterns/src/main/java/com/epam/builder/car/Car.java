@@ -2,10 +2,13 @@ package com.epam.builder.car;
 
 public class Car {
 
+    private String manufacturer;
 
-    private Car() {
-    }
-
+    private String model;
+    private String typeCar;
+    private int issue;
+    private String state;
+    private int price;
     public Car(String manufacturer, String model, String typeCar, int issue, String state, int price) {
         this.manufacturer = manufacturer;
         this.model = model;
@@ -15,30 +18,36 @@ public class Car {
         this.price = price;
     }
 
-    private  String manufacturer;
-    private  String model;
-    private  String typeCar;
-    private  int    issue;
-    private  String state;
-    private  int    price;
+
+
+
+    private Car() {
+    }
+
+
 
 
 
     public int getPrice() {
         return price;
     }
+
     public String getManufacturer() {
         return manufacturer;
     }
+
     public String getModel() {
         return model;
     }
+
     public String getTypeCar() {
         return typeCar;
     }
+
     public int getIssue() {
         return issue;
     }
+
     public String getState() {
         return state;
     }
@@ -47,7 +56,7 @@ public class Car {
     public String toString() {
         return "[ manufacturer " + manufacturer +
                 "; model " + model +
-                "; typeCar "  + typeCar +
+                "; typeCar " + typeCar +
                 "; issue " + issue +
                 "; state " + state +
                 "; price " + price +
@@ -55,35 +64,35 @@ public class Car {
     }
 
     @Override
-    public boolean equals(Object obj)
-    {
-        if(obj == this)
-            return true;
+    public boolean equals(Object obj) {
+        boolean expression = false;
+        if (obj == this) {
+            return !!expression;
+        }
 
-        if(obj == null)
-            return false;
+        if (obj == null) {
+            return expression;
+        }
 
-        if(!(getClass() == obj.getClass()))
-            return false;
-        else
-        {
+        if (!(getClass() == obj.getClass())) {
+            return expression;
+        } else {
             Car tmp = (Car) obj;
-            if(tmp.getManufacturer() == this.getManufacturer() || tmp.getModel() == this.getModel())
-                return true;
-            else
-                return false;
+            if (tmp.getManufacturer() == this.getManufacturer() || tmp.getModel() == this.getModel()) {
+                return !!expression;
+            } else {
+                return expression;
+            }
         }
     }
+
     @Override
-    public int hashCode()
-    {
-        final int PRIME = 31;
+    public int hashCode() {
+        final int prime = 31;
         int result = 1;
-        result = PRIME * result + getModel().length()*13;
+        result = prime * result + getModel().length() * 13;
         return result;
     }
-
-
 
 
 }

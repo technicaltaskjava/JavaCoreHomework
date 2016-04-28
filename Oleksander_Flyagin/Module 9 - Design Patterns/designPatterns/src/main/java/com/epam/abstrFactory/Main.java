@@ -1,9 +1,9 @@
-package com.epam.abstrFactory;
+package com.epam.abstrfactory;
 
-import com.epam.abstrFactory.devise.Phone;
-import com.epam.abstrFactory.devise.Tablet;
-import com.epam.abstrFactory.devise.Watch;
-import com.epam.abstrFactory.factory.DeviseFactory;
+import com.epam.abstrfactory.devise.Phone;
+import com.epam.abstrfactory.devise.Tablet;
+import com.epam.abstrfactory.devise.Watch;
+import com.epam.abstrfactory.factory.DeviseFactory;
 
 public class Main {
     private Main(){}

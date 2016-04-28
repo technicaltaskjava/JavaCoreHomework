@@ -1,6 +1,6 @@
-package com.epam.strategy.strategyOS;
+package com.epam.strategy.strategyos;
 
-        import com.epam.strategy.OS.OS;
+        import com.epam.strategy.os.OS;
 
 public class StrategyClient {
     SettingOS strategy;

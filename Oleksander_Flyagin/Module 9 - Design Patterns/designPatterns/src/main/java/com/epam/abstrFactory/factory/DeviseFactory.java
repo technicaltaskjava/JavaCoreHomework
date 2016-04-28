@@ -1,8 +1,8 @@
-package com.epam.abstrFactory.factory;
+package com.epam.abstrfactory.factory;
 
-import com.epam.abstrFactory.devise.Phone;
-import com.epam.abstrFactory.devise.Tablet;
-import com.epam.abstrFactory.devise.Watch;
+import com.epam.abstrfactory.devise.Phone;
+import com.epam.abstrfactory.devise.Tablet;
+import com.epam.abstrfactory.devise.Watch;
 
 public interface DeviseFactory {
     Phone  getPhone();

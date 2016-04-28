@@ -1,6 +1,6 @@
-package com.epam.abstrFactory.android;
+package com.epam.abstrfactory.android;
 
-import com.epam.abstrFactory.devise.Phone;
+import com.epam.abstrfactory.devise.Phone;
 
 public class PhoneAndroid  extends AndroidOS implements Phone{
     private String type ="--------------PhoneAndroid------------------";

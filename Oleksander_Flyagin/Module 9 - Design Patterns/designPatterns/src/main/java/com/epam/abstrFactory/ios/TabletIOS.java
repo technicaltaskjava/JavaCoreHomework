@@ -1,12 +1,12 @@
-package com.epam.abstrFactory.ios;
+package com.epam.abstrfactory.ios;
 
-import com.epam.abstrFactory.devise.Tablet;
+import com.epam.abstrfactory.devise.Tablet;
 
 public class TabletIOS  extends IOS implements Tablet {
+    private String type ="----------------TabletIOS------------------";
     public TabletIOS() {
         setType(type);
     }
-    private String type ="----------------TabletIOS------------------";
 
     @Override
     public void getWorkDokuments() {

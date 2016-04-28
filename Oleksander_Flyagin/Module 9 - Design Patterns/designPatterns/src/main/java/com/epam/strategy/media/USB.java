@@ -1,7 +1,7 @@
 package com.epam.strategy.media;
 
-import com.epam.strategy.OS.OS;
-import com.epam.strategy.strategyOS.SettingOS;
+import com.epam.strategy.os.OS;
+import com.epam.strategy.strategyos.SettingOS;
 
 public class USB implements SettingOS {
     private int speed = 120;
@@ -9,7 +9,7 @@ public class USB implements SettingOS {
 
     @Override
     public void setOS(OS os) {
-        System.out.println("Found storage device with OS " + os.getOS());
+        System.out.println("Found storage device with os " + os.getOS());
         System.out.println("Run verifications storage device");
         int amount = os.getAmountOfInformation();
 

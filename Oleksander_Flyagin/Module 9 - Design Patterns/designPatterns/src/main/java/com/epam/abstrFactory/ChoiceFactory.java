@@ -1,8 +1,8 @@
-package com.epam.abstrFactory;
+package com.epam.abstrfactory;
 
-import com.epam.abstrFactory.factory.AndroidDeviseFactory;
-import com.epam.abstrFactory.factory.DeviseFactory;
-import com.epam.abstrFactory.factory.IOSDeviseFactory;
+import com.epam.abstrfactory.factory.AndroidDeviseFactory;
+import com.epam.abstrfactory.factory.DeviseFactory;
+import com.epam.abstrfactory.factory.IOSDeviseFactory;
 
 
 public class ChoiceFactory {

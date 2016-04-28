@@ -1,14 +1,14 @@
-package com.epam.abstrFactory.android;
+package com.epam.abstrfactory.android;
 
-import com.epam.abstrFactory.devise.Watch;
+import com.epam.abstrfactory.devise.Watch;
 
 public class WatchAndroid extends AndroidOS implements Watch {
+    private String type = "--------------WatchAndroid------------------";
+
     public WatchAndroid() {
         setType(type);
 
     }
-
-    private String type = "--------------WatchAndroid------------------";
 
     @Override
     public void getPuls() {

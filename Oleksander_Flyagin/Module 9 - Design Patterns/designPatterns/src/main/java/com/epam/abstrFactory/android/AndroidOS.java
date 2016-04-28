@@ -1,4 +1,4 @@
-package com.epam.abstrFactory.android;
+package com.epam.abstrfactory.android;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

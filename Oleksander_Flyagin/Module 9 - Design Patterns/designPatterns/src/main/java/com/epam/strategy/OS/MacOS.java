@@ -1,7 +1,7 @@
-package com.epam.strategy.OS;
+package com.epam.strategy.os;
 
 public class MacOS implements OS {
-    private String os  = "OS X";
+    private String os  = "os X";
     private int amount = 950;
 
     @Override

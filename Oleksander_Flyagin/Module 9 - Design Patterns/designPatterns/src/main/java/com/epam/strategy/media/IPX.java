@@ -1,7 +1,7 @@
 package com.epam.strategy.media;
 
-import com.epam.strategy.OS.OS;
-import com.epam.strategy.strategyOS.SettingOS;
+import com.epam.strategy.os.OS;
+import com.epam.strategy.strategyos.SettingOS;
 
 public class IPX implements SettingOS{
     private int speed = 80;
@@ -9,8 +9,8 @@ public class IPX implements SettingOS{
 
     @Override
     public void setOS(OS os) {
-        System.out.println("Found server with OS image" + os.getOS());
-        System.out.println("Loading OS on PC");
+        System.out.println("Found server with os image" + os.getOS());
+        System.out.println("Loading os on PC");
         int amount = os.getAmountOfInformation();
 
         do {

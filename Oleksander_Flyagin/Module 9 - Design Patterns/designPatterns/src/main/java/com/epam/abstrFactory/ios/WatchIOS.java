@@ -1,13 +1,13 @@
-package com.epam.abstrFactory.ios;
+package com.epam.abstrfactory.ios;
 
-import com.epam.abstrFactory.devise.Watch;
+import com.epam.abstrfactory.devise.Watch;
 
 public class WatchIOS extends IOS implements Watch {
+    private String type ="----------------WatchIOS------------------";
+
     public WatchIOS() {
         setType(type);
     }
-
-    private String type ="----------------WatchIOS------------------";
 
     @Override
     public void getPuls() {
