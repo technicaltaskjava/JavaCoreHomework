@@ -9,7 +9,7 @@ public class Singleton {
     }
 
     private static class SingleHolder {
-        private static final Singleton INSTANCE = new Singleton();
+        private static final Singleton INSTANCE = new Singleton();//NOSONAR
 
         private SingleHolder() {
         }
