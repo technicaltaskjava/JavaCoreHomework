@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--suppress XmlUnboundNsPrefix -->
+<USER>
+    <FIRSTNAME>Angy</FIRSTNAME>
+    <LASTNAME>Joly</LASTNAME>
+    <USERNAME>kitty</USERNAME>
+    <EMAIL>angy@email.com</EMAIL>
+    <ADDRESS>195, Roswell str.</ADDRESS>
+    <LANGUAGE>Polish</LANGUAGE>
+</USER>
