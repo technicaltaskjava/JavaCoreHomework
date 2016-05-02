@@ -1,13 +1,12 @@
 package com.epam.strategy;
 
-import com.epam.strategy.OS.MacOS;
-import com.epam.strategy.OS.Unix;
-import com.epam.strategy.OS.Windows;
+import com.epam.strategy.os.MacOS;
+import com.epam.strategy.os.Unix;
+import com.epam.strategy.os.Windows;
 import com.epam.strategy.media.CD;
-import com.epam.strategy.OS.OS;
 import com.epam.strategy.media.IPX;
 import com.epam.strategy.media.USB;
-import com.epam.strategy.strategyOS.StrategyClient;
+import com.epam.strategy.strategyos.StrategyClient;
 
 public class StrategyAPP {
     private StrategyAPP() {

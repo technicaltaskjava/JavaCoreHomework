@@ -1,4 +1,4 @@
-package com.epam.abstrFactory.devise;
+package com.epam.abstrfactory.devise;
 
 public interface Watch {
     void getTime();

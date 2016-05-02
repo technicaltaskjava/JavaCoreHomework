@@ -1,4 +1,4 @@
-package com.epam.strategy.OS;
+package com.epam.strategy.os;
 
 public class Windows implements OS {
     private String os  = "Windows";

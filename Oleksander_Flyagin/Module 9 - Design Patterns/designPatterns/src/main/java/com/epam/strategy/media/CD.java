@@ -1,7 +1,7 @@
 package com.epam.strategy.media;
 
-import com.epam.strategy.OS.OS;
-import com.epam.strategy.strategyOS.SettingOS;
+import com.epam.strategy.os.OS;
+import com.epam.strategy.strategyos.SettingOS;
 
 public class CD implements SettingOS {
     private int speed = 90;

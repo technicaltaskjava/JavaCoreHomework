@@ -1,11 +1,11 @@
-package com.epam.abstrFactory.factory;
+package com.epam.abstrfactory.factory;
 
-import com.epam.abstrFactory.android.PhoneAndroid;
-import com.epam.abstrFactory.android.TabletAndroid;
-import com.epam.abstrFactory.android.WatchAndroid;
-import com.epam.abstrFactory.devise.Phone;
-import com.epam.abstrFactory.devise.Tablet;
-import com.epam.abstrFactory.devise.Watch;
+import com.epam.abstrfactory.android.PhoneAndroid;
+import com.epam.abstrfactory.android.TabletAndroid;
+import com.epam.abstrfactory.android.WatchAndroid;
+import com.epam.abstrfactory.devise.Phone;
+import com.epam.abstrfactory.devise.Tablet;
+import com.epam.abstrfactory.devise.Watch;
 
 public class AndroidDeviseFactory implements DeviseFactory {
     @Override

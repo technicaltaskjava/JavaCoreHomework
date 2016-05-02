@@ -1,12 +1,12 @@
-package com.epam.abstrFactory.android;
+package com.epam.abstrfactory.android;
 
-import com.epam.abstrFactory.devise.Tablet;
+import com.epam.abstrfactory.devise.Tablet;
 
 public class TabletAndroid extends AndroidOS implements Tablet{
+    private String type ="--------------TabletAndroid------------------";
     public TabletAndroid() {
         setType(type);
     }
-    private String type ="--------------TabletAndroid------------------";
 
     @Override
     public void getWorkDokuments() {

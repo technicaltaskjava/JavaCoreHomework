@@ -1,12 +1,13 @@
-package com.epam.abstrFactory.ios;
+package com.epam.abstrfactory.ios;
 
-import com.epam.abstrFactory.devise.Phone;
+import com.epam.abstrfactory.devise.Phone;
 
 public class PhoneIOS extends IOS implements Phone {
+    private String type ="----------------PhoneIOS------------------";
     public PhoneIOS() {
         setType(type);
     }
-    private String type ="----------------PhoneIOS------------------";
+
 
     @Override
     public void getCalle() {

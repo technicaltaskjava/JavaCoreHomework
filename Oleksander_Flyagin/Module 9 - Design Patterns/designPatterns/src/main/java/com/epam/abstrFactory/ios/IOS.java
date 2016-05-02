@@ -1,4 +1,4 @@
-package com.epam.abstrFactory.ios;
+package com.epam.abstrfactory.ios;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

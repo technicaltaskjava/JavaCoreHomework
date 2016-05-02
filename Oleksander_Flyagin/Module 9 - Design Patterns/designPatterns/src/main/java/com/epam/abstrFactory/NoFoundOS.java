@@ -1,11 +1,11 @@
-package com.epam.abstrFactory;
+package com.epam.abstrfactory;
 
 public class NoFoundOS extends NullPointerException {
     public NoFoundOS() {
-        super("Unsupported OS ");
+        super("Unsupported os ");
     }
 
     public NoFoundOS(String message) {
-        super("Unsupported OS " + message);
+        super("Unsupported os " + message);
     }
 }
