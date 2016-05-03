@@ -17,7 +17,7 @@ INSERT INTO COOKIES (COOKIE  ) VALUES
 
 Show the number of predictions
 
- SELECT  COUNT('male')  from COOKIES;
+ SELECT  COUNT('predictions')  from COOKIES;
  
 Find the longest line with the prediction
  
