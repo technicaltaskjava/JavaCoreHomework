@@ -1,0 +1,29 @@
+CREATE TABLE Users (
+	id INT IDENTITY(1,1),
+	first_name VARCHAR(50) NOT NULL CHECK LENGTH(first_name) > 2,
+	second_name VARCHAR(50) NOT NULL CHECK LENGTH(second_name) > 2,
+	password VARCHAR(50) NOT NULL CHECK LENGTH(password) > 8,
+	email VARCHAR(50) NOT NULL CHECK email LIKE '__%@%_.__%',
+	reg_date DATE NOT NULL DEFAULT CURRENT_DATE,
+
+	CONSTRAINT pk_users PRIMARY KEY (id) 
+);
+
+CREATE TABLE Cookies (
+	id INT IDENTITY(1,1),
+	cookie VARCHAR(200) NOT NULL CHECK LENGTH(cookie) > 10,
+	expiration_date DATE NOT NULL CHECK expiration_date>=CURRENT_DATE,
+
+	CONSTRAINT pk_cookies PRIMARY KEY (id) 
+);
+
+ALTER TABLE Cookies ADD price DOUBLE NOT NULL DEFAULT 1.00;
+
+CREATE TABLE Metadata (
+	cookie_id INT NOT NULL,
+	user_id INT NOT NULL,
+	time_added DATE NOT NULL DEFAULT CURRENT_DATE,
+
+	CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE RESTRICT ON UPDATE CASCADE,
+	CONSTRAINT fk_cookie_id FOREIGN KEY (cookie_id) REFERENCES Cookies(id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
