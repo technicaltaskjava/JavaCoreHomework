@@ -1,0 +1,5 @@
+UPDATE COOKIES SET PREDICTION = 'you are smart' WHERE COOKIE = 'cream puff';
+
+UPDATE METADATA SET TIME_ADDED  = NOW() WHERE USER_ID  = 5;
+
+UPDATE USERS SET (USERNAME, EMAIL) = ('Kate', 'kate@gm.com')  WHERE ID  = 5;
