@@ -1,0 +1,40 @@
+ Add to a table USERS the  column "SEX"  for more detailed analysis of visitors.
+ 
+ ALTER TABLE USERS ADD COLUMN  SEX varchar(10);
+
+Put information about users in the table
+
+ INSERT INTO USERS (PASSWORD , EMAIL, SEX ) VALUES ('16007','den@on.com', 'female') ,('16007','den@on.com', 'female'), 
+ ('60099','ben@on.com','male'), ('64367','jo@on.com','male'), ('25467','bob@on.com' , 'male'), 
+ ('18707','jain@on.com','female') , ('67799','kris@on.com','male'), ('78657','jorji@on.com', 'female'),
+ ('67567','ketrin@on.com', 'female'), ('18037','kent@on.com','male') , ('60879','janin@on.com','female');
+ 
+ 
+Revealed duplication of the two lines
+ id1 ('16007','den@on.com', 'female') and  id2 ('16007','den@on.com', 'female') 
+Remove the duplicate 
+
+ DELETE FROM USERS WHERE  id =2;
+ 
+Stored user's gender was incorrectly specified. Change to the correct value.
+ 
+ UPDATE USERS SET SEX ='male'
+ WHERE id =1; 
+ 
+
+Show a sorted list by id
+ 
+ SELECT  *  FROM USERS  ORDER BY id; 
+ 
+Count the number of users is male 
+ 
+  SELECT    COUNT('male')  FROM USERS  WHERE sex LIKE 'male';
+ 
+Show all the female users with EMAIL  beginning with 'j', and  which is in the second five 
+
+ SELECT    EMAIL  FROM USERS
+ WHERE (EMAIL LIKE 'j%@%.%' AND SEX  = 'female')  
+ AND
+ ID BETWEEN 5 and 10; 
+
+ 

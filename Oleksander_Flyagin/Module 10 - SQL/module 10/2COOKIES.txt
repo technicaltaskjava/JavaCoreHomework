@@ -1,0 +1,40 @@
+Write predictions in the table
+
+INSERT INTO COOKIES (COOKIE  ) VALUES
+ ('A gift of a flower will soon be made to you.') , 
+ ('The day only gets better.'),
+ ('Begin trusting your intuitions.'),
+ ('Know the opposition, its not always the enemy.'),
+ ('When you feel defensive, examine what you fear.') , 
+ ('Consolidate rather than expand your business in the near future.'),
+ ('A gift of a flower will soon be made to you.'), 
+ ('Your love light shines on another.'), 
+ ('Smile. Tomorrow is another day.') , 
+ ('Pursue your wishes aggressively.');
+
+
+
+
+Show the number of predictions
+
+ SELECT  COUNT('male')  from COOKIES;
+ 
+Find the longest line with the prediction
+ 
+ SELECT COOKIE, length(COOKIE ) FROM COOKIES  
+ WHERE   length(COOKIE ) BETWEEN 40 and 67 ;
+ 
+During a search saw that the predictions ID 7 concur with ID1
+
+ SELECT ID,  COOKIE FROM COOKIES  where   length(COOKIE )=44 ;
+ 
+Generate predictions with ID 7
+Re-check the presence of duplication 
+
+ SELECT ID,  COOKIE FROM COOKIES  
+ WHERE  COOKIE like 'Romance is likely; strike up a conversation.' ;
+  
+ Change prediction for the ID 7
+  
+ UPDATE cookies SET cookie  = 'Romance is likely strike up a conversation.'  
+ WHERE id = 7;

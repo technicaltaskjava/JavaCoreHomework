@@ -1,0 +1,24 @@
+
+create table users (
+id integer  AUTO_INCREMENT,
+password varchar(20) check(length(password) = 5),
+email varchar(30) check(email like('%@%.%')),
+PRIMARY KEY (id)
+);
+
+
+create table Cookies(
+id integer  AUTO_INCREMENT,
+cookie varchar(150) not null,
+PRIMARY KEY (id)
+);
+
+create table Metadata(
+user_id int not null,
+cookie_id int not null,
+time_added  timestamp not null,
+FOREIGN KEY (user_id) REFERENCES users (id),
+FOREIGN KEY (cookie_id) REFERENCES Cookies(id)
+);
+
+

@@ -1,0 +1,30 @@
+Create a table to display information about the evaluation of predictions
+
+ CREATE VIEW Like_Dislike
+ AS  SELECT C.ID, C.COOKIE, M.LIKES, M.DISLIKES
+ FROM METADATA M
+ RIGHT JOIN COOKIES C 
+ ON M.COOKIE_ID =C.ID;
+ 
+Show the table 
+
+ SELECT * FROM LIKE_DISLIKE ORDER BY ID;
+ 
+Last registered users don't have voted. Remove them from the METADATA table.
+
+ DELETE FROM METADATA 
+ WHERE DISLIKES IS NULL AND LIKES IS NULL;
+
+Re-display information, checks whether there are users, without assessing the predictions.
+
+ SELECT ID, COOKIE , LIKES , DISLIKES 
+ FROM LIKE_DISLIKE 
+ WHERE EXISTS (
+   SELECT *
+   FROM LIKE_DISLIKE 
+   WHERE DISLIKES IS NULL AND LIKES IS NULL
+ );
+ 
+Show the table 
+
+ SELECT * FROM LIKE_DISLIKE ORDER BY ID;
