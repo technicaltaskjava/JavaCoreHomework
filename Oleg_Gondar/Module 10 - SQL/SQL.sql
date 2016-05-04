@@ -4,8 +4,8 @@ SET SCHEMA "Fortune cookies";
 CREATE TABLE Users
 (
 User_ID bigint NOT NULL,
-UserEmail varchar(255) NOT NULL,
-UserName varchar(255) NOT NULL,
+UserEmail varchar(255) NOT NULL UNIQUE,
+UserName varchar(255) NOT NULL UNIQUE,
 UserPassword varchar(55) NOT NULL,
 LastName varchar(255),
 FirstName varchar(255),
