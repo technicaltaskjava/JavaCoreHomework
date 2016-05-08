@@ -10,32 +10,20 @@ WHERE email NOT IN
 FROM users 
 WHERE email LIKE '%@company.com');
 
-/* select min, max and average cost of cookie from menu*/
-SELECT min(price) AS minprice, 
-max(price) AS maxprice, 
-avg(price) AS avgprice 
+/* select count of active cookie*/
+SELECT count(*)
 FROM cookies 
-WHERE menu=true;
+WHERE active=true;
 
 /* cookies popularity table*/
-SELECT c.cookie, sum(m.amount) as rate 
+SELECT c.cookie, count(m.cookie_id) as rate 
 FROM cookies AS c 
 LEFT JOIN metadata AS m ON c.id=m.cookie_id 
 GROUP BY c.cookie;
 
 /* sorted result without nulls*/
-SELECT c.cookie, sum(m.amount) as rate 
+SELECT c.cookie, count(m.cookie_id) as rate 
 FROM cookies AS c 
 INNER JOIN metadata AS m ON c.id=m.cookie_id 
 GROUP BY c.cookie 
 ORDER BY rate DESC;
-
-/* select user who order max amount of cookies */
-SELECT username 
-FROM users 
-WHERE id IN
-(SELECT user_id
-FROM metadata
-WHERE amount IN 
-(SELECT max(amount) 
-FROM metadata));

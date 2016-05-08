@@ -4,11 +4,9 @@ id int NOT NULL AUTO_INCREMENT,
 userName varchar(30) NOT NULL UNIQUE,
 email varchar(30) CHECK (email like '%@%'),
 password varchar(30) NOT NULL,
+dateofbirth date,
 PRIMARY KEY (Id)
-)
-
-ALTER TABLE users
-ADD dateofbirth date;
+);
 
 INSERT INTO  users (username, email, password, dateofbirth) VALUES ('admin', 'admin@company.com', '12345', '1980-04-15');
 INSERT INTO  users (username, email, password, dateofbirth) VALUES ('boss', 'boss@company.com', '11111', '1978-01-01');
@@ -27,47 +25,40 @@ DELETE FROM users WHERE id=11;
 CREATE TABLE cookies 
 ( 
 id int NOT NULL AUTO_INCREMENT, 
-cookie varchar(30) NOT NULL UNIQUE, 
-menu boolean NOT NULL DEFAULT TRUE, 
-price real NOT NULL, 
+cookie varchar(200) NOT NULL UNIQUE, 
+active boolean NOT NULL DEFAULT TRUE, 
 PRIMARY KEY (Id) 
 );
 
-ALTER TABLE cookies
-ADD CONSTRAINT chk_price CHECK (price>0);
-
-INSERT INTO  cookies (cookie, price) VALUES ('cookie1', 10);
-INSERT INTO  cookies (cookie, price) VALUES ('cookie2', 12);
-INSERT INTO  cookies (cookie, price) VALUES ('cookie3', 8.5);
-INSERT INTO  cookies (cookie, menu, price) VALUES ('cookie4', false,12.5);
-INSERT INTO  cookies (cookie, menu, price) VALUES ('cookie5', false, 20);
-INSERT INTO  cookies (cookie, menu, price) VALUES ('cookie6', false, 18);
-INSERT INTO  cookies (cookie, price) VALUES ('cookie7', 10);
-INSERT INTO  cookies (cookie, price) VALUES ('cookie8', 12);
-INSERT INTO  cookies (cookie, price) VALUES ('cookie9', 18);
-INSERT INTO  cookies (cookie, menu, price) VALUES ('cookie10', false, 10);
+INSERT INTO  cookies (cookie) VALUES ('Examine the situation before you act impulsively.');
+INSERT INTO  cookies (cookie) VALUES ('Grasp the opportunities that come your way.');
+INSERT INTO  cookies (cookie) VALUES ('Your trouble will pass away soon.');
+INSERT INTO  cookies (cookie, active) VALUES ('Be cautious in your daily affairs.', true);
+INSERT INTO  cookies (cookie, active) VALUES ('Accept the next proposition you hear.', false);
+INSERT INTO  cookies (cookie, active) VALUES ('Remember yesterday, but live for today.', true);
+INSERT INTO  cookies (cookie) VALUES ('Demonstrate refinement in everything you do.');
+INSERT INTO  cookies (cookie) VALUES ('Financial prosperity is coming your way!');
+INSERT INTO  cookies (cookie) VALUES ('You are a person of culture, cultivate it.');
+INSERT INTO  cookies (cookie, active) VALUES ('A cheerful letter or message is on its way to you.', false);
 
 CREATE TABLE metadata
 (
 cookie_id int NOT NULL REFERENCES cookies(id),
 user_id int NOT NULL,
-time_added timestamp,
-amount int NOT NULL DEFAULT 1
+time_added timestamp
 );
 
 ALTER TABLE metadata 
 ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
-ALTER TABLE metadata
-ADD CONSTRAINT chk_amount CHECK (amount>0);
 
 INSERT INTO  metadata (cookie_id, user_id, time_added) VALUES (1, 1, NOW());
 INSERT INTO  metadata (cookie_id, user_id, time_added) VALUES (4, 3, NOW());
-INSERT INTO  metadata (cookie_id, user_id, time_added, amount) VALUES (2, 4, NOW(), 3);
+INSERT INTO  metadata (cookie_id, user_id, time_added) VALUES (2, 4, NOW());
 INSERT INTO  metadata (cookie_id, user_id, time_added) VALUES (5, 2, NOW());
-INSERT INTO  metadata (cookie_id, user_id, time_added, amount) VALUES (7, 6, NOW(), 3);
-INSERT INTO  metadata (cookie_id, user_id, time_added, amount) VALUES (2, 1, NOW(), 2);
-INSERT INTO  metadata (cookie_id, user_id, time_added) VALUES (7, 2, NOW());
-INSERT INTO  metadata (cookie_id, user_id, time_added, amount) VALUES (7, 3, NOW(), 2);
-INSERT INTO  metadata (cookie_id, user_id, time_added, amount) VALUES (8, 7, NOW(), 2);
+INSERT INTO  metadata (cookie_id, user_id, time_added) VALUES (7, 6, NOW());
+INSERT INTO  metadata (cookie_id, user_id, time_added) VALUES (2, 1, NOW());
+INSERT INTO  metadata (cookie_id, user_id, time_added) VALUES (7, 4, NOW());
+INSERT INTO  metadata (cookie_id, user_id, time_added) VALUES (7, 3, NOW());
+INSERT INTO  metadata (cookie_id, user_id, time_added) VALUES (8, 7, NOW());
 INSERT INTO  metadata (cookie_id, user_id, time_added) VALUES (9, 4, NOW());
