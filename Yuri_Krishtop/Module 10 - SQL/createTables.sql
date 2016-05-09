@@ -1,0 +1,43 @@
+CREATE TABLE Users
+(
+id INT NOT NULL AUTO_INCREMENT,
+login VARCHAR(30) NOT NULL UNIQUE,
+name VARCHAR(30) NOT NULL,
+surname VARCHAR(30) NOT NULL,
+email VARCHAR(30)  NOT NULL UNIQUE CHECK(email LIKE '%@%.%'),
+password VARCHAR(30) NOT NULL CHECK(LENGTH(password) > 5),
+dateOfBirth DATE,
+registerDate DATE,
+phone VARCHAR(20),
+PRIMARY KEY (id)
+);
+
+CREATE TABLE Cookies
+(
+id INT NOT NULL AUTO_INCREMENT,
+name VARCHAR(30) NOT NULL UNIQUE,
+filling VARCHAR(30),
+calories INT(3) NOT NULL,
+proteins DOUBLE,
+fats DOUBLE,
+carbohydrates DOUBLE,
+containsSugar BOOL NOT NULL,
+PRIMARY KEY (id)
+);
+
+CREATE TABLE Metadata
+(
+id INT NOT NULL AUTO_INCREMENT,
+user_id INT,
+cookie_id INT NOT NULL,
+time_added DATE NOT NULL,
+PRIMARY KEY (id),
+FOREIGN KEY (user_id) 
+REFERENCES Users (id)
+ON DELETE RESTRICT
+ON UPDATE CASCADE,
+FOREIGN KEY (cookie_id)
+REFERENCES Cookies (id)
+ON DELETE RESTRICT 
+ON UPDATE CASCADE,
+);
