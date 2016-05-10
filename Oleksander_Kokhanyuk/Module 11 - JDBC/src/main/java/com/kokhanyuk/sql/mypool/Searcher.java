@@ -3,7 +3,6 @@ package com.kokhanyuk.sql.mypool;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 
 /**
  * Searcher
@@ -29,11 +28,13 @@ public class Searcher extends Thread {
     public void run() {
         ConnectionPool connectionPool = ConnectionPool.getConnectionPool();
         FortuneCookies us = new FortuneCookies();
+        Connection conn;
         try {
-            Connection conn = us.findById(connectionPool.retrieve(), tableName, id, columnName);
+            conn = us.findById(connectionPool.retrieve(), tableName, id, columnName);
             connectionPool.putback(conn);
-        } catch (SQLException e) {
+        } catch (InterruptedException e) {
             log.warn(e.getMessage(), e);
+            Thread.currentThread().interrupt();
         }
     }
 }

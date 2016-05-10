@@ -21,7 +21,7 @@ public class FortuneCookies implements AbstractFortuneCookies {
         String selectQuery = "select * from " + tableName + " where id=?";
         try {
             conn.setAutoCommit(false);
-            selectPreparedStatement = conn.prepareStatement(selectQuery);//NOSONAR
+            selectPreparedStatement = conn.prepareStatement(selectQuery);
             selectPreparedStatement.setInt(1, id);
             ResultSet rs = selectPreparedStatement.executeQuery();
             while (rs.next()) {
@@ -31,6 +31,14 @@ public class FortuneCookies implements AbstractFortuneCookies {
             conn.commit();
         } catch (SQLException e) {
             log.warn(e.getMessage(), e);
+        }finally {
+            if(selectPreparedStatement!=null){
+                try {
+                    selectPreparedStatement.close();
+                } catch (SQLException e) {
+                    log.warn(e.getMessage(), e);
+                }
+            }
         }
         return conn;
     }

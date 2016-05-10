@@ -19,7 +19,6 @@ public class ConnectionPool {
     private BlockingQueue<Connection> availableConns;
     private BlockingQueue<Connection> usedConns;
     private String url;
-    private int initConnCnt;
     private static final ConnectionPool INSTANSE = new ConnectionPool();
     static Logger log = Logger.getLogger(ConnectionPool.class);
 
@@ -40,7 +39,6 @@ public class ConnectionPool {
             log.warn(e.getMessage(), e);
         }
         this.url = url;
-        this.initConnCnt = initConnCnt;
         for (int i = 0; i < initConnCnt; i++) {
             availableConns.add(getConnection());
         }
@@ -56,22 +54,21 @@ public class ConnectionPool {
         return conn;
     }
 
-    public synchronized Connection retrieve() throws SQLException {
+    public synchronized Connection retrieve() throws InterruptedException {
         Connection newConn;
-        if (availableConns.isEmpty()) {
-            newConn = getConnection();
-        } else {
-            newConn = availableConns.element();
-            availableConns.remove(newConn);
-            usedConns.add(newConn);
-        }
+        newConn = availableConns.take();
+        usedConns.add(newConn);
         return newConn;
     }
 
-    public synchronized void putback(Connection c) {
-        if (c != null && usedConns.remove(c) && availableConns.size() != initConnCnt) {
-            availableConns.add(c);
+    public void putback(Connection c) throws InterruptedException {
+        try {
+            availableConns.put(c);
+        } catch (InterruptedException e) {
+            log.warn(e.getMessage(), e);
+            throw e;
         }
+        usedConns.poll();
     }
 
     public int getAvailableConnsCnt() {

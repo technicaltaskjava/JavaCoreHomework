@@ -5,9 +5,6 @@ import com.kokhanyuk.sql.mypool.FortuneCookies;
 import com.kokhanyuk.sql.mypool.Searcher;
 import org.apache.log4j.Logger;
 
-import java.sql.SQLException;
-
-
 /**
  * FortuneCookiesTwo
  *
@@ -38,8 +35,11 @@ public class FortuneCookiesTwo {
         try {
             connectionPool.putback(us.addData(connectionPool.retrieve(), COOKIES, 15, "MESSAGE", "hello funny"));
             connectionPool.putback(us.removeData(connectionPool.retrieve(), COOKIES, 15));
-        } catch (SQLException e) {
+        } catch (NullPointerException e) {
             log.warn(e.getMessage(), e);
+        } catch (InterruptedException e) {
+            log.warn(e.getMessage(), e);
+            Thread.currentThread().interrupt();
         }
     }
 }
