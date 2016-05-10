@@ -127,8 +127,11 @@ class UserMenuController {
 			if (result != -1) {
 				controller.print("User updated:");
 				controller.print(user.toString());
-
+			} else {
+				controller.print("Cannot update user");
 			}
+		} else {
+			controller.print("Cannot find user");
 		}
 	}
 

@@ -17,6 +17,8 @@ public class MainMenuController {
 					userMenu.show(controller);
 					break;
 				case "1":
+					CookieMenuController cookieMenu = new CookieMenuController();
+					cookieMenu.show(controller);
 					break;
 				case "2":
 					break;
