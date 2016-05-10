@@ -15,8 +15,8 @@ import java.util.concurrent.BlockingQueue;
  */
 public class ConnectionPool implements AutoCloseable{
 
-    private BlockingQueue<Connection> availableConnections;
-    private BlockingQueue<Connection> usedConnections;
+    private BlockingQueue<PooledConnection> availableConnections;
+    private BlockingQueue<PooledConnection> usedConnections;
     private static final int DEFAULT_CONN_QUANTITY = 5;
     private String url;
     private String login;
@@ -41,7 +41,7 @@ public class ConnectionPool implements AutoCloseable{
         this.login = dbInfo.getLogin();
         this.password = dbInfo.getPassword();
         for (int i = 0; i < connectionsQnt; i++){
-            availableConnections.add(getConnection());
+            availableConnections.add(new PooledConnection(getConnection(), this));
         }
     }
 
@@ -55,23 +55,20 @@ public class ConnectionPool implements AutoCloseable{
         return conn;
     }
 
-    public synchronized Connection retrieve() throws ConnectionPoolException {
+    public synchronized PooledConnection retrieve() throws ConnectionPoolException {
         if (availableConnections.isEmpty()) {
             throw new ConnectionPoolException("Pool is empty");
         } else {
-            Connection newConn = availableConnections.poll();
+            PooledConnection newConn = availableConnections.poll();
             usedConnections.add(newConn);
             return newConn;
         }
     }
 
-    public synchronized void putBack(Connection conn)  {
-        if (conn != null) {
-            if (usedConnections.remove(conn)) {
-                availableConnections.add(conn);
-            } else {
-                throw new NullPointerException("Connection not in the usedConnections array");
-            }
+    public synchronized void putBack(PooledConnection conn)  {
+                 if (conn != null) {
+                 usedConnections.remove(conn);
+                 availableConnections.add(conn);
         }
     }
     public int getAvailableConnections() {

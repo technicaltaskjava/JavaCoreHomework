@@ -6,6 +6,7 @@ import daotask.dao.impl.CookieDAOImpl;
 import daotask.dao.impl.UserDAOImpl;
 import daotask.exeptions.ConnectionPoolException;
 import daotask.pool.ConnectionPool;
+import daotask.pool.PooledConnection;
 
 import java.sql.Connection;
 
@@ -21,12 +22,12 @@ public class JDBCDaoFactory extends DAOFactory {
     }
 
     @Override
-    public Connection getConnection() throws ConnectionPoolException {
+    public PooledConnection getConnection() throws ConnectionPoolException {
         return pool.retrieve();
     }
 
     @Override
-    public void returnConnection(Connection connection) {
+    public void returnConnection(PooledConnection connection) {
        pool.putBack(connection);
     }
 
