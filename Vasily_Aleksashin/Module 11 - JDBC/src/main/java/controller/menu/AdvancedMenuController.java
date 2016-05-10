@@ -1,7 +1,11 @@
 package controller.menu;
 
 import controller.MainController;
+import exception.DaoException;
+import model.script.SqlScriptLoader;
 import model.service.TableService;
+
+import java.security.InvalidKeyException;
 
 class AdvancedMenuController {
 	private TableService service;
@@ -20,11 +24,42 @@ class AdvancedMenuController {
 					deleteTable(controller);
 					break;
 				case "2":
+					loadScript(controller);
+					break;
+				case "3":
 					isExit = true;
 					break;
 				default:
 					controller.print(String.format("%nEntered menu item '%s' incorrect, expected 0 - 2", input));
 			}
+		}
+	}
+
+	private void loadScript(MainController controller) {
+		controller.print("Enter file path or empty for default file");
+		final String input = controller.read();
+		SqlScriptLoader loader = new SqlScriptLoader();
+		String usersScript = null;
+		if (!input.equals("")) {
+			usersScript = input;
+		} else {
+			try {
+				usersScript = controller.getProperty("sql.fill.user");
+			} catch (InvalidKeyException e) {
+				e.printStackTrace();
+			}
+		}
+		loader.getScript(usersScript);
+		int result = -1;
+		try {
+			result = loader.load();
+		} catch (DaoException e) {
+			e.printStackTrace();
+		}
+		if (result != -1) {
+			controller.print(String.format("Loaded %s rows", result));
+		} else {
+			controller.print(String.format("Cannot load file '%s'", usersScript));
 		}
 	}
 
@@ -57,7 +92,8 @@ class AdvancedMenuController {
 		builder.append(MainMenuController.SEPARATOR);
 		builder.append("[0] - Create table").append("\n");
 		builder.append("[1] - Delete table").append("\n");
-		builder.append("[2] - Back to MAIN MENU").append("\n");
+		builder.append("[2] - Load SQL script file in multi-threaded mode").append("\n");
+		builder.append("[3] - Back to MAIN MENU").append("\n");
 		builder.append(MainMenuController.SEPARATOR);
 		builder.append("Enter menu item:");
 		return builder.toString();
