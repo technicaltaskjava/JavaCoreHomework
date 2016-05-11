@@ -18,31 +18,6 @@ public class CookieDao extends AbstractEntityDao<Cookie> {
 	}
 
 	@Override
-	public String getSelectQuery() {
-		return "SELECT * FROM COOKIES";
-	}
-
-	@Override
-	public String getAddQuery() {
-		return "INSERT INTO COOKIES (COOKIE, LUCKY_NUMBER) VALUES (?, ?)";
-	}
-
-	@Override
-	public String getUpdateQuery() {
-		return "UPDATE COOKIES SET COOKIE = ?, LUCKY_NUMBER = ? WHERE ID = ?";
-	}
-
-	@Override
-	public String getDeleteQuery() {
-		return "DELETE FROM COOKIES WHERE ID = ?";
-	}
-
-	@Override
-	public String getLastRow() {
-		return "SELECT MAX(ID) FROM COOKIES";
-	}
-
-	@Override
 	protected String getTable() {
 		return "COOKIES";
 	}
@@ -53,6 +28,11 @@ public class CookieDao extends AbstractEntityDao<Cookie> {
 	}
 
 	@Override
+	public String getSelectQuery() {
+		return "SELECT * FROM COOKIES";
+	}
+
+	@Override
 	protected void prepareStatementForUpdate(PreparedStatement statement, Cookie cookie) throws DaoException {
 		try {
 			setParameter(statement, cookie);
@@ -60,6 +40,11 @@ public class CookieDao extends AbstractEntityDao<Cookie> {
 		} catch (SQLException e) {
 			throw new DaoException(e.getMessage(), e);
 		}
+	}
+
+	@Override
+	public String getAddQuery() {
+		return "INSERT INTO COOKIES (COOKIE, LUCKY_NUMBER) VALUES (?, ?)";
 	}
 
 	@Override
@@ -80,6 +65,11 @@ public class CookieDao extends AbstractEntityDao<Cookie> {
 
 	}
 
+	@Override
+	public String getUpdateQuery() {
+		return "UPDATE COOKIES SET COOKIE = ?, LUCKY_NUMBER = ? WHERE ID = ?";
+	}
+
 	private void setParameter(final PreparedStatement statement, final Cookie cookie) throws DaoException {
 		try {
 			statement.setString(1, cookie.getCookie());
@@ -89,10 +79,21 @@ public class CookieDao extends AbstractEntityDao<Cookie> {
 		}
 	}
 
+	@Override
+	public String getDeleteQuery() {
+		return "DELETE FROM COOKIES WHERE ID = ?";
+	}
+
 	private class EntityCookie extends Cookie {
+
 		@Override
 		protected void setId(final Integer id) { //NOSONAR this method protected entityList class from unexpected change 'ID'
 			super.setId(id);
 		}
+	}
+
+	@Override
+	public String getLastRow() {
+		return "SELECT MAX(ID) FROM COOKIES";
 	}
 }

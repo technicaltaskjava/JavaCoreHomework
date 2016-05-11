@@ -17,24 +17,22 @@ public class SqlScriptLoader {
 	private static final Logger logger = LoggerFactory.getLogger(SqlScriptLoader.class);
 
 	private final int processorCount;
-	private AtomicInteger operationCount = new AtomicInteger(0);
+	private final AtomicInteger operationCount = new AtomicInteger(0);
 	private BlockingQueue<String> scripts = new LinkedBlockingQueue<>();
 
 	public SqlScriptLoader() {
 		processorCount = Runtime.getRuntime().availableProcessors();
 	}
 
-	public void erase() {
+	void erase() {
 		scripts = new LinkedBlockingQueue<>();
 	}
 
-	public boolean getScript(final String scriptFileName) {
+	public void getScript(final String scriptFileName) {
 		try {
 			scripts = SqlScriptParser.parse(scriptFileName);
-			return true;
 		} catch (FileNotFoundException e) {
 			logger.error(e.getMessage(), e);
-			return false;
 		}
 	}
 

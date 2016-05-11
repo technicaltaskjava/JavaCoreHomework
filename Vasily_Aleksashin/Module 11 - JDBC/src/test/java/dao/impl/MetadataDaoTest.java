@@ -19,7 +19,7 @@ import static org.junit.Assert.assertTrue;
 public class MetadataDaoTest {
 	private static final Logger logger = LoggerFactory.getLogger(MetadataDaoTest.class);
 	private static DaoFactory factory;
-	private Metadata metadataTest = new Metadata();
+	private final Metadata metadataTest = new Metadata();
 
 	private MetadataDao metadataDao;
 

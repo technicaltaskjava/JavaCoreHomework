@@ -18,19 +18,19 @@ public abstract class AbstractEntityDao<T extends Identified> implements EntityD
 
 	protected final DaoFactory factory;
 
-	public AbstractEntityDao(final DaoFactory factory) {
+	protected AbstractEntityDao(final DaoFactory factory) {
 		this.factory = factory;
 	}
 
-	public abstract String getSelectQuery();
+	protected abstract String getSelectQuery();
 
-	public abstract String getAddQuery();
+	protected abstract String getAddQuery();
 
-	public abstract String getUpdateQuery();
+	protected abstract String getUpdateQuery();
 
-	public abstract String getDeleteQuery();
+	protected abstract String getDeleteQuery();
 
-	public abstract String getLastRow();
+	protected abstract String getLastRow();
 
 	protected abstract String getTable();
 

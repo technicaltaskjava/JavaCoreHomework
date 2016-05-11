@@ -4,10 +4,14 @@ import controller.MainController;
 import exception.DaoException;
 import model.script.SqlScriptLoader;
 import model.service.TableService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.security.InvalidKeyException;
 
 class AdvancedMenuController {
+	private static final Logger logger = LoggerFactory.getLogger(AdvancedMenuController.class);
+
 	private TableService service;
 
 	void show(MainController controller) {
@@ -30,7 +34,7 @@ class AdvancedMenuController {
 					isExit = true;
 					break;
 				default:
-					controller.print(String.format("%nEntered menu item '%s' incorrect, expected 0 - 2", input));
+					controller.print(String.format("%nEntered menu item '%s' incorrect, expected 0 - 3", input));
 			}
 		}
 	}
@@ -40,13 +44,13 @@ class AdvancedMenuController {
 		final String input = controller.read();
 		SqlScriptLoader loader = new SqlScriptLoader();
 		String usersScript = null;
-		if (!input.equals("")) {
+		if (!"".equals(input)) {
 			usersScript = input;
 		} else {
 			try {
 				usersScript = controller.getProperty("sql.fill.user");
 			} catch (InvalidKeyException e) {
-				e.printStackTrace();
+				logger.error(e.getMessage(), e);
 			}
 		}
 		loader.getScript(usersScript);
@@ -54,7 +58,7 @@ class AdvancedMenuController {
 		try {
 			result = loader.load();
 		} catch (DaoException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 		if (result != -1) {
 			controller.print(String.format("Loaded %s rows", result));

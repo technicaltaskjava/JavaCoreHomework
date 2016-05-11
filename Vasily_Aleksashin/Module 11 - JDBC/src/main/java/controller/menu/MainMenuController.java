@@ -1,39 +1,48 @@
 package controller.menu;
 
 import controller.MainController;
+import exception.DaoException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class MainMenuController {
-
 	static final String SEPARATOR = "=========================================\n";
+	private static final Logger logger = LoggerFactory.getLogger(MainMenuController.class);
+	private UserMenuController userMenu;
+	private CookieMenuController cookieMenu;
 
 	public void show(final MainController controller) {
+		try {
+			userMenu = new UserMenuController(controller);
+			cookieMenu = new CookieMenuController(controller);
+		} catch (DaoException e) {
+			logger.error(e.getMessage(), e);
+		}
 		boolean isExit = false;
 		while (!isExit) {
 			controller.print(getMenu());
 			final String input = controller.read();
 			switch (input) {
 				case "0":
-					UserMenuController userMenu = new UserMenuController();
 					userMenu.show(controller);
 					break;
 				case "1":
-					CookieMenuController cookieMenu = new CookieMenuController();
 					cookieMenu.show(controller);
 					break;
 				case "2":
+					MetadataMenuController metadataMenu = new MetadataMenuController();
+					metadataMenu.show(controller, userMenu, cookieMenu);
 					break;
 				case "3":
 					AdvancedMenuController advancedMenu = new AdvancedMenuController();
 					advancedMenu.show(controller);
 					break;
 				case "4":
-					break;
-				case "5":
 					isExit = true;
 					controller.print("Thank you for using my App");
 					break;
 				default:
-					controller.print(String.format("%nEntered menu item '%s' incorrect, expected 0 - 5", input));
+					controller.print(String.format("%nEntered menu item '%s' incorrect, expected 0 - 4", input));
 			}
 		}
 	}

@@ -10,5 +10,7 @@ public class MetadataService extends AbstractEntityService<Metadata, MetadataDao
 		super(entityDao);
 	}
 
-
+	public void erase() {
+		entityList.clear();
+	}
 }

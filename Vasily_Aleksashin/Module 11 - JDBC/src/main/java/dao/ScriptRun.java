@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ScriptRun implements Runnable {
 	private static final Logger logger = LoggerFactory.getLogger(ScriptRun.class);
 	private final BlockingQueue<String> scripts;
-	private AtomicInteger operationCount;
+	private final AtomicInteger operationCount;
 	private DaoFactory factory;
 	private boolean isQueueEmpty;
 

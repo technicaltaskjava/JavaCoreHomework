@@ -15,16 +15,21 @@ public abstract class AbstractEntityService<T extends Identified, K extends Abst
 	private static final Logger logger = LoggerFactory.getLogger(AbstractEntityService.class);
 
 	private final K entityDao;
-	private final List<T> entityList = new ArrayList<>();
+	protected final List<T> entityList = new ArrayList<>();
 
-	public AbstractEntityService(final K entityDao) throws DaoException {
+	protected AbstractEntityService(final K entityDao) throws DaoException {
 		this.entityDao = entityDao;
 		entityList.addAll(this.entityDao.getAll());
 	}
 
 	@Override
 	public T getById(final Integer id) {
-		return entityList.get(id);
+		try {
+			return entityList.get(id);
+		} catch (IndexOutOfBoundsException e) {
+			logger.error(e.getMessage(), e);
+		}
+		return null;
 	}
 
 	@Override

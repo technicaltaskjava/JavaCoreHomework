@@ -1,6 +1,6 @@
 package controller;
 
-public class Main {
+class Main {
 	private Main() {
 	}
 

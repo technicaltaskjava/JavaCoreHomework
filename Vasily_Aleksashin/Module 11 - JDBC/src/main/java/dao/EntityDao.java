@@ -5,7 +5,7 @@ import model.entity.Identified;
 
 import java.util.List;
 
-public interface EntityDao<T extends Identified> {
+interface EntityDao<T extends Identified> {
 	T getById(Integer id) throws DaoException;
 
 	List<T> getAll() throws DaoException;

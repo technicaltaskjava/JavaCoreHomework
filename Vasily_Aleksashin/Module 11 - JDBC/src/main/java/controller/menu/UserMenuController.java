@@ -8,6 +8,7 @@ import model.service.impl.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Collections;
 import java.util.List;
 
 class UserMenuController {
@@ -15,12 +16,11 @@ class UserMenuController {
 
 	private UserService service;
 
+	UserMenuController(MainController controller) throws DaoException {
+		service = new UserService(controller.getFactory().getUserDao());
+	}
+
 	void show(MainController controller) {
-		try {
-			service = new UserService(controller.getFactory().getUserDao());
-		} catch (DaoException e) {
-			e.printStackTrace();
-		}
 		boolean isExit = false;
 		while (!isExit) {
 			controller.print(getMenu());
@@ -64,74 +64,88 @@ class UserMenuController {
 
 	private void updateUser(MainController controller) {
 		final User user = findUserByName(controller);
-		if (user != null) {
-			controller.print("Enter new user name or empty for not change:");
-			final String userName = controller.read();
-			if (!userName.equals("")) {
-				user.setUserName(userName);
-			}
-			boolean isDone = false;
-			String email = null;
-			while (!isDone) {
-				controller.print("Enter new email or empty for not change:");
-				email = controller.read();
-				if (email.equals("")) {
-					break;
-				}
-				if (!email.matches("[\\w]*@[\\w\\W]*\\.[\\w]*")) {
-					controller.print("Email incorrect");
-				} else {
-					isDone = true;
-				}
-			}
-			if (!email.equals("")) {
-				user.setEmail(email);
-			}
-			controller.print("Enter new password or empty for not change:");
-			final String pass = controller.read();
-			if (!pass.equals("")) {
-				user.setPassword(pass);
-			}
-			controller.print("Enter new first name or empty for not change:");
-			final String firstName = controller.read();
-			if (!firstName.equals("")) {
-				user.setFirstName(firstName);
-			}
-			controller.print("Enter new last name or empty for not change:");
-			final String lastName = controller.read();
-			if (!lastName.equals("")) {
-				user.setLastName(lastName);
-			}
-			int age = 0;
-			isDone = false;
-			while (!isDone) {
-				controller.print("Enter new age or empty for not change:");
-				final String input = controller.read();
-				if (input.equals("")) {
-					break;
-				}
-				try {
-					age = Integer.parseInt(input);
-					if (age < 1 || age > 99) {
-						throw new NumberFormatException();
-					}
-					isDone = true;
-				} catch (NumberFormatException e) {
-					logger.error(String.format("User age must be in interval 1-99, but found '%s'", input), e);
-				}
-			}
-			if (age != 0) {
-				user.setAge(age);
-			}
-			final int result = service.update(user);
-			if (result != -1) {
-				controller.print("User updated:");
-				controller.print(user.toString());
-			} else {
-				controller.print("Cannot update user");
-			}
-		} else {
+		if (user == null) {
 			controller.print("Cannot find user");
+			return;
+		}
+		controller.print("Enter new user name or empty for not change:");
+		final String userName = controller.read();
+		if (!"".equals(userName)) {
+			user.setUserName(userName);
+		}
+		String email = getEmail(controller);
+		if (!"".equals(email)) {
+			user.setEmail(email);
+		}
+		controller.print("Enter new password or empty for not change:");
+		final String pass = controller.read();
+		if (!"".equals(pass)) {
+			user.setPassword(pass);
+		}
+		controller.print("Enter new first name or empty for not change:");
+		final String firstName = controller.read();
+		if (!"".equals(firstName)) {
+			user.setFirstName(firstName);
+		}
+		controller.print("Enter new last name or empty for not change:");
+		final String lastName = controller.read();
+		if (!"".equals(lastName)) {
+			user.setLastName(lastName);
+		}
+		int age = getAge(controller);
+		if (age != 0) {
+			user.setAge(age);
+		}
+		final int result = service.update(user);
+		if (result != -1) {
+			controller.print("User updated:");
+			controller.print(user.toString());
+		} else {
+			controller.print("Cannot update user");
+		}
+	}
+
+	private int getAge(MainController controller) {
+		int age = 0;
+		boolean isDone = false;
+		while (!isDone) {
+			controller.print("Enter new age or empty for not change:");
+			final String input = controller.read();
+			if ("".equals(input)) {
+				break;
+			}
+			try {
+				age = Integer.parseInt(input);
+				ageValidate(age);
+				isDone = true;
+			} catch (NumberFormatException e) {
+				logger.error(String.format("User age must be in interval 1-99, but found '%s'", input), e);
+			}
+		}
+		return age;
+	}
+
+	private String getEmail(MainController controller) {
+		String email = null;
+		boolean isDone = false;
+		while (!isDone) {
+			controller.print("Enter new email or empty for not change:");
+			email = controller.read();
+			if ("".equals(email)) {
+				break;
+			}
+			if (!email.matches("[\\w]*@[\\w\\W]*\\.[\\w]*")) {
+				controller.print("Email incorrect");
+			} else {
+				isDone = true;
+			}
+		}
+		return email;
+	}
+
+	private void ageValidate(int age) {
+		if (age < 1 || age > 99) {
+			throw new NumberFormatException();
 		}
 	}
 
@@ -162,9 +176,7 @@ class UserMenuController {
 			final String input = controller.read();
 			try {
 				age = Integer.parseInt(input);
-				if (age < 1 || age > 99) {
-					throw new NumberFormatException();
-				}
+				ageValidate(age);
 				isDone = true;
 			} catch (NumberFormatException e) {
 				logger.error(String.format("User age must be in interval 1-99, but found '%s'", input), e);
@@ -179,11 +191,11 @@ class UserMenuController {
 				controller.print("Cannot create user");
 			}
 		} catch (CryptException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	}
 
-	private User findUserByName(MainController controller) {
+	User findUserByName(MainController controller) {
 		controller.print("Enter user name:");
 		final String input = controller.read();
 		final User user = service.getByLogin(input);
@@ -196,7 +208,7 @@ class UserMenuController {
 		}
 	}
 
-	private void showAllUser(MainController controller) {
+	List<User> showAllUser(MainController controller) {
 		final List<User> users = service.getAll();
 		controller.print("\tUsers list:");
 		for (User user : users) {
@@ -204,7 +216,9 @@ class UserMenuController {
 		}
 		if (users.isEmpty()) {
 			controller.print("IS EMPTY");
+			return Collections.emptyList();
 		}
+		return users;
 	}
 
 	private String getMenu() {

@@ -104,7 +104,7 @@ public class User implements Identified {
 				"id=" + id +
 				", userName='" + userName + '\'' +
 				", email='" + email + '\'' +
-				", password='" + password + '\'' +
+				", pass='" + password + '\'' +
 				", firstName='" + firstName + '\'' +
 				", lastName='" + lastName + '\'' +
 				", age=" + age +

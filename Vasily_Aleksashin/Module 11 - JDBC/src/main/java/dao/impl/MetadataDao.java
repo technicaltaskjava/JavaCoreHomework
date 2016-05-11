@@ -20,31 +20,6 @@ public class MetadataDao extends AbstractEntityDao<Metadata> {
 	}
 
 	@Override
-	public String getSelectQuery() {
-		return "SELECT * FROM METADATA";
-	}
-
-	@Override
-	public String getAddQuery() {
-		return "INSERT INTO METADATA (COOKIE_ID, USER_ID, TIME_ADDED) VALUES (?, ?, CURRENT_TIMESTAMP)";
-	}
-
-	@Override
-	public String getUpdateQuery() {
-		return "UPDATE METADATA SET COOKIE_ID = ?, USER_ID = ? WHERE ID = ?";
-	}
-
-	@Override
-	public String getDeleteQuery() {
-		return "DELETE FROM METADATA WHERE ID = ?";
-	}
-
-	@Override
-	public String getLastRow() {
-		return "SELECT MAX(ID) FROM METADATA";
-	}
-
-	@Override
 	protected String getTable() {
 		return "METADATA";
 	}
@@ -55,6 +30,11 @@ public class MetadataDao extends AbstractEntityDao<Metadata> {
 	}
 
 	@Override
+	public String getDeleteQuery() {
+		return "DELETE FROM METADATA WHERE ID = ?";
+	}
+
+	@Override
 	protected void prepareStatementForUpdate(PreparedStatement statement, Metadata metadata) throws DaoException {
 		try {
 			setParameter(statement, metadata);
@@ -62,6 +42,11 @@ public class MetadataDao extends AbstractEntityDao<Metadata> {
 		} catch (SQLException e) {
 			throw new DaoException(e.getMessage(), e);
 		}
+	}
+
+	@Override
+	public String getLastRow() {
+		return "SELECT MAX(ID) FROM METADATA";
 	}
 
 	@Override
@@ -84,6 +69,11 @@ public class MetadataDao extends AbstractEntityDao<Metadata> {
 		return metadata.isEmpty() ? Collections.<Metadata>emptyList() : metadata;
 	}
 
+	@Override
+	public String getUpdateQuery() {
+		return "UPDATE METADATA SET COOKIE_ID = ?, USER_ID = ? WHERE ID = ?";
+	}
+
 	private void setParameter(final PreparedStatement statement, final Metadata metadata) throws DaoException {
 		try {
 			statement.setInt(1, metadata.getCookie().getId());
@@ -93,11 +83,22 @@ public class MetadataDao extends AbstractEntityDao<Metadata> {
 		}
 	}
 
+	@Override
+	public String getAddQuery() {
+		return "INSERT INTO METADATA (COOKIE_ID, USER_ID, TIME_ADDED) VALUES (?, ?, CURRENT_TIMESTAMP)";
+	}
+
 	private class EntityMetadata extends Metadata {
+
 		@Override
 		protected void setId(final Integer id) { //NOSONAR this method protected entityList class from unexpected change
 			// 'ID'
 			super.setId(id);
 		}
+	}
+
+	@Override
+	public String getSelectQuery() {
+		return "SELECT * FROM METADATA";
 	}
 }

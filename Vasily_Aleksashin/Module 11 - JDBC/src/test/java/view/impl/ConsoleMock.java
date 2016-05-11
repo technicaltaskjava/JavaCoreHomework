@@ -2,7 +2,7 @@ package view.impl;
 
 import java.io.*;
 
-public class ConsoleMock {
+class ConsoleMock {
 	private final UserInputStream in;
 	private final ByteArrayOutputStream out;
 

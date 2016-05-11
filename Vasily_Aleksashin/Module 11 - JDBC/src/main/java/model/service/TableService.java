@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 public class TableService {
 	private static final Logger logger = LoggerFactory.getLogger(TableService.class);
-	private TableDao tableDao;
+	private final TableDao tableDao;
 
 	public TableService(TableDao tableDao) {
 		this.tableDao = tableDao;

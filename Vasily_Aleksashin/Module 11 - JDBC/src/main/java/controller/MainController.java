@@ -5,21 +5,24 @@ import dao.DaoFactory;
 import dao.impl.DaoFactoryImpl;
 import exception.DaoException;
 import model.conf.Configuration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import view.View;
 import view.impl.ConsoleViewImpl;
 
 import java.security.InvalidKeyException;
 
 public class MainController {
+	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	private final View view = new ConsoleViewImpl();
 	private DaoFactory factory;
-	private Configuration conf = Configuration.getInstance();
+	private final Configuration conf = Configuration.getInstance();
 
 	void run() {
 		try {
 			factory = DaoFactoryImpl.getInstance(true);
 		} catch (DaoException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 		MainMenuController mainMenu = new MainMenuController();
 		mainMenu.show(this);

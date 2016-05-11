@@ -68,10 +68,9 @@ public class Metadata implements Identified {
 
 	@Override
 	public String toString() {
-		return "Metadata{" +
+		return "Metadata{id=" + id + ", timeAdded=" + timeAdded +
 				"\n\tuser=" + user +
 				"\n\tcookie=" + cookie +
-				"\n\ttimeAdded=" + timeAdded +
 				"\n}";
 	}
 }
