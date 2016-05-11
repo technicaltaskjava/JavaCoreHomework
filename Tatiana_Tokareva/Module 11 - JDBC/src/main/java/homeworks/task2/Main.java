@@ -23,7 +23,7 @@ public class Main {
 
 		User user1 = new User( "Yurash", "Yurik", "misterY@mail.com", "853254dsf");
 		int rows = manager.insert(user1);
-		System.out.println(rows);
+		System.out.println("insert count="+rows);
 
 		manager.delete();
 

@@ -13,10 +13,10 @@ public class ConnectionPool {
 	
 	private BlockingQueue<PooledConnection> available;
 	private BlockingQueue<PooledConnection> used;
-	private final String url;
-	private final String user;
-	private final String password;
-	private final static int CONNECTION_SIZE = 8;
+	 final String url;
+	 final String user;
+	 final String password;
+	private static final  int CONNECTION_SIZE = 8;
 	private Connection connection;
 
 	private static final Logger log = LoggerFactory.getLogger(ConnectionPool.class);
@@ -29,8 +29,8 @@ public class ConnectionPool {
 		
 		try {
 			Class.forName("org.h2.Driver");
-			used = new ArrayBlockingQueue<PooledConnection>(CONNECTION_SIZE);
-			available = new ArrayBlockingQueue<PooledConnection>(CONNECTION_SIZE);
+			used = new ArrayBlockingQueue<>(CONNECTION_SIZE);
+			available = new ArrayBlockingQueue<>(CONNECTION_SIZE);
 			for (int index = 0; index < CONNECTION_SIZE; index++) {
 				connection = DriverManager.getConnection(url, user, password);
 				PooledConnection pooledConnection = new PooledConnection(connection, this);

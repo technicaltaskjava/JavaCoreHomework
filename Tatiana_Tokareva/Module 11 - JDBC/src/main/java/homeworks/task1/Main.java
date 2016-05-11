@@ -8,10 +8,13 @@ import java.sql.SQLException;
 import java.sql.Savepoint;
 
 public class Main {
+
+	private static final String USERS = "users";
+	private static final Logger logger = LoggerFactory.getLogger(Main.class);
+
 	private Main() {
 	}
 
-	private static final Logger log = LoggerFactory.getLogger(Main.class);
 
 	public static void main(String[] args) {
 
@@ -20,14 +23,14 @@ public class Main {
 			connection.setAutoCommit(false);
 			Functionality functionality = new Functionality(connection);
 			functionality.selectSpecificInformation();
-			functionality.selectAll("users");
+			functionality.selectAll(USERS);
 			int insert;
 			insert = functionality.insert();
 			if (insert != -1) {
-				functionality.selectAll("users");
+				functionality.selectAll(USERS);
 				Savepoint savepointToInsert = connection.setSavepoint("savepoint1");
 				functionality.update();
-				functionality.selectAll("users");
+				functionality.selectAll(USERS);
 				int delete = functionality.delete();
 				if (delete == -1) {
 					connection.rollback(savepointToInsert);
@@ -38,10 +41,10 @@ public class Main {
 			} else {
 				connection.setAutoCommit(true);
 			}
-			functionality.selectAll("users");
+			functionality.selectAll(USERS);
 
 		} catch (SQLException e) {
-			log.error(e.getMessage(), e);
+			logger.error(e.getMessage(), e);
 		}
 
 	}

@@ -59,9 +59,9 @@ public class User {
 
 		String result = this.getClass().getSimpleName();
 		result += " id=" + getId()+
-				", lastName='" + lastName + '\'' +
-				", firtsName='" + firtsName + '\'' +
-				", password='" + password + "\n";
+				", lastName=" + lastName + '\'' +
+				", firtsName=" + firtsName + '\'' +
+				", password=" + password + "\n";
 		return result;
 	}
 }

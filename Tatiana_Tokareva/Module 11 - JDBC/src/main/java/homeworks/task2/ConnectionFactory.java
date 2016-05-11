@@ -7,9 +7,9 @@ import java.sql.Connection;
 
 public class ConnectionFactory implements Factory {
 
-	private final String url;
-	private final String user;
-	private final String pass;
+	 final String url;
+	 final String user;
+	 final String pass;
 	private ConnectionPool pool;
 
 	private static final Logger log = LoggerFactory.getLogger(ConnectionFactory.class);

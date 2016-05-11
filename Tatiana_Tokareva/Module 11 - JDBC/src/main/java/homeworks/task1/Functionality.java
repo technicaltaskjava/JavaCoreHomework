@@ -17,6 +17,8 @@ public class Functionality {
 
 	}
 
+
+
 	public void selectAll(String tableName) {
 		String select = String.format("SELECT * FROM %s ORDER BY ID", tableName);
 		try (PreparedStatement statement = connection.prepareStatement(select);
@@ -60,6 +62,7 @@ public class Functionality {
 		return rows;
 	}
 
+
 	public void update() {
 		String update = "UPDATE USERS SET YEAROFBIRTH=? WHERE FIRSTNAME=?";
 		try (PreparedStatement statement = connection.prepareStatement(update)) {
@@ -75,11 +78,11 @@ public class Functionality {
 	}
 
 	public int delete() {
-	int rows = -1;
-
 		String field = "DELETE from USERS WHERE ID >=?";
+
+		int rows = -1;
 		try (PreparedStatement statement = connection.prepareStatement(field)) {
-				statement.setInt(1, 34);
+			statement.setInt(1, 34);
 			rows = statement.executeUpdate();
 			System.out.println("Delete count = " + rows);
 		} catch (SQLException e) {
@@ -87,6 +90,5 @@ public class Functionality {
 		}
 		return rows;
 	}
-
 
 }

@@ -11,15 +11,15 @@ public class PooledConnection implements Connection {
 	private ConnectionPool connectionPool;
 
 
-	protected void closeReally() throws SQLException {
-		connection.close();
-	}
 
 	public PooledConnection(final Connection connection, ConnectionPool connectionPool) {
 		this.connection = connection;
 		this.connectionPool = connectionPool;
 	}
 
+	protected void closeReally() throws SQLException {
+		connection.close();
+	}
 	@Override
 	public Statement createStatement() throws SQLException {
 		return connection.createStatement();
