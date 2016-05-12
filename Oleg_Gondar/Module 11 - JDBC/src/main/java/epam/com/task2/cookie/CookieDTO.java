@@ -1,4 +1,4 @@
-package epam.com.task2;
+package epam.com.task2.cookie;
 
 public class CookieDTO {
     private int cookieId;
@@ -15,6 +15,10 @@ public class CookieDTO {
 
     public String getCookie() {
         return cookie;
+    }
+
+    public void setCookieId(int cookieId) {
+        this.cookieId = cookieId;
     }
 
     public void setCookie(String cookie) {
