@@ -5,7 +5,6 @@ import daotask.dao.UserDAO;
 import daotask.exeptions.ConnectionPoolException;
 import daotask.pool.PooledConnection;
 
-import java.sql.Connection;
 
 /**
  * @author Sergey Solovyov
