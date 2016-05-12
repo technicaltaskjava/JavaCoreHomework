@@ -55,14 +55,4 @@ public class MetaData {
     public void setTimeAdded(Date timeAdded) {
         this.timeAdded = timeAdded;
     }
-
-    @Override
-    public String toString() {
-        return "MetaData{" +
-                "id=" + id +
-                ", cookieId=" + cookieId +
-                ", userId=" + userId +
-                ", timeAdded=" + timeAdded +
-                '}';
-    }
 }

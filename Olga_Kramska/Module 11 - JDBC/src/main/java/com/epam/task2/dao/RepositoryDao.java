@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by Olga Kramska on 08-May-16.
  */
-public interface RepositoryDao<T, ID extends Serializable> {
+public interface RepositoryDao<T, ID extends Serializable> {//NOSONAR
 
     void add(T entity);
 

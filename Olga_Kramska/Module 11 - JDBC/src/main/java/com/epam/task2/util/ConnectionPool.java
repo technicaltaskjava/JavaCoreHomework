@@ -1,5 +1,8 @@
 package com.epam.task2.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.Array;
 import java.sql.Blob;
 import java.sql.CallableStatement;
@@ -27,6 +30,8 @@ import java.util.concurrent.Executor;
  */
 
 public class ConnectionPool {
+    private final Logger logger = LoggerFactory.getLogger(ConnectionPool.class);
+
     protected final List<PoolConnection> connections;
     protected String url;
     protected String user;
@@ -46,7 +51,7 @@ public class ConnectionPool {
         this.user = user;
         this.password = password;
 
-        connections = new ArrayList();
+        connections = new ArrayList<>();
     }
 
     public void setCheckConnections(boolean checkConnections) {
@@ -62,7 +67,6 @@ public class ConnectionPool {
         this.maxIdleTime = maxIdleTime;
     }
 
-
     public void setMaxUseTime(long maxUseTime) {
         this.maxUseTime = maxUseTime;
     }
@@ -74,32 +78,14 @@ public class ConnectionPool {
 
         synchronized (connections) {
             PoolConnection pc;
-
             for (int i = 0; i < connections.size(); i++) {
                 pc = connections.get(i);
-
                 if (pc.lease()) {
-
-                    if (!checkConnections) {
-                        return pc;
+                    pc = checkConnection(pc);
+                    if (pc == null) {
+                        connections.remove(i);
                     } else {
-                        boolean isHealthy = true;
-
-                        try {
-                            if (pc.isClosed() && pc.getWarnings() != null) {
-                                isHealthy = false;
-                            }
-                        } catch (SQLException sqle) {
-                            isHealthy = false;
-                        }
-
-                        if (isHealthy) {
-                            return pc;
-                        } else {
-                            pc.expire();
-
-                            connections.remove(i);
-                        }
+                        return pc;
                     }
                 }
             }
@@ -121,6 +107,32 @@ public class ConnectionPool {
         return pc;
     }
 
+    private PoolConnection checkConnection(PoolConnection pc) throws SQLException {
+        if (!checkConnections) {
+            return pc;
+        } else {
+            if (isHealthy(pc)) {
+                return pc;
+            } else {
+                pc.expire();
+                return null;
+            }
+        }
+    }
+
+    private boolean isHealthy(PoolConnection pc) {
+        boolean isHealthy = true;
+        try {
+            if (pc.isClosed() && pc.getWarnings() != null) {
+                isHealthy = false;
+            }
+        } catch (SQLException e) {
+            logger.debug(e.getMessage(), e);
+            isHealthy = false;
+        }
+        return isHealthy;
+    }
+
     public void removeExpired() {
         PoolConnection pc;
 
@@ -131,34 +143,29 @@ public class ConnectionPool {
             for (int i = connections.size() - 1; i >= 0; i--) {
                 pc = connections.get(i);
 
-                if (!pc.inUse() && pc.getTimeClosed() < maxIdleDeadline) {
+                if (isUnusedConnection(pc, maxIdleDeadline) || isClosedConnection(pc, maxUseDeadline)) {
                     connections.remove(i);
                     try {
                         pc.expire();
                     } catch (SQLException ignore) {
-                    }
-                } else if (
-                        maxUseTime >= 0 &&
-                                pc.inUse() &&
-                                pc.getTimeOpened() < maxUseDeadline) {
-                    System.err.println("Warning: forced closing of a connection that has been in use too long.");
-                    System.err.println("Connection was acquired in:");
-                    pc.printStackTrace();
-                    System.err.println();
-
-                    connections.remove(i);
-                    try {
-                        pc.expire();
-                    } catch (SQLException ignore) {
+                        logger.debug(ignore.getMessage(), ignore);
                     }
                 }
             }
 
-            if (connections.size() == 0 && cleaner != null) {
+            if (connections.isEmpty() && cleaner != null) {
                 cleaner.halt();
                 cleaner = null;
             }
         }
+    }
+
+    private boolean isUnusedConnection(PoolConnection pc, long maxIdleDeadline) {
+        return !pc.inUse() && pc.getTimeClosed() < maxIdleDeadline;
+    }
+
+    private boolean isClosedConnection(PoolConnection pc, long maxUseDeadline) {
+        return maxUseTime >= 0 && pc.inUse() && pc.getTimeOpened() < maxUseDeadline;
     }
 
     public int getPoolSize() {
@@ -179,23 +186,18 @@ public class ConnectionPool {
                 PoolConnection pc = connections.get(i);
 
                 if (pc.inUse()) {
-                    System.err.println("Warning: forced closing of a connection still in use.");
-                    System.err.println("Connection was acquired in:");
-                    pc.printStackTrace();
-                    System.err.println();
+                    logger.warn("Warning: forced closing of a connection still in use.");
+                    logger.warn("Connection was acquired in:");
                 }
 
                 connections.remove(i);
                 try {
                     pc.expire();
                 } catch (SQLException ignore) {
+                    logger.debug(ignore.getMessage(), ignore);
                 }
             }
         }
-    }
-
-    protected void finalize() {
-        drain();
     }
 
     static class PoolConnection implements Connection {
@@ -204,7 +206,6 @@ public class ConnectionPool {
         protected boolean autoCommit;
         protected long timeOpened;
         protected long timeClosed;
-        private Throwable throwable;
 
         public PoolConnection(Connection conn) {
             connection = conn;
@@ -234,18 +235,13 @@ public class ConnectionPool {
             return timeClosed;
         }
 
-        public void expire()
-                throws SQLException {
+        public void expire() throws SQLException {
             connection.close();
             connection = null;
         }
 
-        public void printStackTrace() {
-            throwable.printStackTrace(System.err);
-        }
-
-        public synchronized void close()
-                throws SQLException {
+        @Override
+        public synchronized void close() throws SQLException {
             if (inUse) {
                 timeClosed = System.currentTimeMillis();
                 inUse = false;
@@ -256,157 +252,153 @@ public class ConnectionPool {
             }
         }
 
-        public Statement createStatement()
-                throws SQLException {
-            throwable = new Throwable();
+        @Override
+        public Statement createStatement() throws SQLException {
             return connection.createStatement();
         }
 
-        public PreparedStatement prepareStatement(String sql)
-                throws SQLException {
-            throwable = new Throwable();
+        @Override
+        public PreparedStatement prepareStatement(String sql) throws SQLException {
             return connection.prepareStatement(sql);
         }
 
-        public CallableStatement prepareCall(String sql)
-                throws SQLException {
+        @Override
+        public CallableStatement prepareCall(String sql) throws SQLException {
             return connection.prepareCall(sql);
         }
 
-        public String nativeSQL(String sql)
-                throws SQLException {
+        @Override
+        public String nativeSQL(String sql) throws SQLException {
             return connection.nativeSQL(sql);
         }
 
-        public void setAutoCommit(boolean autoCommit)
-                throws SQLException {
+        @Override
+        public void setAutoCommit(boolean autoCommit) throws SQLException {
             connection.setAutoCommit(autoCommit);
             this.autoCommit = connection.getAutoCommit();
         }
 
-        public boolean getAutoCommit()
-                throws SQLException {
+        @Override
+        public boolean getAutoCommit() throws SQLException {
             return connection.getAutoCommit();
         }
 
-        public void commit()
-                throws SQLException {
+        @Override
+        public void commit() throws SQLException {
             connection.commit();
         }
 
-        public void rollback()
-                throws SQLException {
+        @Override
+        public void rollback() throws SQLException {
             connection.rollback();
         }
 
-        public boolean isClosed()
-                throws SQLException {
+        @Override
+        public boolean isClosed() throws SQLException {
             return connection.isClosed();
         }
 
-        public DatabaseMetaData getMetaData()
-                throws SQLException {
+        @Override
+        public DatabaseMetaData getMetaData() throws SQLException {
             return connection.getMetaData();
         }
 
-        public void setReadOnly(boolean readOnly)
-                throws SQLException {
+        @Override
+        public void setReadOnly(boolean readOnly) throws SQLException {
             connection.setReadOnly(readOnly);
         }
 
-        public boolean isReadOnly()
-                throws SQLException {
+        @Override
+        public boolean isReadOnly() throws SQLException {
             return connection.isReadOnly();
         }
 
-        public void setCatalog(String catalog)
-                throws SQLException {
+        @Override
+        public void setCatalog(String catalog) throws SQLException {
             connection.setCatalog(catalog);
         }
 
-        public String getCatalog()
-                throws SQLException {
+        @Override
+        public String getCatalog() throws SQLException {
             return connection.getCatalog();
         }
 
-        public void setTransactionIsolation(int level)
-                throws SQLException {
+        @Override
+        public void setTransactionIsolation(int level) throws SQLException {
             connection.setTransactionIsolation(level);
         }
 
-        public int getTransactionIsolation()
-                throws SQLException {
+        @Override
+        public int getTransactionIsolation() throws SQLException {
             return connection.getTransactionIsolation();
         }
 
-        public SQLWarning getWarnings()
-                throws SQLException {
+        @Override
+        public SQLWarning getWarnings() throws SQLException {
             return connection.getWarnings();
         }
 
-        public void clearWarnings()
-                throws SQLException {
+        @Override
+        public void clearWarnings() throws SQLException {
             connection.clearWarnings();
         }
 
-        public Statement createStatement(
-                int resultSetType, int resultSetConcurrency)
-                throws SQLException {
+        @Override
+        public Statement createStatement(int resultSetType, int resultSetConcurrency) throws SQLException {
             return connection.createStatement(resultSetType, resultSetConcurrency);
         }
 
-        public PreparedStatement prepareStatement(
-                String sql, int resultSetType, int resultSetConcurrency)
-                throws SQLException {
+        @Override
+        public PreparedStatement prepareStatement(String sql, int resultSetType, int resultSetConcurrency) throws SQLException {
             return connection.prepareStatement(sql, resultSetType, resultSetConcurrency);
         }
 
-        public CallableStatement prepareCall(
-                String sql, int resultSetType, int resultSetConcurrency)
-                throws SQLException {
+        @Override
+        public CallableStatement prepareCall(String sql, int resultSetType, int resultSetConcurrency) throws SQLException {
             return connection.prepareCall(sql, resultSetType, resultSetConcurrency);
         }
 
-        public Map<String, Class<?>> getTypeMap()
-                throws SQLException {
+        @Override
+        public Map<String, Class<?>> getTypeMap() throws SQLException {
             return connection.getTypeMap();
         }
 
-        public void setTypeMap(Map<String, Class<?>> map)
-                throws SQLException {
+        @Override
+        public void setTypeMap(Map<String, Class<?>> map) throws SQLException {
             connection.setTypeMap(map);
         }
 
-        public void setHoldability(int holdability)
-                throws SQLException {
+        @Override
+        public void setHoldability(int holdability) throws SQLException {
             connection.setHoldability(holdability);
         }
 
-        public int getHoldability()
-                throws SQLException {
+        @Override
+        public int getHoldability() throws SQLException {
             return connection.getHoldability();
         }
 
-        public Savepoint setSavepoint()
-                throws SQLException {
+        @Override
+        public Savepoint setSavepoint() throws SQLException {
             return connection.setSavepoint();
         }
 
-        public Savepoint setSavepoint(String name)
-                throws SQLException {
+        @Override
+        public Savepoint setSavepoint(String name) throws SQLException {
             return connection.setSavepoint(name);
         }
 
-        public void rollback(Savepoint savepoint)
-                throws SQLException {
+        @Override
+        public void rollback(Savepoint savepoint) throws SQLException {
             connection.rollback(savepoint);
         }
 
-        public void releaseSavepoint(Savepoint savepoint)
-                throws SQLException {
+        @Override
+        public void releaseSavepoint(Savepoint savepoint) throws SQLException {
             connection.releaseSavepoint(savepoint);
         }
 
+        @Override
         public Statement createStatement(
                 int resultSetType,
                 int resultSetConcurrency,
@@ -416,6 +408,7 @@ public class ConnectionPool {
                     resultSetType, resultSetConcurrency, resultSetHoldability);
         }
 
+        @Override
         public PreparedStatement prepareStatement(
                 String sql,
                 int resultSetType,
@@ -426,6 +419,7 @@ public class ConnectionPool {
                     sql, resultSetType, resultSetConcurrency, resultSetHoldability);
         }
 
+        @Override
         public CallableStatement prepareCall(
                 String sql,
                 int resultSetType,
@@ -436,97 +430,109 @@ public class ConnectionPool {
                     sql, resultSetType, resultSetConcurrency, resultSetHoldability);
         }
 
-        public PreparedStatement prepareStatement(
-                String sql, int autoGenerateKeys)
-                throws SQLException {
+        @Override
+        public PreparedStatement prepareStatement(String sql, int autoGenerateKeys) throws SQLException {
             return connection.prepareStatement(sql, autoGenerateKeys);
         }
 
-        public PreparedStatement prepareStatement(
-                String sql, int[] columnIndexes)
-                throws SQLException {
+        @Override
+        public PreparedStatement prepareStatement(String sql, int[] columnIndexes) throws SQLException {
             return connection.prepareStatement(sql, columnIndexes);
         }
 
-        public PreparedStatement prepareStatement(
-                String sql, String[] columnNames)
-                throws SQLException {
+        @Override
+        public PreparedStatement prepareStatement(String sql, String[] columnNames) throws SQLException {
             return connection.prepareStatement(sql, columnNames);
         }
 
+        @Override
         public Clob createClob() throws SQLException {
-            return null;
+            return connection.createClob();
         }
 
+        @Override
         public Blob createBlob() throws SQLException {
-            return null;
+            return connection.createBlob();
         }
 
+        @Override
         public NClob createNClob() throws SQLException {
-            return null;
+            return connection.createNClob();
         }
 
+        @Override
         public SQLXML createSQLXML() throws SQLException {
-            return null;
+            return connection.createSQLXML();
         }
 
+        @Override
         public boolean isValid(int timeout) throws SQLException {
-            return false;
+            return connection.isValid(timeout);
         }
 
+        @Override
         public void setClientInfo(String name, String value) throws SQLClientInfoException {
+            connection.setClientInfo(name, value);
         }
 
+        @Override
         public void setClientInfo(Properties properties) throws SQLClientInfoException {
+            connection.setClientInfo(properties);
         }
 
+        @Override
         public String getClientInfo(String name) throws SQLException {
-            return null;
+            return connection.getClientInfo(name);
         }
 
+        @Override
         public Properties getClientInfo() throws SQLException {
-            return null;
+            return connection.getClientInfo();
         }
 
+        @Override
         public Array createArrayOf(String typeName, Object[] elements) throws SQLException {
-            return null;
+            return connection.createArrayOf(typeName, elements);
         }
 
+        @Override
         public Struct createStruct(String typeName, Object[] attributes) throws SQLException {
-            return null;
+            return connection.createStruct(typeName, attributes);
         }
 
         @Override
         public void setSchema(String schema) throws SQLException {
-
+            connection.setSchema(schema);
         }
 
         @Override
         public String getSchema() throws SQLException {
-            return null;
+            return connection.getSchema();
         }
 
         @Override
         public void abort(Executor executor) throws SQLException {
-
+            connection.abort(executor);
         }
 
         @Override
         public void setNetworkTimeout(Executor executor, int milliseconds) throws SQLException {
-
+            connection.setNetworkTimeout(executor, milliseconds);
         }
 
         @Override
         public int getNetworkTimeout() throws SQLException {
-            return 0;
+            return connection.getNetworkTimeout();
         }
 
+        @Override
         public <T> T unwrap(Class<T> iface) throws SQLException {
-            return null;
+            return connection.unwrap(iface);
         }
 
+        @Override
         public boolean isWrapperFor(Class<?> iface) throws SQLException {
-            return false;
+            return connection.isWrapperFor(iface);
         }
     }
 
@@ -545,11 +551,14 @@ public class ConnectionPool {
             setDaemon(true);
         }
 
+        @Override
         public void run() {
             while (!mustStop) {
                 try {
                     sleep(cleaningInterval);
                 } catch (InterruptedException ignore) {
+                    logger.debug(ignore.getMessage(), ignore);
+                    interrupt();
                 }
 
                 if (mustStop) {

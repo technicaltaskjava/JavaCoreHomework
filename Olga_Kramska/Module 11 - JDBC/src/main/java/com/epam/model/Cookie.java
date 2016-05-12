@@ -42,13 +42,4 @@ public class Cookie {
     public void setPrediction(String prediction) {
         this.prediction = prediction;
     }
-
-    @Override
-    public String toString() {
-        return "Cookie{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", prediction='" + prediction + '\'' +
-                '}';
-    }
 }

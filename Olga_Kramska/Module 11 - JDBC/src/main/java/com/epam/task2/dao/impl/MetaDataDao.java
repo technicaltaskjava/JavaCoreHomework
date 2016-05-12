@@ -3,6 +3,8 @@ package com.epam.task2.dao.impl;
 import com.epam.model.MetaData;
 import com.epam.task2.dao.RepositoryDao;
 import com.epam.task2.exc.DataAccessException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,6 +18,8 @@ import java.util.List;
  * Created by Olga Kramska on 10-May-16.
  */
 public class MetaDataDao implements RepositoryDao<MetaData, Integer> {
+    private static final Logger LOGGER = LoggerFactory.getLogger(MetaDataDao.class);
+
     private static final String INSERT_QUERY = "INSERT INTO MetaData (USER_ID, COOKIE_ID, TIME_ADDED) VALUES (?, ?, NOW())";
     private static final String SELECT_QUERY = "SELECT * FROM MetaData";
     private static final String SELECT_QUERY_BY_ID = "SELECT * FROM MetaData WHERE ID = ?";
@@ -34,25 +38,28 @@ public class MetaDataDao implements RepositoryDao<MetaData, Integer> {
             preparedStatement.setInt(1, metaData.getUserId());
             preparedStatement.setInt(2, metaData.getCookieId());
             preparedStatement.executeUpdate();
-            ResultSet resultSet = preparedStatement.getGeneratedKeys();
-            if (resultSet.next()) {
-                metaData.setId(resultSet.getInt(1));
+            try (ResultSet resultSet = preparedStatement.getGeneratedKeys()) {
+                if (resultSet.next()) {
+                    metaData.setId(resultSet.getInt(1));
+                }
             }
         } catch (SQLException e) {
+            LOGGER.error(e.getMessage(), e);
             throw new DataAccessException(e.getMessage());
         }
     }
 
     @Override
     public MetaData get(Integer id) {
-        ResultSet resultSet;
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY_BY_ID)) {
             preparedStatement.setInt(1, id);
-            resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                return new MetaData(resultSet.getInt(1), resultSet.getInt(2), resultSet.getInt(3), resultSet.getDate(4));
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return new MetaData(resultSet.getInt(1), resultSet.getInt(2), resultSet.getInt(3), resultSet.getDate(4));
+                }
             }
         } catch (SQLException e) {
+            LOGGER.error(e.getMessage(), e);
             throw new DataAccessException(e.getMessage());
         }
         return null;
@@ -60,14 +67,14 @@ public class MetaDataDao implements RepositoryDao<MetaData, Integer> {
 
     @Override
     public List<MetaData> getAll() {
-        ResultSet resultSet;
         List<MetaData> metaDatas = new ArrayList<>();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY)) {
-            resultSet = preparedStatement.executeQuery();
+        try (Statement preparedStatement = connection.createStatement();
+             ResultSet resultSet = preparedStatement.executeQuery(SELECT_QUERY)) {
             while (resultSet.next()) {
                 metaDatas.add(new MetaData(resultSet.getInt(1), resultSet.getInt(2), resultSet.getInt(3), resultSet.getDate(4)));
             }
         } catch (SQLException e) {
+            LOGGER.error(e.getMessage(), e);
             throw new DataAccessException(e.getMessage());
         }
         return metaDatas;
@@ -81,6 +88,7 @@ public class MetaDataDao implements RepositoryDao<MetaData, Integer> {
             preparedStatement.setInt(3, metaData.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
+            LOGGER.error(e.getMessage(), e);
             throw new DataAccessException(e.getMessage());
         }
     }
@@ -91,6 +99,7 @@ public class MetaDataDao implements RepositoryDao<MetaData, Integer> {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
+            LOGGER.error(e.getMessage(), e);
             throw new DataAccessException(e.getMessage());
         }
     }
