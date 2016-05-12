@@ -4,16 +4,20 @@ package com.epam.mydao.user;
 import java.io.Serializable;
 
 public class Users implements Serializable {
+
     private int id;
     private String password;
     private String email;
 
-    public Users(String password, String email) {
+    public Users(int id, String password, String email) {
+        this.id = id;
         this.password = password;
         this.email = email;
     }
 
-    public Users() {
+    public Users(String password, String email) {
+        this.password = password;
+        this.email = email;
     }
 
     public int getId() {

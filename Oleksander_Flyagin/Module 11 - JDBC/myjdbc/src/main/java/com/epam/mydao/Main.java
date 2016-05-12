@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-        List<Users> users = new ArrayList<Users>();
+        List<Users> users = new ArrayList();
         users.add(new Users("000665", "cen@on.com"));
         users.add(new Users("7666585", "vov@on.com"));
         users.add(new Users("77777777", "sem@on.com"));

@@ -8,14 +8,14 @@ import java.sql.SQLException;
 import java.util.ArrayDeque;
 
 public class MyConnectionPool {
-    private  ArrayDeque<Connection> availableConnection = new ArrayDeque<Connection>();
-    private  ArrayDeque<Connection> usedConnection = new ArrayDeque<Connection>();
+    private  ArrayDeque<Connection> availableConnection = new ArrayDeque();
+    private  ArrayDeque<Connection> usedConnection = new ArrayDeque();
+
     public MyConnectionPool(int initConnCnt) {
         for (int start = 1; start < initConnCnt; start++) {
             availableConnection.add(getConnection());
         }
     }
-
 
     private static Connection getConnection() {
         Connection conn = null;
@@ -29,7 +29,7 @@ public class MyConnectionPool {
     }
 
     public synchronized Connection retrieve() throws SQLException {
-        Connection newConn = null;
+        Connection newConn;
         if (availableConnection.isEmpty()) {
             newConn = getConnection();
         } else {
@@ -37,7 +37,6 @@ public class MyConnectionPool {
             availableConnection.remove(newConn);
             usedConnection.add(newConn);
         }
-
         return newConn;
     }
 
