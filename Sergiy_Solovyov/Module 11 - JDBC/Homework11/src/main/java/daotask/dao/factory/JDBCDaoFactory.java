@@ -8,7 +8,6 @@ import daotask.exeptions.ConnectionPoolException;
 import daotask.pool.ConnectionPool;
 import daotask.pool.PooledConnection;
 
-import java.sql.Connection;
 
 /**
  * @author Sergey Solovyov
