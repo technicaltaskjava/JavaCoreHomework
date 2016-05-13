@@ -13,7 +13,7 @@ public class UserDTO {
     private String country;
 
     public UserDTO() {
-        sity = "Dnapropetrovsk";
+        sity = "Dnepropetrovsk";
         country = "Ukraine";
     }
 

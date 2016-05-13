@@ -46,7 +46,7 @@ public class ConnectionPool {
 
         } catch (ClassNotFoundException | SQLException e) {
             org.apache.log4j.BasicConfigurator.configure();
-            logger.error("Не получилось", e);
+            logger.error("Config not loaded", e);
         }
         return null;
     }
