@@ -1,0 +1,10 @@
+<dataset>
+    <users id="1" username="John" email="john@gmail.com" password="123456"/>
+    <users id="2" username="Ben" email="ben@gmail.com" password="123456"/>
+
+    <cookies id="1" cookie="oatmeal" prediction="everything will be alright!"/>
+    <cookies id="2" cookie="galette" prediction="everything is possible"/>
+
+    <metadata id="1" cookie_id="1" user_id = "1" time_added="2016-05-09 12:00:00"/>
+    <metadata id="2" cookie_id="2" user_id = "2" time_added="2016-05-09 13:00:00"/>
+</dataset>
