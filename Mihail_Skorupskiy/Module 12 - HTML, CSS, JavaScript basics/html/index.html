@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mike's Fortune Cookies - main page</title>
+        <link rel="stylesheet" type="text/css" href="../css/FortuneCookies.css" />
+        <script src="../js/GetPrediction.js"></script>
+        <script src="../js/Login.js"></script>
+    </head>
+	<body>
+        <a href="index.html" id="title">Mike's Fortune Cookies</a>
+        <div id="login-container">
+            <label for="username">Username:</label>
+            <input type="text" id="username" class="bordered rounded">
+            <label for="password">Password:</label>
+            <input type="password" id="password" class="bordered rounded">
+            <input type="button" value="Login" id="submit" onclick="validate()" class="bordered rounded">
+            <p id="register-link">
+                <a href="register.html">Register a new account.</a>
+            </p>
+        </div>
+        <div id="image-container">
+            <img src="../img/Fortune-cookie-shutterstock.png" alt="Fortune cookie" class="bordered">
+            <img src="../img/Fortune-cookie-shutterstock.png" alt="Fortune cookie" class="bordered">
+            <img src="../img/Fortune-cookie-shutterstock.png" alt="Fortune cookie" class="bordered">
+        </div>
+		<div class="centered">
+            <p id="prediction-text" class="output bordered">
+                Fortune favors fools.
+            </p>
+            <p>
+                <input type="button" value="Get a prediction" onclick="getNewMessage()" class="bordered rounded">
+            </p>
+		</div>
+	</body>
+</html>
