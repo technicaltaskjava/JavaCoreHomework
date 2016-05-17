@@ -5,7 +5,17 @@
     <title>Cookies</title>
     <link rel="stylesheet" media="screen" href="styles.css" >
 </head>
-<link rel="stylesheet" type="text/css" href="css/cookieStyle.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+ <script type="text/javascript">
+   $(document).ready(function() {
+       $('.deleteRowButton').click(DeleteRow);
+     });
+
+   function DeleteRow()
+   {
+     $(this).parents('tr').first().remove();
+   }
+ </script>
 
 <script src="js/lib/jquery-2.2.3.min.js"></script>
 <script src="js/lib/jquery-ui.min.js"></script>
@@ -24,33 +34,34 @@
   <tr>
     <th>ID</th>
     <th>Cookie</th>
-    <th>Timetamp</th>
+
+
   </tr></thead>
 <tfoot>
   <tr>
 <tbody>
   <tr>
+    <td>1</td>
     <td>data</td>
-    <td>data</td>
-    <td>data</td>
+    <td><button class="deleteRowButton" type="button">Delete row</button></td>
   </tr>
 <tr>
+  <td>2</td>
   <td>data</td>
-  <td>data</td>
-  <td>data</td>
+  <td><button class="deleteRowButton" type="button">Delete row</button></td>
 </tr>
 <tr>
+  <td>3</td>
   <td>data</td>
-  <td>data</td>
-  <td>data</td>
+  <td><button class="deleteRowButton" type="button">Delete row</button></td>
 </tr>
 </tbody>
 </table>
 </div>
 </li>
 <li>
-<button class="submit" type="submit">add</button>
-<button class="submit" type="submit">remove</button>
+<button class="submit" type="submit">Add cookie</button>
+
 </li>
 </ul>
 </div>
