@@ -9,10 +9,17 @@ $(document).on('click', function () {
 	var target = $(event.target);
 	if (target.hasClass('get-button')) {
 		var cookieStore = getData(cookie);
-		var index = Math.floor(Math.random() * cookieStore.length);
-		$('.cookie').text(cookieStore[index][0]);
-		var msg = "Your Lucky Number is ";
-		$('.lucky').text(msg + cookieStore[index][1]);
+		var lastIndex = -1;
+		while (true) {
+			var index = Math.floor(Math.random() * cookieStore.length);
+			if (index !== lastIndex) {
+				$('.cookie').text(cookieStore[index][0]);
+				var msg = "Your Lucky Number is ";
+				$('.lucky').text(msg + cookieStore[index][1]);
+				lastIndex = index;
+				break;
+			}
+		}
 	}
 	if (target.hasClass('login-button')) {
 		redirect('html/login.html')
