@@ -1,0 +1,147 @@
+*{
+	margin:0;
+	padding:0;
+}
+
+body{
+	background-image: url(../images/bg-body.png);
+	width:100%;
+	font-family:Arial;
+	font-size:14px;
+	
+}
+
+#wrapper{
+	margin: 0px auto;
+	width:966px;
+	height: auto;
+	background-color:#FFFEF4;
+	border: 2px solid rgb(243, 144, 188);
+	border-radius: 30px;
+}
+
+#header{
+	width:100%;
+	padding-top:20px;
+	height:105px;
+}
+
+.menu {
+	float:left;
+	width:330px;
+	margin-top: 52px;
+
+}
+
+.logo {
+	float:left;
+	width:610px;
+}
+.logo a{
+	padding-left:33px;
+	font-size:74px;
+	color: rgba(46, 161, 197, 0.69);
+	font-family:Arial;
+	text-decoration:none;
+}
+
+.navigate a{
+	text-decoration:none;
+	text-transform: uppercase;
+  font-family: impact, sans-serif;
+  font-size: 20px;
+	padding: 0 15px;
+	color:  rgb(247, 136, 164);
+}
+
+.navigate a:hover{
+	color:rgb(250, 205, 225);
+}
+.navigate li{
+  position: relative;
+  display: block;
+  float: right;
+	
+}
+
+.line{
+  height: 6px;
+	background: linear-gradient(to right, rgb(111, 190, 212) 0, rgb(249, 197, 220) 100%);
+}
+
+
+
+.content{
+  
+  text-align: center;
+  margin: 60px 0px 0px;
+	padding: 20px 167px 0px;
+ 
+  font-size: 20px;
+	color: rgb(224, 105, 138);
+	}
+	
+.message{
+	font-family: impact, sans-serif;
+	box-shadow: 0px 0px 20px #222;
+	padding: 20px;
+	height:190px;
+	}
+
+input{
+	width: auto;
+	height: auto;
+  border: 1px solid rgba(224, 105, 138, 0.38);
+  padding: 6px;
+  cursor: pointer;
+  background: linear-gradient(180deg, rgba(213, 99, 125, 0.64) 0%, #E91E63 50%, #E91E63 51%, rgba(233, 30, 99, 0.12) 100%);
+	border-radius: 30px;
+	font-family: Arial, Tahoma;
+	font-size: 16px;
+	color: #FFFFFF;
+	text-align: center;
+	text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.25);
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+input:hover{
+background: linear-gradient(180deg, rgb(213, 99, 125) 0%, #E91E63 50%, #E91E63 51%, rgb(233, 30, 99) 100%);
+}
+
+input:focus{
+outline:none;
+}
+
+.errors{
+color:#F44336;
+font-size:14px;
+}
+
+.blok input{
+    background: linear-gradient(180deg, rgb(243, 144, 188) 0%, #F390BC 50%, #F390BC 51%, rgba(233, 30, 99, 0.12) 100%);
+}
+
+table{
+margin:auto;
+width: 522px;
+}
+table td{
+text-align:left;
+}
+
+
+#footer{
+	  
+    font-size: 10px;
+    color: #976848;
+    font-weight: normal;
+    text-transform: uppercase;
+		text-align:right;
+		width:966px;
+		margin: 20px auto;
+		
+}
+
+.clear {
+  clear: both; // Отменяем позиционирование (влияние float)
+}
