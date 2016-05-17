@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #502400;
+    background-color: #ffc65c;
+    margin: 0;
+    font-family: MathJax_Typewriter, Georgia, serif;
+}
+
+.content {
+    margin: 0 auto;
+    padding: 0 50px;
+    width: 800px;
+    height: 100vh;
+    background-color: #fff8ac;
+}
+
+.content h1 > a {
+    display: block;
+    color: inherit;
+    font-size: 2em;
+
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 15px;
+
+    margin-bottom: 10px;
+}
+
+nav {
+    box-sizing: content-box;
+    position: relative;
+    display: block;
+    height: 48px;
+    margin-bottom: 5px;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav li {
+    /*display: inline-block;*/
+}
+
+nav li > a {
+    background-color: #ffc65c;
+    color: #502400;
+
+    float: left;
+    display: inline;
+
+    padding: 5px 0;
+
+    width: 25%;
+
+    border-top: 5px #502400 solid;
+    border-bottom: 5px #502400 solid;
+
+    font-size: 1.2em;
+
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+nav li > a:hover {
+    color: #ffc65c;
+    background-color: #502400;
+    /*border-color: #ffc65c;*/
+}
+
+.messageSpan {
+    display: block;
+    color: #fcffd6;
+    border: 5px #ba2d23 solid;
+    background-color: #ba2d23;
+    /*display: none;*/
+}
+
+#predictionText {
+    font-size: 1.3em;
+    display: block;
+    text-align: center;
+    height: 90px;
+}
+
+form {
+    display: block;
+    margin: 20px auto;
+    width: 50%;
+    text-align: center;
+}
+
+.column {
+    float: left;
+    padding: 0 2px;
+    box-sizing: border-box;
+    width: 50%;
+}
+
+.blank {
+    height: 69px;
+}
+
+form input + label, form .blank + label {
+    padding-top: 20px;
+}
+
+form label {
+    color: #502400;
+    display: block;
+    text-align: left;
+    height: 25px;
+}
+
+table input,
+form input {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    border: 2px solid #502400;
+    margin-bottom: 4px;
+    height: 20px;
+}
+
+form input[type="text"], form input[type="password"] {
+    color: #502400;
+    background-color: #fcffd6;
+}
+
+table input[type="button"],
+table input[type="reset"],
+table input[type="submit"],
+form input[type="button"],
+form input[type="reset"],
+form input[type="submit"] {
+    color: #fcffd6;
+    background-color: #502400;
+}
+
+table input[type="button"]:active,
+table input[type="reset"]:active,
+table input[type="submit"]:active,
+form input[type="button"]:active,
+form input[type="reset"]:active,
+form input[type="submit"]:active {
+    background-color: #321900;
+    border-color: #321900;
+}
+
+table {
+    border: 1px #502400 solid;
+    border-collapse: collapse;
+}
+
+table th + th {
+    border-left: 1px #502400 solid;
+    background-color: #502400;
+    box-sizing: border-box;
+}
+
+table tr {
+    border-bottom: 1px #502400 solid;
+    margin: 0;
+}
+
+table th:first-child {
+    font-size: 1.2em;
+    width: 100%;
+    padding: 0 10px;
+    text-indent: 2em;
+    text-align: justify;
+    vertical-align: middle;
+}
+
+table input {
+    position: relative;
+    top: 0;
+    display: block;
+    height: 2em;
+    margin: 0;
+    border-width: 0;
+}
+
+table input[type="button"] {
+    width: 65px;
+}
+
+table input[value="Edit"]:hover {
+    color: #67db5b;
+}
+
+table input[value="Edit"]:active {
+    border-color: #5fc253;
+    color: #5fc253;
+    background-color: #502400;
+}
+
+table input[value="Delete"]:hover {
+    color: #ff3b2d;
+}
+
+table input[value="Delete"]:active {
+    border-color: #e8392b;
+    color: #e8392b;
+    background-color: #502400;
+}
+
+.editInput {
+    background-color: inherit;
+    color: #3e8c36;
+    font-size: inherit;
+    font-family: inherit;
+}
