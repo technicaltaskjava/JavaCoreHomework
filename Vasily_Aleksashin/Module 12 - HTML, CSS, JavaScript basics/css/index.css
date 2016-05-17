@@ -1,0 +1,11 @@
+.cookie-block {
+    height: 80px;
+}
+
+.cookie {
+    min-height: 40px;
+}
+
+.lucky {
+    vertical-align: bottom;
+}
