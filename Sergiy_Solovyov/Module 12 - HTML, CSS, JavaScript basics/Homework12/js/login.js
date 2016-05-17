@@ -31,7 +31,7 @@ $(function () {
         return false;
     }
 	  function validatePassword(value) {
-        var regexp = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+        var regexp = /^[a-zA-Z0-9_]+$/;
 
         if (value && regexp.test(value)) {
             return true;
