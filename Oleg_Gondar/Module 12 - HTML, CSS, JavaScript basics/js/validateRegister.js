@@ -40,10 +40,19 @@ $(document).ready(function() {
      $("#errors").append("<p>Error in email</p>");
      allValid = false;
   }
-      if(allValid){
-        alert("All good!!");
 
-      }
+  if(allValid){
+    // alert("All good!!");
+    var win = window.open('cookiesTable.html', '_blank');
+if(win){
+//Browser has allowed it to be opened
+win.focus();
+}else{
+//Broswer has blocked it
+alert('Please allow popups for this site');
+}
 
-    });
+  }
+
+});
 });
