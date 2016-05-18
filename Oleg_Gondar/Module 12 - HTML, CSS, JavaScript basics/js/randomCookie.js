@@ -14,9 +14,7 @@ $(document).ready(function() {
            'Do not be hasty, prosperity will knock on your door soon.'
        ],
        index = cookies.length - 1,
-       randomNumber = -1,
-       button = $('#random'),
-       randomCookie = $('#prediction');
+       randomNumber = -1;
 
    function randomNumberFromRange(min, max) {
        return Math.floor(Math.random() * (max - min + 1) + min);

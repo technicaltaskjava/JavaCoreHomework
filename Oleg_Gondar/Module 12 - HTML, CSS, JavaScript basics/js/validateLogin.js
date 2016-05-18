@@ -19,11 +19,11 @@ $(document).ready(function() {
       }
         e.preventDefault();
         if(validateName($('#username').val())){
-         $("#errors").append("<p>Error in username</p>");
+         $("#errors").append("<p>Error in username, must be 3 characters at least</p>");
          allValid = false;
       }
       if(validatePassword($('#password').val())){
-       $("#errors").append("<p>Error in password</p>");
+       $("#errors").append("<p>Error in password, must be 6 characters at least</p>");
        allValid = false;
     }
       if(allValid){
