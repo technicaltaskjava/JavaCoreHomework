@@ -36,7 +36,7 @@ $(function () {
         ];
 
     function validateNick(value) {
-       var regexp = /^[a-zA-Z0-9_]+$/;
+       var regexp = /^[a-zA-Z0-9]+$/;
         if (value && regexp.test(value) && value.length > 2) {
             return true;
         }
