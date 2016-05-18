@@ -6,43 +6,7 @@
     <link rel="stylesheet" media="screen" href="styles.css">
 </head>
 <script src="js/jquery-2.2.3.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('.submit').click(insertInTable);
-        $('.editRowButton').click(editRow);
-        $('.deleteRowButton').click(deleteRow);
-    });
-
-
-    function insertInTable() {
-        $("#cookie").find("tbody").append(
-                "<tr>" +
-                "<td>" + $('#ins_id').val() + "</td>" +
-                "<td>" + $('#ins_cookie').val() + "</td>" +
-                "<td><button class='deleteRowButton' type='button'>Delete row</button>" +
-                "<button class='editRowButton' type='button'>Edit row</button><td></tr>"
-        );
-        $('#ins_id').val('');
-        $('#ins_cookie').val('');
-    }
-    function deleteRow() {
-        $("#cookie").on('click', '.deleteRowButton', function () {
-            $(this).parents('tr').remove();
-        });
-    }
-    function editRow() {
-        $("#cookie").on('click', '.editRowButton', function () {
-            var par = $(this).parent().parent();
-            var id = par.children("td:nth-child(1)");
-            var cookie = par.children("td:nth-child(2)");
-            $('#ins_id').val(id.html());
-            $('#ins_cookie').val(cookie.html());
-            $(this).parents('tr').remove();
-        });
-    }
-
-</script>
-
+<script src="js/workWithTable.js"></script>
 
 <body class="common_form">
 
@@ -59,8 +23,6 @@
                 <tr>
                     <th>ID</th>
                     <th>Cookie</th>
-
-
                 </tr>
                 </thead>
                 <tfoot>
@@ -95,7 +57,7 @@
         </div>
     </li>
     <li>
-        <input id="ins_id" type="text" name="ins_id" placeholder="Enter cookieId"/>
+        <input id="ins_id" type="number" min="1" step="1" name="ins_id" placeholder="Enter cookieId" required/>
         <input id="ins_cookie" type="text" name="ins_cookie" placeholder="Enter cookie"/>
     </li>
 
@@ -104,6 +66,10 @@
         <a href="index.html">
             <button class="submit" type="button">Back to main page</button>
         </a>
+    </li>
+    <li id="errors">
+
+
     </li>
 </ul>
 </div>

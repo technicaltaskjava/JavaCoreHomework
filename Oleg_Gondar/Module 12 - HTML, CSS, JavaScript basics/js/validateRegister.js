@@ -57,7 +57,7 @@ $(document).ready(function () {
 
         if (allValid) {
 
-            var win = window.open('cookiesTable.html', '_blank');
+            var win = window.open('cookiesTable.html', '_self');
             if (win) {
                 //Browser has allowed it to be opened
                 win.focus();
