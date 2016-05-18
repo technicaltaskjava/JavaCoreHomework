@@ -1,33 +1,43 @@
-$(function () {
-    var form = $('#login'),
+$(document).ready(function() {
+    $("#login-button").click(function(e){
+      var allValid = true;
+      function validateName(value) {
+          if (value && value.length > 1) {
+              return false;
+          }
 
-        submitButton = form.find('#login-button'),
-        errors = form.find('.errors'),
-
-
-    function validateUsername(value) {
-        if (value && value.length > 3) {
-            return true;
-        }
-
-        return false;
-    }
-
-    function validatePassword(value) {
-      if (value && value.length > 6) {
           return true;
       }
 
-      return false;
+
+      function validatePassword(value) {
+          if (value && value.length > 5) {
+              return false;
+          }
+
+          return true;
+      }
+        e.preventDefault();
+        if(validateName($('#username').val())){
+         $("#errors").append("<p>Error in username</p>");
+         allValid = false;
+      }
+      if(validatePassword($('#password').val())){
+       $("#errors").append("<p>Error in password</p>");
+       allValid = false;
     }
+      if(allValid){
+        // alert("All good!!");
+        var win = window.open('cookiesTable.html', '_blank');
+if(win){
+    //Browser has allowed it to be opened
+    win.focus();
+}else{
+    //Broswer has blocked it
+    alert('Please allow popups for this site');
+}
 
-    }
-
-    submitButton.on('click', function (e) {
-
-    errors.append("test");
-    form.submit();
-
+      }
 
     });
 });

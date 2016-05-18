@@ -4,10 +4,14 @@
     <meta charset="utf-8">
     <title>Login</title>
     <link rel="stylesheet" media="screen" href="styles.css" >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <script src="js/validateRegister.js"></script>
 </head>
+
 <body>
 
 <form class="common_form" action="" method="post" name="contact_form">
+   <div class="errors"></div>
   <ul>
     <li>
          <h2>Please register</h2>
@@ -15,15 +19,15 @@
     </li>
     <li>
         <label for="name">* UserName:</label>
-        <input type="text" name="name" placeholder="Enter registered username" required pattern=".+"/>
+        <input id = "username" type="text" name="name" placeholder="Enter registered username" required pattern=".+"/>
     </li>
     <li>
         <label for="password">* Password:</label>
-        <input type="password" name="password" placeholder="Enter the password" required pattern=".{6,}"/>
+        <input id = "password" type="password" name="password" placeholder="Enter the password" required pattern=".{6,}"/>
     </li>
     <li>
         <label for="email">* email:</label>
-        <input type="" name="email" placeholder="Enter email" required>
+        <input id = "email" type="" name="email" placeholder="Enter email" required>
     </li>
     <li>
         <label for="Firstname"> Firstname: </label>
@@ -35,7 +39,12 @@
     </li>
 
     <li>
-    <button class="submit" type="submit">Submit Form</button>
+    <button id="register" class="submit" type="submit">Register</button>
+</li>
+<li id="errors">
+
+
+
 </li>
 
 </ul>

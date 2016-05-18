@@ -4,10 +4,17 @@
     <meta charset="utf-8">
     <title>Login</title>
     <link rel="stylesheet" media="screen" href="styles.css" >
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <script src="js/validateLogin.js"></script>
+
 </head>
+
+
+
 <body>
 
-<form class="common_form" action="" method="post" name="contact_form" action = "cookiesTable.html" onsubmit="window.open('cookiesTable.html')">
+<form id="login" class="common_form" action="" method="post" >
   <ul>
     <li>
          <h2>Fortune cookies login page (login or register)</h2>
@@ -15,26 +22,30 @@
     </li>
     <li>
         <label for="name">UserName:</label>
-        <input type="text" name="name" placeholder="Enter registered username" required />
+        <input id = "username" type="text" name="name" placeholder="Enter registered username" title="test" />
     </li>
     <li>
         <label for="password">Password:</label>
-        <input type="password" name="password" placeholder="Enter the password" required pattern=".{6,}"/>
+        <input id = "password" type="password" name="password" placeholder="Enter the password" pattern=".{2,}"/>
     </li>
     <li>
 
-      <button class="submit" type="submit" >Login</button>
+      <button id="login-button" class="submit" type="submit">Login</button>
       <a href="registerform.html"><button class="submit" type="button">Register</button><a>
     </li>
     <li>
-          <a href="cookie.html"><button class="submit" type="button">Get cookie</button><a>
+      <a href="cookieMessage.html"><button class="submit" type="button">Get cookie</button><a>
+
+    </li>
+    <li id="errors">
+
+
 
     </li>
 
 </ul>
 
 </form>
-
 
 </body>
 </html>
