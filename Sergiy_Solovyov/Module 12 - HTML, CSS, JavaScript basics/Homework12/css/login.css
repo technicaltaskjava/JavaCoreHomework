@@ -63,7 +63,6 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-}
 @-moz-keyframes login {
     0% {
         filter: alpha(opacity=0);
