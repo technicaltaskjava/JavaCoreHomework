@@ -19,8 +19,11 @@ $(document).ready(function () {
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
+
     var newNumber = randomNumberFromRange(0, index);
     if (newNumber !== randomNumber) {
+        $('#message').popup('show');
         document.getElementById("message").innerHTML = cookies[newNumber];
     }
+
 });
