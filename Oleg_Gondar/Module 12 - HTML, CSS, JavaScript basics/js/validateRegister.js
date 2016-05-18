@@ -29,6 +29,14 @@ $(document).ready(function () {
             return true;
         }
 
+        function validateConfirmPassword() {
+            if ($("#confirmpassword").val() === $("#password").val()) {
+                return false;
+            }
+
+            return true;
+        }
+        $("#errors").empty();
         e.preventDefault();
         if (validateName($('#username').val())) {
             $("#errors").append("<p>Error in username, must be 3 characters at least</p>");
@@ -38,13 +46,17 @@ $(document).ready(function () {
             $("#errors").append("<p>Error in password, must be 6 characters at least</p>");
             allValid = false;
         }
+        if (validateConfirmPassword()){
+            $("#errors").append("<p>Passwords must be the same</p>");
+            allValid = false;
+        }
         if (validateEmail($('#email').val())) {
             $("#errors").append("<p>Error in email, must be as address@some.domain</p>");
             allValid = false;
         }
 
         if (allValid) {
-            // alert("All good!!");
+
             var win = window.open('cookiesTable.html', '_blank');
             if (win) {
                 //Browser has allowed it to be opened

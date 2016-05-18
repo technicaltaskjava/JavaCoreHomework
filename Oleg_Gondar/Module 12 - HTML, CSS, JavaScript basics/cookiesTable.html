@@ -9,22 +9,38 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('.submit').click(insertInTable);
-        $('.deleteRowButton').click(DeleteRow);
+        $('.editRowButton').click(editRow);
+        $('.deleteRowButton').click(deleteRow);
     });
+
 
     function insertInTable() {
         $("#cookie").find("tbody").append(
                 "<tr>" +
                 "<td>" + $('#ins_id').val() + "</td>" +
                 "<td>" + $('#ins_cookie').val() + "</td>" +
-                "<td><button class='deleteRowButton' type='button'>Delete row</button></td></tr>"
+                "<td><button class='deleteRowButton' type='button'>Delete row</button>" +
+                "<button class='editRowButton' type='button'>Edit row</button><td></tr>"
         );
+        $('#ins_id').val('');
+        $('#ins_cookie').val('');
     }
-    function DeleteRow() {
-        $("#cookie").on('click', '.deleteRowButton', function (events) {
+    function deleteRow() {
+        $("#cookie").on('click', '.deleteRowButton', function () {
             $(this).parents('tr').remove();
         });
     }
+    function editRow() {
+        $("#cookie").on('click', '.editRowButton', function () {
+            var par = $(this).parent().parent();
+            var id = par.children("td:nth-child(1)");
+            var cookie = par.children("td:nth-child(2)");
+            $('#ins_id').val(id.html());
+            $('#ins_cookie').val(cookie.html());
+            $(this).parents('tr').remove();
+        });
+    }
+
 </script>
 
 
@@ -55,6 +71,7 @@
                     <td>A loved one is of utmost importance at this time.</td>
                     <td>
                         <button class="deleteRowButton" type="button">Delete row</button>
+                        <button class="editRowButton" type="button">Edit row</button>
                     </td>
                 </tr>
                 <tr>
@@ -62,6 +79,7 @@
                     <td>Do not be hasty, prosperity will knock on your door soon.</td>
                     <td>
                         <button class="deleteRowButton" type="button">Delete row</button>
+                        <button class="editRowButton" type="button">Edit row</button>
                     </td>
                 </tr>
                 <tr>
@@ -69,6 +87,7 @@
                     <td>Beauty will surround you - open your eyes to see it.</td>
                     <td>
                         <button class="deleteRowButton" type="button">Delete row</button>
+                        <button class="editRowButton" type="button">Edit row</button>
                     </td>
                 </tr>
                 </tbody>
@@ -81,7 +100,7 @@
     </li>
 
     <li>
-        <button class="submit" type="submit">Add cookie</button>
+        <button class="submit" type="button">Add cookie</button>
         <a href="index.html">
             <button class="submit" type="button">Back to main page</button>
         </a>

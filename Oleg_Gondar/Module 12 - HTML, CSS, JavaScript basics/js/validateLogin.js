@@ -18,7 +18,7 @@ $(document).ready(function () {
 
             return true;
         }
-
+        $("#errors").empty();
         e.preventDefault();
         if (validateName($('#username').val())) {
             $("#errors").append("<p>Error in username, must be 3 characters at least</p>");
@@ -29,7 +29,7 @@ $(document).ready(function () {
             allValid = false;
         }
         if (allValid) {
-            // alert("All good!!");
+
             var win = window.open('cookiesTable.html', '_blank');
             if (win) {
                 //Browser has allowed it to be opened

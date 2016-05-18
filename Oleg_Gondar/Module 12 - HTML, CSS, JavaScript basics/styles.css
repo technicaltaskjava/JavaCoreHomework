@@ -97,7 +97,7 @@ body {
 }
 
 /* Button Style */
-button.submit, button.deleteRowButton {
+button.submit, button.deleteRowButton, button.editRowButton {
     background-color: #68b12f;
     background: -webkit-gradient(linear, left top, left bottom, from(#68b12f), to(#50911e));
     background: -webkit-linear-gradient(top, #68b12f, #50911e);
@@ -124,12 +124,12 @@ button.submit, button.deleteRowButton {
     text-shadow: 0 -1px 0 #396715;
 }
 
-button.submit:hover, button.deleteRowButton:hover {
+button.submit:hover, button.deleteRowButton:hover, button.editRowButton:hover {
     opacity: .85;
     cursor: pointer;
 }
 
-button.submit:active, button.deleteRowButton:active {
+button.submit:active, button.RowButton:active, button.editRowButton:active {
     border: 1px solid #20911e;
     box-shadow: 0 0 10px 5px #356b0b inset;
     -webkit-box-shadow: 0 0 10px 5px #356b0b inset;
