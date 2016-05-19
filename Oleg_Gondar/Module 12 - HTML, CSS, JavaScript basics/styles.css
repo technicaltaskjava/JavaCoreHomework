@@ -147,6 +147,6 @@ button.submit:active, button.RowButton:active, button.editRowButton:active {
     display: inline;
 }
 
-.errors {
+#errors {
     color: red;
 }
