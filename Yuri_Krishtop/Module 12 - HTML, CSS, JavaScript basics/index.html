@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fortune Cookies</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="scripts/jquery-2.2.3.min.js"></script>
+        <script src="scripts/main.js"></script>
+    </head>
+
+    <body>
+        <div id="page">
+            <div id="header">
+                <div id="name">
+                    <p><h1> FORTUNE COOKIES </h1>
+                </div>
+                <div class="welcome">
+                </div>
+                <form class="signeIn" action="index.html" >
+                    <input id="login" type="text" placeholder="login (admin)" required >
+                    <input id="pass" type="password" placeholder="pass (admin)" required>
+                    <button id="signeIn" type="submit" name="signeInButton"> Signe in </button>
+                    <button id="regSignButton" type='submit' name='regSignButton'> Registration </button>
+                </form>
+                <form class='reg' action='index.html' method='post'>
+                    <input id="loginReg" type="text" placeholder="login" required >
+                    <input id="passReg" type="password" placeholder="pass" required>
+                    <input id="confirmPass" type="password" placeholder="confirm pass" required>
+                    <input id="email" name="email" type="email" placeholder="email" required>
+                    <button id="regButton" type='submit' name='regButton'> Registration </button>
+                </form>
+                <form class='signeOut' action='index.html' method='post'>
+                    <button type='submit' name='singneOutButton'> Signe out </button>
+                </form>
+            </div>
+            <div id="content">
+                <div class="errors">
+                </div>
+                 <div class="predictions">
+                    <center>
+                        <form class='getPrediction'  action='index.html' method='post'>
+                            <button type='submit' id="openMyCookie" name='openCookieButton'> Open my cookie </button>
+                        </form>
+                        <p></p>
+                    </center>
+                </div>
+                <div class="table">
+                    <table>
+                    </table>
+                    <form class='table' action='index.html' method='post'>
+                        <button type='submit' id="delPred" name='delButton'> delete prediction </button>
+                        <button type='submit' id="insPred" name='insButton'> insert prediction </button>
+                        <button type='submit' id="editPred" name='editButton'> edit prediction </button>
+                        <input type="number" id="numPred" min="0" max="100"/>
+                        <button type='submit' id="delete" name='sendNum'> delete </button>
+                        <button type='submit' id="edit" name='sendNum'> edit </button>
+                        <p id="textEditPred"></p>
+                        <button type='submit' id="sendPred" name='sendButton'> send prediction </button>
+                    </form>
+                </div>
+            </div>
+            <div id="footer">
+                <p> VEL SAPIENTISSIMUS ERRARE POTEST </p>
+            </div>
+        </div>
+    </body>
+</html>
