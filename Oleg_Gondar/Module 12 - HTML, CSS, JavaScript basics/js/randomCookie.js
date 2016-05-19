@@ -22,8 +22,9 @@ $(document).ready(function () {
 
     var newNumber = randomNumberFromRange(0, index);
     if (newNumber !== randomNumber) {
-        $('#message').popup('show');
+        
         document.getElementById("message").innerHTML = cookies[newNumber];
+	   $('#message').popup('show');
     }
 
 });
