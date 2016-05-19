@@ -1,0 +1,221 @@
+body {
+    background: #fcf4e6;
+    font-family: sans-serif;
+    margin: 0;
+    text-align: center;
+}
+
+a {
+    color: #999;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #1dabb8;
+}
+
+form {
+    border: none;
+    margin: 0;
+}
+
+input, button {
+    border: none;
+    margin: 0;
+}
+
+.img-container {
+    margin-top: 50px;
+}
+
+.copyright {
+    font-size: 12px;
+    color: #4e6580;
+    margin-bottom: 20px;
+}
+
+.sign-up {
+    margin-top: 40px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.sign-up a {
+    color: #800000;
+}
+
+.autho {
+    padding: 10px;
+}
+
+.autho a {
+    margin: 10px;
+    color: #660000;
+    font-size: 12px;
+}
+
+.dlg-type {
+    width: 300px;
+}
+
+.open-up-type {
+    width: 700px;
+}
+
+.dlg-form {
+    margin: 50px auto;
+    border: 1px solid #ffa500;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.dlg-form .header {
+    background-color: #800000;
+    border-radius: 10px 10px 0 0;
+    color: #ff0;
+    font-size: 18px;
+    padding: 20px;
+    margin: 0;
+}
+
+.dlg-form form {
+    padding: 20px;
+}
+
+.dlg-form input {
+    font-size: 14px;
+    border: 1px solid #dcdcdc;
+    padding: 12px 10px;
+    width: 238px;
+    margin-top: 10px;
+}
+
+.dlg-form .submit-btn {
+    background: #d99400;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 12px 20px;
+    font-size: 14px;
+}
+
+.dlg-form .btn-right {
+    float: right;
+}
+
+.dlg-form .submit-btn:hover {
+    background: #f9a400;
+}
+
+.dlg-form .message-err {
+    display: block;
+    color: #c00;
+    font-size: 12px;
+}
+
+.dlg-form .field-err {
+    border: 1px solid #f66;
+}
+
+.dlg-form .caption {
+    color: #800000;
+    font-size: 18px;
+    padding: 5px;
+    margin-top: 40px;
+}
+
+.dlg-form .cookie-text {
+    color: #800000;
+    font-size: 22px;
+    padding: 20px;
+    background: #f8e391;
+    margin-top: 40px;
+    border: 1px solid #ffa500;
+    border-left: none;
+    border-right: none;
+}
+
+.table-div {
+    margin: 50px auto;
+}
+
+.table-cookies {
+    font-size: 14px;
+    border-radius: 10px;
+    border-spacing: 0;
+    text-align: center;
+    width: 700px;
+    margin: auto;
+    border: 1px solid #ffa500;
+}
+
+.table-cookies th {
+    background-color: #800000;
+    color: #ff0;
+    font-size: 18px;
+    padding: 20px;
+}
+
+.table-cookies th, .table-cookies td {
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    border-color: white;
+    text-align: center;
+}
+
+.table-cookies th:first-child {
+    border-top-left-radius: 10px;
+    cursor: pointer;
+}
+
+.table-cookies td:first-child {
+    cursor: pointer;
+}
+
+.table-cookies th:last-child {
+    border-top-right-radius: 10px;
+    border-right: none;
+}
+
+.table-cookies td {
+    background: #f8e391;
+}
+
+.table-cookies tr:last-child td:first-child {
+    border-radius: 0 0 0 10px;
+}
+
+.table-cookies tr:last-child td:last-child {
+    border-radius: 0 0 10px 0;
+}
+
+.table-cookies tr td:last-child {
+    border-right: none;
+}
+
+.table-cookies tr:hover td {
+    background-color: #ccf;
+}
+
+.table-cookies button {
+    height: 36px;
+    width: 36px;
+    margin: 0 auto;
+    cursor: inherit;
+}
+
+.table-cookies button.button-add {
+    background: url(../images/add.png) no-repeat;
+}
+
+.table-cookies button.button-remove {
+    background: url(../images/remove.png) no-repeat;
+}
+
+.table-cookies input#edit {
+    width: 95%;
+    height: 95%;
+    margin: 0;
+}
