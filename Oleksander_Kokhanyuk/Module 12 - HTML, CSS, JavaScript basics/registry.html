@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>My Fortune Cookies</title>
+    <style type="text/css">
+        @import url("css/style.css");
+    </style>
+    <script src="js/validate.js"></script>
+</head>
+<body>
+<div class="box" align='center'>
+    <p class="text1">Fortune cookies</p>
+    <p class="text2">Enter the data for registration:</p>
+    <form class="text" action="registry.html" method="post">
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" name="name" required placeholder="Input first name"></td>
+            </tr>
+            <tr>
+                <td>Surname:</td>
+                <td>
+                    <input type="text" name="surname" placeholder="Input last name">
+                </td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="password" placeholder="Input password"></td>
+            </tr>
+            <tr>
+                <td>
+                    e-mail:
+                </td>
+                <td>
+                    <input type="text" name="email" pattern="^\s*\w+@\w+\.\w+\s*$" placeholder="Input your e-mail"><br>
+                </td>
+            </tr>
+        </table>
+
+        <input type="submit" value="Send inquiry">
+    </form>
+
+</div>
+<table class="basement" align='center' border="0">
+    <tr>
+        <td><a href="registry.html">Registration</a></td>
+        <td><a href="login.html">Login</a></td>
+        <td><a href="edit.html">Edit cookies</a></td>
+        <td><a href="index.html">Home</a></td>
+    </tr>
+</table>
+</body>
+</html>
