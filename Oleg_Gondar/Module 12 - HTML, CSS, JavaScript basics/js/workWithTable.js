@@ -1,14 +1,16 @@
 $(document).ready(function () {
+
     $('.submit').click(insertInTable);
-    $('.editRowButton').click(editRow);
-    $('.deleteRowButton').click(deleteRow);
+    $('#cookie').on('click', '.editRowButton', editRow())
+    $('#cookie').on('click', '.deleteRowButton', deleteRow())
+
 });
 
 
 function insertInTable() {
     $("#errors").empty();
     var hasData = true;
-    hasData = hasData && ($('#ins_cookie').val().length > 3);
+    hasData = hasData && ($('#ins_cookie').val().length > 1);
     hasData = hasData && ($('#ins_id').val().length > 0);
 
     if (hasData) {
@@ -21,7 +23,9 @@ function insertInTable() {
         );
         $('#ins_id').val('');
         $('#ins_cookie').val('');
-    } else{
+        $('#cookie').trigger("update");
+
+    } else {
         $("#errors").append("<p>Fill all fields with right values!!!</p>");
     }
 }
@@ -38,5 +42,6 @@ function editRow() {
         $('#ins_id').val(id.html());
         $('#ins_cookie').val(cookie.html());
         $(this).parents('tr').remove();
+
     });
 }

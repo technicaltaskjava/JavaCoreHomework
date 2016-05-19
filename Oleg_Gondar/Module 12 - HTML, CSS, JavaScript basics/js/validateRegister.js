@@ -36,6 +36,7 @@ $(document).ready(function () {
 
             return true;
         }
+
         $("#errors").empty();
         e.preventDefault();
         if (validateName($('#username').val())) {
@@ -46,7 +47,7 @@ $(document).ready(function () {
             $("#errors").append("<p>Error in password, must be 6 characters at least</p>");
             allValid = false;
         }
-        if (validateConfirmPassword()){
+        if (validateConfirmPassword()) {
             $("#errors").append("<p>Passwords must be the same</p>");
             allValid = false;
         }

@@ -18,6 +18,7 @@ $(document).ready(function () {
 
             return true;
         }
+
         $("#errors").empty();
         e.preventDefault();
         if (validateName($('#username').val())) {
