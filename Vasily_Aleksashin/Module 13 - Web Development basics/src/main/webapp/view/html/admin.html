@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Admin page"/>
+	<meta name="keywords" content="HTML,CSS,JavaScript"/>
+	<meta name="author" content="Vasiliy Aleksashin"/>
+	<title>Admin</title>
+	<link rel="icon" href="/mycookie/view/res/cookies-icon.png"/>
+	<link rel="stylesheet" type="text/css" href="/mycookie/view/css/main.css"/>
+	<link rel="stylesheet" type="text/css" href="/mycookie/view/css/admin.css"/>
+	<script type="text/javascript" src="/mycookie/view/lib/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="/mycookie/view/lib/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/mycookie/view/script/general.js"></script>
+	<script type="text/javascript" src="/mycookie/view/script/admin.js"></script>
+	<script type="text/javascript" src="/mycookie/view/script/index.js"></script>
+	<script>
+		isAuth();
+	</script>
+</head>
+
+<body>
+<br/>
+<br/>
+<br/>
+<div class="container table-admin">
+	<div class="select table-admin">
+		<h1 class="title">Admin console</h1>
+		<div class="button-left button-margin spain-block">
+			<button class="add-button">Add row</button>
+		</div>
+		<div class="button-right button-margin spain-back">
+			<button class="back-button">Back</button>
+		</div>
+		<p class="alert text"></p>
+		<br/>
+		<table class="table">
+			<tr>
+				<th class="cookie-msg">Cookie</th>
+				<th class="lucky-number">Lucky number</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</table>
+	</div>
+</div>
+</body>
+</html>
