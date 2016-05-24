@@ -7,7 +7,6 @@ sonar-project.properties
 
 # Package Files #
 *.jar
-*.war
 *.ear
 
 # Eclipse
