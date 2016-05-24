@@ -22,9 +22,21 @@ import java.sql.SQLException;
 
 public class LoginServlet extends HttpServlet {
 
+    private transient UserDAO userDAO;   // NOSONAR
     private static final String EMAIL = "email";
     private static final long serialVersionUID = 1L;
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginServlet.class);
+
+    @Override
+    public void init() throws ServletException {
+        ServletContext context = getServletContext();
+        DAOFactory  daoFactory = (DAOFactory)context.getAttribute(ContextListener.DAO_FACTORY);
+        try {
+            userDAO = daoFactory.getUserDAO();
+        } catch (ConnectionPoolException e) {
+            LOGGER.info(e.getMessage(), e);
+        }
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -39,14 +51,6 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
-        ServletContext context = getServletContext();
-        DAOFactory  daoFactory = (DAOFactory)context.getAttribute(ContextListener.DAO_FACTORY);
-        UserDAO userDAO = null;
-        try {
-            userDAO = daoFactory.getUserDAO();
-        } catch (ConnectionPoolException e) {
-            LOGGER.info(e.getMessage(), e);
-        }
 
         String email = req.getParameter(EMAIL);
         String password = req.getParameter("password");
