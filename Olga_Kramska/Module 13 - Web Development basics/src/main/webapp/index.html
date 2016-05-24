@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fortune Cookies</title>
+</head>
+<link rel="stylesheet" type="text/css" href="css/cookieStyle.css">
+<link rel="stylesheet" href="css/jquery-ui.css">
+<script src="js/lib/jquery-2.2.3.min.js"></script>
+<script src="js/lib/jquery-ui.min.js"></script>
+<script src="js/loginCheck.js"></script>
+<script src="js/randomPrediction.js"></script>
+<body>
+<h1>Welcome to the "Fortune Cookies"</h1>
+
+<div align="center">
+    <p><b>LogIn to see your predictions</b></p>
+    <form id="login" action="login" method="post">
+        <input id="username" type="text" min="3" max="25" name="username" placeholder="username"/>
+        <input id="password" type="password" min="6" max="40" name="password" placeholder="password"/>
+        <p>
+            <button id="login-button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+                <span class="ui-button-text">LogIn</span>
+            </button>
+        </p>
+        <div class="errors"></div>
+    </form>
+</div>
+<div align="center">If you don't have account you can register <a href="registration.html">here</a></div>
+<hr/>
+    <p>
+        <button id="random" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+            <span class="ui-button-text">Random prediction</span>
+        </button>
+    </p>
+<div id="random-prediction" align="center"></div>
+</body>
+</html>
