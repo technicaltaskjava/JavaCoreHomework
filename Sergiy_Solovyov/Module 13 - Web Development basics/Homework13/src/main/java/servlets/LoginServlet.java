@@ -72,7 +72,6 @@ public class LoginServlet extends HttpServlet {
                   HttpSession session = req.getSession();
                   session.setAttribute("nick", user.getUserName());
                   Cookie cookie = new Cookie("user", user.getUserName()); // NOSONAR  want secure cookie
-                  cookie.setMaxAge(30);
                   resp.addCookie(cookie);
               }
           }
