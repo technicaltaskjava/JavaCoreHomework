@@ -4,14 +4,9 @@ SET SCHEMA "Fortune cookies";
 CREATE TABLE Users
 (
 User_ID bigint auto_increment NOT NULL,
-UserEmail varchar(255) NOT NULL UNIQUE,
+UserEmail varchar(255) NOT NULL,
 UserName varchar(255) NOT NULL UNIQUE,
 UserPassword varchar(55) NOT NULL,
-LastName varchar(255),
-FirstName varchar(255),
-Address varchar(255),
-City varchar(255) DEFAULT 'Dnepropetrovsk',
-Country varchar(255) DEFAULT 'Ukraine',
 PRIMARY KEY (User_ID),
 CONSTRAINT check_User CHECK (UserEmail LIKE '%_@__%.__%' AND UserPassword LIKE '______%')
 );
