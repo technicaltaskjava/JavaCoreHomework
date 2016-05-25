@@ -1,11 +1,9 @@
 package dao;
 
 import dao.pool.ConnectionPool;
-import dao.substance.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.jws.soap.SOAPBinding;
 import java.sql.Connection;
 
 public class ConnectionFactory implements Factory {

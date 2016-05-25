@@ -24,13 +24,13 @@ public class ControllerRegister extends HttpServlet {
 
     public static final String URL = "jdbc:h2:D:\\homeworks\\Module-13-Web-Development-basics\\test";
     public static final String USER = "sa";
-    public static final String PASSWORD = "";
+
 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection connection;
-        Factory factory = new ConnectionFactory(URL, USER, PASSWORD);
+        Factory factory = new ConnectionFactory(URL, USER, "");
         try {
             connection = factory.getConnection();
             UserDao manager = factory.getUserDao(connection);
@@ -57,6 +57,7 @@ public class ControllerRegister extends HttpServlet {
             }
         } catch (InterruptedException e) {
             log.error(e.getMessage(), e);
+            Thread.currentThread().interrupt();
         }
     }
 }

@@ -723,8 +723,8 @@ Column "lastname" not found [42122-191]
 	at java.lang.reflect.Method.invoke(Method.java:497)
 	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144)
 2016-05-23 14:45:58 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLException: Ð¡Ñ‚Ð¾Ð»Ð±ÐµÑ† "cookie" Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½
-Column "cookie" not found [42122-191]
+org.h2.jdbc.JdbcSQLException: Ð¡Ñ‚Ð¾Ð»Ð±ÐµÑ† "cookiePrediction" Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½
+Column "cookiePrediction" not found [42122-191]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
 	at org.h2.message.DbException.get(DbException.java:179)
 	at org.h2.message.DbException.get(DbException.java:155)

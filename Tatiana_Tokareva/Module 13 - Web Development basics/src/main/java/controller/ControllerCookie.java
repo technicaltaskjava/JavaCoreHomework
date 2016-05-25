@@ -51,13 +51,14 @@ public class ControllerCookie extends HttpServlet {
 
         } catch (InterruptedException e) {
             log.error(e.getMessage(), e);
+            Thread.currentThread().interrupt();
+
         }
     }
 
     private int getRandom(int cookiesLength) {
 
-        int id = (int) (Math.random() * cookiesLength + 1);
+       return  (int) (Math.random() * cookiesLength + 1);
 
-        return id;
     }
 }

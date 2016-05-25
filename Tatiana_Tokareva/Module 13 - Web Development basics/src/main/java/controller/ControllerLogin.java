@@ -23,7 +23,7 @@ public class ControllerLogin extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(ControllerLogin.class);
     public static final String URL = "jdbc:h2:D:\\homeworks\\Module-13-Web-Development-basics\\test";
     public static final String USER = "sa";
-    public static final String PASSWORD = "";
+
 
 
     @Override
@@ -31,7 +31,7 @@ public class ControllerLogin extends HttpServlet {
 
         Connection connection;
 
-        Factory factory = new ConnectionFactory(URL, USER, PASSWORD);
+        Factory factory = new ConnectionFactory(URL, USER, "");
 
         try {
 
@@ -44,7 +44,7 @@ public class ControllerLogin extends HttpServlet {
             factory.closePool();
             if (user.getPassword().equals(password)) {
 
-                HttpSession session = request.getSession();
+                request.getSession();
 
                 RequestDispatcher dispatcher = request.getRequestDispatcher("site/index.html");
                 dispatcher.forward(request, response);
@@ -57,6 +57,7 @@ public class ControllerLogin extends HttpServlet {
             }
         } catch (InterruptedException e) {
             log.error(e.getMessage(), e);
+            Thread.currentThread().interrupt();
         }
     }
 }

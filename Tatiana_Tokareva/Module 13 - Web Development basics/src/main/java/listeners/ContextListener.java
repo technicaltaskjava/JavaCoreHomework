@@ -33,6 +33,7 @@ public class ContextListener implements ServletContextListener {
             log.info("Database connection initialized");
         } catch (InterruptedException e) {
             log.error(e.getMessage(), e);
+            Thread.currentThread().interrupt();
         }
 
 

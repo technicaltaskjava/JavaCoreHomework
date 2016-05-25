@@ -29,6 +29,7 @@ public class CharsetFilter implements Filter {
 
     @Override
     public void destroy() {
+        log.info("destroy encoding");
 
     }
 }
