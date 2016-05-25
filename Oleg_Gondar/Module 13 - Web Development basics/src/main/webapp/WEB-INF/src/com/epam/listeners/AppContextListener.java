@@ -2,6 +2,7 @@ package com.epam.listeners;
 
 import com.epam.dao.DBConnectionManager;
 import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 
 import javax.servlet.ServletContext;
@@ -15,6 +16,9 @@ import java.sql.SQLException;
 @WebListener
 public class AppContextListener implements ServletContextListener {
 
+    static Logger logger = Logger.getLogger(AppContextListener.class);
+
+    @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         ServletContext ctx = servletContextEvent.getServletContext();
 
@@ -25,10 +29,8 @@ public class AppContextListener implements ServletContextListener {
         try {
             DBConnectionManager connectionManager = new DBConnectionManager(dbURL, user, pwd);
             ctx.setAttribute("DBConnection", connectionManager.getConnection());
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (ClassNotFoundException | SQLException e) {
+            logger.error(e);
         }
 
         String log4jConfig = ctx.getInitParameter("log4j-config");
@@ -46,12 +48,13 @@ public class AppContextListener implements ServletContextListener {
         }
     }
 
+    @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
         Connection con = (Connection) servletContextEvent.getServletContext().getAttribute("DBConnection");
         try {
             con.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 }

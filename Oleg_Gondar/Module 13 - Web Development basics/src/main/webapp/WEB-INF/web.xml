@@ -19,7 +19,7 @@
     </context-param>
     <context-param>
         <param-name>dbURL</param-name>
-        <param-value>jdbc:h2:~/test</param-value>
+        <param-value>jdbc:h2:tcp://localhost/~/test</param-value>
     </context-param>
 
     <context-param>

@@ -1,21 +1,20 @@
 package com.epam.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
+import org.h2.jdbcx.JdbcConnectionPool;
 
 /**
  * Created by Oleg on 5/25/2016.
  */
 public class DBConnectionManager {
-    private Connection connection;
+    private JdbcConnectionPool connectionPool;
 
     public DBConnectionManager(String dbURL, String user, String pwd) throws ClassNotFoundException, SQLException {
-        Class.forName("org.h2.Driver");
-        this.connection = DriverManager.getConnection(dbURL, user, pwd);
+        connectionPool = JdbcConnectionPool.create(dbURL, user, pwd);
     }
 
-    public Connection getConnection() {
-        return this.connection;
+    public Connection getConnection() throws SQLException {
+        return connectionPool.getConnection();
     }
 }

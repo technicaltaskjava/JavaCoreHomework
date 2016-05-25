@@ -17,10 +17,12 @@ public class AuthFilter implements Filter {
 
     private Logger logger = Logger.getLogger(AuthFilter.class);
 
+    @Override
     public void init(FilterConfig fConfig) throws ServletException {
-
+        //
     }
 
+    @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
         HttpServletRequest req = (HttpServletRequest) request;
@@ -44,8 +46,9 @@ public class AuthFilter implements Filter {
 
     }
 
+    @Override
     public void destroy() {
-
+        //
     }
 
 }

@@ -12,15 +12,15 @@ import java.io.IOException;
 public class CharserFilter implements Filter {
 
     private String encoding;
-    private ServletContext servletContext;
 
     static Logger logger = Logger.getLogger(CharserFilter.class);
 
+    @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         encoding = filterConfig.getInitParameter("characterEncoding");
-        servletContext = filterConfig.getServletContext();
     }
 
+    @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         request.setCharacterEncoding(encoding);
         response.setCharacterEncoding(encoding);
@@ -28,7 +28,9 @@ public class CharserFilter implements Filter {
         chain.doFilter(request, response);
     }
 
+    @Override
     public void destroy() {
+        //
     }
 
 

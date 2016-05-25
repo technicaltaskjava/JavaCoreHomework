@@ -20,6 +20,7 @@ public class LoginServlet extends HttpServlet {
 
     static Logger logger = Logger.getLogger(LoginServlet.class);
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserBean user = new UserBean();
         user.setUserName(request.getParameter("name"));
@@ -33,14 +34,20 @@ public class LoginServlet extends HttpServlet {
                 response.sendRedirect("cookiesTable.html");
             } else {
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.html");
-                PrintWriter out = response.getWriter();
-                logger.error("User not found with username=" + user.getUserName());
-                rd.include(request, response);
-                out.println("<font color=red>No user found with given username and password, try again or register first.</font>");
+                try (PrintWriter out = response.getWriter()) {
+                    logger.error("User not found with username=" + user.getUserName());
+                    rd.include(request, response);
+                    out.println("<font color=red>No user found with given username and password, try again or register first.</font>");
+                }
             }
         } catch (SQLException e) {
-            logger.error("Database connection problem");
-            throw new ServletException("DB Connection problem.");
+            logger.error("Database connection problem", e);
+            try {
+                throw new ServletException("DB Connection problem.");
+            }catch (Exception e1){
+                logger.error(e1);
+            }
+
         }
     }
 }

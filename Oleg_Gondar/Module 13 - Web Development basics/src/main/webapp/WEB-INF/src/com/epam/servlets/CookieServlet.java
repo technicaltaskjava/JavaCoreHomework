@@ -27,9 +27,8 @@ public class CookieServlet extends HttpServlet {
 
     static Logger logger = Logger.getLogger(RegisterServlet.class);
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        {
 
             Connection connection = (Connection) getServletContext().getAttribute("DBConnection");
             try {
@@ -39,14 +38,14 @@ public class CookieServlet extends HttpServlet {
                 rdHeader.include(request, response);
                 out.println("<h2 id=\"message\">" + CookieDAO.getCookie(connection) + "</h2>");
                 rdFooter.include(request, response);
-
             } catch (SQLException e) {
-                e.printStackTrace();
-                logger.error("Database connection problem");
-                throw new ServletException("DB Connection problem.");
+                logger.error("Database connection problem", e);
+                try {
+                    throw new ServletException("DB Connection problem.");
+                }catch (Exception e1){
+                    logger.error(e1);
+                }
             }
         }
-
-    }
 
 }

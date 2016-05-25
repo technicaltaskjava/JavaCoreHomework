@@ -1,6 +1,7 @@
 package com.epam.dao;
 
 import com.epam.dao.beans.UserBean;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,12 +16,9 @@ public class UserDAO {
     private static final String CHECK_USER_LOGIN = "select username from \"Fortune cookies\".USERS  where username=? and userpassword=?";
     private static final String CHECK_USERNAME = "select username from \"Fortune cookies\".USERS  where username=?";
     private static final String CREATE_USER = "INSERT INTO \"Fortune cookies\".USERS (USEREMAIL, USERNAME, USERPASSWORD,) VALUES (?, ?, ?)";
+    static Logger logger = Logger.getLogger(UserDAO.class);
 
-
-    private UserBean userBean;
-
-    public UserDAO(UserBean userBean) {
-        this.userBean = userBean;
+    private UserDAO() {
     }
 
     public static boolean createUser(UserBean userBean, Connection connection) throws SQLException {
@@ -35,6 +33,7 @@ public class UserDAO {
                 ps.close();
                 return true;
             } catch (SQLException e) {
+                logger.error(e);
                 throw e;
             }
         }
@@ -42,35 +41,39 @@ public class UserDAO {
     }
 
     public static boolean checkLogin(UserBean userBean, Connection connection) throws SQLException {
+        boolean result = false;
         try {
             PreparedStatement ps = connection.prepareStatement(CHECK_USER_LOGIN);
             ps.setString(1, userBean.getUserName());
             ps.setString(2, userBean.getPassword());
             ResultSet rs = ps.executeQuery();
             if (rs != null && rs.next()) {
-                return true;
+                result = true;
             }
-
+            ps.close();
+            return result;
 
         } catch (SQLException e) {
+            logger.error(e);
             throw e;
         }
-        return false;
     }
 
     public static boolean checkName(UserBean userBean, Connection connection) throws SQLException {
+        boolean result = true;
         try {
             PreparedStatement ps = connection.prepareStatement(CHECK_USERNAME);
             ps.setString(1, userBean.getUserName());
             ResultSet rs = ps.executeQuery();
-
             if (rs != null && rs.next()) {
-                return false;
+                result = false;
             }
+            ps.close();
+            return result;
         } catch (SQLException e) {
+            logger.error(e);
             throw e;
         }
-        return true;
     }
 
 

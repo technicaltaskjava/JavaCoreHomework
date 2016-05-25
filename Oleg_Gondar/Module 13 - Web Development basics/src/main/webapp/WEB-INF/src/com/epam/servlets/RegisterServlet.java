@@ -26,6 +26,7 @@ public class RegisterServlet extends HttpServlet {
 
     static Logger logger = Logger.getLogger(RegisterServlet.class);
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserBean user = new UserBean();
         user.setEmail(request.getParameter("email"));
@@ -48,9 +49,8 @@ public class RegisterServlet extends HttpServlet {
                     out.println("<font color=red>User with given name already exist, chose another name.</font>");
                 }
             } catch (SQLException e) {
-                e.printStackTrace();
-                logger.error("Database connection problem");
-                throw new ServletException("DB Connection problem.");
+                logger.error("Database connection problem", e);
+                throw new ServletException(e.getMessage());
             }
         }
 

@@ -10,6 +10,7 @@ public class UserBean {
     private String password;
 
     public UserBean() {
+        //
     }
 
     public UserBean(String userName, String password) {

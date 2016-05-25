@@ -1,6 +1,6 @@
 package com.epam.dao;
 
-import com.epam.dao.beans.CookieBean;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,24 +13,28 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class CookieDAO {
 
-    private static final String GET_COOKIE = "SELECT coookie FROM \"Fortune cookies\".COOKIES where COOKIE_ID = ?";
-    private CookieBean cookieBean;
 
-    public CookieDAO(CookieBean cookieBean) {
-        this.cookieBean = cookieBean;
-    }
+    private static final int MIN = 1;
+    private static final int MAX = 10;
+    private static final String GET_COOKIE = "SELECT coookie FROM \"Fortune cookies\".COOKIES where COOKIE_ID = ?";
+    static Logger logger = Logger.getLogger(CookieDAO.class);
+
+    private CookieDAO(){}
 
     public static String getCookie(Connection connection) throws SQLException {
+        String cookie = "";
         try {
             PreparedStatement ps = connection.prepareStatement(GET_COOKIE);
-            ps.setInt(1, ThreadLocalRandom.current().nextInt(1, 11));
+            ps.setInt(1, ThreadLocalRandom.current().nextInt(MIN, MAX));
             ResultSet rs = ps.executeQuery();
             if (rs != null && rs.next()) {
-                return rs.getString("coookie");
+                cookie = rs.getString("coookie");
             }
+            ps.close();
+            return cookie;
         } catch (SQLException e) {
+            logger.error(e);
             throw e;
         }
-        return "";
     }
 }

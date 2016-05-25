@@ -1,6 +1,7 @@
 package com.epam.servlets;
 
-import javax.servlet.ServletException;
+import org.apache.log4j.Logger;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,13 +12,26 @@ import java.io.PrintWriter;
 @WebServlet("/ErrorHandler")
 public class ErrorHandler extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    private static final String LI = "</li>";
+    static Logger logger = Logger.getLogger(ErrorHandler.class);
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processError(request, response);
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            processError(request, response);
+        } catch (IOException e) {
+            logger.error(e);
+        }
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processError(request, response);
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+
+        try {
+            processError(request, response);
+        } catch (IOException e) {
+            logger.error(e);
+        }
     }
 
     private void processError(HttpServletRequest request,
@@ -49,10 +63,10 @@ public class ErrorHandler extends HttpServlet {
             out.write("<strong>Requested URI</strong>:" + requestUri);
         } else {
             out.write("<h3>Exception Details</h3>");
-            out.write("<ul><li>Servlet Name:" + servletName + "</li>");
-            out.write("<li>Exception Name:" + throwable.getClass().getName() + "</li>");
-            out.write("<li>Requested URI:" + requestUri + "</li>");
-            out.write("<li>Exception Message:" + throwable.getMessage() + "</li>");
+            out.write("<ul><li>Servlet Name:" + servletName + LI);
+            out.write("<li>Exception Name:" + throwable.getClass().getName() + LI);
+            out.write("<li>Requested URI:" + requestUri + LI);
+            out.write("<li>Exception Message:" + throwable.getMessage() + LI);
             out.write("</ul>");
         }
 
