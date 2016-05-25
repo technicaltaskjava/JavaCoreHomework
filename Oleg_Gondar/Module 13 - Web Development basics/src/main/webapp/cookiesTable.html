@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cookies</title>
+    <link rel="stylesheet" media="screen" href="css/styles.css">
+</head>
+<script src="js/jquery-2.2.3.js"></script>
+<script src="js/workWithTable.js"></script>
+
+<body class="common_form">
+
+<ul>
+    <li>
+        <h2>Cookies</h2>
+
+    </li>
+    <li>
+
+        <div class="datagrid">
+            <table id="cookie">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cookie</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>A loved one is of utmost importance at this time.</td>
+                    <td>
+                        <button class="deleteRowButton" type="button">Delete row</button>
+                        <button class="editRowButton" type="button">Edit row</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Do not be hasty, prosperity will knock on your door soon.</td>
+                    <td>
+                        <button class="deleteRowButton" type="button">Delete row</button>
+                        <button class="editRowButton" type="button">Edit row</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Beauty will surround you - open your eyes to see it.</td>
+                    <td>
+                        <button class="deleteRowButton" type="button">Delete row</button>
+                        <button class="editRowButton" type="button">Edit row</button>
+                    </td>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </li>
+    <li>
+        <input id="ins_id" type="number" min="1" step="1" name="ins_id" placeholder="Enter cookieId" required/>
+        <input id="ins_cookie" type="text" name="ins_cookie" placeholder="Enter cookie"/>
+    </li>
+
+    <li>
+        <button id="cook_add" class="submit" type="button">Add cookie</button>
+        <a href="index.html">
+            <button class="submit" type="button">Back to main page</button>
+        </a>
+    </li>
+    <li>
+        <form action="Logout" method="post">
+            <button class="submit" type="submit" value="Logout">Logout</button>
+        </form>
+    </li>
+    <li id="errors">
+
+
+    </li>
+</ul>
+</div>
+</body>
+</html>
