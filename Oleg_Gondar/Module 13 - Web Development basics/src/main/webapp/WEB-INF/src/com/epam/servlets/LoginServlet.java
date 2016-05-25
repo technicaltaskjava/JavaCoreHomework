@@ -21,22 +21,20 @@ public class LoginServlet extends HttpServlet {
     static Logger logger = Logger.getLogger(LoginServlet.class);
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("name");
-        String password = request.getParameter("password");
-        logger.error(request.getParameter("name"));
+        UserBean user = new UserBean();
+        user.setUserName(request.getParameter("name"));
+        user.setPassword(request.getParameter("password"));
 
-        Connection con = (Connection) getServletContext().getAttribute("DBConnection");
+        Connection connection = (Connection) getServletContext().getAttribute("DBConnection");
         try {
-            if (UserDAO.checkLogin(new UserBean(username, password), con)) {
+            if (UserDAO.checkLogin(user, connection)) {
                 HttpSession session = request.getSession();
-                session.setAttribute("User", username);
+                session.setAttribute("User", user.getUserName());
                 response.sendRedirect("cookiesTable.html");
             } else {
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.html");
                 PrintWriter out = response.getWriter();
-
-                logger.error("User not found with username=" + username);
-
+                logger.error("User not found with username=" + user.getUserName());
                 rd.include(request, response);
                 out.println("<font color=red>No user found with given username and password, try again or register first.</font>");
             }

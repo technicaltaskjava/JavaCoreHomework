@@ -27,18 +27,18 @@ public class RegisterServlet extends HttpServlet {
     static Logger logger = Logger.getLogger(RegisterServlet.class);
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String name = request.getParameter("name");
-
+        UserBean user = new UserBean();
+        user.setEmail(request.getParameter("email"));
+        user.setPassword(request.getParameter("password"));
+        user.setUserName(request.getParameter("name"));
 
         {
 
-            Connection con = (Connection) getServletContext().getAttribute("DBConnection");
+            Connection connection = (Connection) getServletContext().getAttribute("DBConnection");
             try {
                 PrintWriter out = response.getWriter();
-                if (UserDAO.createUser(new UserBean(name, password, email), con)) {
-                    logger.info("User registered =" + name);
+                if (UserDAO.createUser(user, connection)) {
+                    logger.info("User registered =" + user.getUserName());
                     RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.html");
                     out.println("<font color=green>Registration successful, please login below.</font>");
                     rd.include(request, response);

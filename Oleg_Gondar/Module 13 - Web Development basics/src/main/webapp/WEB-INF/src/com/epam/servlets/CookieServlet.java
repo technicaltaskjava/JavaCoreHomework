@@ -31,13 +31,13 @@ public class CookieServlet extends HttpServlet {
 
         {
 
-            Connection con = (Connection) getServletContext().getAttribute("DBConnection");
+            Connection connection = (Connection) getServletContext().getAttribute("DBConnection");
             try {
                 RequestDispatcher rdHeader = getServletContext().getRequestDispatcher("/cookieHeader.html");
                 RequestDispatcher rdFooter = getServletContext().getRequestDispatcher("/cookieFooter.html");
                 PrintWriter out = response.getWriter();
                 rdHeader.include(request, response);
-                out.println("<h2 id=\"message\">" + CookieDAO.getCookie(con) + "</h2>");
+                out.println("<h2 id=\"message\">" + CookieDAO.getCookie(connection) + "</h2>");
                 rdFooter.include(request, response);
 
             } catch (SQLException e) {
