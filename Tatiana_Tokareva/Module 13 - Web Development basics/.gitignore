@@ -1,5 +1,7 @@
 target/
+-*.war
 .idea/
 *.iml
 .sonar/
+
 sonar-project.properties
