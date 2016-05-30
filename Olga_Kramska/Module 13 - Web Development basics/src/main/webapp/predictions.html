@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your predictions</title>
+</head>
+<link rel="stylesheet" type="text/css" href="css/cookieStyle.css">
+<link rel="stylesheet" href="css/jquery-ui.css">
+<script src="js/lib/jquery-2.2.3.min.js"></script>
+<script src="js/lib/jquery-ui.min.js"></script>
+<script src="js/addCookie.js"></script>
+<script src="js/delPrediction.js"></script>
+<body>
+<h1>Your predictions</h1>
+<table id="cookie-table" border="1" width="80%" cellpadding="5">
+    <thead>
+    <tr>
+        <th><input id="selectAll" type="checkbox" name="selectAll"/></th>
+        <th>Cookie name</th>
+        <th>Prediction</th>
+        <th>Time added</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="checkBoxPlace"><input class="checkBox" type="checkbox" name="select"/></td>
+        <td>oatmeal cookies</td>
+        <td>you will catch you dream</td>
+        <td>3/16/2016, 9:02:48 PM</td>
+    </tr>
+    <tr>
+        <td class="checkBoxPlace"><input class="checkBox" type="checkbox" name="select"/></td>
+        <td>shortbread cookie</td>
+        <td>keep it up</td>
+        <td>4/16/2016, 11:25:08 AM</td>
+    </tr>
+    </tbody>
+</table>
+<p>
+    <button id="delete" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+        <span class="ui-button-text">Delete</span></button>
+</p>
+<p>
+    <button id="add-cookie">Add cookie</button>
+</p>
+
+<div id="dialog-form" title="Create new cookie">
+    <form>
+        <fieldset>
+            <label>Cookie</label>
+            <input type="text" name="cookie" id="cookie" min="3" max="25"/>
+            <label>Prediction</label>
+            <input type="text" name="prediction" id="prediction" min="2" max="100"/>
+            <input id="dialog-submit" type="submit" tabindex="-1">
+        </fieldset>
+    </form>
+</div>
+<div align="center">
+    <a href="index.html">Back to the main page</a>
+
+    <form action="logout" method="get">
+        <p>
+            <button id="logout" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+                <span class="ui-button-text">LogOut</span></button>
+        </p>
+    </form>
+</div>
+</body>
+</html>
