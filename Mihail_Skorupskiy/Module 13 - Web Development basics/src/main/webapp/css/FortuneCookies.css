@@ -1,0 +1,87 @@
+body {
+    background-color: #d8d8d8;
+}
+
+a {
+    font-size-adjust: 0.4;
+    color: #577;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #799;
+}
+
+img {
+    margin-top: 20px;
+    margin-left: 13px;
+}
+
+input[type='button'] {
+    background-color: #ddd;
+}
+
+input[type='button']:hover {
+    background-color: #bdd;
+}
+
+.output {
+    background-color: #eee;
+}
+
+.bordered {
+    border: 1px solid #888;
+}
+
+.centered {
+    text-align: center;
+}
+
+.rounded {
+    border-radius: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+#title {
+    font-size-adjust: 1.5;
+}
+
+#login-container {
+    padding-left: 5px;
+    text-align: right;
+    float: right;
+}
+
+#login-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#image-container {
+    white-space: nowrap;
+}
+
+#prediction-text {
+    padding: 20px;
+    font-style: italic;
+    font-size-adjust: 1.2;
+}
+
+#cookies {
+    font-size-adjust: 1.2;
+}
+
+#cookie-table {
+    font-size-adjust: 0.6;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#cookies-control {
+    padding: 10px;
+}
