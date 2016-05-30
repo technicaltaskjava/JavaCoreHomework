@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>ShowDbCookie</servlet-name>
+        <servlet-class>servlets.ShowDbCookie</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginUser</servlet-name>
+        <servlet-class>servlets.LoginUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegisterUser</servlet-name>
+        <servlet-class>servlets.RegisterUser</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ShowDbCookie</servlet-name>
+        <url-pattern>/ShowDbCookie</url-pattern>
+    </servlet-mapping>
+    <filter>
+        <filter-name>CharsetFilter</filter-name>
+        <filter-class>servlets.CharsetFilter</filter-class>
+        <init-param>
+            <param-name>characterEncoding</param-name>
+            <param-value>utf-8</param-value>
+        </init-param>>
+    </filter>
+
+    <servlet-mapping>
+        <servlet-name>LoginUser</servlet-name>
+        <url-pattern>/LoginUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterUser</servlet-name>
+        <url-pattern>/RegisterUser</url-pattern>
+    </servlet-mapping>
+    <filter-mapping>
+        <filter-name>CharsetFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <listener>
+        <listener-name>MyListener</listener-name>
+        <listener-class>servlets.MyListener</listener-class>
+    </listener>
+
+</web-app>
