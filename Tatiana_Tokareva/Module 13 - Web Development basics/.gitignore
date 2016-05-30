@@ -1,0 +1,8 @@
+target/*
+!javase13-1.0-SNAPSHOT.war
+
+.idea
+*.iml
+.sonar/
+
+sonar-project.properties
