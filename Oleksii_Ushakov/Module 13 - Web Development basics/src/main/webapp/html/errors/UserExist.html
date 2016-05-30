@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Registration</title>
+    <meta charset="utf-8"/>
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    <link href="../css/style.css" rel="stylesheet">
+    <script src="../js/jquery-2.2.3.min.js"></script>
+    <script src="../js/script.js"></script>
+</head>
+<body>
+
+<section class="content">
+    <h1><a href="http://augustprime.github.io/">Fortune Cookies</a></h1>
+
+    <nav>
+        <ul>
+            <li><a href="login">Login</a></li>
+            <li><a href="registration">Registration</a></li>
+            <li><a href="predication">Prediction</a></li>
+        </ul>
+    </nav>
+
+    <span class="errorSpan">
+        Such user already  exist
+    </span>
+
+    <form class="registrationForm" id="registrationForm" spellcheck="false" action="RegistrationAction">
+        <section class="column">
+            <label for="login">Login</label>
+            <input title="Input you login" id="login" type="text">
+
+            <section class="blank">
+            </section>
+
+            <label for="firstName">First name</label>
+            <input title="Input you first name" id="firstName" type="text">
+
+            <section class="blank">
+            </section>
+
+            <input id="enter" type="submit" value="OK">
+        </section>
+        <section class="column">
+            <label for="password">Password</label>
+            <input title="Input you password" id="password" type="password">
+
+            <label for="passwordCheck">Password again</label>
+            <input title="Input you password again" id="passwordCheck" type="password">
+
+            <label for="secondName">Second name</label>
+            <input title="Input you second name" id="secondName" type="text">
+
+            <label for="email">E-mail</label>
+            <input title="Input you email" id="email" type="text">
+
+            <input type="reset" value="Cancel">
+        </section>
+    </form>
+
+</section>
+
+</body>
+</html>
