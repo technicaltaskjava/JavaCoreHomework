@@ -1,0 +1,28 @@
+# My files
+*.class
+*.log
+*.task
+sonar-project.properties
+.sonar/
+
+# Package Files #
+*.jar
+*.ear
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*/out/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
