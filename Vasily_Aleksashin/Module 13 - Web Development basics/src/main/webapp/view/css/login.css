@@ -1,0 +1,13 @@
+.button-inline {
+    text-align: center;
+}
+
+.left, .right {
+    vertical-align: bottom;
+    display: inline-block;
+}
+
+.pass {
+    font-size: 10px;
+    line-height: 5px;
+}

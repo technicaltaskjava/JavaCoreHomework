@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Registration page"/>
+	<meta name="keywords" content="HTML,CSS,JavaScript"/>
+	<meta name="author" content="Vasiliy Aleksashin"/>
+	<link rel="stylesheet" type="text/css" href="/mycookie/view/css/main.css"/>
+	<link rel="icon" href="/mycookie/view/res/cookies-icon.png"/>
+	<title>Registration</title>
+	<script type="text/javascript" src="/mycookie/view/lib/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="/mycookie/view/lib/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/mycookie/view/lib/jquery.crypt.js"></script>
+	<script type="text/javascript" src="/mycookie/view/script/general.js"></script>
+	<script type="text/javascript" src="/mycookie/view/script/registration.js"></script>
+</head>
+<body>
+<br/>
+<br/>
+<br/>
+<div class="container">
+	<div class="select">
+		<h1 class="title">Registration form</h1>
+		<label class="warning alert">User name or Email is already registered</label>
+		<div>
+			<input class="input-username" type="text" name="username" value="" placeholder="Username">
+		</div>
+		<label class="warning username">Username uncorrected</label>
+		<div>
+			<input class="input-email" type="text" name="email" value="" placeholder="Email">
+		</div>
+		<label class="warning mail">Email uncorrected</label>
+		<div>
+			<input class="input-password" type="password" name="password" value="" placeholder="Password" id="pass">
+		</div>
+		<label class="warning pass" id="passl">Password uncorrected</label>
+		<div>
+			<input class="input-passconf" type="password" name="password_confirm" value=""
+			       placeholder="Confirm Password">
+		</div>
+		<label class="warning pass-confirm">Password does not match</label>
+		<div>
+			<input class="input-firstname" type="text" name="firstname" value="" placeholder="First name">
+		</div>
+		<label class="warning firstname">First name uncorrected</label>
+		<div>
+			<input class="input-lastname" type="text" name="lastname" value="" placeholder="Last name">
+		</div>
+		<label class="warning lastname">Last name uncorrected</label>
+		<div>
+			<input class="input-age" type="text" name="age" value="" placeholder="Age">
+		</div>
+		<label class="warning age">Age uncorrected</label>
+		<div class="button-right">
+			<button class="logon-button">Sign on</button>
+		</div>
+		<div class="button-right button-margin">
+			<button class="back-button">Back</button>
+		</div>
+	</div>
+</div>
+</body>
+</html>
