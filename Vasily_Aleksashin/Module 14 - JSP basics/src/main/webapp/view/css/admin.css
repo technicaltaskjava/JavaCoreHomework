@@ -1,0 +1,42 @@
+.cookie-msg {
+	width: 75%;
+}
+
+.table-admin, .table {
+	width: 1000px;
+}
+
+.alert {
+	color: #f00;
+}
+
+.spain-block {
+	float: left;
+}
+
+.spain-back {
+	float: right;
+}
+
+input[type=text] {
+	width: inherit;
+}
+
+.pagination {
+	position: absolute;
+	left: 50%;
+	overflow: hidden;
+	margin: 0 0 0 -100px;
+}
+
+.page-count {
+	line-height: 20px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #555;
+	text-align: center;
+	text-shadow: 0 1px white;
+	margin-top: 6px;
+	margin-right: 20px;
+	margin-left: 20px;
+}
