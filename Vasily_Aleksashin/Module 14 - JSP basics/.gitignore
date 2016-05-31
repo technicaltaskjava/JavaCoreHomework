@@ -1,0 +1,7 @@
+### Maven template
+target/
+### JetBrains template
+.idea/
+*.iml
+### Sonar template
+.sonar/
