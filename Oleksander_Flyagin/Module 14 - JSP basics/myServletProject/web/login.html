@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html id="background">
+<head>
+    <meta charset="UTF-8">
+    <title>Fortune Cookie</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/jquery-2.2.3.js"></script>
+    <script src="js/start.js"></script>
+</head>
+<body>
+<header id="head">
+    <div style="margin-left: 70%; background: rgba(218, 180, 159, 0.49); border-radius: 7px;">
+          <p style="margin-left: 2%; color: rgba(48, 48, 48, 0.63)">If you are not a member, it is quick and easy
+           <a href="register.html" > to register.</a>
+          </p>
+        </div>
+    <img src="img/MyFortuneCookie.png" alt="MyFortuneCookie">
+</header>
+<div class="main">
+    <h3>Virtual Fortune Cookie</h3>
+    <p class="simplyClick">
+        To open up your virtual fortune cookie, simply click the button below:
+    </p>
+    <div class="massage"></div>
+
+    <p class="line"></p>
+    <img src="img/cookie.png" alt="Foodzia Fortune Cookie" class="img">
+    <span class="sms" >Enter to your account</span>
+    <img src="img/cookie.png" alt="Foodzia Fortune Cookie" class="img">
+    <form class="volidation" action="login" method="post">
+        <input id="login" type="text" placeholder="Input login" name="username"><br>
+        <input id="password" type="password" placeholder="Input password"  name="password"><br>
+        <button id="btnEnter" type="submit" name="button">Enter</button>
+        <div class="errors">
+        </div>
+    </form>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,192 @@
+#background {
+    background-color: #FDF5E7;
+
+}
+
+#head {
+    margin-left: 25%;
+}
+
+.line {
+    line-height: 29px;
+    border-top: 1px solid #CCCCCC;
+    margin-top: 15px;
+    padding: 5px;
+}
+
+.img {
+    width: 29px;
+    height: 29px;
+    vertical-align: middle;
+}
+
+.main {
+    background-color: #FFFFFF;
+    width: 700px;
+    text-align: center;
+    margin-left: 25%;
+    margin-right: 25%;
+    border: 1.5px solid #FBD690;
+    border-radius: 10px
+}
+
+h3 {
+    color: chocolate;
+}
+
+.sms {
+    color: #8c874b;
+}
+
+.simplyClick {
+    color: gray;
+}
+
+#tableHead {
+    color: goldenrod;
+}
+
+.getMasseg {
+    text-align: center;
+    color: #acc233;
+}
+
+table {
+    margin-left: 50px;
+    margin-bottom: 10px;
+    border: 1px solid #DEE753;
+    padding: 5px;
+    width: 90%;
+    border-collapse: separate
+}
+
+th, td {
+    color: #807561;
+    border: 1px solid #807561;
+}
+
+.scroll-table {
+    margin-left: 5px;
+    width: 97%;
+
+    overflow: auto;
+    height: 200px;
+    position: relative;
+}
+
+.scroll-table table {
+    border-collapse: collapse;
+}
+
+.scroll-table td {
+    padding: 7px;
+}
+
+.scroll-table th {
+    background: #eee;
+    padding: 5px;
+}
+
+.errors {
+    margin-right: 2px;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: right;
+    color: red;
+
+}
+
+#btnEnter, #show{
+    background: linear-gradient(to bottom, #0bc408 0%, #09a206 100%);
+    color: #fff;
+    font-size: 16px;
+    text-shadow: 0 1px 0 #757575;
+    padding: 4px 0 5px 0;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border: 0;
+    border-top: 1px solid #87c286;
+    border-right: 1px solid #0e780c;
+    border-left: 1px solid #0e780c;
+    border-bottom: 1px solid #0e780c;
+    box-shadow: 0 -1px 0 #0e780c, 0 1px 0 #fff;
+    width: 150px;
+    border-radius: 2px;
+}
+
+#btnReg{
+    background: linear-gradient(to bottom, #C4082B 0%, #A20615 100%);
+    color: #fff;
+    font-size: 16px;
+    text-shadow: 0 1px 0 #B37F7F;
+    padding: 4px 0 5px 0;
+    margin-right: 2px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border: 0;
+    border-top: 1px solid #C2868D;
+    border-right: 1px solid #780C1E;
+    border-left: 1px solid #780C2A;
+    border-bottom: 1px solid #780C16;
+    box-shadow: 0 -1px 0 #780C11, 0 1px 0 #FFFFFF;
+    width: 140px;
+    border-radius: 2px;
+}
+
+#addPre, #delPre, #changePre, #addText {
+    background: linear-gradient(to bottom, #c4b81a 0%, #a26b18 100%);
+    color: #fff;
+    font-size: 16px;
+    text-shadow: 0 1px 0 #B37F7F;
+    padding: 4px 0 5px 0;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border: 0;
+    border-top: 1px solid #C2868D;
+    border-right: 1px solid #78731a;
+    border-left: 1px solid #787512;
+    border-bottom: 1px solid #785d0e;
+    box-shadow: 0 -1px 0 #786905, 0 1px 0 #FFFFFF;
+    width: 90px;
+    border-radius: 2px;
+}
+
+#messagePre {
+    margin-bottom: 5px;
+}
+
+#idPreChange {
+    width: 100px;
+}
+
+#second, #trees, #forth, #fifth {
+    color: #8b8814;
+    background-color: rgb(250, 255, 215);
+    margin-bottom: 5px;
+    margin-right: 10px;
+    border-radius: 7px;
+    font-size: 20px;
+    width: 350px;
+    height: 100px;
+}
+
+#trees, #forth {
+    width: 50px;
+    height: 30px;
+}
+
+#bt2, #bt3, #bt4, #bt5 {
+    color: rgb(170, 144, 255);
+    border-radius: 7px;
+    width: 150px;
+
+}
+
+
+
+
+
+
+
