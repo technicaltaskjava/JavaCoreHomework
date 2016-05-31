@@ -1,0 +1,71 @@
+/* MyStyle */
+body {
+    background: #d6f1d5;
+}
+
+.head {
+    font-size: 14pt;
+    color: #525252;
+    font-family: Arial;
+}
+
+.basement {
+    font-size: 11pt;
+    color: #52362c;
+    font-family: Arial;
+    width: 250px;
+}
+
+.text {
+    font-size: 11pt;
+    color: #384721;
+    font-family: Arial;
+    margin: auto;
+}
+
+.text1 {
+    font-size: 18pt;
+    color: #521d22;
+    font-family: segoe print;
+}
+
+.text2 {
+    font-size: 14pt;
+    color: #2519ff;
+    font-family: Arial;
+}
+
+p {
+    font-size: 12pt;
+    color: #21801e;
+    font-family: Arial
+}
+
+.invalid {
+    background: #ff6762;
+}
+
+.valid {
+    background: #afa;
+}
+
+.box {
+    background: #abd9b4;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.box1 {
+    background: #abd9b4;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    height: 200px;
+}
+
+.message {
+    font-size: 12pt;
+    color: #1f1252;
+    font-family: segoe print
+}
