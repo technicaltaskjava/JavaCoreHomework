@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<link rel="stylesheet" type="text/css" href="css/registration.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="js/lib/jquery-2.2.3.min.js"></script>
+<script src="js/lib/jquery-ui.min.js"></script>
+<script src="js/registrationCheck.js"></script>
+<body>
+<h1>Fortune Cookies registration</h1>
+<div align="center">
+    <p>Fill out the form to register</p>
+    <form id="registration" action="registration" method="post">
+        <table width="50%" cellpadding="15">
+            <tr>
+                <td class="registration-form">UserName</td>
+                <td><input id="username" type="text" min="3" max="25" name="username" placeholder="at least two symbols"/></td>
+            </tr>
+            <tr>
+                <td class="registration-form">E-mail</td>
+                <td><input id="email" type="email" min="5" max="40" name="email" placeholder="ex: myname@example.com"/></td>
+            </tr>
+            <tr>
+                <td class="registration-form">Password</td>
+                <td><input id="password1" type="password" min="6" max="40" name="password1" placeholder="at least six symbols"/></td>
+            </tr>
+            <tr>
+                <td class="registration-form">Password again</td>
+                <td><input id="password2" type="password" min="6" max="40" name="password2" placeholder="at least six symbols"/></td>
+            </tr>
+        </table>
+        <p>
+            <button id="register" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+                <span class="ui-button-text">Register</span></button>
+        </p>
+    </form>
+    <div class="errors"></div>
+</div>
+<div align="center">
+    <a href="index.jsp">Back to the main page</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+td.registration-form {
+    text-align: right;
+    color: navy;
+}
+
+.errors {
+    color: red;
+}
