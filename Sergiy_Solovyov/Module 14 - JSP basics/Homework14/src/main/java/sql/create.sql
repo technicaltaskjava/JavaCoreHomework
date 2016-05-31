@@ -21,14 +21,3 @@ CREATE  TABLE `cookies`
   `cookie` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`id`) 
 );
-
-
-CREATE TABLE `metadata`
-(
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  cookie_id INT NOT NULL,
-  user_id INT NOT NULL,
-  time_added TIMESTAMP NOT NULL,
-  FOREIGN KEY(cookie_id) REFERENCES cookies(id),
-  FOREIGN KEY(user_id) REFERENCES users(id)
-);

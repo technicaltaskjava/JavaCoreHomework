@@ -93,8 +93,21 @@ public class AdminServlet extends HttpServlet {
         }
     }
     private void process(HttpServletRequest req, HttpServletResponse resp){
+        int page = 1;
+        int recordsPerPage = 10;
+        if(req.getParameter("page") != null)
+            page = Integer.parseInt(req.getParameter("page"));
+
+
+
         try {
-            List<Cookie> cookieList = cookieDAO.findAll();
+            List<Cookie> cookieList = cookieDAO.findAll((page-1)*recordsPerPage,
+                    recordsPerPage);
+            int noOfRecords = cookieDAO.getNoOfRecords();
+            System.out.println(noOfRecords+"FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFff");
+            int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
+            req.setAttribute("noOfPages", noOfPages);
+            req.setAttribute("currentPage", page);
             req.setAttribute("cookieList", cookieList);
             req.setAttribute("cookie", new Cookie());
 

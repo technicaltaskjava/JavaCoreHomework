@@ -58,7 +58,7 @@ public class IndexServlet extends HttpServlet {
         List<Cookie> cookies = null;
         try {
             if (cookieDAO != null)
-            cookies = cookieDAO.findAll();
+            cookies = cookieDAO.find();
         } catch (SQLException e) {
             LOGGER.info(e.getMessage(), e);
         }

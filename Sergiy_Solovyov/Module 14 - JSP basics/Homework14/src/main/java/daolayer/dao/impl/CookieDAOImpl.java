@@ -3,10 +3,7 @@ package daolayer.dao.impl;
 import daolayer.dao.CookieDAO;
 import daolayer.entity.Cookie;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,21 +14,51 @@ import static daolayer.dao.Constant.*;
  */
 public class CookieDAOImpl implements CookieDAO {
 
-
+    private int noOfRecords;
     private Connection connection;
 
     public CookieDAOImpl(Connection connection)  {
         this.connection = connection;
     }
     @Override
-    public List<Cookie> findAll() throws SQLException {
+    public List<Cookie> findAll(int offset,
+                                int noOfRecords) throws SQLException {
         List<Cookie> cookies = new ArrayList<>();
-        PreparedStatement ps = connection.prepareStatement("SELECT * FROM COOKIES;");
-        ResultSet rs = ps.executeQuery();
+        Statement stmt = connection.createStatement();
+        String query = "select * from COOKIES limit "
+                + offset + ", " + noOfRecords;
+        ResultSet rs = stmt.executeQuery(query);
         while (rs.next()){
             Cookie cookie = new Cookie();
             cookie.setId(rs.getInt(ID));
             cookie.setCookieText(rs.getString(COOKIE));
+            cookies.add(cookie);
+        }
+        rs.close();
+        rs = stmt.executeQuery("SELECT * FROM COOKIES");
+        System.out.println(cookies);
+        List<Cookie> cookies2 = new ArrayList<>();
+        while (rs.next()){
+            Cookie cookie = new Cookie();
+            cookie.setId(rs.getInt(ID));
+            cookie.setCookieText(rs.getString(COOKIE));
+            cookies2.add(cookie);
+        }
+        this.noOfRecords = cookies2.size();
+        rs.close();
+        stmt.close();
+        return cookies;
+    }
+    @Override
+    public List<Cookie> find() throws SQLException {
+        List<Cookie> cookies = new ArrayList<>();
+        PreparedStatement ps = connection.prepareStatement("SELECT * FROM COOKIES;");
+
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()){
+            Cookie cookie = new Cookie();
+            cookie.setId(rs.getInt(ID));
+            cookie.setCookieText(rs.getString(COOKIE));;
             cookies.add(cookie);
         }
         rs.close();
@@ -91,5 +118,8 @@ public class CookieDAOImpl implements CookieDAO {
         }
         ps.close();
         return rowCount;
+    }
+    public int getNoOfRecords() {
+        return noOfRecords;
     }
 }
