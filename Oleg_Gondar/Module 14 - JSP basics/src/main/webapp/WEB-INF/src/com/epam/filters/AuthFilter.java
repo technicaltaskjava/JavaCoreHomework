@@ -35,7 +35,7 @@ public class AuthFilter implements Filter {
 
         HttpSession session = req.getSession(false);
 
-        if (session == null && (uri.endsWith("GetCookies") || uri.endsWith("tableOfCookies.jsp") || uri.endsWith("editCookie.jsp"))) {
+        if (session == null && (uri.endsWith("GetCookiesPage") || uri.endsWith("GetCookies") || uri.endsWith("tableOfCookies.jsp") || uri.endsWith("editCookie.jsp"))) {
             logger.error("Unauthorized access request");
             res.sendRedirect("index.html");
         } else {

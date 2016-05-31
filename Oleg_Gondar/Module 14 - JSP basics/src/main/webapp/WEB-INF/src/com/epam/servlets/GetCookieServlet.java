@@ -30,14 +30,14 @@ public class GetCookieServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int page = 1;
         int recordsPerPage = 5;
-        if(request.getParameter("page") != null)
+        if (request.getParameter("page") != null)
             page = Integer.parseInt(request.getParameter("page"));
         Connection connection = (Connection) getServletContext().getAttribute("DBConnection");
 
         List<CookieBean> list = null;
         try {
-            list = CookieDAO.getPageCookiesList(connection, (page-1)*recordsPerPage, recordsPerPage);
-            int noOfRecords = CookieDAO.getNoOfRecords(connection, (page-1)*recordsPerPage, recordsPerPage);
+            list = CookieDAO.getPageCookiesList(connection, (page - 1) * recordsPerPage, recordsPerPage);
+            int noOfRecords = CookieDAO.getNoOfRecords(connection, (page - 1) * recordsPerPage, recordsPerPage);
             int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
             request.setAttribute("cookieList", list);
             request.setAttribute("noOfPages", noOfPages);

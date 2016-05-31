@@ -38,7 +38,6 @@ public class CookieDAO {
                 cookies.add(new CookieBean(resultSet.getLong(1), resultSet.getString(2)));
             }
             resultSet.close();
-
             statement.close();
             resultSet.close();
             return cookies;
@@ -49,8 +48,8 @@ public class CookieDAO {
     }
 
     public static int getNoOfRecords(Connection connection, int offset, int noOfRecords) throws SQLException{
-        int records = 5;
-        String query = "SELECT cookie_id, coookie FROM \"Fortune cookies\".COOKIES limit " + offset + ", " + noOfRecords;
+        int records = 1;
+        String query = "SELECT cookie_id, coookie FROM \"Fortune cookies\".COOKIES";
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
         while (resultSet.next()) {
