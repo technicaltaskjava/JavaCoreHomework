@@ -1,0 +1,194 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #404040;
+    margin: 0;
+    font-family: monospace;
+    background-color: #faeab1;
+}
+
+.content {
+    margin: 0 auto;
+    padding: 0 50px;
+    width: 800px;
+    height: 100vh;
+    border: 1px #fffbd4;
+    border-top: 0;
+    border-bottom: 0;
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.15);
+    background-color: #fffbd4;
+}
+
+.content h1 {
+    display: block;
+    color: inherit;
+    font-size: 3em;
+
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+
+    padding: 10px 0;
+}
+
+nav {
+    box-sizing: content-box;
+    position: relative;
+    display: block;
+    height: 42px;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav li {
+    box-sizing: border-box;
+    float: left;
+    display: inline;
+    height: 40px;
+    width: 33%;
+    font-size: 1.3em;
+
+    border: 1px solid #d3d3d3;
+    background: linear-gradient(to bottom, #ffffff, #ededed);
+
+    border-right: 0;
+    border-left: 0;
+}
+
+nav li:hover {
+    box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+nav li:active {
+    background: linear-gradient(to bottom, #f9f9f9, #e7e7e7);
+    box-shadow: inset 0 3px 4px rgba(0, 0, 0, 0.2);
+}
+
+nav li:first-child {
+    width: 34%;
+}
+
+nav li:first-child {
+    border-left: 1px solid #d3d3d3;
+    border-radius: 5px 0 0 5px;
+}
+
+nav li:last-child {
+    border-right: 1px solid #d3d3d3;
+    border-radius: 0 5px 5px 0;
+}
+
+nav a {
+    height: 20px;
+    padding: 10px 0;
+
+}
+
+a {
+    color: inherit;
+    display: block;
+    height: inherit;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+fieldset {
+    border-radius: 5px;
+    border: 1px solid #faeab1;
+    margin-top: 1.4em;
+    padding: 0.6em;
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.15);
+    background: #faeab1;
+}
+
+#predictionNext {
+    width: 200px;
+    margin: 2px auto;
+}
+
+.loginForm,
+.registrationForm {
+    display: block;
+    margin: 2px auto;
+    width: 50%;
+    text-align: center;
+}
+
+.column {
+    float: left;
+    padding: 0 2px;
+    box-sizing: border-box;
+    width: 50%;
+}
+
+.blank {
+    height: 72px;
+}
+
+form input + label,
+form .blank + label {
+    padding-top: 20px;
+}
+
+form label {
+    color: inherit;
+    display: block;
+    text-align: left;
+    height: 20px;
+}
+
+input {
+    width: 100%;
+    color: inherit;
+    display: block;
+    box-sizing: border-box;
+
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+
+    margin-bottom: 5px;
+    padding: 5px;
+    background: linear-gradient(to bottom, #ffffff, #ededed);
+}
+
+input:hover {
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+input:active {
+    background: linear-gradient(to bottom, #f9f9f9, #e7e7e7);
+    box-shadow: inset 0 3px 4px rgba(0, 0, 0, 0.2);
+}
+
+input[type="text"],
+input[type="password"] {
+    background: #ffffff;
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.15);
+}
+
+#predictionText {
+    font-size: 1.3em;
+    display: block;
+    text-align: center;
+    height: 60px;
+}
+
+.errorSpan,
+.messageSpan {
+    font-weight: bold;
+    display: block;
+    border: 1px solid #e93128;
+    border-radius: 5px;
+    color: #fcffd6;
+    margin-top: 18px;
+    padding: 5px;
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.15);
+    background: #ff3329;
+}

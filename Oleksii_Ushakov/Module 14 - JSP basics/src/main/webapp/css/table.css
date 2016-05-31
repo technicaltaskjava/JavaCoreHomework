@@ -1,0 +1,82 @@
+#predictionTable,
+#predictionTable tr {
+    border-collapse: collapse;
+    border: 1px #e6d6a0 solid;
+}
+
+#predictionTable tr {
+    height: 35px;
+}
+
+#predictionTable thead,
+#predictionTable tfoot {
+    background: #e6d6a0;
+}
+
+#predictionTable input[type='button'] {
+    width: 100px;
+    display: inline;
+    float: left;
+}
+
+#predictionAddField {
+    margin-bottom: 0;
+    padding-left: 5px;
+    width: 555px;
+    display: inline;
+}
+
+.predicationCell {
+    padding-left: 10px;
+    width: 100%;
+    text-align: left;
+}
+
+#predictionTable input[type='checkbox'],
+#predictionTable input[type='button'] {
+    margin: 0 5px;
+    vertical-align: middle;
+}
+
+.saveButton:hover,
+.editButton:hover {
+    box-shadow: none;
+    color: #007acb;
+}
+
+.cancelButton:hover,
+.deleteButton:hover {
+    box-shadow: none;
+    color: #bf2c2c;
+}
+
+.addPredication:hover,
+.addButton:hover {
+    box-shadow: none;
+    color: #63bb30;
+}
+
+input[type='checkbox'] {
+    width: 15px;
+    height: 15px;
+    box-shadow: none;
+    background: #e93128;
+    border: 2px #5c87cb solid;
+    /*background: linear-gradient(to bottom, #f9f9f9, #e7e7e7);*/
+    /*border: 1px solid #d3d3d3;*/
+}
+
+input[type='text'].inputPredication {
+    margin: 0;
+    background: #f0fcef;
+}
+
+input[type='text'].inputPredicationError {
+    margin: 0;
+    background: #ff968b;
+}
+
+#predictionTable input[type='button'].pageNavigation {
+    width: 45px;
+    display: inline;
+}
