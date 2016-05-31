@@ -29,7 +29,7 @@ public class CookieDAO {
     }
 
     public static List<CookieBean> getPageCookiesList(Connection connection, int offset, int noOfRecords) throws SQLException {
-        String query = "SELECT cookie_id, coookie FROM \"Fortune cookies\".COOKIES limit " + offset + ", " + noOfRecords;
+        String query = GET_ALL_COOKIES + " limit " + offset + ", " + noOfRecords;
         List<CookieBean> cookies = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
@@ -47,34 +47,16 @@ public class CookieDAO {
         }
     }
 
-    public static int getNoOfRecords(Connection connection, int offset, int noOfRecords) throws SQLException{
-        int records = 1;
-        String query = "SELECT cookie_id, coookie FROM \"Fortune cookies\".COOKIES";
+    public static int getNoOfRecords(Connection connection) throws SQLException {
+        int records = 0;
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(query);
+        ResultSet resultSet = statement.executeQuery(GET_ALL_COOKIES);
         while (resultSet.next()) {
             records++;
         }
         resultSet.close();
         statement.close();
         return records;
-    }
-
-    public static List<CookieBean> getCookiesList(Connection connection) throws SQLException {
-        List<CookieBean> cookies = new ArrayList<>();
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_COOKIES);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                cookies.add(new CookieBean(resultSet.getLong(1), resultSet.getString(2)));
-            }
-            resultSet.close();
-            preparedStatement.close();
-            return cookies;
-        } catch (SQLException e) {
-            logger.error(e);
-            throw e;
-        }
     }
 
     public static void insertCookie(Connection connection, CookieBean cookie) throws SQLException {

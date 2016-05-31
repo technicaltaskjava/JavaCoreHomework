@@ -54,8 +54,8 @@ public class EditCookieServlet extends HttpServlet {
                 logger.error(e1);
             }
         }
-        if (cookie.getCookie() == null){
-            response.sendRedirect("/GetCookies");
+        if (cookie.getCookie() == null) {
+            response.sendRedirect("/GetCookiesPage");
             return;
         }
 

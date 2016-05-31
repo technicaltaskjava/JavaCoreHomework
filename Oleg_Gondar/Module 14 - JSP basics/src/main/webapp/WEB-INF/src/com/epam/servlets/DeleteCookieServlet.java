@@ -43,7 +43,7 @@ public class DeleteCookieServlet extends HttpServlet {
 
         try {
             cookie.setId(Long.valueOf(request.getParameter("id")));
-            CookieDAO.deleteCookie(connection,cookie);
+            CookieDAO.deleteCookie(connection, cookie);
             response.sendRedirect("/GetCookiesPage");
         } catch (SQLException e) {
             logger.error("Database connection problem", e);

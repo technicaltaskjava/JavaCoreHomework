@@ -19,7 +19,7 @@ import java.sql.SQLException;
  * Created by Oleg on 5/25/2016.
  */
 
-@WebServlet(name = "Cookie", urlPatterns = {"/Cookie"})
+@WebServlet(name = "CookieRand", urlPatterns = {"/CookieRand"})
 public class GetRandomCookieServlet extends HttpServlet {
 
 
@@ -30,22 +30,22 @@ public class GetRandomCookieServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-            Connection connection = (Connection) getServletContext().getAttribute("DBConnection");
+        Connection connection = (Connection) getServletContext().getAttribute("DBConnection");
+        try {
+            RequestDispatcher rdHeader = getServletContext().getRequestDispatcher("/cookieHeader.html");
+            RequestDispatcher rdFooter = getServletContext().getRequestDispatcher("/cookieFooter.html");
+            PrintWriter out = response.getWriter();
+            rdHeader.include(request, response);
+            out.println("<h2 id=\"message\">" + CookieDAO.getRandomCookie(connection) + "</h2>");
+            rdFooter.include(request, response);
+        } catch (SQLException e) {
+            logger.error("Database connection problem", e);
             try {
-                RequestDispatcher rdHeader = getServletContext().getRequestDispatcher("/cookieHeader.html");
-                RequestDispatcher rdFooter = getServletContext().getRequestDispatcher("/cookieFooter.html");
-                PrintWriter out = response.getWriter();
-                rdHeader.include(request, response);
-                out.println("<h2 id=\"message\">" + CookieDAO.getRandomCookie(connection) + "</h2>");
-                rdFooter.include(request, response);
-            } catch (SQLException e) {
-                logger.error("Database connection problem", e);
-                try {
-                    throw new ServletException("DB Connection problem.");
-                }catch (Exception e1){
-                    logger.error(e1);
-                }
+                throw new ServletException("DB Connection problem.");
+            } catch (Exception e1) {
+                logger.error(e1);
             }
         }
+    }
 
 }

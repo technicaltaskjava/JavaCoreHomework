@@ -27,7 +27,7 @@
 
     <li>
         <button id="cook_add" class="submit" type="button">Update cookie</button>
-        <a href="/GetCookies">
+        <a href="/GetCookiesPage">
             <button class="submit" type="button">Back to table</button>
         </a>
     </li>

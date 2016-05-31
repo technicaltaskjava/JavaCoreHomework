@@ -2,20 +2,16 @@ package com.epam.servlets;
 
 import com.epam.dao.CookieDAO;
 import com.epam.dao.beans.CookieBean;
-import com.epam.dao.beans.UserBean;
 import org.apache.log4j.Logger;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
 
 
 /**
@@ -48,11 +44,11 @@ public class AddCookieServlet extends HttpServlet {
         try {
             cookie.setId(Long.valueOf(request.getParameter("ins_id")));
             cookie.setCookie(request.getParameter("ins_cookie"));
-            if(CookieDAO.getCookie(connection,cookie).getCookie() == null) {
+            if (CookieDAO.getCookie(connection, cookie).getCookie() == null) {
                 CookieDAO.insertCookie(connection, cookie);
                 response.sendRedirect("/GetCookiesPage");
-            }else {
-                response.sendRedirect("/GetCookies?err=id_exist");
+            } else {
+                response.sendRedirect("/GetCookiesPage?err=id_exist");
             }
 
         } catch (SQLException e) {
