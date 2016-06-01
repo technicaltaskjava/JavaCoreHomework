@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Register page</title>
+    <link rel="stylesheet" media="screen" href="css/styles.css">
+    <script src="js/jquery-2.2.3.js"></script>
+    <script src="js/validateRegister.js"></script>
+</head>
+
+<body>
+
+<form id="register_form" class="common_form" action="Register" method="post" name="contact_form">
+    <div class="errors"></div>
+    <ul>
+        <li>
+            <h2>Please register</h2>
+            <span class="required_authentication">* Required Field</span>
+        </li>
+        <li>
+            <label for="username">* UserName:</label>
+            <input id="username" type="text" name="name" placeholder="Enter username" required pattern=".+"/>
+        </li>
+        <li>
+            <label for="password">* Password:</label>
+            <input id="password" type="password" name="password" placeholder="Enter the password" required
+                   pattern=".{5,}"/>
+        </li>
+        <li>
+            <label for="confirmpassword">* Confirm password:</label>
+            <input id="confirmpassword" type="password" name="confpassword" placeholder="Enter the password again"
+                   required pattern=".{5,}"/>
+        </li>
+        <li>
+            <label for="email">* email:</label>
+            <input id="email" type="text" name="email" placeholder="Enter email" required>
+        </li>
+
+        <li>
+            <button id="register" class="submit" type="submit" value="Register">Register</button>
+            <a href="index.html">
+                <button class="submit" type="button">Back to main page</button>
+            </a>
+        </li>
+        <li id="errors">
+
+
+        </li>
+
+    </ul>
+
+</form>
+
+
+</body>
+</html>
