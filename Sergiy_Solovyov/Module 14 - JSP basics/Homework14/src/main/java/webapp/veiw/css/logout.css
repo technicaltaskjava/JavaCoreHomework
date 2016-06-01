@@ -1,0 +1,27 @@
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html,
+body {
+ 
+    background-color: #323B55;
+}
+
+#anim{
+	margin-top:5%;
+	border-radius: 6px;
+	display: block;
+    margin-left: auto;
+    margin-right: auto 
+}
+#bye{
+   
+	text-align:center;
+	font-size:40px;
+	color:#3FBFBF;
+	margin-top:10%;
+	font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+}
+

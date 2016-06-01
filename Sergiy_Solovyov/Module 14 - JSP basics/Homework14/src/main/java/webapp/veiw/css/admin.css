@@ -1,0 +1,220 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    min-height: 100%;
+    padding-bottom: 90px;
+}
+body {
+    font-family: sans-serif;
+    background-color: #323B55;
+}
+#admintable {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    width: 50%;
+    padding: 10px;
+}
+header {
+    height: 60px;
+    width: 1050px;
+    border-bottom: solid #bbb 3px;
+    color: #888;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Coronetscript, cursive;
+}
+#logo {
+    margin-top: -70px;
+    width: 5%;
+    height: 100%;
+    float: right;
+}
+#slogan{
+	 transition: color 1s linear;
+}
+#slogan:hover{
+	color: #ddd;
+}
+a.main {
+    text-decoration: none;
+    color: #888;
+}
+.del:hover {
+    opacity: 0.5;
+}
+.edi:hover {
+    opacity: 0.5;
+}
+img.del {
+    width: 23px;
+}
+img.edi {
+    width: 23px;
+}
+tr {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: solid #999 px;
+    border-radius: 5px;
+    color: #ccc;
+}
+td,
+th {
+    border-bottom: solid #999 1px;
+    margin-top: 6px;
+}
+th {
+    padding-bottom: 5px;
+}
+.delete:hover {
+    color: #ff670f;
+}
+.delete {
+    width: 50px;
+}
+.edit:hover {
+    color: #ffff88;
+}
+.holder {
+    margin-left: auto;
+    margin-right: auto;
+}
+.myButton {
+    -moz-box-shadow: 0px 3px 14px -7px #7a9bf5;
+	-webkit-box-shadow: 0px 3px 14px -7px #7a9bf5;
+	box-shadow: 0px 3px 14px -7px #7a9bf5;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7892c2), color-stop(1, #476e9e));
+	background:-moz-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background:-webkit-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background:-o-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background:-ms-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7892c2', endColorstr='#476e9e',GradientType=0);
+	background-color:#7892c2;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:5px;
+	display:inline-block;
+	cursor:pointer;
+	color:#bbb;
+	opacity:0.6;
+	font-family:Arial;
+	font-size:17px;
+	font-weight:bold;
+	padding:2px 12px;
+	text-decoration:none;
+	text-shadow:3px 3px 5px #283966;
+   
+}
+.myButton:hover {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #476e9e), color-stop(1, #7892c2));
+	background:-moz-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-webkit-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-o-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-ms-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
+	background-color:#476e9e;
+	opacity:0.9;
+}
+.myButton:active {
+    position: relative;
+    top: 1px;
+}
+form{
+	  margin-top: 1%;
+    margin-left: 28%;
+	
+}
+#cookie{
+	     background-color: #323B55;
+		 border:none;
+		 border-bottom:solid 2px #999;
+		 width:20%;
+		 font-size:17px;
+		 color:#ddd;
+		 margin-left:30px;
+		 font-family: Coronetscript, cursive;
+}
+#cook{
+    background-color: #323B55;
+    border:none;
+    border-bottom:solid 2px #999;
+    width:30%;
+    font-size:17px;
+    color:#ddd;
+    margin-left:30px;
+    font-family: Coronetscript, cursive;
+}
+a.main {
+    position: relative;
+    display: inline;
+}
+a.main span {
+    position: absolute;
+    width: 140px;
+    color: #CFFFE7;
+    background: #FF8E4D;
+    height: 29px;
+    line-height: 29px;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1s linear;
+    border-radius: 6px;
+}
+a.main span:after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -8px;
+    width: 0;
+    height: 0;
+    border-bottom: 8px solid #FF946E;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+}
+a:hover.main span {
+    visibility: visible;
+    opacity: 0.8;
+    top: 30px;
+    left: -100%;
+    margin-left: 276px;
+}
+#edit-cookie{
+    visibility: hidden;
+}
+.errors {
+    color: red;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 15px;
+}
+.direction{
+    color:#bbb;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.direction:hover{
+    color:#fff;
+}
+.link{
+    color:#bbb;
+}
+.link:hover{
+    color:#bbb;
+}
+#pages{
+    margin-left: auto;
+    margin-right: auto;
+}

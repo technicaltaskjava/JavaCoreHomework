@@ -1,0 +1,294 @@
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html,
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    min-height: 100%;
+    padding-bottom: 90px;
+    font-family: sans-serif;
+    background-color: #323B55;
+}
+h3 {
+    color: #fff;
+    text-align: center;
+}
+h1 {
+    text-align: left;
+    color: #888;
+}
+header {
+    height: 60px;
+    width: 1050px;
+    border-bottom: solid #bbb 3px;
+    color: #888;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Coronetscript, cursive;
+}
+#slogan{
+	 transition: color 1s linear;
+}
+#slogan:hover{
+	color: #ddd;
+}
+a.main {
+    text-decoration: none;
+}
+footer {
+    height: 60px;
+    width: 60%;
+    color: #888;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Coronetscript, cursive;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+h5,
+a {
+    color: #fff;
+    text-align: right;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+@-moz-keyframes login {
+    0% {
+        filter: alpha(opacity=0);
+        opacity: 0;
+        margin-top: -50px;
+    }
+    100% {
+        filter: alpha(opacity=100);
+        opacity: 1;
+        margin-top: -75px;
+    }
+}
+@-webkit-keyframes "login" {
+    0% {
+        filter: alpha(opacity=0);
+        opacity: 0;
+        margin-top: -50px;
+    }
+    100% {
+        filter: alpha(opacity=100);
+        opacity: 1;
+        margin-top: -75px;
+    }
+}
+@-o-keyframes "login" {
+    0% {
+        filter: alpha(opacity=0);
+        opacity: 0;
+        margin-top: -50px;
+    }
+    100% {
+        filter: alpha(opacity=100);
+        opacity: 1;
+        margin-top: -75px;
+    }
+}
+#slick-login {
+    width: 220px;
+    height: 155px;
+    position: absolute;
+    left: 40%;
+    top: 30%;
+    margin-left: -110px;
+    margin-top: -75px;
+    -webkit-animation: login 1s ease-in-out;
+    -moz-animation: login 1s ease-in-out;
+    -ms-animation: login 1s ease-in-out;
+    -o-animation: login 1s ease-in-out;
+    animation: login 1s ease-in-out;
+}
+#slick-login label {
+    display: none;
+}
+#anim {
+    position: absolute;
+    left: 60%;
+    top: 35%;
+    border-radius: 5px;
+    -webkit-animation: mymove 3s;
+    -webkit-animation-fill-mode: forwards;
+    animation: mymove 3s;
+    animation-fill-mode: forwards;
+}
+#logo {
+    margin-top: -70px;
+    width: 5%;
+    height: 100%;
+    float: right;
+}
+.loglink {
+    margin-right: 100px;
+    width: 6%;
+    height: 100%;
+    float: right;
+    text-decoration: none;
+    opacity: 0.5;
+    filter: saturate(2);
+}
+.loglink:hover {
+    opacity: 0.99;
+}
+
+@-webkit-keyframes mymove {
+    from {
+        left: 800px;
+    }
+    to {
+        left: 300px;
+    }
+}
+@keyframes mymove {
+    from {
+        left: 800px;
+    }
+    to {
+        left: 300px;
+    }
+}
+.placeholder {
+    color: #444;
+}
+.errors {
+    color: red;
+}
+#reg:hover {
+    color: #FF745E;
+}
+#slick-login input[type="email"],
+#slick-login input[type="password"],
+#slick-login input[type="text"],
+#slick-login input[type="number"] {
+    width: 100%;
+    height: 40px;
+    positon: relative;
+    margin-top: 7px;
+    font-size: 14px;
+    color: #444;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, .49);
+    padding-left: 20px;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    border-radius: 6px;
+    background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #F2F2F2 100%);
+    background-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #F2F2F2 100%);
+    background-image: -o-linear-gradient(bottom, #00FFFF 0%, #F2F2F2 100%);
+    background-image: -ms-linear-gradient(bottom, #FFFFFF 0%, #F2F2F2 100%);
+    background-image: linear-gradient(bottom, #FFFFFF 0%, #F2F2F2 100%);
+    -webkit-box-shadow: inset 0px 2px 0px #d9d9d9;
+    box-shadow: inset 0px 2px 0px #d9d9d9;
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    -o-transition: all .1s ease-in-out;
+    -ms-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+}
+footer {
+    text-align: center;
+}
+#slick-login input[type="email"]:focus,
+#slick-login input[type="password"]:focus,
+#slick-login input[type="text"]:focus,
+#slick-login input[type="number"]:focus {
+    -webkit-box-shadow: inset 0px 2px 0px #a7a7a7;
+    box-shadow: inset 0px 2px 0px #a7a7a7;
+}
+#slick-login input[type="submit"] {
+    width: 100%;
+    height: 50px;
+    margin-top: 7px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 0px -1px 0px #5b6ddc;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, .49);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    border-radius: 6px;
+    background-color: #5466da;
+    background-image: -webkit-linear-gradient(bottom, #5466da 0%, #768ee4 100%);
+    background-image: -moz-linear-gradient(bottom, #5466da 0%, #768ee4 100%);
+    background-image: -o-linear-gradient(bottom, #5466da 0%, #768ee4 100%);
+    background-image: -ms-linear-gradient(bottom, #5466da 0%, #768ee4 100%);
+    background-image: linear-gradient(bottom, #5466da 0%, #768ee4 100%);
+    -webkit-box-shadow: inset 0px 1px 0px #9ab1ec;
+    box-shadow: inset 0px 1px 0px #9ab1ec;
+    cursor: pointer;
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    -o-transition: all .1s ease-in-out;
+    -ms-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+}
+#slick-login input:hover[type="submit"] {
+    color: #FF745E;
+}
+a.main {
+    position: relative;
+    display: inline;
+}
+a.main span {
+    position: absolute;
+    width: 140px;
+    color: #CFFFE7;
+    background: #FF8E4D;
+    height: 29px;
+    line-height: 29px;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s linear;
+    border-radius: 6px;
+}
+a.main span:after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -8px;
+    width: 0;
+    height: 0;
+    border-bottom: 8px solid #FF946E;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+}
+a:hover.main span {
+    visibility: visible;
+    opacity: 0.8;
+    top: 30px;
+    left: -100%;
+    margin-left: 276px;
+    z-index: 999;
+
+}
+#session{
+    text-align:right;
+    color: #DBA901;
+}
+
+h4 a{
+    color: #bbb;
+}
+h4 a:hover{
+    color: #fff;
+}
