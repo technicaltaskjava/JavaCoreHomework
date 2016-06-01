@@ -1,0 +1,79 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+    <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>servlets.EncodingFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <listener>
+        <listener-class>servlets.RequestLogger</listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>servlets.LoginController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>servlets.LogoutController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>servlets.RegistrationController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Prediction</servlet-name>
+        <servlet-class>servlets.PredictionGetter</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CookieTableAccess</servlet-name>
+        <servlet-class>servlets.CookieTableServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Index</servlet-name>
+        <jsp-file>/index.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CookieControl</servlet-name>
+        <jsp-file>/cookies.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Prediction</servlet-name>
+        <url-pattern>/prediction</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Index</servlet-name>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CookieTableAccess</servlet-name>
+        <url-pattern>/getcookietable</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CookieControl</servlet-name>
+        <url-pattern>/control</url-pattern>
+    </servlet-mapping>
+</web-app>

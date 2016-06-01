@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mike's Fortune Cookies - registration</title>
+        <link rel="stylesheet" type="text/css" href="css/FortuneCookies.css" />
+        <script src="js/Register.js"></script>
+    </head>
+    <body>
+        <a href="index" id="title">Mike's Fortune Cookies</a>
+        <form id="registration-form" name="registration-form" action="register" method="post">
+            <p>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" onblur="validateUsername()" class="bordered rounded">
+            </p>
+            <div id="username-error"></div>
+            <p>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" onblur="validatePassword()" class="bordered rounded">
+            </p>
+            <div id="password-error"></div>
+            <p>
+                <label for="password-repeat">Repeat password:</label>
+                <input type="password" id="password-repeat" onblur="validateRepeatPassword()" class="bordered rounded">
+            </p>
+            <div id="password-repeat-error"></div>
+            <p>
+                <label for="email">E-mail:</label>
+                <input type="text" id="email" name="email" onblur="validateEmail()" class="bordered rounded">
+            </p>
+            <div id="email-error"></div>
+            <input type="submit" id="register-button" value="Register" class="bordered rounded" disabled>
+        </form>
+    </body>
+</html>
